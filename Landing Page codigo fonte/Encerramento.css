@@ -1,0 +1,151 @@
+#Encerramento {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  margin-top:200px;
+}
+
+.retangulo-encerramento {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "retangulos-internos-encerramento texto-direita-botao icone-inferior-direita";
+  width: 1350px;
+  height: 500px;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  border-radius: 15px;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.retangulos-internos-encerramento {
+  display: flex;
+  align-items: center;
+  grid-area: retangulos-internos-encerramento;
+  gap:30px;
+}
+
+.retangulo-esquerda {
+  width: 250px;
+  height: 370px;
+  border: 1px solid white;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-left:100px;
+}
+
+.retangulo-centro {
+  width: 250px;
+  height: 170px;
+  border: 1px solid white;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.texto-direita-botao {
+  display:flex;
+  grid-area: texto-direita-botao;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  height: 250px;
+  margin-left:60px;
+}
+
+.texto-direita-botao h2 {
+  color: white;
+  font-size: 40px;
+  width: 500px;
+  font-weight: 400;
+}
+
+.butao-encerramento {
+  margin-top: 10px;
+  width: 350px;
+  height: 60px;
+  border-radius: 15px;
+  text-decoration: none;
+  background: linear-gradient(to right, #2a2829, #000000);
+  font-size: 30px;
+  color: white;
+  border: 1px solid white;
+  transition: 0.5s ease;
+}
+
+.butao-encerramento:hover{
+  transform: translateY(15px);
+  border:none;
+}
+
+.icone-inferior-direita {
+  width: 200px;
+  margin-right:45px;
+  object-fit: cover;
+  grid-area: icone-inferior-direita;
+  align-self: flex-end;
+  justify-self: end; 
+}
+
+@media (min-width: 1366px) and (max-width: 1599px) {
+
+#Encerramento{
+  margin-top: 100px;
+}
+
+.retangulo-encerramento{
+  width:1100px;
+  height:450px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 2fr;
+  grid-template-areas: "retangulos-internos-encerramento texto-direita-botao "
+                          "retangulos-internos-encerramento icone-inferior-direita  ";
+}
+
+.retangulo-esquerda{
+  width:230px;
+  height:350px;
+  margin-left:30px;
+ 
+}
+
+.texto-direita-botao{
+  margin-top:130px;
+  gap:5px;
+  height:auto;
+
+}
+
+.butao-encerramento{
+  margin:0;
+}
+
+.retangulo-centro{
+  width:200px;
+  height:150px;
+}
+
+.texto-direita-botao h2{
+  font-size:35px;
+}
+
+.butao-encerramento{
+  width: 300px;
+  height: 50px;
+}
+
+.icone-inferior-direita{
+  margin:0;
+  height:165px;
+}
+
+
+}
+
+@media (min-width:1600px){
+  .Encerramento{
+    margin:0;
+  }
+}

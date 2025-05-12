@@ -1,0 +1,188 @@
+#Best-Seller {
+  width: 100%;
+  margin-top:200px;
+}
+
+.titulo-bestsellers {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  height: 55px;
+  gap: 10px;
+  margin: 30px 0 30px 0;
+}
+
+.titulo-bestsellers h2 {
+  font-size: 50px;
+  color: white;
+  text-wrap: nowrap;
+  font-weight: normal;
+}
+
+.container-elementos {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carrosel-bestseller{
+  display:flex;
+  width:1110px;
+  overflow: hidden;
+}
+
+.carrosel-rolagem{
+  display:flex;
+  width:200%;
+  transition:transform 0.5s ease;
+}
+
+.grupo-imagens{
+  display: flex;  
+  justify-content: center;
+  overflow: hidden;
+  width:1110px;
+  gap: 30px;
+}
+
+.elemento-img {
+  width: 350px;
+  height: 550px;
+  border: 1px solid white;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+
+.imagem-container-bestseller{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.imagem-container-bestseller p {
+  font-size: 24px;
+  color: white;
+}
+
+.seta-direita-bestseller,
+.seta-esquerda-bestseller {
+  position:absolute;
+  width: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor:pointer;
+  background: none;
+  border:none;
+}
+
+.seta-direita-bestseller {
+  margin-right:150px;
+}
+
+.seta-esquerda-bestseller {
+  margin-left: 130px;
+}
+
+.seta-esquerda-bestseller img {
+  width: 80px;
+}
+
+.seta-direita-bestseller img{
+  width: 80px;
+}
+
+@media (min-width: 1366px) and (max-width: 1599px) {
+
+  .imagem-container-bestseller p{
+    font-size:20px;
+  }
+
+  .titulo-bestsellers h2{
+    font-size: 40px;
+  }
+
+  .elemento-img{
+    height:500px;
+    width:320px;
+  }
+
+  .seta-direita-bestseller {
+    right: 85px;
+    background:none;
+    border:none;
+  }
+  
+  .seta-esquerda-bestseller {
+    left: 85px;
+    background:none;
+    border:none;
+   
+  }
+
+  .carrosel-bestseller{
+    display:flex;
+    width:1020px;
+    overflow: hidden;
+  }
+  
+  .carrosel-rolagem{
+    display:flex;
+    width:200%;
+    transition:transform 0.5s ease;
+  }
+  
+  .grupo-imagens{
+    display: flex;  
+    justify-content: center;
+    overflow: hidden;
+    width:1020px;
+    gap: 30px;
+  }
+  
+  .elemento-img {
+    width: 300px;
+    height: 500px;
+    border: 1px solid white;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+
+  .seta-direita-bestseller {
+    right: -50px;
+  }
+  
+  .seta-esquerda-bestseller {
+    left: -50px;
+  }
+  
+  #BestSeller{
+    margin-top:100px;
+  }
+
+
+.imagem-container-bestseller{
+  display:flex;
+  flex-direction: column;
+  gap:5px;
+}
+
+  
+
+}
+
+@media (min-width:1600px){
+  .seta-direita-bestseller{
+    right:150px;
+  }
+
+  .seta-esquerda-bestseller{
+    left:150px;
+  }
+  
+}

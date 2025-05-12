@@ -1,0 +1,65 @@
+#before-closing{
+    font-size:30px;
+    margin-bottom:50px;
+}
+
+#container-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#image{
+ display: flex;
+ flex-direction: column; 
+ justify-content: center;
+ align-items: flex-start;
+ width: 950px;
+ height: 450px;   
+ background: url(/fotos/shop_principal/Cupom.jpg);
+ background-size:cover;  
+ border-radius: 15px;
+ gap:20px;
+ border: 1px solid white;
+}
+
+#information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    margin-left:50px;
+}
+
+#closing-button{
+    width:250px;
+    height: 50px;
+    border-radius:15px;
+    border:1px solid white;
+    font-size:20px;
+}
+
+#closing-button p{
+    color:white;
+}
+
+
+
+@media (min-width:1600px){
+    #image{
+        width: 1060px;
+       }
+
+       #information{
+        font-size:35px;
+        }
+
+        #closing-button{
+            height: 70px;
+            font-size:25px;
+            padding:10px;
+        }
+    
+}

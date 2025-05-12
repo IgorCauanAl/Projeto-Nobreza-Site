@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="menuMainPage.CSS" />
+    <link rel="stylesheet" href="Categories.css" />
+    <link rel="stylesheet" href="mostwanted.css" />
+    <link rel="stylesheet" href="news.css" />
+    <link rel="stylesheet" href="before-closing.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="insert-information.css" />
+    <title>Página Principal Nobreza</title>
+  </head>
+  <body>
+    <header>
+      <!--Inicio da página-->
+      <section id="main-menu">
+        <!--Menu de navegação-->
+        <div id="menu-container">
+          <div id="nav-bar">
+            <div id="logo">
+              <h1>Nobreza</h1>
+            </div>
+
+            <ul>
+              <li><a href="">Inicio</a></li>
+              <li id="products"><a href="">Produtos</a></li>
+              <li><a href="">Novidades</a></li>
+              <li><a href="">Mais Procurados</a></li>
+              <li><a href="">Promoções</a></li>
+              <li><a href="">Coleções</a></li>
+            </ul>
+
+            <div id="left-elements">
+              <div id="search">
+                <p>Buscar</p>
+                <img id = "button-search" src="/icones/shop_principal/lupa.svg" alt="" />
+              </div>
+
+              <div id="circle-cart">
+                <img src="/icones/shop_principal/cart.svg" alt="" />
+
+                <div id="number-purchases">
+                  <p>10</p>
+                </div>
+              </div>
+
+              <div class="login-circle">
+                <a
+                  href="/Landing Page codigo fonte/Tela login codigo fonte/index.html"
+                  ><img src="/icones/elementos/menu/profile.svg"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="menu-products-hidden">
+          <div id="container-menu-products">
+            <img
+              id="img-products"
+              src="/fotos/shop_principal/photo-products-hidden.jpg"
+              alt=""
+            />
+
+            <div id="container-column">
+              <div class="column one-products">
+                <h2>Ternos</h2>
+                <p>Slim Fit</p>
+                <p>Regular Fit</p>
+                <p>Para Casamento</p>
+                <p>Executivo</p>
+              </div>
+
+              <div class="column two-products">
+                <h2>Blazers</h2>
+                <p>Esportivos</p>
+                <p>Formais</p>
+              </div>
+
+              <div class="column three-products">
+                <h2>Calças</h2>
+                <p>Social Slim Fit</p>
+                <p>Social Regular Fit</p>
+                <p>Casual Elegante</p>
+              </div>
+
+              <div class="column four-products">
+                <h2>Relógios</h2>
+                <p>Classicos</p>
+                <p>Esportivos</p>
+                <p>Automáticos</p>
+              </div>
+
+              <div class="column five-products">
+                <h2>Sapatos</h2>
+                <p>Oxford</p>
+                <p>Derby</p>
+                <p>Loafers</p>
+                <p>BotasElegantes</p>
+              </div>
+
+              <div class="column six-products">
+                <h2>Gravatas</h2>
+                <p>Slim</p>
+                <p>Tradicional</p>
+                <p>Borboleta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Sub-Search-->
+
+        <div id = "sub-search-hidden">
+
+          <div id="sub-search">
+            <div id="container-search">
+             
+              <form
+                class="formulary-search"
+                action="search-back-end"
+                method="get"
+              >
+                <input
+                  type="text"
+                  name="search"
+                  class="search-box"
+                  placeholder="O que você está buscando?"
+                  required
+                  aria-label="Campo Pesquisa"
+                />
+  
+                <div id="land">
+                  <button type="submit" class="button-search">
+                    <img src="/icones/shop_principal/lupa.svg" alt="" />
+                  </button>
+                </div>
+  
+                <div id="close">
+                  <button class="button-search">
+                    <img src="/icones/shop_principal/close icon.svg" alt="" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        
+
+          <!--Encerramento-->
+        </div>
+
+        <!--Banner Principal-->
+        <div id="banner">
+          <div class="arrow left-arrow">
+            <img src="/icones/landingpage/arrowleft.svg" alt="" />
+          </div>
+
+          <div class="main-text">
+            <h2>NOVA COLEÇÃO</h2>
+
+            <div id="secundary-text">
+              <h3>Blazer Moderno</h3>
+            </div>
+
+            <button class="button-start">Comprar</button>
+          </div>
+
+          <div class="arrow right-arrow">
+            <img src="/icones/landingpage/arrow.svg" alt="" />
+          </div>
+        </div>
+
+        <!--Barra de informações-->
+        <div class="barra-informacoes">
+          <div class="info-item">
+            <h3>Pague em até 6x</h3>
+            <img src="/icones/shop_principal/money.svg" />
+          </div>
+          <div class="info-item">
+            <h3>Entrega em todo o país</h3>
+            <img src="/icones/shop_principal/entrega.svg" />
+          </div>
+          <div class="info-item">
+            <h3>5% de desconto no pix</h3>
+            <img src="/icones/shop_principal/pix.svg" />
+          </div>
+          <div class="info-item">
+            <h3>Seus dados são criptografados</h3>
+            <img src="/icones/shop_principal/seguranca.svg" />
+          </div>
+        </div>
+      </section>
+
+      <!--Categorias-->
+      <section id="Categories">
+        <div id="main-title">
+          <div class="rectangle right"></div>
+
+          <h2>CATEGORIAS</h2>
+
+          <div class="rectangle left"></div>
+        </div>
+
+        <div id="flex-images">
+          <div class="carrousel-image">
+            <img src="/fotos/shop_principal/categorias(1).jpg" alt="" />
+          </div>
+
+          <div class="carrousel-image">
+            <img src="/fotos/shop_principal/Categorias.jpg" alt="" />
+
+            <div id="element-over-image">
+              <p id="type-of-clothes">Ternos</p>
+
+              <button class="button-categories">Coleções</button>
+
+              <div class="elements-navigation">
+                <div class="little-ball"></div>
+                <div class="little-ball"></div>
+                <div class="little-ball"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carrousel-image">
+            <img src="/fotos/shop_principal/Categorias2.jpg" alt="" />
+          </div>
+        </div>
+
+        <div id="information-bar">
+          <div id="hugoboss"><h2>HUGOBOSS</h2></div>
+          <div id="zegna"><h2>ZEGNA</h2></div>
+          <div id="armani"><h2>ARMANI</h2></div>
+          <div id="rolex"><h2>ROLEX</h2></div>
+          <div id="timberland"><h2>TIMBERLAND</h2></div>
+          <div id="louie"><h2>LOUIE</h2></div>
+        </div>
+        
+      </section>
+
+      <section id="most-wanted">
+        <div id="center-title-mostwanted">
+          <h2>MAIS PROCURADOS</h2>
+        </div>
+
+        <div id="container-product">
+          <div class="product one">
+            <div class="title-mostwanted">
+              <h2>Paletó Classico Armani</h2>
+              <p>R$1200</p>
+              <button class="button-mostwanted">Comprar</button>
+            </div>
+          </div>
+
+          <div class="product two">
+            <div class="title-mostwanted">
+              <h2>Sapato Social Louie</h2>
+              <p>R$1100</p>
+              <button class="button-mostwanted">Comprar</button>
+            </div>
+          </div>
+
+          <div class="product three">
+            <div class="title-mostwanted">
+              <h2>Blazer Verde Listado Zegna</h2>
+              <p>R$5400</p>
+              <button class="button-mostwanted">Comprar</button>
+            </div>
+          </div>
+
+          <div class="product four">
+            <div class="title-mostwanted">
+              <h2>Relógio Classico Seiko</h2>
+              <p>R$1900</p>
+              <button class="button-mostwanted">Comprar</button>
+            </div>
+          </div>
+
+          <div class="elements-navigation-mostwanted">
+            <div class="little-ball"></div>
+            <div class="little-ball"></div>
+            <div class="little-ball"></div>
+          </div>
+        </div>
+      </section>
+
+      <!--News-->
+      <section id="news">
+        <div id="flex-title-news">
+          <div class="rectangle-title left-news"></div>
+          <div id="categories-title"><h2>NOVIDADES</h2></div>
+          <div class="rectangle-title right-news"></div>
+        </div>
+
+        <div id="news-grid">
+          <!--Container Foto-->
+          <div class="container-photos">
+            <div class="photo photo-one"></div>
+            <div class="description-news">
+              <p>Paletó Classico Bege Armani</p>
+              <p>R$1200</p>
+              <button class="button-news">Comprar</button>
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <!--Container Fotos-->
+          <div class="container-photos">
+            <div class="photo photo-two">
+              <div id="top-rectangle">
+
+                <div id = "text-top-rectangle">
+                  <p>Novidades com peças exclusivas todo mês na loja</p>
+                <button class="catalog-button">Ir ao catalogo</button>
+                </div>
+                
+              </div>
+              <img
+                id="news-icon"
+                src="/icones/shop_principal/Sun_Nov_17_2024_14_33_23_GM_19-0_-removebg-preview.png"
+              />
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <!--Container Foto-->
+          <div class="container-photos">
+            <div class="photo photo-three"></div>
+
+            <div class="description-news">
+              <p>Paletó Classico Bege Armani</p>
+              <p>R$1200</p>
+              <button class="button-news">Comprar</button>
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <!--Container Fotos-->
+          <div class="container-photos">
+            <div class="photo photo-four"></div>
+
+            <div class="description-news">
+              <p>Paletó Classico Bege Armani</p>
+              <p>R$1200</p>
+              <button class="button-news">Comprar</button>
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <!--Container Fotos-->
+          <div class="container-photos">
+            <div class="photo photo-five"></div>
+
+            <div class="description-news">
+              <p>Paletó Classico Bege Armani</p>
+              <p>R$1200</p>
+              <button class="button-news">Comprar</button>
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <!--Container Fotos-->
+          <div class="container-photos">
+            <div class="photo photo-six"></div>
+
+            <div class="description-news">
+              <p>Paletó Classico Bege Armani</p>
+              <p>R$1200</p>
+              <button class="button-news">Comprar</button>
+            </div>
+          </div>
+          <!--Encerramento-->
+
+          <div id="container-description-news">
+            <div class="elements-navigation-news">
+              <div class="little-ball"></div>
+              <div class="little-ball"></div>
+              <div class="little-ball"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="before-closing">
+        <div id="container-image">
+          <div id="image">
+            <div id="information">
+              <p>PRIMEIRA COMPRA</p>
+              <p>COM 10 % OFF</p>
+              <button id="closing-button"><p>CUPOM:REALEZA</p></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="information-closing">
+
+        <div id="insert-email">
+          <div id="container-information">
+            <div id="column1">
+              <h2>Nobreza</h2>
+              <p>Receba nossas novidades atraves do email!</p>
+            </div>
+
+            <div id="column2">
+              <input id="text-bar " type="name" placeholder="Nome" />
+              <div id="line-column"></div>
+            </div>
+
+            <div id="column 3">
+              <input type="email-bar" type="email" placeholder="E-mail" />
+              <div id="line-column"></div>
+            </div>
+
+            <button id="button-closing">Enviar</button>
+          </div>
+        </div>
+
+      </section>
+    </header>
+
+    <footer id="footer">
+      <div class="footer-container">
+        <div class="footer-linha-um">
+          <div class="logo-footer">
+            <h2>Nobreza</h2>
+          </div>
+
+          <div class="linha-horario">
+            <h3>Horário de funcionamento</h3>
+            <p>Segunda a Sexta de 8h ás 17h</p>
+          </div>
+
+          <div class="linha-email">
+            <h3>E-mail</h3>
+            <p>Nobreza@gmail.com</p>
+          </div>
+
+          <a href="#inicio"
+            ><button class="butao-footer">
+              Voltar ao topo
+              <img src="/icones/footer/setaparacima.svg" alt="" /></button
+          ></a>
+        </div>
+
+        <div class="footer-linha-dois">
+          <h3>Redes sociais</h3>
+
+          <div class="rede-social">
+            <div class="WhatsApp">
+              <img src="/icones/footer/whatsapp.svg" alt="" />
+              <p>WhatsApp</p>
+            </div>
+
+            <div class="Facebook">
+              <img src="/icones/footer/facebook.svg" alt="" />
+              <p>Facebook</p>
+            </div>
+
+            <div class="Instagram">
+              <img src="/icones/footer/instagram.svg" alt="" />
+              <p>Instagram</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-linha-tres">
+          <h3>Menu</h3>
+
+          <div class="textos-menu">
+            <a href="#">Sobre Nós</a>
+            <a href="#">Nossas Peças</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Depoimentos</a>
+            <a href="#">Shop</a>
+          </div>
+        </div>
+
+        <div class="footer-linha-quatro">
+          <div class="fale-com-nos">
+            <h3>Fale com nós</h3>
+
+            <div class="texto-fale-com-nos">
+              <img src="/icones/footer/telefone.svg" alt="" />
+              <p>(73) 99954-6752</p>
+            </div>
+          </div>
+
+          <div class="Endereco">
+            <h3>Endereço</h3>
+
+            <div class="texto-endereco">
+              <img src="/icones/footer/localizacao.svg" alt="" />
+              <p>Avenida Sete de Setembro 14,<br />451416-970-BA</p>
+            </div>
+          </div>
+
+          <div class="Formas-de-pagamento">
+            <h3>Formas de pagamento</h3>
+            <div class="imagens-pagamentos">
+              <img src="/icones/footer/pagamento/americanexpress.png" alt="" />
+
+              <img src="/icones/footer/pagamento/boleto.png" alt="" />
+
+              <img src="/icones/footer/pagamento/elo.png" alt="" />
+
+              <img src="/icones/footer/pagamento/hipercard.png" alt="" />
+
+              <img src="/icones/footer/pagamento/mastercard.svg" alt="" />
+
+              <img src="/icones/footer/pagamento/pix.png" alt="" />
+
+              <img src="/icones/footer/pagamento/visa.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="linha-footer"></div>
+
+        <div class="texto-footer-bottom">
+          <p>Nobreza Moda Masculina | Todos os direitos reservados</p>
+
+          <a class="texto-privacidade" href="#">Política de Privacidade</a>
+
+          <div class="nome-desenvolvedor">
+            <p>Desenvolvedor: Igor Cauan</p>
+            <img src="/icones/footer/instagram.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

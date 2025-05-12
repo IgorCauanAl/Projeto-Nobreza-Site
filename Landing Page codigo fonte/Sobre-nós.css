@@ -1,0 +1,261 @@
+#Sobre-nós {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.container-titulo-sobrenos {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 60px 0 0 130px;
+  gap: 10px;
+  color: white;
+  position: relative;
+}
+
+.container-titulo-sobrenos p {
+  width: 700px;
+  height: 400px;
+  font-size: 40px;
+}
+
+.container-titulo-sobrenos h2 {
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.container-titulo-sobrenos .titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.line {
+  border: 2px solid white;
+  width: 100px;
+  height: 0;
+}
+
+.flex-elements-sobrenos {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 500px;
+  margin-top: -140px;
+}
+
+.elements {
+  width: 500px;
+  height: 120px;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+}
+
+.elements h3 {
+  font-size: 20px;
+  margin: 20px 0 0 20px;
+}
+
+.elements p {
+  font-size: 18px;
+  margin: 5px 0 20px 20px;
+}
+
+.elements.cidade {
+  margin-left: 50px;
+}
+
+.elements.experiência {
+  margin-left: 100px;
+}
+
+.seta-esquerda img {
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+  cursor:pointer;
+}
+
+.seta-direita img {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+  cursor:pointer;
+}
+
+.seta-direita, .seta-esquerda {
+  border:none;
+}
+
+.retangulo-carrossel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 90px 200px 0 250px;
+  background-color: transparent;
+  border-radius: 20px;
+  width: 550px;
+  height: 800px;
+  border: 1px solid white;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  position: relative; 
+}
+
+.carrosel {
+  display: flex;
+  width: 510px;
+  margin:10px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+
+#imagens-container{
+  display:flex;
+  transition: transform 0.5s ease-in-out ;
+  width: 1020px;
+}
+
+.carrosel-img{
+  width:510px;
+  object-fit: cover;
+}
+
+#titulo-carrosel {
+  transition: opacity 0.3s ease;
+}
+
+.titulo-apresentacao {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+  padding-left: 30px;
+}
+
+.titulo-apresentacao p {
+  font-size: 30px;
+}
+
+.button-apresentacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  width: 55px;
+  height: 40px;
+  background: linear-gradient(to right, #2a2829, #45484b);
+  border-radius: 10px;
+  transition:0.5s ease;
+  cursor:pointer;
+}
+
+<<<<<<< HEAD:Sobre-nós.css
+@media (min-width: 1366px) and (max-width: 1919px) {
+  .retangulo-carrossel {
+    margin-left: 5px;
+    width: 480px;
+    height: 770px;
+  }
+
+  .imagem-carrosel {
+    width: 450px;
+  }
+
+  .titulo-apresentacao {
+    margin-bottom: 20px;
+  }
+}
+=======
+.button-apresentacao:hover{
+  transform: translateY(-10px);
+  
+}
+
+@media (min-width: 1366px) and (max-width: 1599px) {
+  .retangulo-carrossel {
+    margin-left: 70px;
+    width: 400px;
+    height: 550px;
+    object-fit: cover;
+  }
+
+  .carrosel {
+    display: flex;
+    width: 350px;
+    margin:10px;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  
+
+  .carrosel-img{
+    width:350px;
+    object-fit: cover;
+  }
+
+  .titulo-apresentacao {
+    margin:20px;
+    padding-left: 20px;
+   
+  }
+
+  .titulo-apresentacao p{
+    font-size: 20px;
+  }
+
+  .button-apresentacao{
+    width:60px;
+    height:30px;
+  }
+
+  .titulo h2{
+    font-size: 45px;
+  }
+
+  .texto-sobrenos{
+    height:170px;
+  }
+
+ .texto-sobrenos p{
+  font-size:35px;
+ }
+
+ .flex-elements-sobrenos{
+  margin-top:10px;
+  gap:20px;
+ }
+
+ .elements{
+  height:100px;
+ }
+
+}
+  
+@media (min-width:1600px){
+
+  .retangulo-carrossel{
+    margin-left:180px;
+   }
+
+   .imagem-carrosel{
+    margin:10px;
+   }
+
+   .titulo-apresentacao{
+    margin-bottom:30px;
+   }
+
+  }
+>>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/Sobre-nós.css

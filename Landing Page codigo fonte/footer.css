@@ -1,0 +1,172 @@
+#footer {
+  width: 100%;
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#2a2829, black);
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 190px 120px 0 120px;
+}
+
+.logo-footer {
+  margin-top: -50px;
+  width: 130px;
+  height: 30px;
+  font-size: 20px;
+  background: linear-gradient(to right, #ffffff 50%, #544f51);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Berkshire Swash", serif;
+}
+
+.footer-linha-um {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.butao-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 40px;
+  color: white;
+  background: linear-gradient(to bottom, #2a2829, black);
+  border-radius: 15px;
+  border: 1px solid white;
+  gap: 5px;
+  font-size: 15px;
+  transition: 0.5s ease;
+  cursor:pointer;
+}
+
+.butao-footer:hover{
+  transform:translateY(15px);
+  border:none;
+}
+
+
+
+.WhatsApp,
+.Facebook,
+.Instagram {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.WhatsApp img,
+.Facebook img,
+.Instagram img {
+  width: 30px;
+  height: 30px;
+}
+
+.WhatsApp,
+.Facebook,
+.Instagram {
+  margin-top: 10px;
+}
+
+.footer-linha-tres {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-linha-tres a {
+  color: white;
+}
+
+.textos-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.texto-fale-com-nos {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fale-com-nos img {
+  margin-right: 5px;
+}
+
+.Endereco {
+  margin-top: 20px;
+}
+
+.texto-endereco {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.Endereco img {
+  margin-right: 5px;
+}
+
+.Formas-de-pagamento {
+  margin-top: 20px;
+}
+
+.imagens-pagamentos {
+  display: flex;
+  width: 200px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imagens-pagamentos img {
+  width: 40px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.footer-bottom {
+  margin: auto 0 15px 0;
+  height: 50px;
+}
+
+.linha-footer {
+  margin-left: 120px;
+  width: 1655px;
+  color: white;
+  border: 1px solid white;
+}
+
+.texto-footer-bottom {
+  display: flex;
+  margin: 10px 120px 0 120px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.texto-privacidade {
+  margin-right: 150px;
+}
+.texto-footer-bottom a {
+  color: white;
+}
+
+.nome-desenvolvedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.nome-desenvolvedor img {
+  width: 30px;
+  height: 30px;
+}
