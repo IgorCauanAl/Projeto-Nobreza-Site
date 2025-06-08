@@ -161,23 +161,6 @@
   cursor:pointer;
 }
 
-<<<<<<< HEAD:Sobre-nós.css
-@media (min-width: 1366px) and (max-width: 1919px) {
-  .retangulo-carrossel {
-    margin-left: 5px;
-    width: 480px;
-    height: 770px;
-  }
-
-  .imagem-carrosel {
-    width: 450px;
-  }
-
-  .titulo-apresentacao {
-    margin-bottom: 20px;
-  }
-}
-=======
 .button-apresentacao:hover{
   transform: translateY(-10px);
   
@@ -258,4 +241,3 @@
    }
 
   }
->>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/Sobre-nós.css

@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+#title {
+  margin: 120px 0 0 120px;
+}
+
+#line-horinzontal {
+  width: 1050px;
+  border-bottom: 1px solid white;
+  margin-left: 120px;
+}
+
+#formulary {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #2a2829, #000000);
+  border: 1px solid white;
+  width: 480px;
+  height: 1360px;
+  margin-left: 120px;
+}
+.hidden {
+  display: none;
+}
+
+::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
+
+#title-contact {
+  margin-top: 20px;
+}
+
+#email {
+  width: 300px;
+  height: 30px;
+  background: linear-gradient(to right, #2a2829, #000000);
+  border: 1px solid white;
+  outline: none;
+  margin: 10px 0 5px 0;
+}
+
+#delivery-text {
+  margin-top: 10px;
+}
+
+#country-region {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+  margin: 10px 0 10px 0;
+}
+
+#name {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 200px;
+  height: 30px;
+}
+
+#surname {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 200px;
+  height: 30px;
+}
+
+#cep {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+}
+
+#address {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+}
+
+#complement {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+}
+
+#city {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 200px;
+  height: 30px;
+}
+
+#state {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 200px;
+  height: 30px;
+}
+
+#phone {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+}
+
+#freight {
+  background: linear-gradient(to right, #2a2829, #000000);
+  outline: none;
+  border: 1px solid white;
+  width: 300px;
+  height: 30px;
+}
+
+.radio-background {
+  background: linear-gradient(to right, #2a2829, #000000);
+  border: 1px solid white;
+  width: 300px;
+}
+
+#pay-now {
+  background: linear-gradient(to right, #2a2829, #000000);
+  border: 1px solid white;
+  width: 400px;
+  height: 50px;
+}

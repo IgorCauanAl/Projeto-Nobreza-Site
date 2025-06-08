@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Roupas/menu.css" />
+    <link rel="stylesheet" href="form.css" />
+    <title>Carrinho de Compras</title>
+  </head>
+  <body>
+    <!--Menu-->
+    <nav>
+      <section id="header">
+        <div id="menu-container">
+          <div id="nav-bar">
+            <div id="logo">
+              <h1>Nobreza</h1>
+            </div>
+
+            <ul>
+              <li><a href="">Inicio</a></li>
+              <li id="products"><a href="">Produtos</a></li>
+              <li><a href="">Novidades</a></li>
+              <li><a href="">Mais Procurados</a></li>
+              <li><a href="">Promoções</a></li>
+              <li><a href="">Coleções</a></li>
+            </ul>
+
+            <div id="left-elements">
+              <div id="search">
+                <p>Buscar</p>
+                <img
+                  id="button-search"
+                  src="/icones/shop_principal/lupa.svg"
+                  alt=""
+                />
+              </div>
+
+              <div id="circle-cart">
+                <img src="/icones/shop_principal/cart.svg" alt="" />
+
+                <div id="number-purchases">
+                  <p>10</p>
+                </div>
+              </div>
+
+              <div class="login-circle">
+                <a
+                  href="/Landing Page codigo fonte/Tela login codigo fonte/index.html"
+                  ><img src="/icones/elementos/menu/profile.svg"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="menu-products-hidden">
+          <div id="container-menu-products">
+            <img
+              id="img-products"
+              src="/fotos/shop_principal/photo-products-hidden.jpg"
+              alt=""
+            />
+
+            <div id="container-column">
+              <div class="column one-products">
+                <h2>Ternos</h2>
+                <p>Slim Fit</p>
+                <p>Regular Fit</p>
+                <p>Para Casamento</p>
+                <p>Executivo</p>
+              </div>
+
+              <div class="column two-products">
+                <h2>Blazers</h2>
+                <p>Esportivos</p>
+                <p>Formais</p>
+              </div>
+
+              <div class="column three-products">
+                <h2>Calças</h2>
+                <p>Social Slim Fit</p>
+                <p>Social Regular Fit</p>
+                <p>Casual Elegante</p>
+              </div>
+
+              <div class="column four-products">
+                <h2>Relógios</h2>
+                <p>Classicos</p>
+                <p>Esportivos</p>
+                <p>Automáticos</p>
+              </div>
+
+              <div class="column five-products">
+                <h2>Sapatos</h2>
+                <p>Oxford</p>
+                <p>Derby</p>
+                <p>Loafers</p>
+                <p>BotasElegantes</p>
+              </div>
+
+              <div class="column six-products">
+                <h2>Gravatas</h2>
+                <p>Slim</p>
+                <p>Tradicional</p>
+                <p>Borboleta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Sub-Search-->
+
+        <div id="sub-search-hidden">
+          <div id="sub-search">
+            <div id="container-search">
+              <form
+                class="formulary-search"
+                action="search-back-end"
+                method="get"
+              >
+                <input
+                  type="text"
+                  name="search"
+                  class="search-box"
+                  placeholder="O que você está buscando?"
+                  required
+                  aria-label="Campo Pesquisa"
+                />
+
+                <div id="land">
+                  <button type="submit" class="button-search">
+                    <img src="/icones/shop_principal/lupa.svg" alt="" />
+                  </button>
+                </div>
+
+                <div id="close">
+                  <button class="button-search">
+                    <img src="/icones/shop_principal/close icon.svg" alt="" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </nav>
+    <!--Encerramento-->
+
+    <!--Parte Principal-->
+    <main>
+      <h2 id="title">Meu carrinho</h2>
+      <div id="line-horinzontal"></div>
+      <!--Elemento pai da estrutura principal da página-->
+      <div id="my-cartflex-container">
+        <form id="formulary">
+          <!--Barra email-->
+          <div id="contact-form">
+            <h3 id="title-contact">Contato</h3>
+            <label for="email" class="hidden">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+
+            <div id="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <label for="checkbox"
+                >Enviar novidades e ofertas para mim por email</label
+              >
+            </div>
+            <!--Encerramento-->
+          </div>
+
+          <!--Barra de Entrega-->
+          <div id="delivery-form">
+            <h3 id="delivery-text">Entrega</h3>
+
+            <!--Barra de entrega-->
+            <div id="country_region-container">
+              <label for="country" class="hidden">Pais/Região</label>
+              <input
+                type="text"
+                name="country-region"
+                id="country-region"
+                placeholder="Pais/Região"
+                required
+              />
+            </div>
+
+            <!--Nome e Sobrenome ao lado do outro-->
+            <div id="name-container">
+              <label for="name" class="hidden">Nome</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nome"
+                required
+              />
+
+              <label for="surname" class="hidden">Sobrenome</label>
+              <input
+                type="text"
+                name="surname"
+                id="surname"
+                placeholder="Sobrenome"
+                required
+              />
+            </div>
+
+            <div id="cep-container">
+              <label for="cep" class="hidden">Cep</label>
+              <input
+                type="number"
+                name="cep"
+                id="cep"
+                placeholder="Cep"
+                required
+              />
+            </div>
+
+            <div id="address-container">
+              <label for="address" class="hidden">Endereço</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Endereço"
+                required
+              />
+            </div>
+
+            <div id="complement-container">
+              <label for="complement" class="hidden">Complemento</label>
+              <input
+                type="text"
+                name="complement"
+                id="complement"
+                placeholder="Complemento"
+                required
+              />
+            </div>
+
+            <div id="city-state">
+              <label for="city" class="hidden">Cidade</label>
+              <input
+                type="text"
+                name="city"
+                id="city"
+                placeholder="Cidade"
+                required
+              />
+
+              <label for="state" class="hidden">Estado</label>
+              <input
+                type="text"
+                name="state"
+                id="state"
+                placeholder="Estado"
+                required
+              />
+            </div>
+
+            <div id="phone-container">
+              <label for="phone" class="hidden">Telefone</label>
+              <input
+                type="number"
+                name="phone"
+                id="phone"
+                placeholder="Telefone"
+                required
+              />
+            </div>
+
+            <div id="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <label for="checkbox"
+                >Salvar minhas informações para a proxima vez</label
+              >
+            </div>
+          </div>
+          <!--Encerramento das barras de endereço-->
+          <h2>Forma de Frete</h2>
+
+          <div id="freight-container">
+            <label for="freight" class="hidden">Fretes</label>
+            <input
+              type="text"
+              name="freight"
+              id="freight"
+              placeholder="Fretes de acordo com o endereço"
+            />
+          </div>
+
+          <h2>Pagamento</h2>
+
+          <label for="radio-card" class="radio-background">
+            <input type="radio" name="radio-card" id="radio-card" />
+            Cartão de Crédito
+          </label>
+
+          <label for="radio-pix" class="radio-background">
+            <input type="radio" name="radio-pix" id="radio-pix" />
+            Pix
+          </label>
+
+          <label for="radio-fetlock" class="radio-background">
+            <input type="radio" name="radio-fetlock" id="radio-fetlock" />
+            Boleto
+          </label>
+
+          <h3>Endereço de Faturamento</h3>
+
+          <label for="checkbox-same-address" class="radio-background">
+            <input
+              type="radio"
+              name="radio-same-address"
+              id="radio-same-address"
+            />
+            Usar o endereço de entrega</label
+          >
+
+          <label for="checkbox-another-address" class="radio-background">
+            <input
+              type="radio"
+              name="radio-another-address"
+              id="radio-another-address"
+            />
+            Usar endereço de faturamento diferente</label
+          >
+
+          <button id="pay-now">PAGAR AGORA</button>
+        </form>
+
+        <!--Itens escolhidos-->
+        <div id="items-container">
+          <div id="primary-rectangle">
+            <!--Retangulo secundário um-->
+            <div class="secundary-rectangle">
+              <img src="" alt="" class="img-item" />
+
+              <div class="text-item">
+                <p>Blazer de um botão Armani</p>
+                <p>Ref: BLZ-35150</p>
+                <p>Tamanho:P</p>
+              </div>
+
+              <div id="selector-number">
+                <p>Quantidade</p>
+                <p class="selector">-</p>
+                <p class="selector number">1</p>
+                <p class="selector">+</p>
+              </div>
+
+              <div class="text-right">
+                <p>Valor</p>
+                <p>R$2300</p>
+                <p>No Pix</p>
+              </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Retangulo secundário dois-->
+            <div class="secundary-rectangle">
+              <img src="" alt="" class="img-item" />
+
+              <div class="text-item">
+                <p>Blazer de um botão Armani</p>
+                <p>Ref: BLZ-35150</p>
+                <p>Tamanho:P</p>
+              </div>
+
+              <div id="selector-number">
+                <p>Quantidade</p>
+                <p class="selector">-</p>
+                <p class="selector number">1</p>
+                <p class="selector">+</p>
+              </div>
+
+              <div class="text-right">
+                <p>Valor</p>
+                <p>R$2300</p>
+                <p>No Pix</p>
+              </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Retangulo secundário tres-->
+            <div class="secundary-rectangle">
+              <img src="" alt="" class="img-item" />
+
+              <div class="text-item">
+                <p>Blazer de um botão Armani</p>
+                <p>Ref: BLZ-35150</p>
+                <p>Tamanho:P</p>
+              </div>
+
+              <div id="selector-number">
+                <p>Quantidade</p>
+                <p class="selector">-</p>
+                <p class="selector number">1</p>
+                <p class="selector">+</p>
+              </div>
+
+              <div class="text-right">
+                <p>Valor</p>
+                <p>R$2300</p>
+                <p>No Pix</p>
+              </div>
+            </div>
+            <!--Encerramento-->
+
+            <p>Total:R$6900</p>
+            <p>Frete:Grátis</p>
+          </div>
+        </div>
+      </div>
+
+      <!--Formulario de pagamento-->
+    </main>
+  </body>
+</html>

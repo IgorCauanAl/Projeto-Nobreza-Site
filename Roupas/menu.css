@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+    color:white;
+    text-decoration: none;
+    list-style:none ;
+}
+
+body {
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  background-repeat: no-repeat;
+  
+  
+}
+
+#menu-container {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  height: 80px;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  font-family: 'Montserrat', sans-serif;
+}
+
+#logo {
+  font-style: normal;
+  font-family: 'Berkshire Swash', serif;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+#logo h1 {
+  font-weight: normal;
+  font-size: 40px;
+  background: linear-gradient(to right, #ffffff 50%, #544f51);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#nav-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  font-family: 'Montserrat', serif;
+}
+
+#nav-bar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  outline: none;
+  flex-direction: row;
+}
+
+/*Menu dos produtos */
+#menu-products-hidden {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  visibility: hidden;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#menu-products-hidden.show {
+  opacity: 1;
+  transform: scaleY(1);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#container-menu-products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#img-products {
+  width: 280px;
+  height: 230px;
+  margin-left: 50px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 1px solid white;
+}
+
+#container-menu-products h2 {
+  font-size: 20px;
+}
+
+#container-column {
+  display: flex;
+  margin-right: 50px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 50px 0 0;
+}
+
+#container-menu-products {
+  display: flex;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  width: 100%;
+  height: 290px;
+}
+
+/* Encerramento */
+
+#left-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Search */
+
+#sub-search-hidden {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  visibility: hidden;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#sub-search-hidden.show-hidden {
+  opacity: 1;
+  transform: scaleY(1);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#sub-search {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+}
+
+.formulary-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#land {
+  position: absolute;
+  transform: translateY(2px);
+  right: 23%;
+}
+
+#close {
+  position: absolute;
+  right: 17%;
+}
+
+.search-box {
+  border: 1px solid white;
+  width: 600px;
+  height: 30px;
+}
+
+.search-box::placeholder {
+  font-family: 'Montserrat', serif;
+  font-size: 20px;
+  padding: 30px;
+  color: white;
+}
+
+.button-search {
+  background: none;
+  border: none;
+}
+
+/* Encerramento */
+
+#circle-cart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+#number-purchases {
+  position: absolute;
+  transform: translateX(250%);
+}
+
+.login-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 50px;
+}
+
+#banner {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  background: url(/fotos/shop_principal/bannerprincipalshop.jpg);
+  background-size: cover;
+  background-position: 50% -150px;
+}
+

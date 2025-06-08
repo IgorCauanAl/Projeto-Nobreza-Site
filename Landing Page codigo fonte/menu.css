@@ -21,7 +21,7 @@ body {
 .banner {
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(fotos/landingpage/bannerprincipallandingpage.webp);
+    url(/fotos/landingpage/bannerprincipallandingpage.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -221,9 +221,6 @@ body {
   height: 35px;
 }
 
-<<<<<<< HEAD:menu.css
-@media (min-width: 1366px) and (max-width: 1919px) {
-=======
 @media (min-width: 1366px) and (max-width: 1599px) {
  
   .logo{
@@ -234,22 +231,11 @@ body {
     overflow-x: hidden;
   }
 
->>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/menu.css
   .menu {
     width: auto;
     gap: 100px;
   }
 
-<<<<<<< HEAD:menu.css
-  .texto-um {
-    margin-left: 100px;
-    height: auto;
-    text-align: left;
-  }
-
-  .texto-dois {
-    margin-right: 20px;
-=======
   .banner{
     height:550px;
   }
@@ -269,25 +255,11 @@ body {
 
   .texto-dois {
     margin-right: 60px;
->>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/menu.css
     width: 450px;
   }
 
   .texto-um h2,
   .texto-dois h2 {
-<<<<<<< HEAD:menu.css
-    font-size: 40px;
-  }
-
-  .button {
-    left: 10%;
-  }
-
-  .barra-informacoes {
-    height: 135px;
-  }
-}
-=======
     font-size: 30px;
   }
 
@@ -320,7 +292,6 @@ body {
     height:69px;
   }
 
- 
 }
 
 
@@ -347,4 +318,3 @@ body {
  }
 
  }
->>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/menu.css

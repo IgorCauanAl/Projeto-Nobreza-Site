@@ -189,47 +189,6 @@
   font-size: 20px;
   margin: 25px;
 }
-
-<<<<<<< HEAD:Sofisticao-completa.css
-@media (min-width: 1366px) and (max-width: 1919px) {
-  .button-sofisticacao {
-    right: 14%;
-  }
-
-  .line-horinzontal.baixo {
-    left: 59%;
-  }
-
-  .blazer {
-    width: px;
-    height: 470px;
-  }
-
-  .sapatos img {
-    width: 290px;
-    height: 280px;
-  }
-
-  .gravatas img {
-    width: 290px;
-    height: 280px;
-  }
-
-  .relogios img {
-    width: 290px;
-    height: 280px;
-  }
-
-  .marcas {
-    width: 300px;
-    height: 110px;
-  }
-
-  .descricao {
-    width: 300px;
-    height: 110px;
-  }
-=======
 @media (min-width: 1366px) and (max-width: 1599px) {
 
 
@@ -388,5 +347,4 @@
     margin-top:110px;
   }
   
->>>>>>> ef1b2173c48c72f624e43f9405609703f3d567ab:Landing Page codigo fonte/Sofisticao-completa.css
 }
