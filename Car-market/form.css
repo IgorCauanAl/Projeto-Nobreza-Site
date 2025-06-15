@@ -6,6 +6,11 @@
   list-style: none;
 }
 
+#my-cartflex-container {
+  display: flex;
+  flex-direction: row;
+}
+
 #title {
   margin: 120px 0 0 120px;
 }
@@ -19,11 +24,15 @@
 #formulary {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   background: linear-gradient(to right, #2a2829, #000000);
   border: 1px solid white;
   width: 480px;
-  height: 1360px;
+  height: 930px;
   margin-left: 120px;
+  justify-content: center;
+  margin-top: 20px;
 }
 .hidden {
   display: none;
@@ -31,10 +40,11 @@
 
 ::placeholder {
   font-family: "Montserrat", sans-serif;
+  color: white;
 }
 
 #title-contact {
-  margin-top: 20px;
+  margin: 20px 0 5px 10px;
 }
 
 #email {
@@ -43,11 +53,15 @@
   background: linear-gradient(to right, #2a2829, #000000);
   border: 1px solid white;
   outline: none;
-  margin: 10px 0 5px 0;
+  margin: 10px 0 5px 10px;
+}
+
+#checkbox {
+  margin-left: 5px;
 }
 
 #delivery-text {
-  margin-top: 10px;
+  margin: 10px 0 0 10px;
 }
 
 #country-region {
@@ -56,7 +70,7 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 10px 10px;
 }
 
 #name {
@@ -65,6 +79,7 @@
   border: 1px solid white;
   width: 200px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #surname {
@@ -73,6 +88,7 @@
   border: 1px solid white;
   width: 200px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #cep {
@@ -81,6 +97,7 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #address {
@@ -89,6 +106,7 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #complement {
@@ -97,6 +115,7 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #city {
@@ -105,6 +124,7 @@
   border: 1px solid white;
   width: 200px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #state {
@@ -113,6 +133,7 @@
   border: 1px solid white;
   width: 200px;
   height: 30px;
+  margin: 10px 0 10px 10px;
 }
 
 #phone {
@@ -121,6 +142,11 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
+  margin: 10px 0 10px 10px;
+}
+
+#title-freight {
+  margin: 10px 0 5px 10px;
 }
 
 #freight {
@@ -129,17 +155,113 @@
   border: 1px solid white;
   width: 300px;
   height: 30px;
+  margin: 5px 0 10px 10px;
+}
+
+#title-payment {
+  margin: 10px 0 10px 10px;
 }
 
 .radio-background {
   background: linear-gradient(to right, #2a2829, #000000);
   border: 1px solid white;
-  width: 300px;
+  width: 350px;
+  margin: 0 0 0 10px;
+  height: 28px;
+}
+
+#title-address {
+  margin: 10px 0 10px 10px;
+}
+
+#radio-same-address {
+  margin: 10px 0 10px 10px;
+}
+
+#radio-another-address {
+  margin: 10px 0 10px 10px;
+}
+
+#flex-pay-now {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 30px;
 }
 
 #pay-now {
-  background: linear-gradient(to right, #2a2829, #000000);
+  background: #2a2829;
   border: 1px solid white;
   width: 400px;
   height: 50px;
+  border-radius: 15px;
+  transition: 0.5s ease-in-out;
+}
+
+#pay-now:hover {
+  border: none;
+  transform: translateY(5px);
+}
+
+#wheeler {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 0 20px;
+}
+
+#line {
+  width: 480px;
+  height: 1px;
+  margin-left: 100px;
+  background: white;
+}
+
+#text-wheeler {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 0 140px;
+  gap: 15px;
+  font-size: 10px;
+}
+
+@media (min-width: 1600px) {
+  main {
+    height: 1100px;
+  }
+  #my-cartflex-container {
+    justify-content: flex-start;
+  }
+  #title {
+    margin: 120px 0 0 290px;
+    font-size: 40px;
+  }
+
+  #line-horinzontal {
+    width: 1255px;
+    margin-left: 290px;
+  }
+
+  #formulary {
+    margin-left: 290px;
+  }
+
+  #items-container {
+    margin-left: 200px;
+  }
+
+  #pay-now {
+    font-size: 20px;
+  }
+
+  #line {
+    width: 480px;
+    height: 1px;
+    margin-left: 270px;
+    background: white;
+  }
+
+  #text-wheeler {
+    margin: 10px 0 0 210px;
+    font-size: 15px;
+  }
 }

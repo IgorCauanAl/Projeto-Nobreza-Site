@@ -1,18 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
-    box-sizing: border-box;
-    padding:0;
-    margin:0;
-    color:white;
-    text-decoration: none;
-    list-style:none ;
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: white;
+  text-decoration: none;
+  list-style: none;
 }
 
 body {
   background: linear-gradient(to bottom, #2a2829, #000000);
   background-repeat: no-repeat;
-  
-  
 }
 
 #menu-container {
@@ -21,12 +19,12 @@ body {
   width: auto;
   height: 80px;
   background: linear-gradient(to bottom, #2a2829, #000000);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 #logo {
   font-style: normal;
-  font-family: 'Berkshire Swash', serif;
+  font-family: "Berkshire Swash", serif;
   cursor: pointer;
   margin-left: 50px;
 }
@@ -44,7 +42,7 @@ body {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  font-family: 'Montserrat', serif;
+  font-family: "Montserrat", serif;
 }
 
 #nav-bar ul {
@@ -171,7 +169,7 @@ body {
   align-items: center;
 }
 
-#land {
+#magnifying_glass {
   position: absolute;
   transform: translateY(2px);
   right: 23%;
@@ -189,7 +187,7 @@ body {
 }
 
 .search-box::placeholder {
-  font-family: 'Montserrat', serif;
+  font-family: "Montserrat", serif;
   font-size: 20px;
   padding: 30px;
   color: white;
@@ -231,7 +229,7 @@ body {
 }
 
 #banner {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   display: flex;
   position: relative;
   justify-content: flex-end;
@@ -243,3 +241,70 @@ body {
   background-position: 50% -150px;
 }
 
+@media (min-width: 1600px) {
+  #logo {
+    margin-left: 100px;
+  }
+
+  #menu-container {
+    height: 110px;
+  }
+
+  #nav-bar {
+    font-size: 25px;
+  }
+
+  .barra-informacoes {
+    height: 117px;
+    font-size: 20px;
+  }
+
+  .barra-informacoes img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #number-purchases {
+    position: absolute;
+    transform: translateX(210%);
+  }
+
+  #circle-cart {
+    width: 70px;
+    height: 70px;
+  }
+
+  .login-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 50px;
+  }
+
+  .login-circle img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #circle-cart img {
+    width: 40px;
+    height: 40px;
+  }
+
+  #button-search {
+    width: 35px;
+    height: 35px;
+  }
+
+  #search p {
+    font-size: 25px;
+  }
+
+  #number-purchases {
+    transform: translateX(260%);
+  }
+}

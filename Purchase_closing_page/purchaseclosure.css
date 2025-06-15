@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: white;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h2 {
+  margin: 10px 0 10px 20px;
+}
+
+main {
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  height: 1130px;
+}
+
+#rectangle-primary {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  height: 950px;
+  border: 1px solid white;
+  margin-top: 120px;
+}
+
+#items-container {
+  margin-top: 100px;
+}
+
+#title-top {
+  margin: 20px 0 0 30px;
+  gap: 5px;
+}
+
+#google-map {
+  width: 420px;
+  height: 230px;
+  background: #d9d9d9;
+  margin: 10px 0 10px 30px;
+}
+
+#information-buy {
+  width: 420px;
+  height: 650px;
+  border: 1px solid white;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  margin: 10px 0 10px 30px;
+  padding: 10px;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 0 20px;
+}
+
+#delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 0 20px;
+}
+
+#freightt {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 0 20px;
+}
+
+#payment {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 0 20px;
+}
+
+#another-address {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0 0 20px;
+}
+
+#complementt {
+  margin: 10px 0 10px 30px;
+}
+
+.logo {
+  margin-top: -70px;
+}
+
+#contact-us {
+  display: flex;
+  flex-direction: column;
+  margin: 250px 0 0 20px;
+}
+
+#line {
+  width: 485px;
+  height: 1px;
+  margin: 20px 0 0 145px;
+  background: white;
+}
+
+#text-contact_us {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 0 169px;
+  gap: 15px;
+  font-size: 10px;
+}
+
+@media (min-width: 1600px) {
+  #line {
+    width: 485px;
+    height: 1px;
+    margin: 20px 0 0 420px;
+    background: white;
+  }
+  #text-contact_us {
+    margin: 10px 0 0 350px;
+    font-size: 15px;
+  }
+
+  main {
+    min-height: 1100px;
+  }
+}
