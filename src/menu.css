@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -21,7 +21,7 @@ body {
 .banner {
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/fotos/landingpage/bannerprincipallandingpage.webp);
+    url(fotos/landingpage/bannerprincipallandingpage.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,7 +46,7 @@ body {
 .logo {
   font-style: normal;
   font-family: "Berkshire Swash", serif;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .logo h1 {
@@ -80,16 +80,15 @@ body {
   cursor: pointer;
 }
 
-.menu-navigation li:hover{
- padding:15px 0;
- background:linear-gradient(#2A2829,#2A2829);
- border-radius:15px;
+.menu-navigation li:hover {
+  padding: 15px 0;
+  background: linear-gradient(#2a2829, #2a2829);
+  border-radius: 15px;
 }
 .menu-navigation a {
   color: white;
   font-size: 18px;
 }
-
 
 .login-circle {
   display: flex;
@@ -109,24 +108,23 @@ body {
   height: 40px;
 }
 
-.login-circle:hover{
+.login-circle:hover {
   transform: translateY(-5px);
-  border:none;
+  border: none;
 }
 
 #icone-homem {
-  position:absolute;
-  padding:0;
-  margin:0;
+  position: absolute;
+  padding: 0;
+  margin: 0;
   object-fit: cover;
   overflow: hidden;
   z-index: 1;
 }
 
-#icone-homem img{
+#icone-homem img {
   height: 760px;
 }
-
 
 .texto-um,
 .texto-dois {
@@ -179,12 +177,12 @@ body {
   gap: 10px;
   border: 1px solid white;
   margin-top: 20px;
-  transition:0.5s ease;
+  transition: 0.5s ease;
 }
 
-.button:hover{
+.button:hover {
   transform: translateY(-45px);
-  border:none;
+  border: none;
 }
 
 .button img {
@@ -222,12 +220,11 @@ body {
 }
 
 @media (min-width: 1366px) and (max-width: 1599px) {
- 
-  .logo{
-    width:190px;
+  .logo {
+    width: 190px;
   }
 
-  body{
+  body {
     overflow-x: hidden;
   }
 
@@ -236,11 +233,11 @@ body {
     gap: 100px;
   }
 
-  .banner{
-    height:550px;
+  .banner {
+    height: 550px;
   }
 
-  #icone-homem img{
+  #icone-homem img {
     width: 550px;
     height: 550px;
   }
@@ -248,9 +245,9 @@ body {
   .texto-um {
     margin-left: 170px;
     height: 150px;
-    width:400px;
+    width: 400px;
     text-align: left;
-    top:50%;
+    top: 50%;
   }
 
   .texto-dois {
@@ -265,56 +262,52 @@ body {
 
   .button {
     left: 14%;
-    top:71%;
-    font-size:20px;
-    width:250px;
-    height:70px;
+    top: 71%;
+    font-size: 20px;
+    width: 250px;
+    height: 70px;
   }
 
-  .button img{
-    width:40px;
+  .button img {
+    width: 40px;
   }
 
   .barra-informacoes {
     height: 97px;
   }
 
-  .barra-informacoes h3{
+  .barra-informacoes h3 {
     font-size: 20px;
   }
 
-  .menu-navigation{
-    height:65px;
+  .menu-navigation {
+    height: 65px;
   }
 
-  .login-circle{
-    width:69px;
-    height:69px;
+  .login-circle {
+    width: 69px;
+    height: 69px;
   }
-
 }
 
-
-@media (min-width:1600px){
-
-  .banner{
-    height:760px;
+@media (min-width: 1600px) {
+  .banner {
+    height: 760px;
   }
 
- .icone-homem img{
-  height:800px;
- }
+  .icone-homem img {
+    height: 800px;
+  }
 
- .texto-um{
-  left:-60px;
- }
+  .texto-um {
+    left: -60px;
+  }
 
- .texto-dois{
-  right:-60px;
- }
+  .texto-dois {
+    right: -60px;
+  }
 
- .button{
-  margin-top:30px;
- }
-
- }
+  .button {
+    margin-top: 30px;
+  }
+}
