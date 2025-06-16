@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catalogo</title>
-    <link rel = "stylesheet" href = "catalog.css">
-    <link rel = "stylesheet" href = "insert-information.css">
-    <link rel = "stylesheet" href = "/pagina-principal-ecommerce/footer.css">
-    
-</head>
-<body>
-
+    <link rel="stylesheet" href="catalog.css" />
+    <link rel="stylesheet" href="insert-information.css" />
+    <link rel="stylesheet" href="../page-principal-ecommerce/footer.css" />
+  </head>
+  <body>
     <!--Menu-->
     <header>
-         <section id = "header">
-         <div id="menu-container">
+      <section id="header">
+        <div id="menu-container">
           <div id="nav-bar">
             <div id="logo">
               <h1>Nobreza</h1>
             </div>
 
             <ul>
-              <li><a href="">Inicio</a></li>
+              <li>
+                <a href="../page-principal-ecommerce/index.html">Inicio</a>
+              </li>
               <li id="products"><a href="">Produtos</a></li>
-              <li><a href="">Novidades</a></li>
+              <li><a href="#news">Novidades</a></li>
               <li><a href="">Mais Procurados</a></li>
               <li><a href="">Promoções</a></li>
               <li><a href="">Coleções</a></li>
@@ -32,11 +32,15 @@
             <div id="left-elements">
               <div id="search">
                 <p>Buscar</p>
-                <img id = "button-search" src="/icones/shop_principal/lupa.svg" alt="" />
+                <img
+                  id="button-search"
+                  src="../icones/shop_principal/lupa.svg"
+                  alt=""
+                />
               </div>
 
               <div id="circle-cart">
-                <img src="/icones/shop_principal/cart.svg" alt="" />
+                <img src="../icones/shop_principal/cart.svg" alt="" />
 
                 <div id="number-purchases">
                   <p>10</p>
@@ -44,21 +48,19 @@
               </div>
 
               <div class="login-circle">
-                <a
-                  href="/Landing Page codigo fonte/Tela login codigo fonte/index.html"
-                  ><img src="/icones/elementos/menu/profile.svg"
+                <a href="../Screen Login/login.html"
+                  ><img src="../icones/elementos/menu/profile.svg"
                 /></a>
               </div>
             </div>
           </div>
         </div>
 
-
         <div id="menu-products-hidden">
           <div id="container-menu-products">
             <img
               id="img-products"
-              src="/fotos/shop_principal/photo-products-hidden.jpg"
+              src="../fotos/shop_principal/photo-products-hidden.jpg"
               alt=""
             />
 
@@ -111,11 +113,9 @@
 
         <!--Sub-Search-->
 
-        <div id = "sub-search-hidden">
-
+        <div id="sub-search-hidden">
           <div id="sub-search">
             <div id="container-search">
-             
               <form
                 class="formulary-search"
                 action="search-back-end"
@@ -129,13 +129,13 @@
                   required
                   aria-label="Campo Pesquisa"
                 />
-  
+
                 <div id="land">
                   <button type="submit" class="button-search">
                     <img src="/icones/shop_principal/lupa.svg" alt="" />
                   </button>
                 </div>
-  
+
                 <div id="close">
                   <button class="button-search">
                     <img src="/icones/shop_principal/close icon.svg" alt="" />
@@ -144,137 +144,161 @@
               </form>
             </div>
           </div>
-
         </div>
-        
-    </section>
+      </section>
 
-     <!--Encerramento-->
+      <!--Encerramento-->
 
-     <section id = "title">
-        <nav id = "breadcrumb">
-           <ol>
+      <section id="title">
+        <nav id="breadcrumb">
+          <ol>
             <li><a href="">Inicio</a></li>
             <li><a href="">Produtos</a></li>
             <li><a href="">Blazers</a></li>
-           </ol>
+          </ol>
         </nav>
 
-        <div id = "text-title">
+        <div id="text-title">
           <h2>Blazers</h2>
         </div>
 
-        <div id = "bar-result-container">
-           <div id = "bar-result">
-            <p id = "filter">Filtrar</p>
+        <div id="bar-result-container">
+          <div id="bar-result">
+            <p id="filter">Filtrar</p>
             <p>100 produtos encontrados</p>
-            <p id = "ordination">Ordenar por</p>
-           </div>
+            <p id="ordination">Ordenar por</p>
+          </div>
         </div>
-       
-
-     </section>
-
+      </section>
     </header>
-   
-    <main>
 
-      <div id = "catalog-container-grid">
+    <main id="">
+      <div id="catalog-container-grid">
         <!--Images-->
-        <div id ="catalog">
+        <div id="catalog">
           <div id="conjugate-one">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto um-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
-            </div>
-          </div>
-          
-          <div id = "conjugate two">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto dois-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto um-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
             </div>
           </div>
 
-          <div id = "conjugate three">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto tres-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
+          <div id="conjugate two">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto dois-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
             </div>
           </div>
 
-          <div id = "conjugate four">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto quatro-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
-              </div>
+          <div id="conjugate three">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto tres-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
+            </div>
           </div>
 
-          <div id = "conjugate five">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto cinco-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
-             </div>
+          <div id="conjugate four">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
+            </div>
           </div>
 
-          <div id = "conjugate six">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto seis-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
-              </div>
+          <div id="conjugate five">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto cinco-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
+            </div>
           </div>
 
-          <div id = "conjugate seven">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto sete-Photoroom.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
-              </div>
+          <div id="conjugate six">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto seis-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
+            </div>
           </div>
 
-          <div id = "conjugate eight">
-            <img id = "img-catalog" src="/fotos/catalogo/WEBP/foto oito.webp" alt="">
-            <div class = "text-elements">
-               <p>Blazer de um botão Armani</p>
-               <p>R$ 2300</p>
-               <p>6X de 383,33 sem juros</p>
+          <div id="conjugate seven">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto sete-Photoroom.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
+            </div>
+          </div>
+
+          <div id="conjugate eight">
+            <img
+              id="img-catalog"
+              src="../fotos/catalogo/WEBP/foto oito.webp"
+              alt=""
+            />
+            <div class="text-elements">
+              <p>Blazer de um botão Armani</p>
+              <p>R$ 2300</p>
+              <p>6X de 383,33 sem juros</p>
             </div>
           </div>
           <!--Encerramento-->
-
         </div>
       </div>
 
       <!--Quantidade de roupas-->
-          <div id ="result-container">
-            <div id = "result">
-              <p>8 produtos de 100</p>
-              <button class = "button">Ver mais produtos</button>
-            </div>
-          </div>
-       <!--Encerramento-->   
+      <div id="result-container">
+        <div id="result">
+          <p>8 produtos de 100</p>
+          <button class="button">Ver mais produtos</button>
+        </div>
+      </div>
+      <!--Encerramento-->
 
-       <!--Barra para colocar o email e o nome-->
-        <section id="information-closing">
-
+      <!--Barra para colocar o email e o nome-->
+      <section id="information-closing">
         <div id="insert-email">
           <div id="container-information">
             <div id="column1">
               <h2>Nobreza</h2>
-              <p>Receba nossas novidades atraves do email!</p>
+              <p>Receba nossas novidades através do email!</p>
             </div>
 
             <div id="column2">
@@ -290,9 +314,8 @@
             <button id="button-closing">Enviar</button>
           </div>
         </div>
-
       </section>
-    <!--Encerramento-->
+      <!--Encerramento-->
     </main>
 
     <footer>
@@ -313,10 +336,10 @@
             <p>Nobreza@gmail.com</p>
           </div>
 
-          <a href="#inicio"
+          <a href="#header"
             ><button class="butao-footer">
               Voltar ao topo
-              <img src="/icones/footer/setaparacima.svg" alt="" /></button
+              <img src="../icones/footer/setaparacima.svg" alt="" /></button
           ></a>
         </div>
 
@@ -325,17 +348,17 @@
 
           <div class="rede-social">
             <div class="WhatsApp">
-              <img src="/icones/footer/whatsapp.svg" alt="" />
+              <img src="../icones/footer/whatsapp.svg" alt="" />
               <p>WhatsApp</p>
             </div>
 
             <div class="Facebook">
-              <img src="/icones/footer/facebook.svg" alt="" />
+              <img src="../icones/footer/facebook.svg" alt="" />
               <p>Facebook</p>
             </div>
 
             <div class="Instagram">
-              <img src="/icones/footer/instagram.svg" alt="" />
+              <img src="../icones/footer/instagram.svg" alt="" />
               <p>Instagram</p>
             </div>
           </div>
@@ -358,7 +381,7 @@
             <h3>Fale com nós</h3>
 
             <div class="texto-fale-com-nos">
-              <img src="/icones/footer/telefone.svg" alt="" />
+              <img src="../icones/footer/telefone.svg" alt="" />
               <p>(73) 99954-6752</p>
             </div>
           </div>
@@ -367,7 +390,7 @@
             <h3>Endereço</h3>
 
             <div class="texto-endereco">
-              <img src="/icones/footer/localizacao.svg" alt="" />
+              <img src="../icones/footer/localizacao.svg" alt="" />
               <p>Avenida Sete de Setembro 14,<br />451416-970-BA</p>
             </div>
           </div>
@@ -375,19 +398,22 @@
           <div class="Formas-de-pagamento">
             <h3>Formas de pagamento</h3>
             <div class="imagens-pagamentos">
-              <img src="/icones/footer/pagamento/americanexpress.png" alt="" />
+              <img
+                src="../icones/footer/pagamento/americanexpress.png"
+                alt=""
+              />
 
-              <img src="/icones/footer/pagamento/boleto.png" alt="" />
+              <img src="../icones/footer/pagamento/boleto.png" alt="" />
 
-              <img src="/icones/footer/pagamento/elo.png" alt="" />
+              <img src="../icones/footer/pagamento/elo.png" alt="" />
 
-              <img src="/icones/footer/pagamento/hipercard.png" alt="" />
+              <img src="../icones/footer/pagamento/hipercard.png" alt="" />
 
-              <img src="/icones/footer/pagamento/mastercard.svg" alt="" />
+              <img src="../icones/footer/pagamento/mastercard.svg" alt="" />
 
-              <img src="/icones/footer/pagamento/pix.png" alt="" />
+              <img src="../icones/footer/pagamento/pix.png" alt="" />
 
-              <img src="/icones/footer/pagamento/visa.png" alt="" />
+              <img src="../icones/footer/pagamento/visa.png" alt="" />
             </div>
           </div>
         </div>
@@ -403,12 +429,11 @@
 
           <div class="nome-desenvolvedor">
             <p>Desenvolvedor: Igor Cauan</p>
-            <img src="/icones/footer/instagram.svg" alt="" />
+            <img src="../icones/footer/instagram.svg" alt="" />
           </div>
         </div>
       </div>
       <!--Encerramento-->
     </footer>
-
-</body>
+  </body>
 </html>
