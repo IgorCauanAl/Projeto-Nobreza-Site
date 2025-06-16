@@ -8,6 +8,10 @@
   text-decoration: none;
 }
 
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
 body {
   background: linear-gradient(to bottom, #2a2829, #000000);
   background-repeat: no-repeat;
