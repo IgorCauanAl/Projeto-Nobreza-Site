@@ -45,11 +45,19 @@
   background-size: cover;
 }
 
+.catalog {
+  width: 330px;
+  height: 460px;
+  border-radius: 15px;
+  border: 1px solid white;
+  background-size: cover;
+}
+
 .photo-one {
   background-image: url(../fotos/shop_principal/Novidades4.jpg);
 }
 
-.photo-two {
+.go-catalog {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -108,7 +116,7 @@
 }
 
 .photo-five {
-  background-image: url(../fotos/shop_principal/novidades\(1\).jpg);
+  background-image: url(../fotos/shop_principal/ternoazul.jpg);
 }
 
 .photo-six {

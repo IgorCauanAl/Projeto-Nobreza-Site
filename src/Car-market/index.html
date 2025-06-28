@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Clothes/menu.css" />
+    <link rel="stylesheet" href="../Clothes/menu.css" />
     <link rel="stylesheet" href="form.css" />
     <link rel="stylesheet" href="rectangle-secundary.css" />
     <title>Carrinho de Compras</title>
@@ -15,7 +15,9 @@
         <div id="menu-container">
           <div id="nav-bar">
             <div id="logo">
-              <h1>Nobreza</h1>
+              <a href="../page-principal-ecommerce/index.html"
+                ><h1>Nobreza</h1></a
+              >
             </div>
 
             <ul>
@@ -32,13 +34,13 @@
                 <p>Buscar</p>
                 <img
                   id="button-search"
-                  src="/icones/shop_principal/lupa.svg"
+                  src="../icones/shop_principal/lupa.svg"
                   alt=""
                 />
               </div>
 
               <div id="circle-cart">
-                <img src="/icones/shop_principal/cart.svg" alt="" />
+                <img src="../icones/shop_principal/cart.svg" alt="" />
 
                 <div id="number-purchases">
                   <p>10</p>
@@ -46,9 +48,8 @@
               </div>
 
               <div class="login-circle">
-                <a
-                  href="/Landing Page codigo fonte/Tela login codigo fonte/index.html"
-                  ><img src="/icones/elementos/menu/profile.svg"
+                <a href="../Screen Login/login.html"
+                  ><img src="../icones/elementos/menu/profile.svg"
                 /></a>
               </div>
             </div>
@@ -59,7 +60,7 @@
           <div id="container-menu-products">
             <img
               id="img-products"
-              src="/fotos/shop_principal/photo-products-hidden.jpg"
+              src="../fotos/shop_principal/photo-products-hidden.jpg"
               alt=""
             />
 
@@ -131,13 +132,13 @@
 
                 <div id="land">
                   <button type="submit" class="button-search">
-                    <img src="/icones/shop_principal/lupa.svg" alt="" />
+                    <img src="../icones/shop_principal/lupa.svg" alt="" />
                   </button>
                 </div>
 
                 <div id="close">
                   <button class="button-search">
-                    <img src="/icones/shop_principal/close icon.svg" alt="" />
+                    <img src="../icones/shop_principal/close icon.svg" alt="" />
                   </button>
                 </div>
               </form>
@@ -300,17 +301,51 @@
           <h3 id="title-payment">Pagamento</h3>
 
           <label for="radio-card" class="radio-background">
-            <input type="radio" name="radio-card" id="radio-card" />
+            <input type="checkbox" name="radio-card" id="radio-card" />
             Cartão de Crédito
           </label>
 
+          <!--Formulário do Cartão-->
+          <div id="form-card">
+            <input
+              type="tel"
+              placeholder="Número do cartão"
+              class="card"
+              required
+            />
+
+            <div id="double_line">
+              <input
+                type="text"
+                placeholder="Data de vencimento (MM/AA)"
+                required
+                class="card"
+              />
+              <input
+                type="text"
+                placeholder="Código de segurança"
+                class="card"
+              />
+            </div>
+
+            <input type="text" placeholder="Nome no cartão" class="card" />
+
+            <select required>
+              <option value="">Parcelas</option>
+              <option value="1">1x sem juros</option>
+              <option value="2">2x sem juros</option>
+              <option value="3">3x sem juros</option>
+              <option value="4">4x sem juros</option>
+            </select>
+          </div>
+
           <label for="radio-pix" class="radio-background">
-            <input type="radio" name="radio-pix" id="radio-pix" />
+            <input type="checkbox" name="radio-pix" id="radio-pix" />
             Pix
           </label>
 
           <label for="radio-fetlock" class="radio-background">
-            <input type="radio" name="radio-fetlock" id="radio-fetlock" />
+            <input type="checkbox" name="radio-fetlock" id="radio-fetlock" />
             Boleto
           </label>
 
@@ -318,7 +353,7 @@
 
           <label for="checkbox-same-address" class="radio-background">
             <input
-              type="radio"
+              type="checkbox"
               name="radio-same-address"
               id="radio-same-address"
             />
@@ -327,7 +362,7 @@
 
           <label for="checkbox-another-address" class="radio-background">
             <input
-              type="radio"
+              type="checkbox"
               name="radio-another-address"
               id="radio-another-address"
             />
@@ -347,7 +382,7 @@
             <!--Retangulo secundário um-->
             <div class="rectangle-secundary">
               <img
-                src="/fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
+                src="../fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
                 alt=""
                 class="img-rectangle-secundary"
               />
@@ -381,7 +416,7 @@
             <!--Retangulo secundário dois-->
             <div class="rectangle-secundary">
               <img
-                src="/fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
+                src="../fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
                 alt=""
                 class="img-rectangle-secundary"
               />
@@ -416,7 +451,7 @@
             <div class="rectangle-secundary">
               <img
                 class="img-rectangle-secundary"
-                src="/fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
+                src="../fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
                 alt=""
                 class="img-item"
               />
@@ -468,5 +503,6 @@
 
       <!--Formulario de pagamento-->
     </main>
+    <script src="form.js"></script>
   </body>
 </html>

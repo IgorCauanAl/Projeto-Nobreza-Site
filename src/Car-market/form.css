@@ -170,6 +170,18 @@
   height: 28px;
 }
 
+#radio-card {
+  margin-left: 10px;
+}
+
+#radio-pix {
+  margin-left: 10px;
+}
+
+#radio-fetlock {
+  margin-left: 10px;
+}
+
 #title-address {
   margin: 10px 0 10px 10px;
 }
@@ -222,6 +234,25 @@
   margin: 10px 0 0 140px;
   gap: 15px;
   font-size: 10px;
+}
+
+#form-card {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+#form-card.show {
+  display: block;
+}
+
+#form-card .card,
+#form-card select {
+  border: 1px solid #ffffffaa;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 10px 0 10px 10px;
 }
 
 @media (min-width: 1600px) {

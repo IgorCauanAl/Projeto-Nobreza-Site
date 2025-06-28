@@ -59,6 +59,7 @@
   height: 40px;
   background: linear-gradient(to bottom, #2a2829, #000000);
   border: 1px solid white;
+  cursor: pointer;
 }
 
 .text-right {
