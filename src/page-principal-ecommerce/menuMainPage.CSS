@@ -57,6 +57,16 @@ body {
   flex-direction: row;
 }
 
+#nav-bar li a {
+  display: inline-block;
+  padding: 10px 5px;
+}
+
+#nav-bar li a:hover {
+  background: linear-gradient(#2a2829, #2a2829);
+  border-radius: 15px;
+}
+
 /*Menu dos produtos */
 #menu-products-hidden {
   opacity: 0;
@@ -231,6 +241,11 @@ body {
   height: 40px;
   border-radius: 50%;
   margin-right: 50px;
+}
+
+.login-circle:hover {
+  border: none;
+  transform: translateY(-5px);
 }
 
 #banner {

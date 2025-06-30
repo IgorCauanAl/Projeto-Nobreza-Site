@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="minicatalog.css" />
     <link rel="stylesheet" href="../page-principal-ecommerce/footer.css" />
     <link rel="stylesheet" href="insert-information.css" />
+    <link
+      rel="stylesheet"
+      href="/src/page-principal-ecommerce/menuMainPage.CSS"
+    />
   </head>
   <body>
     <header>
@@ -20,12 +24,14 @@
             </div>
 
             <ul>
-              <li><a href="">Inicio</a></li>
+              <li>
+                <a href="../page-principal-ecommerce/index.html">Inicio</a>
+              </li>
               <li id="products"><a href="">Produtos</a></li>
-              <li><a href="#news">Novidades</a></li>
+              <li><a href="#Categories">Categorias</a></li>
               <li><a href="#most-wanted">Mais Procurados</a></li>
-              <li><a href="">Promoções</a></li>
-              <li><a href="">Coleções</a></li>
+              <li><a href="#news">Novidades</a></li>
+              <li><a href="#before-closing">Cupom</a></li>
             </ul>
 
             <div id="left-elements">
@@ -199,7 +205,7 @@
 
             <div id="price">
               <p>R$2185 no PIX</p>
-              <img src="/icones/catalogo/pix.svg" alt="" />
+              <img src="/src/icones/catalogo/pix.svg" alt="" />
             </div>
 
             <p>6x 383,33 sem juros</p>
@@ -223,7 +229,7 @@
             </div>
 
             <div id="section-buy">
-              <div id="selector-number">
+              <div class="selector-number">
                 <p class="selector">-</p>
                 <p class="selector number">1</p>
                 <p class="selector">+</p>
@@ -235,7 +241,9 @@
 
             <div id="section-closure">
               <p id="description">Descrição do Produto</p>
+
               <p id="composition">Composição</p>
+
               <p id="term">Prazo De Entrega</p>
             </div>
           </div>
@@ -272,6 +280,17 @@
         <div id="mini-catalog-container">
           <div class="img">
             <img src="../fotos/catalogo/WEBP/foto dois-Photoroom.webp" alt="" />
+            <div class="elemento-sobreposto">
+              <div id="size">
+                <p>P</p>
+                <p>M</p>
+                <p>G</p>
+                <p>GG</p>
+                <p>EG</p>
+              </div>
+
+              <button id="button-catalog">Adicionar a sacola</button>
+            </div>
 
             <div class="text">
               <p>Blazer de um botão Armani</p>
@@ -285,6 +304,17 @@
               src="../fotos/catalogo/WEBP/foto quatro-Photoroom.webp"
               alt=""
             />
+            <div class="elemento-sobreposto">
+              <div id="size">
+                <p>P</p>
+                <p>M</p>
+                <p>G</p>
+                <p>GG</p>
+                <p>EG</p>
+              </div>
+
+              <button id="button-catalog">Adicionar a sacola</button>
+            </div>
 
             <div class="text">
               <p>Blazer de um botão Armani</p>
@@ -295,6 +325,17 @@
 
           <div class="img">
             <img src="../fotos/catalogo/WEBP/foto um-Photoroom.webp" alt="" />
+            <div class="elemento-sobreposto">
+              <div id="size">
+                <p>P</p>
+                <p>M</p>
+                <p>G</p>
+                <p>GG</p>
+                <p>EG</p>
+              </div>
+
+              <button id="button-catalog">Adicionar a sacola</button>
+            </div>
 
             <div class="text">
               <p>Blazer de um botão Armani</p>
@@ -305,6 +346,17 @@
 
           <div class="img">
             <img src="../fotos/catalogo/WEBP/foto seis-Photoroom.webp" alt="" />
+            <div class="elemento-sobreposto">
+              <div id="size">
+                <p>P</p>
+                <p>M</p>
+                <p>G</p>
+                <p>GG</p>
+                <p>EG</p>
+              </div>
+
+              <button id="button-catalog">Adicionar a sacola</button>
+            </div>
 
             <div class="text">
               <p>Blazer de um botão Armani</p>
@@ -457,4 +509,6 @@
       </div>
     </footer>
   </body>
+  <script src="clothe.js"></script>
+  <script src="/src/Catalog/menu.js"></script>
 </html>

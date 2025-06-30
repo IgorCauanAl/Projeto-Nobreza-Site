@@ -1,0 +1,31 @@
+#filter-container {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  color: black;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 100;
+  border-radius: 10px;
+  display: none;
+}
+
+#filter-panel h3 {
+  margin-bottom: 5px;
+}
+
+#filter-panel label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#close-filter {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}

@@ -200,4 +200,65 @@ function renderPage() {
   }
 }
 
+// Variáveis do Filtro
+const filtersByCategory = {
+  relogioClassico: {
+    cor: ["Preto", "Prata", "Ouro"],
+    coleção: ["Luxo", "Casual"],
+  },
+  sapatosOxFord: {
+    tamanho: ["38", "39", "40", "41", "42"],
+    cor: ["Preto", "Marrom"],
+    material: ["Couro", "Camurça"],
+  },
+};
+
+//Função para renderizar os filtros dinamicamente
+function renderFilters() {
+  const currentCategorie = getCategorieURL();
+  const filtersContainer = document.getElementById("filter-container");
+  filtersContainer.innerHTML = "";
+
+  const filters = filtersByCategory[currentCategorie];
+
+  if (!filters) return;
+
+  let html = `<div id="filter-panel"><button id="close-filter">×</button>`;
+
+  for (const [filtro, opcoes] of Object.entries(filters)) {
+    html += `<div class="filter-group"><h3>${filtro.toUpperCase()}</h3>`;
+    opcoes.forEach((opcao) => {
+      html += `
+        <label>
+          <input type="checkbox" name="${filtro}" value="${opcao}" />
+          ${opcao}
+        </label>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<button id="apply-filters">Ver Resultados</button></div>`;
+  filtersContainer.innerHTML = html;
+
+  // Evento para fechar
+  document.getElementById("close-filter").addEventListener("click", () => {
+    const container = document.getElementById("filter-container");
+    container.style.display = "none";
+    container.innerHTML = "";
+  });
+}
+
+// Mostrar/ocultar ao clicar no botão filtrar
+document.getElementById("filter").addEventListener("click", () => {
+  const container = document.getElementById("filter-container");
+  if (container.style.display === "none" || container.style.display === "") {
+    renderFilters();
+    container.style.display = "block";
+  } else {
+    container.style.display = "none";
+    container.innerHTML = "";
+  }
+});
+
 renderPage();
+renderFilters();

@@ -303,6 +303,10 @@ body {
   background: linear-gradient(to bottom, #2a2829, #000000);
 }
 
+#filter {
+  cursor: pointer;
+}
+
 #filter::before {
   display: inline-block;
   content: "";
@@ -314,9 +318,14 @@ body {
   margin-left: 30px;
 }
 
+#filter-select {
+  display: none;
+}
+
 #ordination {
   border-bottom: 2px solid white;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 #ordination::after {

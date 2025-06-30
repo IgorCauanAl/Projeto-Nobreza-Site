@@ -18,6 +18,15 @@
   width: 90px;
   height: 150px;
   object-fit: cover;
+  transition: 0.5s ease-in-out;
+}
+
+.left-rectangle img:hover {
+  transform: scale(2.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+  border: 2px solid white;
 }
 
 #center-image img {
@@ -35,7 +44,6 @@
   gap: 15px;
 }
 
-/*Sub itens do sale information*/
 #sale-information-breadcrumb ol {
   display: flex;
   flex-direction: row;
@@ -85,6 +93,16 @@ del {
   height: 30px;
   border-radius: 50%;
   border: 2px solid white;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.color:hover {
+  transform: scale(1.25);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+  border: none;
 }
 
 .um {
@@ -114,6 +132,16 @@ del {
   border-radius: 50%;
   border: 2px solid white;
   background: #2a2829;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.size:hover {
+  transform: scale(1.25);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+  border: none;
 }
 
 #section-buy {
@@ -121,9 +149,10 @@ del {
   flex-direction: row;
 }
 
-#selector-number {
+.selector-number {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .selector {
@@ -149,6 +178,12 @@ del {
   background: #2a2829;
   font-size: 25px;
   margin-left: 20px;
+  transition: 0.5s ease-in-out;
+}
+
+.button-buy:hover {
+  border: none;
+  transform: translateY(10px);
 }
 
 #section-closure {

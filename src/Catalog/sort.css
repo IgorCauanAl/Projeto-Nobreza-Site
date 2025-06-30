@@ -1,0 +1,23 @@
+#ordination-panel {
+  display: none;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 120%;
+  right: 2%;
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  color: black;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 100;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+#close-ordination {
+  position: absolute;
+  top: 7%;
+  left: 90%;
+  font-size: 20px;
+  cursor: pointer;
+}

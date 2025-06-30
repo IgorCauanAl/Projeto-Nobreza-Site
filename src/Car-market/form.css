@@ -29,10 +29,11 @@
   background: linear-gradient(to right, #2a2829, #000000);
   border: 1px solid white;
   width: 480px;
-  height: 930px;
+  height: 1090px;
   margin-left: 120px;
   justify-content: center;
   margin-top: 20px;
+  padding: 10px;
 }
 .hidden {
   display: none;
