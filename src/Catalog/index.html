@@ -13,6 +13,8 @@
       rel="stylesheet"
       href="../page-principal-ecommerce/menuMainPage.CSS"
     />
+    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="minicart.css" />
   </head>
   <body>
     <!--Menu-->
@@ -47,9 +49,19 @@
 
               <div id="circle-cart">
                 <img src="../icones/shop_principal/cart.svg" alt="" />
-
                 <div id="number-purchases">
-                  <p>10</p>
+                  <p>0</p>
+                </div>
+              </div>
+
+              <!-- Mini carrinho dropdown -->
+              <div id="mini-cart" class="hidden">
+                <div id="mini-cart-items"></div>
+                <div id="mini-cart-footer">
+                  <p id="mini-cart-total">Total: R$0,00</p>
+                  <a href="/src/Car-market/index.html" id="mini-cart-checkout"
+                    >Finalizar Compra</a
+                  >
                 </div>
               </div>
 
@@ -235,9 +247,7 @@
       <div id="result-container">
         <div id="result">
           <p>8 produtos de 100</p>
-          <a href="../Car-market/index.html"
-            ><button class="button">Ver mais produtos</button></a
-          >
+          <a href=""><button class="button">Ver mais produtos</button></a>
         </div>
       </div>
       <!--Encerramento-->
@@ -385,8 +395,26 @@
       </div>
       <!--Encerramento-->
     </footer>
+
+    <!--Mensagem de adicionar ao carrinho-->
+    <div id="modal-carrinho" class="modal hidden">
+      <div class="modal-content">
+        <p>Este produto foi adicionado ao seu carrinho de compras</p>
+        <div id="modal-produto-info">
+          <img id="modal-img" />
+          <p id="modal-nome"></p>
+          <p id="modal-tamanho"></p>
+        </div>
+        <button onclick="fecharModal()">Fechar</button>
+      </div>
+    </div>
+    <!--Encerramento-->
   </body>
   <script src="Catalog.js"></script>
+  <script src="main.js"></script>
   <script src="sort.js"></script>
   <script src="menu.js"></script>
+  <script src="carmarket.js"></script>
+  <script src="filter.js"></script>
+  <script src="minicart.js"></script>
 </html>

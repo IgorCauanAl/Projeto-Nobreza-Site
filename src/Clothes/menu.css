@@ -214,7 +214,11 @@ body {
 
 #number-purchases {
   position: absolute;
-  transform: translateX(250%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  right: 15px;
 }
 
 .login-circle {
@@ -266,9 +270,12 @@ body {
 
   #number-purchases {
     position: absolute;
-    transform: translateX(210%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    right: 15px;
   }
-
   #circle-cart {
     width: 70px;
     height: 70px;
@@ -305,6 +312,11 @@ body {
   }
 
   #number-purchases {
-    transform: translateX(260%);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    right: 15px;
   }
 }

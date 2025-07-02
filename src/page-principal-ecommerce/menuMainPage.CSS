@@ -229,7 +229,11 @@ body {
 
 #number-purchases {
   position: absolute;
-  transform: translateX(250%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  left: 45px;
 }
 
 .login-circle {
@@ -362,7 +366,11 @@ body {
 
   #number-purchases {
     position: absolute;
-    transform: translateX(210%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    right: 15px;
   }
 
   #circle-cart {

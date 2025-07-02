@@ -205,9 +205,6 @@ body {
 
 #circle-cart {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 40px;
   height: 40px;
   color: white;
@@ -217,7 +214,11 @@ body {
 
 #number-purchases {
   position: absolute;
-  transform: translateX(250%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  right: 15px;
 }
 
 .login-circle {

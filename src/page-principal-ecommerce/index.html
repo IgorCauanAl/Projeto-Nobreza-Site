@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="before-closing.css" />
     <link rel="stylesheet" href="footer.css" />
     <link rel="stylesheet" href="insert-information.css" />
+    <link rel="stylesheet" href="/src/Catalog/minicart.css">
+    <link rel="stylesheet" href="alertcart.css">
     <title>Página Principal Nobreza</title>
   </head>
   <body>
@@ -43,7 +45,7 @@
                 <img src="../icones/shop_principal/cart.svg" alt=""/>
 
                 <div id="number-purchases">
-                  <p>10</p>
+                  <p>0</p>
                 </div>
               </div>
 
@@ -53,6 +55,16 @@
                   ><img src="../icones/elementos/menu/profile.svg"
                 /></a>
               </div>
+
+               <!-- Mini carrinho dropdown -->
+              <div id="mini-cart" class="hidden">
+                <div id="mini-cart-items"></div>
+                <div id="mini-cart-footer">
+                  <p id="mini-cart-total">Total: R$0,00</p>
+                  <button id="mini-cart-checkout">Finalizar Compra</button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -423,6 +435,13 @@
             <button id="button-closing">Enviar</button>
           </div>
         </div>
+        <!--Mensagem de verificação se tem itens no carrinho-->
+        <div id="custom-alert" class="hidden">
+          <div class="alert-content">
+            <p id="alert-message"></p>
+            <button id="alert-ok">OK</button>
+          </div>
+        </div>
 
       </section>
     </header>
@@ -541,5 +560,7 @@
     </footer>
 
     <script src="script.js"></script>
+     <script src="/src/Catalog/minicart.js"></script>
+     <script src="/src/Catalog/carmarket.js"></script>
   </body>
 </html>

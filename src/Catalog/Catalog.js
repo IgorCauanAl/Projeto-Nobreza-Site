@@ -169,7 +169,9 @@ function renderPage() {
   data.products.forEach((products, i) => {
     const productsHTML = `
     <div class="conjugate">
-        <img src="${products.image}" alt="${products.name}" class="img-catalog" />
+        <img src="${products.image}" alt="${
+      products.name
+    }" class="img-catalog" />
         <div class="elemento-sobreposto">
          <div id="size">
           <p>P</p>
@@ -179,7 +181,10 @@ function renderPage() {
           <p>EG</p> 
          </div>
             
-         <button id="button-catalog">Adicionar a sacola</button>
+         <button data-nome="${products.name}"
+          data-preco="${parseFloat(
+            products.price.replace("R$", "").replace(",", ".")
+          )}" id="btn-adicionar">Adicionar a sacola</button>
         </div>
         <div class="text-elements">
           <p>${products.name}</p>
