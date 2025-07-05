@@ -81,7 +81,7 @@ button {
   }
 
   input::placeholder {
-    font-size: 25px;
+    font-size: 16px;
   }
 
   #insert-email {

@@ -21,3 +21,10 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media(min-width:1600px){
+  #ordination-panel {
+    top: 85px;
+    right: 300px;
+}
+}

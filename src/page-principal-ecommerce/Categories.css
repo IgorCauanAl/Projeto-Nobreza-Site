@@ -198,7 +198,8 @@ h2 {
   }
 
   .elements-navigation {
-    top: 250%;
+    top: 105%;
+    height:60px;
   }
 
   #information-bar {
@@ -218,5 +219,15 @@ h2 {
   #information-bar {
     position: absolute;
     transform: translateY(375%);
+  }
+
+  #type-of-clothes {
+    font-size:30px;
+  }
+
+  .button-categories{
+    width: 220px;
+    height: 60px;
+
   }
 }

@@ -338,7 +338,8 @@ body {
 
 @media (min-width: 1600px) {
   #menu-container {
-    height: 110px;
+    height: 90px;
+    padding:10px;
   }
 
   #nav-bar {
@@ -350,12 +351,12 @@ body {
   }
 
   #banner {
-    height: 850px;
+    height: 760px;
     background-position: 50% -220px;
   }
 
   .barra-informacoes {
-    height: 117px;
+    height: 115px;
     font-size: 20px;
   }
 
@@ -371,11 +372,13 @@ body {
     align-items: center;
     width: 20px;
     right: 15px;
+    left:80px;
   }
 
   #circle-cart {
     width: 70px;
     height: 70px;
+    margin-right:5px
   }
 
   .login-circle {
@@ -422,4 +425,31 @@ body {
     margin: 30px;
     gap: 5px;
   }
+
+  #menu-products-hidden {
+  top: 90px;
+  left: 0;
+  }
+
+  .column {
+    margin: 0 90px 0 0;
+  }
+
+
+  #container-menu-products h2 {
+    font-size: 25px;
+  }
+
+  #img-products {
+    width: 310px;
+    height: 230px;
+    margin-left: 50px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 1px solid white;
+  }
+
+ .search-box::placeholder{
+  font-size:20px;
+ }
 }

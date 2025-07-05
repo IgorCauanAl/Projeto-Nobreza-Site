@@ -90,5 +90,6 @@
 @media (min-width: 1600px) {
   #total {
     font-size: 25px;
+     margin: -75px 20px 0 0;
   }
 }

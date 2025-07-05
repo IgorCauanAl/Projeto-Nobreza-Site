@@ -265,6 +265,7 @@ body {
   width: 80px;
   height: 5px;
   background-color: white;
+  
 }
 
 #text-title::before {
@@ -429,4 +430,44 @@ body {
   border: 2px solid white;
   background: linear-gradient(to bottom, #2a2829, #000000);
   border-radius: 15px;
+  transition: 0.5s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(15px);
+  border:none;
+}
+
+@media(min-width:1600px){
+  #text-title h2{
+    font-size:50px;
+  }
+
+  #text-title::before {
+    transform: translateX(-320%);
+  }
+
+  #text-title::after {
+    transform: translateX(320%);
+  } 
+
+
+  #text-title::before,
+  #text-title:after {
+    height: 3px;
+  }
+
+  .button {
+    width: 245px;
+    height: 55px;
+    font-size: 25px;
+    border: 2px solid white;
+    background: linear-gradient(to bottom, #2a2829, #000000);
+    border-radius: 15px;
+  }
+
+  #result p{
+    font-size:20px;
+  }
+
 }

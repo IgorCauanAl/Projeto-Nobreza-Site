@@ -257,8 +257,8 @@
 }
 
 @media (min-width: 1600px) {
-  main {
-    height: 1100px;
+  main{
+  
   }
   #my-cartflex-container {
     justify-content: flex-start;

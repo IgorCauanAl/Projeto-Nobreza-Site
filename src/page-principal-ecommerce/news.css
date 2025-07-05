@@ -189,6 +189,10 @@
     text-wrap: nowrap;
   }
 
+  .description-news p {
+    font-size:25px;
+  } 
+
   .button-news {
     height: 60px;
     font-size: 25px;
@@ -202,7 +206,7 @@
     border-radius: 15px;
     padding: 10px;
     gap: 10px;
-    height: 330px;
+    height: 335px;
     background: linear-gradient(to bottom, #2a2829, #000000);
   }
 
@@ -221,7 +225,7 @@
     font-size: 25px;
   }
 
-  .photo-two {
-    height: 700px;
+  .go-catalog{
+    height:650px;
   }
 }

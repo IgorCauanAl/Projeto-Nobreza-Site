@@ -129,11 +129,12 @@ h2 {
   }
 
   #center-title-mostwanted {
-    transform: translateY(1215%);
+    transform: translateY(1335%);
     left: 37%;
   }
 
   .elements-navigation-mostwanted {
     left: 90%;
+    height:60px;
   }
 }

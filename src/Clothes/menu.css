@@ -319,4 +319,31 @@ body {
     width: 20px;
     right: 15px;
   }
+
+   #menu-products-hidden {
+    top: 90px;
+    left: 0;
+  }
+
+  .column {
+    margin: 0 90px 0 0;
+  }
+
+  #container-menu-products h2 {
+    font-size: 25px;
+  }
+
+  .search-box::placeholder{
+    font-size:20px;
+ }
+
+   #img-products {
+    width: 310px;
+    height: 230px;
+    margin-left: 50px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 1px solid white;
+  }
+
 }
