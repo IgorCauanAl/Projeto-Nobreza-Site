@@ -1,12 +1,10 @@
 #primary-rectangle {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 550px;
-  height: 650px;
-  background: linear-gradient(to right, #2a2829, #000000);
-  border: 1px solid white;
+  min-height: 650px;
   margin: 20px 0 0 25px;
   gap: 20px;
 }
@@ -83,7 +81,6 @@
 
 #total {
   display: inline-block;
-  margin: -55px 20px 0 0;
   font-size: 20px;
 }
 

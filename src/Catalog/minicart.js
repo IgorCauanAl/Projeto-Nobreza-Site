@@ -133,8 +133,8 @@ btnFinalizarCompra.addEventListener("click", () => {
     mostrarAlerta("Não é possível finalizar a compra sem itens no carrinho.");
   } else {
     // Redireciona para a página de checkout
-    const base = window.location.origin + "/Projeto-Nobreza-Site";
-    window.location.href = `${base}/src/Car-market/index.html`;
+    
+    window.location.href = "../Car-market/index.html";
   }
 });
 

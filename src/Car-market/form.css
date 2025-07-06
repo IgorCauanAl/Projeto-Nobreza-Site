@@ -29,11 +29,12 @@
   background: linear-gradient(to right, #2a2829, #000000);
   border: 1px solid white;
   width: 480px;
-  height: 1090px;
+  min-height: 950px;
   margin-left: 120px;
   justify-content: center;
   margin-top: 20px;
   padding: 10px;
+  position:relative;
 }
 .hidden {
   display: none;
@@ -238,12 +239,13 @@
 }
 
 #form-card {
-  display: none;
-  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 #form-card.show {
-  display: block;
+  max-height:300px;
 }
 
 #form-card .card,
@@ -257,9 +259,7 @@
 }
 
 @media (min-width: 1600px) {
-  main{
-  
-  }
+ 
   #my-cartflex-container {
     justify-content: flex-start;
   }
