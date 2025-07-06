@@ -234,7 +234,7 @@ body {
   }
 
   .banner {
-    height: 550px;
+    min-height: 550px;
   }
 
   #icone-homem img {
