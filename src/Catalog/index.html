@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../page-principal-ecommerce/footer.css" />
     <link rel="stylesheet" href="filter.css" />
     <link rel="stylesheet" href="sort.css" />
+    <link rel="stylesheet" href="../page-principal-ecommerce/alertcart.css">
     <link
       rel="stylesheet"
       href="../page-principal-ecommerce/menuMainPage.CSS"
@@ -80,6 +81,7 @@
               alt=""
             />
 
+            
             <div id="container-column">
               <div class="column one-products">
                 <h2>Ternos</h2>
@@ -104,14 +106,14 @@
 
               <div class="column four-products">
                 <h2>Relógios</h2>
-                <p>Classicos</p>
+                <a href="../Catalog/index.html?categories=relogioClassico"><p>Classicos</p></a>
                 <p>Esportivos</p>
                 <p>Automáticos</p>
               </div>
 
               <div class="column five-products">
                 <h2>Sapatos</h2>
-                <p>Oxford</p>
+                <a href="../Catalog/index.html?categories=sapatosOxFord"><p>Oxford</p></a>
                 <p>Derby</p>
                 <p>Loafers</p>
                 <p>BotasElegantes</p>
@@ -274,6 +276,15 @@
         </div>
       </section>
       <!--Encerramento-->
+
+     <!--Mensagem de verificação se tem itens no carrinho-->
+     <div id="custom-alert" class="hidden">
+        <div class="alert-content">
+         <p id="alert-message"></p>
+          <button id="alert-ok">OK</button>
+        </div>
+      </div>
+
     </main>
 
     <footer>

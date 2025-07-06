@@ -9,3 +9,8 @@ radioCard.addEventListener("change", () => {
     formCard.classList.remove("show");
   }
 });
+
+  document.getElementById("pay-now").addEventListener("click", () => {
+      window.location.href = "../Purchase_closing_page/index.html";
+  });
+

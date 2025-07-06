@@ -101,39 +101,10 @@ main {
   margin-top: -70px;
 }
 
-#contact-us {
-  display: flex;
-  flex-direction: column;
-  margin: 250px 0 0 20px;
-}
 
-#line {
-  width: 485px;
-  height: 1px;
-  margin: 20px 0 0 145px;
-  background: white;
-}
-
-#text-contact_us {
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0 0 169px;
-  gap: 15px;
-  font-size: 10px;
-}
 
 @media (min-width: 1600px) {
-  #line {
-    width: 485px;
-    height: 1px;
-    margin: 20px 0 0 420px;
-    background: white;
-  }
-  #text-contact_us {
-    margin: 10px 0 0 350px;
-    font-size: 15px;
-  }
-
+ 
   main {
     min-height: 1100px;
   }

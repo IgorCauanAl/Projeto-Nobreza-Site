@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Clothes/menu.css" />
+  
     <link rel="stylesheet" href="form.css" />
     <link rel="stylesheet" href="rectangle-secundary.css" />
     <link
       rel="stylesheet"
       href="/src/page-principal-ecommerce/menuMainPage.CSS"
     />
+    <link rel="stylesheet" href="../page-principal-ecommerce/alertcart.css">
     <title>Carrinho de Compras</title>
   </head>
   <body>
@@ -86,14 +87,14 @@
 
               <div class="column four-products">
                 <h2>Relógios</h2>
-                <p>Classicos</p>
+                <a href="../Catalog/index.html?categories=relogioClassico"><p>Classicos</p></a>
                 <p>Esportivos</p>
                 <p>Automáticos</p>
               </div>
 
               <div class="column five-products">
                 <h2>Sapatos</h2>
-                <p>Oxford</p>
+                <a href="../Catalog/index.html?categories=sapatosOxFord"><p>Oxford</p></a>
                 <p>Derby</p>
                 <p>Loafers</p>
                 <p>BotasElegantes</p>
@@ -392,8 +393,15 @@
           <p>Termo de serviço</p>
         </div>
       </div>
-
       <!--Formulario de pagamento-->
+
+       <!--Mensagem de verificação se tem itens no carrinho-->
+        <div id="custom-alert" class="hidden">
+          <div class="alert-content">
+            <p id="alert-message"></p>
+            <button id="alert-ok">OK</button>
+          </div>
+        </div>
     </main>
     <script src="cart.js"></script>
     <script src="form.js"></script>

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="minicatalog.css" />
     <link rel="stylesheet" href="../page-principal-ecommerce/footer.css" />
     <link rel="stylesheet" href="insert-information.css" />
+    <link rel="stylesheet" href="../page-principal-ecommerce/alertcart.css">
+    <link rel="stylesheet" href="../Catalog/minicart.css">
     <link
       rel="stylesheet"
       href="/src/page-principal-ecommerce/menuMainPage.CSS"
@@ -46,9 +48,17 @@
 
               <div id="circle-cart">
                 <img src="../icones/shop_principal/cart.svg" alt="" />
-
                 <div id="number-purchases">
-                  <p>10</p>
+                  <p>0</p>
+                </div>
+              </div>
+
+               <!-- Mini carrinho dropdown -->
+              <div id="mini-cart" class="hidden">
+                <div id="mini-cart-items"></div>
+                <div id="mini-cart-footer">
+                  <p id="mini-cart-total">Total: R$0,00</p>
+                  <button id="mini-cart-checkout">Finalizar Compra</button>
                 </div>
               </div>
 
@@ -69,6 +79,7 @@
               alt=""
             />
 
+            
             <div id="container-column">
               <div class="column one-products">
                 <h2>Ternos</h2>
@@ -93,14 +104,14 @@
 
               <div class="column four-products">
                 <h2>Relógios</h2>
-                <p>Classicos</p>
+                <a href="../Catalog/index.html?categories=relogioClassico"><p>Classicos</p></a>
                 <p>Esportivos</p>
                 <p>Automáticos</p>
               </div>
 
               <div class="column five-products">
                 <h2>Sapatos</h2>
-                <p>Oxford</p>
+                <a href="../Catalog/index.html?categories=sapatosOxFord"><p>Oxford</p></a>
                 <p>Derby</p>
                 <p>Loafers</p>
                 <p>BotasElegantes</p>
@@ -391,6 +402,13 @@
         </div>
       </section>
       <!--Encerramento-->
+
+      <div id="custom-alert" class="hidden">
+        <div class="alert-content">
+          <p id="alert-message"></p>
+          <button id="alert-ok">OK</button>
+        </div>
+      </div>
     </main>
 
     <footer id="footer">
@@ -511,4 +529,6 @@
   </body>
   <script src="clothe.js"></script>
   <script src="../Catalog/menu.js"></script>
+  <script src="../Catalog/minicart.js"></script>
+  <script src="../Catalog/carmarket.js"></script>
 </html>
