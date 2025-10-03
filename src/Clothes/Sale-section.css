@@ -238,3 +238,19 @@ del {
   border-color: #128c7e;
   transform: scale(1.05); /* Mantém o efeito de escala */
 }
+
+/* --- ESTILO PARA INFORMAÇÃO DE ESTOQUE --- */
+#stock-info {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0; /* Espaçamento vertical */
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 193, 7, 0.1); /* Fundo sutil para destaque */
+  border-left: 3px solid #ffc107; /* Borda de destaque amarela */
+  border-radius: 4px;
+}
+
+#stock-quantity {
+  font-weight: 700;
+  color: #ffc107; /* Cor amarela para o número */
+}

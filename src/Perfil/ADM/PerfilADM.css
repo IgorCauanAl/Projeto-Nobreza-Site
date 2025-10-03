@@ -263,6 +263,27 @@ select:focus {
   color: #3498db;
 }
 
+/* Célula de ações na tabela */
+.actions-cell {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Alinha os botões verticalmente */
+}
+
+/* Botão de Promover */
+.btn-promote {
+  background: transparent;
+  border: none;
+  color: #28a745; /* Verde para ação positiva */
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+.btn-promote:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
 /* Botão de Apagar */
 .btn-delete {
   background: transparent;
@@ -286,7 +307,7 @@ select:focus {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%2... (URL do ícone mantida)");
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23ffffff' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1.2rem center;
   background-size: 0.65em auto;
@@ -326,53 +347,6 @@ select:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 0.9em;
-}
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 992px) {
-  .dashboard-container {
-    flex-direction: column;
-    margin: 1rem;
-  }
-  .sidebar {
-    flex-basis: auto;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .sidebar-nav ul {
-    display: flex;
-    overflow-x: auto;
-  }
-  .sidebar-nav li {
-    flex-shrink: 0;
-  }
-  .main-content {
-    padding: 2rem;
-  }
-}
-/* --- ESTILOS ADICIONAIS PARA O PAINEL DE ADMIN --- */
-
-/* Célula de ações na tabela */
-.actions-cell {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-/* Botão de Promover */
-.btn-promote {
-  background: transparent;
-  border: none;
-  color: #28a745; /* Verde para ação positiva */
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.btn-promote:hover {
-  color: #fff;
-  transform: scale(1.2);
 }
 
 /* Seletor de Cores Visual */
@@ -460,4 +434,34 @@ select:focus {
 
 .color-swatch:hover .remove-color {
   opacity: 1;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+  .dashboard-container {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .sidebar {
+    flex-basis: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .sidebar-nav ul {
+    display: flex;
+    overflow-x: auto;
+  }
+  .sidebar-nav li {
+    flex-shrink: 0;
+  }
+  .main-content {
+    padding: 2rem;
+  }
+  form {
+    grid-template-columns: 1fr; /* Muda para uma coluna em telas menores */
+  }
+  .form-group.full-width {
+    grid-column: 1 / 1; /* Garante que ainda ocupe a coluna inteira */
+  }
 }

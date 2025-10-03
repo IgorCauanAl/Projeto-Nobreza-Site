@@ -178,3 +178,35 @@
 .elements-navigation-mostwanted .little-ball.active {
   background: white;
 }
+
+.button-whatsapp {
+  /* --- Estrutura e Alinhamento --- */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Adiciona um espaço entre o ícone e o texto */
+
+  /* --- Tamanho e Formato --- */
+  padding: 0.7rem 1.2rem; /* Padding para dar espaço interno, tornando-o retangular */
+  border-radius: 50px; /* Cantos arredondados para um visual de "pílula" */
+  border: 1px solid #25d366;
+  width: 10rem; /* Tamanho ajustado */
+  height: 2.5rem;
+
+  /* --- Cores e Estilo do Texto --- */
+  background-color: #25d366; /* Verde do WhatsApp */
+  color: white; /* Cor do texto */
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  /* --- Comportamento --- */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.button-whatsapp:hover {
+  background-color: #128c7e; /* Verde mais escuro ao passar o mouse */
+  border-color: #128c7e;
+  transform: scale(1.05); /* Efeito de zoom sutil */
+}
