@@ -1,0 +1,180 @@
+/* --- MAIS PROCURADOS --- */
+
+#most-wanted {
+  position: relative;
+  padding: 4rem 0;
+}
+
+/* Título central com efeito glassmorphism */
+#center-title-mostwanted {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  font-family: "Montserrat", serif;
+  white-space: nowrap;
+
+  /* Estilo glassmorphism */
+  padding: 1.5rem 2.5rem;
+  background: rgba(42, 40, 41, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+#center-title-mostwanted h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+/* Grid que contém os itens de produto */
+#container-product {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Container para cada item do grid (imagem + texto) */
+.product-item {
+  position: relative;
+  overflow: hidden;
+  height: 40.875rem; /* Defina a altura desejada para os cards aqui */
+  border-radius: 0.5rem; /* Borda suave no container */
+}
+
+/* Div da imagem de fundo */
+.product {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+
+  /* Efeito inicial e transição suave */
+  filter: saturate(20%) brightness(0.9);
+  transition: all 0.5s ease;
+}
+
+/* Efeito de hover no container afeta a imagem */
+.product-item:hover .product {
+  filter: saturate(100%) brightness(1);
+  transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
+/* Suas classes de imagem de fundo */
+.one {
+  background-image: url(../fotos/shop_principal/MaisProcurados3.jpg);
+  background-position: 50% 23%;
+}
+.two {
+  background-image: url(../fotos/shop_principal/MaisProcurados2.jpg);
+  background-position: 50% 100%;
+}
+.three {
+  background-image: url(../fotos/shop_principal/Maisprocurados.jpg);
+  background-position: 50% 40%;
+}
+.four {
+  background-image: url(../fotos/shop_principal/MaisProcurados4.jpg);
+  background-position: 100% 10%;
+}
+
+/* Painel de informações com efeito glassmorphism */
+.title-mostwanted {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Espaçamento entre os textos e botão */
+
+  /* Estilo glassmorphism */
+  padding: 1.5rem;
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+
+  /* Animação de entrada */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* Painel aparece suavemente no hover */
+.product-item:hover .title-mostwanted {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para o texto dentro do painel */
+.title-mostwanted h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.title-mostwanted p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.8; /* Preço um pouco mais sutil */
+}
+
+.button-mostwanted {
+  background: linear-gradient(to right, #2a2829, #000000);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 10rem; /* Tamanho ajustado */
+  height: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.button-mostwanted:hover {
+  transform: scale(1.05);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Navegação centralizada e com glassmorphism */
+.elements-navigation-mostwanted {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  width: 8rem;
+  height: 3.125rem;
+  padding: 0 1.5rem;
+  margin: 2.5rem auto 0; /* Centraliza abaixo do grid */
+
+  /* Estilo glassmorphism */
+  background: rgba(42, 40, 41, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3.125rem;
+}
+
+.elements-navigation-mostwanted .little-ball {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.elements-navigation-mostwanted .little-ball:hover,
+.elements-navigation-mostwanted .little-ball.active {
+  background: white;
+}

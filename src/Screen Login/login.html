@@ -1,60 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href = "login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
     <title>Login Nobreza</title>
-</head>
-<body>
-    <div id = "login-container">
+  </head>
+  <body>
+    <div id="login-container">
+      <header id="titulo">
+        <h1>Nobreza</h1>
+      </header>
 
-        <div id = "titulo">
-           <h1>Nobreza</h1>
-        </div>
+      <div id="retangulo-login" class="login-view">
+        <form id="form-auth">
+          <h2 id="form-titulo">Login</h2>
 
-        <div id = "retangulo-login">
+          <div id="message" class="message"></div>
 
-         <form>
+          <!-- LOGIN -->
+          <div class="login-fields">
+            <label for="email-login">Email</label>
+            <input
+              type="text"
+              id="email-login"
+              name="email-login"
+              placeholder="Email"
+              required
+            />
 
-            <h2>Cadastro</h2>
-
-            <label for="nome">Nome e Sobrenome</label>
-            <input type="text" id = "username" name="username" placeholder="Nome e Sobrenome" required>
-   
-            <label for = "cpf">CPF</label>
-            <input type = "cpf" name = "cpf" id = "cpf" placeholder="CPF" required>
-   
-            <label for="email">Email Pessoal</label>
-            <input type="email" name="email" id="email" placeholder="Email Pessoal" required>
-            
-            <label for = "dataNascimento">Data De Nascimento</label>
-            <input type="text" name ="date" id="dataNascimento" placeholder="Data De Nascimento" required>
-   
             <label for="password">Senha</label>
-            <input type = "password" name ="password" id="password" placeholder="Senha" required>
-   
-            <div id = "checkbox">
-               <input type="checkbox" name="checkbox" id="checkbox">
-               <label for="checkbox">Aceito receber novidades, promoções e informações por e-mail</label>
+            <input
+              type="password"
+              id="password-login"
+              name="password-login"
+              placeholder="Senha"
+              required
+            />
+
+            <a href="#" id="forgot-password-link">Esqueceu sua senha?</a>
+            <button type="button" id="login-button">Entrar</button>
+          </div>
+
+          <!-- CADASTRO -->
+          <div class="cadastro-fields">
+            <button type="button" class="btn-back" data-target="login">
+              ← Voltar
+            </button>
+
+            <label for="username">Nome e Sobrenome</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Nome e Sobrenome"
+              required
+            />
+
+            <label for="email-cadastro">Email</label>
+            <input
+              type="email"
+              id="email-cadastro"
+              name="email-cadastro"
+              placeholder="Email Pessoal"
+              required
+            />
+
+            <label for="password-cadastro">Senha</label>
+            <input
+              type="password"
+              id="password-cadastro"
+              name="password-cadastro"
+              placeholder="Senha"
+              required
+            />
+
+            <label for="confirm-password">Confirme a Senha</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              placeholder="Confirme a Senha"
+              required
+            />
+
+            <div id="checkbox">
+              <input
+                type="checkbox"
+                id="aceitar-emails"
+                name="aceitar-emails"
+              />
+              <label for="aceitar-emails"
+                >Aceito receber novidades, promoções e informações por
+                e-mail</label
+              >
             </div>
-   
-            <div id = "privacy-Policy"><p>Ao se cadastrar, você se declara ciente e concorda com as nossas <a href="##">Politicas de privacidade</a> ? </p></div>
-            
-            <div id = "button-container">
-                <button id = "button" type="submit">Criar Conta</button>
+
+            <p id="privacy-Policy">
+              Ao se cadastrar, você concorda com nossas
+              <a href="#">Políticas de Privacidade</a>.
+            </p>
+            <button type="button" id="register-button">Cadastrar</button>
+          </div>
+
+          <!-- RECUPERAÇÃO DE SENHA -->
+          <div id="recovery-fields">
+            <div class="recovery-step current-step" id="email-step">
+              <button type="button" class="btn-back" data-target="login">
+                ← Voltar
+              </button>
+              <p>Informe seu email cadastrado:</p>
+              <input
+                type="email"
+                id="recover-email"
+                placeholder="Email"
+                required
+              />
+              <button type="button" id="send-code">Enviar Código</button>
             </div>
-           
 
-            <div id = "account-Recovery">Já tem uma conta? <a href="##">Clique aqui para entrar</a></div>
+            <div class="recovery-step" id="code-step">
+              <button type="button" class="btn-back" data-target="email-step">
+                ← Voltar
+              </button>
+              <p>Código enviado para seu email:</p>
+              <input
+                type="text"
+                id="recovery-code"
+                maxlength="6"
+                placeholder="Código (6 dígitos)"
+                required
+              />
+              <button type="button" id="verify-code">Verificar Código</button>
+            </div>
 
-         </form>
+            <div class="recovery-step" id="new-password-step">
+              <button type="button" class="btn-back" data-target="code-step">
+                ← Voltar
+              </button>
+              <p>Defina sua nova senha:</p>
+              <input
+                type="password"
+                id="new-password"
+                placeholder="Nova Senha"
+                required
+              />
+              <input
+                type="password"
+                id="confirm-new-password"
+                placeholder="Confirme a Senha"
+                required
+              />
+              <button type="button" id="reset-password">Alterar Senha</button>
+            </div>
+          </div>
 
-        </div>
-    
-         </div>
-
+          <!-- TOGGLE LOGIN / CADASTRO -->
+          <div id="account-Recovery">
+            <span id="toggle-text">Não tem uma conta?</span>
+            <a href="#" id="toggle-link">Clique aqui para cadastrar</a>
+          </div>
+        </form>
+      </div>
     </div>
-</body>
+
+    <script src="login.js"></script>
+  </body>
 </html>

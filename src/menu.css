@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* Tamanho de fonte base: 1rem = 16px. */
 html {
   scroll-behavior: smooth;
+  font-size: 100%; /* 16px */
 }
 
 * {
@@ -26,7 +28,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 843px;
+  /* 843px / 16px = 52.6875rem */
+  min-height: 52.6875rem;
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -38,9 +41,10 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100px;
-  margin: 50px;
-  padding: 0 200px;
+  max-width: 80rem; /* Adiciona uma largura máxima para o conteúdo do menu */
+  padding: 1rem 2rem; /* Usa padding responsivo */
+  margin: 1rem auto; /* Centraliza e adiciona margem vertical */
+  z-index: 10;
 }
 
 .logo {
@@ -51,66 +55,68 @@ body {
 
 .logo h1 {
   font-weight: normal;
-  font-size: 50px;
+  /* 50px / 16px = 3.125rem */
+  font-size: 3.125rem;
   background: linear-gradient(to right, #ffffff 50%, #544f51);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .menu-navigation {
-  width: 650px;
-  height: 70px;
-  border-radius: 50px;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem; /* Espaçamento interno para os links */
+
+  /* Efeito de Vidro */
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px; /* Cantos totalmente arredondados */
+  width: 45rem !important;
 }
 
 .menu-navigation ul {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  color: white;
-  height: 100%;
-  padding: 20px;
-  cursor: pointer;
+  gap: 0.5rem; /* Espaçamento entre os itens do menu */
 }
 
-.menu-navigation li {
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.menu-navigation li:hover {
-  padding: 15px 0;
-  background: linear-gradient(#2a2829, #2a2829);
-  border-radius: 15px;
-}
 .menu-navigation a {
   color: white;
-  font-size: 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem; /* Espaçamento clicável */
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.menu-navigation a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Efeito de hover sutil */
 }
 
 .login-circle {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
-  height: 70px;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50%;
-  background: linear-gradient(#2a2829, #000000);
-  border: 1px solid white;
-  transition: 0.5 ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.login-circle img {
-  width: 40px;
-  height: 40px;
+.login-circle:hover {
+  transform: scale(1.1); /* Efeito de escala no hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
-.login-circle:hover {
-  transform: translateY(-5px);
-  border: none;
+.login-circle img {
+  width: 2.8rem;
+  height: 2.8rem;
 }
 
 #icone-homem {
@@ -123,7 +129,8 @@ body {
 }
 
 #icone-homem img {
-  height: 843px;
+  /* 843px / 16px = 52.6875rem */
+  height: 52.6875rem;
 }
 
 .texto-um,
@@ -137,25 +144,32 @@ body {
 .texto-um {
   left: 0;
   text-align: left;
-  width: 450px;
-  height: 290px;
-  margin-left: 300px;
+  /* 450px / 16px = 28.125rem */
+  width: 28.125rem;
+  /* 290px / 16px = 18.125rem */
+  height: 18.125rem;
+  /* 300px / 16px = 18.75rem */
+  margin-left: 18.75rem;
   top: 50%;
 }
 
 .texto-dois {
   right: 0;
-  width: 550px;
-  margin-right: 160px;
+  /* 550px / 16px = 34.375rem */
+  width: 34.375rem;
+  /* 160px / 16px = 10rem */
+  margin-right: 10rem;
   top: 80%;
   text-align: left;
 }
 
 .texto-um h2,
 .texto-dois h2 {
-  font-size: 45px;
+  /* 45px / 16px = 2.8125rem */
+  font-size: 2.8125rem;
   font-weight: normal;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .button {
@@ -164,30 +178,38 @@ body {
   align-items: center;
   position: absolute;
   top: 71%;
+  left: 15%; /* Mantido do seu layout original */
   transform: translateY(-50%);
-  left: 15%;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  border-radius: 50px;
-  width: 300px;
-  height: 80px;
+  width: 19rem !important; /* Largura automática baseada no conteúdo */
+  height: auto;
+  padding: 0.9rem 2rem;
+  gap: 0.75rem;
+
   color: white;
-  font-family: "Montserrat", serif;
-  font-size: 25px;
-  padding: 10px;
-  gap: 10px;
-  border: 1px solid white;
-  margin-top: 20px;
-  transition: 0.5s ease;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+
+  /* Estilo Moderno */
+  background: linear-gradient(to right, #2a2829, #000000);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
-  transform: translateY(-45px);
-  border: none;
+  transform: translateY(-50%) scale(1.05); /* Combina a posição com a nova animação */
+  border-color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .button img {
-  width: 40px;
-  height: 40px;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .barra-informacoes {
@@ -195,10 +217,10 @@ body {
   justify-content: space-between;
   width: 100%;
   height: 130px;
-  background: linear-gradient(to bottom, #2a2829, #000000);
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
   padding: 0 60px 0 60px;
 }
-
 .info-item {
   display: flex;
   justify-content: center;
@@ -212,6 +234,7 @@ body {
 .info-item h3 {
   text-wrap: nowrap;
   font-size: 20px;
+  text-transform: uppercase;
 }
 
 .info-item img {
@@ -219,95 +242,262 @@ body {
   height: 35px;
 }
 
-@media (min-width: 1366px) and (max-width: 1599px) {
-  .logo {
-    width: 190px;
-  }
+/* ------------------------------------------- */
+/* RESPONSIVIDADE EM REM */
+/* ------------------------------------------- */
+/* ------------------------------------------- */
+/* 1. HD - 1366px e menor (MAX-WIDTH) */
+/* (Esta regra é a única que usa max-width e deve vir antes de todos os min-width) */
 
-  body {
-    overflow-x: hidden;
+/* ------------------------------------------- */
+@media (max-width: 1366px) {
+  html {
+    /* Reduz o tamanho da fonte base para telas menores, escalando o layout (14.4px base) */
+    font-size: 90%;
   }
 
   .menu {
-    width: auto;
-    gap: 100px;
+    /* 128px / 16px = 8rem */
+    padding: 0 8rem;
+    /* 32px / 16px = 2rem */
+    margin: 2rem 0;
   }
 
-  .banner {
-    min-height: 550px;
+  .logo h1 {
+    /* 40px / 16px = 2.5rem */
+    font-size: 2.5rem;
   }
 
-  #icone-homem img {
-    width: 550px;
-    height: 550px;
+  .menu-navigation {
+    /* 560px / 16px = 35rem */
+    width: 35rem;
+    /* 64px / 16px = 4rem */
+    height: 4rem;
+  }
+
+  .menu-navigation ul {
+    /* 16px / 16px = 1rem */
+    padding: 1rem;
   }
 
   .texto-um {
-    margin-left: 170px;
-    height: 150px;
-    width: 400px;
-    text-align: left;
-    top: 50%;
+    /* 144px / 16px = 9rem */
+    margin-left: 9rem;
+    /* 160px / 16px = 10rem */
+    height: 10rem;
   }
 
   .texto-dois {
-    margin-right: 60px;
-    width: 450px;
+    /* 48px / 16px = 3rem */
+    margin-right: 3rem;
+  }
+
+  .texto-um,
+  .texto-dois {
+    width: 30%;
+    color: white;
+    /* Reduz o tamanho da fonte local (16px * 0.9 = 14.4px / 16px = 0.9rem) */
+    font-size: 0.9rem;
+  }
+
+  .button {
+    /* 240px / 16px = 15rem */
+    width: 15rem;
+    /* 64px / 16px = 4rem */
+    height: 4rem;
+    /* 22.4px / 16px = 1.4rem (mantendo a proporção de 1.4em) */
+    font-size: 1.4rem;
+    /* 8px / 16px = 0.5rem */
+    padding: 0.5rem;
+    left: 10%;
+    top: 80%;
+  }
+
+  .barra-informacoes {
+    /* 32px / 16px = 2rem */
+    padding: 0 2rem;
+    /* 120px / 16px = 7.5rem */
+    height: 7.5rem;
+  }
+
+  .info-item h3 {
+    /* 17.6px / 16px = 1.1rem (mantendo a proporção de 1.1em) */
+    font-size: 1.1rem;
+  }
+}
+
+/* ------------------------------------------- */
+/* 2. QHD/1440px (MIN-WIDTH) */
+/* ------------------------------------------- */
+@media (min-width: 1440px) {
+  /* Fator de escala: 106.25% (1rem = 17px) */
+  html {
+    font-size: 106.25%;
+  }
+
+  .menu {
+    padding: 0 14rem; /* Um pouco mais de padding que o 1366px */
+    margin: 3.5rem 0;
+  }
+
+  /* Ajustes para telas 1440px */
+  .texto-um {
+    margin-left: 10rem; /* Aproxima o texto da lateral do ícone */
+  }
+
+  .texto-dois {
+    max-width: 25rem; /* limita largura do bloco */
+    margin-right: 2rem; /* dá respiro da borda */
+    text-align: left; /* mantém alinhado ao texto */
+    word-wrap: break-word;
+  }
+
+  .button {
+    left: 16%;
+  }
+}
+
+/* ------------------------------------------- */
+/* 3. FULL HD/1920px (MIN-WIDTH) */
+/* ------------------------------------------- */
+@media (min-width: 1920px) {
+  /* Fator de escala: 112.5% (1rem = 18px) */
+  html {
+    font-size: 112.5%;
+  }
+
+  .menu {
+    /* 15rem * 16px = 240px */
+    padding: 0 15rem;
+    /* 4rem * 16px = 64px */
+    margin: 4rem 0;
+  }
+
+  .texto-um {
+    /* 20rem * 16px = 320px */
+    margin-left: 15rem;
+  }
+
+  .texto-dois {
+    /* 15rem * 16px = 240px */
+    margin: -5rem 8rem 0 0 !important;
+    text-align: left !important;
+  }
+
+  .button {
+    left: 13% !important;
+  }
+}
+
+/* ------------------------------------------- */
+/* 4. 2K/QHD+ (MIN-WIDTH) */
+/* ------------------------------------------- */
+@media (min-width: 2560px) {
+  /* Fator de escala: 137.5% (1rem = 22px) */
+  html {
+    font-size: 137.5%;
+  }
+
+  .menu {
+    /* 20rem * 16px = 320px */
+    padding: 0 20rem;
+  }
+
+  .menu-navigation {
+    /* 45rem * 16px = 720px */
+    width: 45rem;
+    /* 6rem * 16px = 96px */
+    height: 6rem; /* Altura ajustada para 4K */
+  }
+
+  .texto-um {
+    /* 25rem * 16px = 400px */
+    margin-left: 25rem;
+  }
+
+  .texto-dois {
+    /* 18rem * 16px = 288px */
+    margin-right: 15rem;
+  }
+
+  .button {
+    left: 18%;
+    /* 20rem * 16px = 320px */
+    width: 20rem;
+    /* 6rem * 16px = 96px */
+    height: 6rem;
+  }
+}
+
+/* ------------------------------------------- */
+/* 5. 4K e Maior (MIN-WIDTH) */
+/* ------------------------------------------- */
+@media (min-width: 3840px) {
+  /* Fator de escala: 187.5% (1rem = 30px) */
+  html {
+    font-size: 187.5%;
+  }
+
+  .banner {
+    /* 55rem * 16px = 880px */
+    min-height: 55rem;
+  }
+
+  .menu {
+    /* 30rem * 16px = 480px */
+    padding: 0 30rem;
+    /* 5rem * 16px = 80px */
+    margin: 5rem 0;
+  }
+
+  .menu-navigation {
+    /* 50rem * 16px = 800px */
+    width: 50rem;
+    /* 6rem * 16px = 96px */
+    height: 6rem;
+  }
+
+  .logo h1 {
+    /* 4rem * 16px = 64px */
+    font-size: 4rem;
+  }
+
+  .texto-um {
+    /* 35rem * 16px = 560px */
+    margin-left: 35rem;
+    /* 30rem * 16px = 480px */
+    width: 30rem;
+    text-align: left;
+  }
+
+  .texto-dois {
+    /* 25rem * 16px = 400px */
+    margin-right: 25rem;
+    /* 40rem * 16px = 640px */
+    width: 40rem;
   }
 
   .texto-um h2,
   .texto-dois h2 {
-    font-size: 30px;
+    /* 3.5rem * 16px = 56px */
+    font-size: 3.5rem;
   }
 
   .button {
-    left: 14%;
-    top: 71%;
-    font-size: 20px;
-    width: 250px;
-    height: 70px;
-  }
+    left: 19%;
 
-  .button img {
-    width: 40px;
+    /* 22rem * 16px = 352px */
+    width: 22rem;
+    /* 7rem * 16px = 112px */
+    height: 7rem;
+    /* 2rem * 16px = 32px */
+    font-size: 2rem;
   }
 
   .barra-informacoes {
-    height: 97px;
-  }
-
-  .barra-informacoes h3 {
-    font-size: 20px;
-  }
-
-  .menu-navigation {
-    height: 65px;
-  }
-
-  .login-circle {
-    width: 69px;
-    height: 69px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .banner {
-    height: 760px;
-  }
-
-  .icone-homem img {
-    height: 800px;
-  }
-
-  .texto-um {
-    left: -60px;
-  }
-
-  .texto-dois {
-    right: -60px;
-  }
-
-  .button {
-    margin-top: 30px;
+    /* 10rem * 16px = 160px */
+    height: 10rem;
+    /* 10rem * 16px = 160px */
+    padding: 0 10rem;
   }
 }

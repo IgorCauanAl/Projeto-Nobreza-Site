@@ -1,17 +1,35 @@
-const boxNumbers = document.querySelectorAll(".selector-number");
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Seleciona todos os cabeçalhos do acordeão (os títulos clicáveis)
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
 
-boxNumbers.forEach((boxNumber) => {
-  const number = boxNumber.querySelector(".number");
-  const buttons = boxNumber.querySelectorAll(".selector");
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      // Encontra o elemento de conteúdo irmão (o painel a ser expandido)
+      const content = header.nextElementSibling;
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      let currentValue = parseInt(number.textContent);
+      // Verifica se o conteúdo está ativo/aberto
+      const isContentActive = content.classList.contains("active");
 
-      if (button.textContent === "+") {
-        number.textContent = currentValue + 1;
-      } else if (button.textContent === "-" && currentValue > 1) {
-        number.textContent = currentValue - 1;
+      // --- Fechar todos os outros painéis ---
+      // Percorre todos os cabeçalhos novamente
+      accordionHeaders.forEach((otherHeader) => {
+        const otherContent = otherHeader.nextElementSibling;
+        // Remove a classe 'active' de todos os outros conteúdos e cabeçalhos
+        if (otherContent !== content) {
+          otherContent.classList.remove("active");
+          otherHeader.classList.remove("active");
+        }
+      });
+
+      // --- Abrir ou Fechar o painel clicado ---
+      if (isContentActive) {
+        // Se estava aberto, fecha
+        content.classList.remove("active");
+        header.classList.remove("active");
+      } else {
+        // Se estava fechado, abre
+        content.classList.add("active");
+        header.classList.add("active");
       }
     });
   });

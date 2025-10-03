@@ -1,350 +1,183 @@
+/* --- SEÇÃO APRESENTAÇÃO PRODUTOS --- */
 
-#apresentacaoprodutos{
-  margin-top: 200px;
+#apresentacaoprodutos {
+  padding: 4rem 2rem; /* Espaçamento responsivo */
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
+/* --- TÍTULO SUPERIOR --- */
 .flex-titulo-sofisticação {
-  position: relative;
+  display: flex;
+  flex-direction: column; /* Empilha no mobile */
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .titulo-sofisticacao {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  font-size: 20px;
-  color: white;
-  position: relative;
+  gap: 1rem;
 }
 
 .titulo-sofisticacao h2 {
-  font-weight: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.line-horinzontal.cima {
-  width: 2px;
-  height: 65px;
-  margin-right: 5px;
-  border: 2px solid white;
-}
-
-.line-horinzontal.baixo {
-  margin-top: 5px;
-  width: 2px;
-  height: 36px;
-  position: relative;
-  margin-bottom: -36px;
-  margin-left:-28px;
-  position: absolute;
-  border: 2px solid white;
+.line-horinzontal {
+  display: none; /* Linhas decorativas escondidas no mobile para um look mais limpo */
 }
 
 .button-sofisticacao {
-  position: absolute;
-  margin-top: 3px;
-  margin-right: 5%;
-  top: 50%;
-  width: 350px;
-  height: 40px;
-  border-radius: 15px;
-  border: 1px solid white;
-  background: linear-gradient(#2a2829, #000000);
+  /* Estilo Moderno Padrão */
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: white;
-  font-size: 20px;
-  transition: 0.5 ease-in-out;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.button-sofisticacao:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: scale(1.05);
 }
 
-.button-sofisticacao:hover{
-  transform:translateY(5px);
-  border:none;
-}
-
+/* --- GRID PRINCIPAL --- */
 .grid-container {
   display: grid;
-  grid-template-columns: 700px 500px 450px;
-  grid-template-rows: auto 50px auto;
-  grid-template-areas:
-    "blazers sapatos   marcas"
-    "blazers  gravatas relogios"
-    "blazers  gravatas descricao";
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  margin-right: 100px;
-  margin-top: 30px;
+  grid-template-columns: 1fr; /* Uma coluna por padrão (mobile) */
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
 }
 
-.blazers {
-  grid-area: blazers;
-  text-align: center;
-  margin: 50px 30px 0 0;
-}
-
-.blazers img {
-  width: 400px;
-  height: 670px;
-  border-radius: 15px;
-  border: 1px solid white;
-  object-fit: cover;
-}
-
+/* Estilo base para todos os cards */
 .blazers,
 .sapatos,
 .gravatas,
-.relogios p {
-  font-size: 30px;
-  color: white;
-}
-
-.sapatos {
-  grid-area: sapatos;
-  border-radius: 10px;
-  text-align: center;
-  margin: 80px 30px 0 0;
-}
-
-.sapatos img {
-  width: 350px;
-  height: 300px;
-  border-radius: 15px;
-  border: 1px solid white;
-  object-fit: cover;
-}
-
-.gravatas {
-  grid-area: gravatas;
-  border-radius: 15px;
-  text-align: center;
-  margin: 30px 25px 0 0;
-}
-
-.gravatas img {
-  width: 350px;
-  height: 300px;
-  border-radius: 15px;
-  border: 1px solid white;
-  object-fit: cover;
-}
-
-.relogios {
-  grid-area: relogios;
-  border-radius: 15px;
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.relogios img {
-  width: 350px;
-  height: 300px;
-  border-radius: 15px;
-  border: 1px solid white;
-  object-fit: cover;
-}
-
-.descricao {
-  grid-area: descricao;
-  border-radius: 15px;
-  border: 1px solid white;
-  text-align: center;
-  background: linear-gradient(to right, #2a2829, #000000);
-  width: 450px;
-  height: 110px;
-  margin-top: 140px;
-}
-
-.descricao p {
-  color: white;
-  font-size: 20px;
-  text-align: justify;
-  margin: 15px;
-}
-
-.logo-sofisticacao {
-  background: linear-gradient(to right, #ffffff 50%, #544f51);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: "Berkshire Swash", serif;
-  font-size: 30px;
-  width: 170px;
-  height: 50px;
-  margin: 10px 0 0 280px;
-}
-
+.relogios,
+.descricao,
 .marcas {
-  grid-area: marcas;
-  border-radius: 15px;
-  border-radius: 15px;
-  border: 1px solid white;
-  text-align: center;
-  background: linear-gradient(to right, #2a2829, #000000);
-  width: 450px;
-  height: 110px;
-  margin-bottom: 145px;
-}
-
-.marcas p {
-  text-align: justify;
-  color: white;
-  font-size: 20px;
-  margin: 25px;
-}
-@media (min-width: 1366px) and (max-width: 1599px) {
-
-
-  #apresentacaoprodutos{
-   margin-top:100px;
-   }
-
-   .button-sofisticacao {
-    right: 14%;
-  }
-
-
-.line-horinzontal.baixo {
-  left: 59%;
-}
-   
-  .grid-container {
-    display: grid;
-    grid-template-columns: auto auto 450px;
-    grid-template-rows: 150px 170px 200px;
-    grid-template-areas:
-      "blazers sapatos   marcas"
-      "blazers  sapatos relogios"
-      "blazers  gravatas descricao";
-    justify-content: center;
-    justify-items: center;
-    align-items: start;
-    align-content: start;
-    margin:0;
-    gap:30px;
-    
-  }
-  
-
-  .blazers img {
-    width: 260px;
-    height: 450px;
-  }
-
-  .sapatos img{
-    width: 230px;
-    height: 190px;
-  }
-
-  .gravatas img{
-    width: 230px;
-    height: 190px;
-  }
-
-  .relogios img{
-    width: 230px;
-    height: 190px;
-  }
-
-  .sapatos{
-    margin:50px 0 0 0;
-  }
-
-  .gravatas{
-   margin:-40px 0 0 0;
-  }
-
-  .relogios{
-   margin:10px 0 0 0;
-  }
-
-  .blazer{
-   margin:0;
-  }
-
-  .marcas{
-   margin:50px 0 0 0;
-  }
-
-  .descricao{
-   margin:40px 0 0 0;
-  }
-
-.blazers,
-.sapatos,
-.gravatas,
-.relogios p {
-  font-size: 20px;
-  color: white;
-}
-
-.button-sofisticacao {
-  position: absolute;
-  margin-top: 3px;
-  margin-right: 0.4%;
-}
-
-.line-horinzontal.baixo {
-  margin-top: 5px;
-  width: 2px;
-  height: 36px;
   position: relative;
-  margin-bottom: -36px;
-  margin-left:-1px;
+  overflow: hidden;
+  border-radius: 1rem;
+
+  /* Efeito glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+.blazers:hover,
+.sapatos:hover,
+.gravatas:hover,
+.relogios:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.blazers img,
+.sapatos img,
+.gravatas img,
+.relogios img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Estilo dos títulos sobre as imagens */
+.blazers p,
+.sapatos p,
+.gravatas p,
+.relogios p {
   position: absolute;
-  border: 2px solid white;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
 }
 
-
-
+/* Cards de texto */
+.descricao,
+.marcas {
+  padding: 2rem;
 }
 
-@media (min-width:1600px){
-  .button-sofisticacao{
-    right:19%;
+.marcas p,
+.descricao p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+}
+
+/* --- RESPONSIVIDADE PARA DESKTOP --- */
+@media (min-width: 1024px) {
+  /* Restaura o layout assimétrico do título */
+  .flex-titulo-sofisticação {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 2rem;
   }
-  .line-horinzontal.baixo{
-    left:58%;
+  .titulo-sofisticacao h2 {
+    font-size: 2rem;
+  }
+  .line-horinzontal {
+    display: block;
+    height: 3.5rem;
+    border-left: 2px solid white;
   }
 
+  /* Restaura o grid original da foto */
   .grid-container {
-    display: grid;
-    grid-template-columns: auto auto 430px;
-    grid-template-rows: 230px 230px 230px;
+    grid-template-columns: 2fr 1.5fr 1.5fr; /* Proporção similar à original */
+    grid-template-rows: auto auto auto;
     grid-template-areas:
-      "blazers sapatos   marcas"
-      "blazers  sapatos relogios"
-      "blazers  gravatas descricao";
-    justify-content: center;
-    justify-items: center;
-    align-items: start;
-    align-content: start;
-    margin:0;
-    gap:30px;
-    
+      "blazers sapatos marcas"
+      "blazers gravatas relogios"
+      "blazers gravatas descricao";
+    align-items: stretch; /* Faz os itens preencherem a altura da célula */
+    justify-items: stretch;
   }
 
-  .gravatas{
-    margin-top:-50px;
+  /* Associa cada item à sua área no grid */
+  .blazers {
+    grid-area: blazers;
+  }
+  .sapatos {
+    grid-area: sapatos;
+  }
+  .marcas {
+    grid-area: marcas;
+  }
+  .gravatas {
+    grid-area: gravatas;
+  }
+  .relogios {
+    grid-area: relogios;
+  }
+  .descricao {
+    grid-area: descricao;
   }
 
-  .gravatas img{
-    width: 350px;
-    height: 270px;
+  /* Ajuste de altura para o card principal */
+  .blazers {
+    min-height: 42rem;
   }
-
-  .sapatos{
-    width: 350px;
-    height: 270px;
-  }
-
-  .sapatos img{
-    margin-top:-20px;
-  }
-
-  .marcas{
-    margin-top:80px;
-  }
-
-  .descricao{
-    margin-top:110px;
-  }
-  
 }

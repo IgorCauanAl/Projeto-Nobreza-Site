@@ -1,0 +1,278 @@
+#title-mini-catalog-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.375rem; /* 70px */
+}
+
+/* Título */
+#title-mini-catalog-container h2 {
+  /* Estilize o H2 aqui para corresponder ao estilo do seu catálogo principal se necessário */
+  font-family: "Roboto", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Linha Divisória - Mantenha se desejar a separação visual */
+#title_mini_catalog {
+  width: 56.25rem; /* 900px */
+  height: 0.0625rem; /* 1px */
+  margin: 0.625rem 0 0 0; /* 10px */
+  background: white;
+}
+
+/* CONTEINER DOS ITENS DO CATÁLOGO - AGORA É GRID */
+#mini-catalog-container {
+  display: grid; /* MUDANÇA: Usa Grid */
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 4 colunas como o catálogo principal */
+  gap: 1.5rem; /* 24px - Usando o mesmo gap do catálogo principal */
+  max-width: 75rem; /* 1200px - Limite de largura para centralização */
+  margin: 1.875rem auto 3rem auto; /* Centraliza e adiciona margem inferior */
+}
+
+/* ITEM DO CATÁLOGO (ANTERIORMENTE .img) */
+.img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem; /* 8px - Mesmo border-radius do .conjugate */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#mini-catalog-container img {
+  width: 100%; /* Ocupa a largura total do grid item */
+  height: 18.75rem; /* 300px - Altura de exemplo. Ajuste se necessário. */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Efeito de Zoom na Imagem */
+.img:hover img {
+  transform: scale(1.05);
+}
+
+/* Efeito de Overlay Escurecido (::after) */
+.img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  pointer-events: none;
+  z-index: 1; /* Garante que fique abaixo do texto, mas acima da imagem */
+}
+
+.img:hover::after {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------------------------------------------------- */
+/* INFORMAÇÕES DO PRODUTO (REPLICANDO O .product-info) */
+/* ---------------------------------------------------- */
+
+.text {
+  /* Posicionamento e Fundo */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem;
+  z-index: 5; /* Garante que o texto fique acima do overlay escurecido */
+
+  /* Overlay de fundo sólido (ou semi-transparente, como preferir) */
+  background-color: #444;
+
+  text-align: center;
+  color: white;
+
+  /* Esconde por padrão (slide-up effect) */
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+/* Efeito Slide-Up no Hover */
+.img:hover .text {
+  transform: translateY(0);
+}
+
+/* Estilo do Texto */
+.text p:first-child {
+  /* Nome do Produto */
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 0.3rem 0;
+}
+
+.text p:nth-child(2) {
+  /* Preço Principal */
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #00ff7f;
+  margin: 0 0 0.75rem 0;
+}
+
+.text p:last-child {
+  /* Parcelamento */
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 1366px) {
+  /* Fator de escala: 90% (1rem = 14.4px) */
+  html {
+    font-size: 90%;
+  }
+
+  /* Título */
+  #title-mini-catalog-container h2 {
+    font-size: 1.8rem;
+  }
+
+  #title_mini_catalog {
+    max-width: 50rem;
+  }
+
+  /* Grid */
+  #mini-catalog-container {
+    max-width: 65rem;
+  }
+
+  #mini-catalog-container img {
+    height: 16rem; /* Reduz a altura da imagem */
+  }
+
+  /* Texto */
+  .text p:first-child {
+    font-size: 1rem;
+  }
+
+  .text p:nth-child(2) {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* Fator de escala: 106.25% (1rem = 17px) */
+  html {
+    font-size: 106.25%;
+  }
+
+  #title_mini_catalog {
+    max-width: 60rem;
+  }
+
+  #mini-catalog-container {
+    max-width: 80rem;
+  }
+
+  #mini-catalog-container img {
+    height: 20rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Fator de escala: 112.5% (1rem = 18px) */
+  html {
+    font-size: 112.5%;
+  }
+
+  #title-mini-catalog-container h2 {
+    font-size: 2.5rem;
+  }
+
+  #title_mini_catalog {
+    max-width: 70rem;
+  }
+
+  #mini-catalog-container {
+    max-width: 90rem;
+  }
+
+  #mini-catalog-container img {
+    height: 24rem;
+  }
+
+  /* Texto */
+  .text p:first-child {
+    font-size: 1.25rem;
+  }
+
+  .text p:nth-child(2) {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  /* Fator de escala: 137.5% (1rem = 22px) */
+  html {
+    font-size: 137.5%;
+  }
+
+  #title-mini-catalog-container h2 {
+    font-size: 3rem;
+  }
+
+  #title_mini_catalog {
+    max-width: 90rem;
+  }
+
+  #mini-catalog-container {
+    max-width: 110rem;
+  }
+
+  #mini-catalog-container img {
+    height: 30rem;
+  }
+
+  /* Texto */
+  .text p:first-child {
+    font-size: 1.5rem;
+  }
+
+  .text p:nth-child(2) {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 3840px) {
+  /* Fator de escala: 187.5% (1rem = 30px) */
+  html {
+    font-size: 187.5%;
+  }
+
+  #title-mini-catalog-container h2 {
+    font-size: 4rem;
+  }
+
+  #title_mini_catalog {
+    max-width: 120rem;
+  }
+
+  #mini-catalog-container {
+    max-width: 140rem;
+  }
+
+  #mini-catalog-container img {
+    height: 40rem;
+  }
+
+  /* Texto */
+  .text p:first-child {
+    font-size: 2rem;
+  }
+
+  .text p:nth-child(2) {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Administrador</title>
+    <link rel="stylesheet" href="PerfilADM.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="user-profile">
+          <p>Administrador</p>
+          <h3>Nome do Admin</h3>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="#" class="nav-link active" data-target="usuarios"
+                ><i class="fas fa-users-cog"></i> Gerenciar Usuários</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link" data-target="produtos"
+                ><i class="fas fa-plus-circle"></i> Adicionar Produto</a
+              >
+            </li>
+            <li>
+              <a href="URL_PARA_LOGOUT" class="nav-link-logout"
+                ><i class="fas fa-sign-out-alt"></i> Sair</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section id="usuarios" class="content-section active">
+          <h2>Gerenciar Usuários</h2>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input
+              type="search"
+              placeholder="Buscar usuário por nome ou e-mail..."
+            />
+          </div>
+
+          <div class="user-table-container">
+            <table class="user-table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Função</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Igor Cauan</td>
+                  <td>igor.admin@email.com</td>
+                  <td><span class="role role-admin">Admin</span></td>
+                  <td class="actions-cell">
+                    <button class="btn-promote" aria-label="Promover a Admin">
+                      <i class="fas fa-user-shield"></i>
+                    </button>
+                    <button class="btn-delete" aria-label="Apagar usuário">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>João Silva</td>
+                  <td>joao.silva@email.com</td>
+                  <td><span class="role role-user">User</span></td>
+                  <td class="actions-cell">
+                    <button class="btn-promote" aria-label="Promover a Admin">
+                      <i class="fas fa-user-shield"></i>
+                    </button>
+                    <button class="btn-delete" aria-label="Apagar usuário">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="produtos" class="content-section">
+          <h2>Adicionar Novo Produto</h2>
+          <form class="product-form">
+            <div class="form-group full-width">
+              <label for="prod-nome">Nome do Produto</label>
+              <input type="text" id="prod-nome" required />
+            </div>
+            <div class="form-group">
+              <label for="prod-preco">Preço (R$)</label>
+              <input
+                type="number"
+                id="prod-preco"
+                step="0.01"
+                placeholder="Ex: 199.90"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="prod-tipo">Tipo da Mercadoria</label>
+              <select id="prod-tipo" required>
+                <option value="">Selecione um tipo</option>
+                <option value="relogio">Relógio</option>
+                <option value="terno">Terno</option>
+                <option value="blazer">Blazer</option>
+                <option value="blazer-classico-moderno">
+                  Blazer Clássico Moderno
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="prod-ref">Referência (SKU)</label>
+              <input
+                type="text"
+                id="prod-ref"
+                placeholder="Ex: BLZ-001-PT"
+                required
+              />
+            </div>
+            <div class="form-group full-width">
+              <label for="prod-descricao">Descrição do Produto</label>
+              <textarea id="prod-descricao" rows="4" required></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label for="prod-composicao">Composição</label>
+              <textarea id="prod-composicao" rows="3" required></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label for="prod-foto">Foto Principal do Produto</label>
+              <input type="file" id="prod-foto" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label>Cores Disponíveis</label>
+              <div class="color-picker-group">
+                <input type="color" id="color-picker-input" value="#000000" />
+                <input
+                  type="text"
+                  id="color-hex-input"
+                  placeholder="Ou digite o HEX (ex: #FFFFFF)"
+                />
+                <button type="button" id="add-color-btn">Adicionar Cor</button>
+              </div>
+              <div class="selected-colors" id="selected-colors-container"></div>
+              <input type="hidden" name="prod-cores" id="prod-cores-hidden" />
+            </div>
+
+            <div class="form-group">
+              <label for="prod-pix-desconto">Desconto no PIX (%)</label>
+              <input type="number" id="prod-pix-desconto" placeholder="Ex: 5" />
+            </div>
+            <div class="form-group-inline full-width">
+              <input type="checkbox" id="prod-promocao" />
+              <label for="prod-promocao">Marcar como promoção</label>
+            </div>
+            <div class="form-group full-width">
+              <button type="submit" class="btn">Adicionar Produto</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="PerfilADM.js"></script>
+  </body>
+</html>

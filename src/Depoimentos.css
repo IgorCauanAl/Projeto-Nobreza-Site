@@ -1,136 +1,141 @@
+/* --- SEÇÃO DEPOIMENTOS --- */
+
 #depoimentos {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centraliza todo o conteúdo */
   width: 100%;
-  margin-top:200px;
+  padding: 4rem 2rem;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  overflow: hidden; /* Evita que sombras maiores causem overflow */
 }
 
+/* Título da seção */
 .titulo-depoimentos {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1.5rem;
+  margin-bottom: 6rem; /* Aumenta o espaço para as fotos de perfil */
 }
 
 .titulo-depoimentos h2 {
-  font-size: 50px;
-  font-weight: normal;
-  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  white-space: nowrap;
 }
 
+/* Linhas decorativas do título */
+.titulo-depoimentos::before,
+.titulo-depoimentos::after {
+  content: "";
+  height: 2px;
+  width: 5rem;
+  background: linear-gradient(to right, #ffffff, #544f51);
+}
+
+/* --- CONTAINER DOS CARDS --- */
 .container-retangulos-depoimentos {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna para mobile */
+  gap: 6rem; /* Espaço generoso entre os cards na vertical */
+  width: 100%;
+  max-width: 80rem;
 }
 
-.icone-suit {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  align-items: center;
-}
-
-.icone-suit img {
-  width: 50px;
-  height: 50px;
-}
-
+/* Card de Depoimento Individual */
 .retangulo-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 350px;
-  height: 550px;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  border: 1px solid white;
   position: relative;
-  margin-top: 220px;
-}
-
-.retangulo-info p {
-  width: 300px;
-  height: 360px;
-  margin-top: 20px;
-  font-size: 25px;
-  color: white;
-  text-align: justify;
-}
-
-.retangulo-info h3 {
-  color: white;
-  font-size: 20px;
+  padding: 5rem 1.5rem 1.5rem 1.5rem; /* Padding (maior no topo para a foto) */
   text-align: center;
-  margin-top: 20px;
+
+  /* Estilo glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+.retangulo-info:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Foto de Perfil */
+.foto-retangulo {
+  position: absolute;
+  top: 0; /* Alinha no topo do card */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza e move metade para cima */
 }
 
 .foto-retangulo img {
-  width: 220px;
-  height: 200px;
+  width: 8rem; /* Tamanho da foto */
+  height: 8rem;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: -100%;
+  border: 3px solid rgba(255, 255, 255, 0.2); /* Borda sutil na foto */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Ícone de "suit" dentro do card */
+.icone-suit {
+  margin-bottom: 1rem;
+}
+.icone-suit img {
+  width: 2.5rem;
+  height: 2.5rem;
+  opacity: 0.5;
+}
+
+/* Texto do Depoimento */
+.retangulo-info > p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+/* Nome da Pessoa */
+.retangulo-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* Logo "Nobreza" no final */
 .logo-inferior-depoimentos {
-  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
 }
-
 .logo-inferior-depoimentos h3 {
+  font-family: "Berkshire Swash", serif;
+  font-size: 2.5rem;
+  font-weight: normal;
   background: linear-gradient(to right, #ffffff 50%, #544f51);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "Berkshire Swash", serif;
-  font-size: 40px;
 }
 
+/* --- RESPONSIVIDADE --- */
 
-
-@media (min-width: 1366px) and (max-width: 1599px) {
-
-  #depoimentos{
-    margin-top: 100px;
+/* Telas de Tablet (ainda 1 coluna, mas mais largo) */
+@media (min-width: 768px) {
+  .container-retangulos-depoimentos {
+    max-width: 40rem; /* Limita a largura do card único */
+    margin: 0 auto;
   }
-  .titulo-depoimentos h2{
-    font-size:45px
-  }
-
-  .foto-retangulo img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .retangulo-info{
-    margin-top:150px;
-    height:390px;
-    width:330px;
-  }
-
-  .retangulo-info p{
-    font-size:20px;
-  }
-
-  .icone-suit img{
-    width: 40px;
-    height: 40px;
-  }
-
-  .depoimentos{
-    margin-top:50px;
-  }
-
-  .nome-depoimento{
-    margin-top:-130px;
-  }
-
-  .logo-inferior-depoimentos{
-    margin-top: -9px;
-  }
-
 }
 
-@media (min-width:1600px){
- .depoimentos{
-  margin:0;
- }
+/* Telas de Desktop (layout de 3 colunas) */
+@media (min-width: 1024px) {
+  .container-retangulos-depoimentos {
+    grid-template-columns: repeat(3, 1fr); /* Volta para 3 colunas */
+    gap: 2rem; /* Espaço horizontal */
+    max-width: 80rem;
+  }
 }

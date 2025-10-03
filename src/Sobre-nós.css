@@ -1,243 +1,182 @@
+/* --- ESTRUTURA GERAL (SOBRE NÓS) --- */
 #Sobre-nós {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center; /* Centraliza o conteúdo principal */
+  align-items: center;
+  width: 100%;
+  padding: 4rem 2rem;
+  gap: 3rem;
+  color: white;
 }
 
+/* --- COLUNA DA ESQUERDA (TEXTO E INFO) --- */
 .container-titulo-sobrenos {
   display: flex;
-  justify-content: flex-start;
   flex-direction: column;
-  margin: 60px 0 0 130px;
-  gap: 10px;
-  color: white;
-  position: relative;
-}
-
-.container-titulo-sobrenos p {
-  width: 700px;
-  height: 400px;
-  font-size: 40px;
-}
-
-.container-titulo-sobrenos h2 {
-  font-size: 50px;
-  font-weight: normal;
+  gap: 1rem;
+  width: 35rem; /* Largura base para o conteúdo de texto */
 }
 
 .container-titulo-sobrenos .titulo {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.container-titulo-sobrenos h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  white-space: nowrap;
 }
 
 .line {
-  border: 2px solid white;
-  width: 100px;
-  height: 0;
+  border: 1px solid white;
+  flex-grow: 1; /* Faz a linha preencher o espaço restante */
 }
 
+.container-titulo-sobrenos > p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* --- CARDS DE INFORMAÇÃO (INDÚSTRIA, CIDADE, ETC) --- */
 .flex-elements-sobrenos {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 500px;
-  margin-top: -140px;
+  position: relative; /* Necessário para manter o layout escalonado */
 }
 
 .elements {
-  width: 500px;
-  height: 120px;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  border: 1px solid white;
-  border-radius: 15px;
-  color: white;
+  width: 25rem; /* Largura dos cards */
+  padding: 1.5rem;
+  margin-bottom: 1.5rem; /* Espaçamento vertical entre os cards */
+
+  /* Estilo "Glassmorphism" */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.elements:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .elements h3 {
-  font-size: 20px;
-  margin: 20px 0 0 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
 }
 
 .elements p {
-  font-size: 18px;
-  margin: 5px 0 20px 20px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
 }
 
+/* Mantendo o layout escalonado original com margens */
 .elements.cidade {
-  margin-left: 50px;
+  margin-left: 2.5rem;
 }
-
 .elements.experiência {
-  margin-left: 100px;
+  margin-left: 5rem;
 }
 
-.seta-esquerda img {
-  position: absolute;
-  left: -60px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 70px;
-  cursor:pointer;
-}
-
-.seta-direita img {
-  position: absolute;
-  right: -60px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 70px;
-  cursor:pointer;
-}
-
-.seta-direita, .seta-esquerda {
-  border:none;
-}
-
+/* --- CARROSSEL DE IMAGENS (DIREITA) --- */
 .retangulo-carrossel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 90px 200px 0 250px;
-  background-color: transparent;
-  border-radius: 20px;
-  width: 550px;
-  height: 800px;
-  border: 1px solid white;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  position: relative; 
+  position: relative;
+  width: 30rem; /* Largura do carrossel */
+  padding: 1.5rem;
+
+  /* Estilo "Glassmorphism" */
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
 }
 
 .carrosel {
-  display: flex;
-  width: 510px;
-  margin:10px;
+  width: 100%;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 0.75rem;
 }
-
-
-#imagens-container{
-  display:flex;
-  transition: transform 0.5s ease-in-out ;
-  width: 1020px;
+#imagens-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
-
-.carrosel-img{
-  width:510px;
+.carrosel-img {
+  width: 100%;
+  flex-shrink: 0;
   object-fit: cover;
+  aspect-ratio: 3/4; /* Proporção da imagem */
 }
 
-#titulo-carrosel {
-  transition: opacity 0.3s ease;
-}
-
+/* Título e botão abaixo da imagem */
 .titulo-apresentacao {
   display: flex;
   justify-content: space-between;
-  color: white;
+  align-items: center;
   width: 100%;
-  margin-top: 20px;
-  padding-left: 30px;
+  padding: 1rem 0.5rem 0 0.5rem;
 }
-
 .titulo-apresentacao p {
-  font-size: 30px;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
-
 .button-apresentacao {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 30px;
-  width: 55px;
-  height: 40px;
-  background: linear-gradient(to right, #2a2829, #45484b);
-  border-radius: 10px;
-  transition:0.5s ease;
-  cursor:pointer;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+}
+.button-apresentacao:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.button-apresentacao:hover{
-  transform: translateY(-10px);
-  
+/* Setas de Navegação do Carrossel */
+.seta-esquerda,
+.seta-direita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-@media (min-width: 1366px) and (max-width: 1599px) {
-  .retangulo-carrossel {
-    margin-left: 70px;
-    width: 400px;
-    height: 550px;
-    object-fit: cover;
-  }
-
-  .carrosel {
-    display: flex;
-    width: 350px;
-    margin:10px;
-    overflow: hidden;
-    border-radius: 15px;
-  }
-  
-
-  .carrosel-img{
-    width:350px;
-    object-fit: cover;
-  }
-
-  .titulo-apresentacao {
-    margin:20px;
-    padding-left: 20px;
-   
-  }
-
-  .titulo-apresentacao p{
-    font-size: 20px;
-  }
-
-  .button-apresentacao{
-    width:60px;
-    height:30px;
-  }
-
-  .titulo h2{
-    font-size: 45px;
-  }
-
-  .texto-sobrenos{
-    height:170px;
-  }
-
- .texto-sobrenos p{
-  font-size:35px;
- }
-
- .flex-elements-sobrenos{
-  margin-top:10px;
-  gap:20px;
- }
-
- .elements{
-  height:100px;
- }
-
+.seta-esquerda {
+  left: -1.5rem;
 }
-  
-@media (min-width:1600px){
-
-  .retangulo-carrossel{
-    margin-left:180px;
-   }
-
-   .imagem-carrosel{
-    margin:10px;
-   }
-
-   .titulo-apresentacao{
-    margin-bottom:30px;
-   }
-
-  }
+.seta-direita {
+  right: -1.5rem;
+}
+.seta-esquerda:hover,
+.seta-direita:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.seta-esquerda img,
+.seta-direita img {
+  width: 1.2rem;
+  height: 1.2rem;
+}

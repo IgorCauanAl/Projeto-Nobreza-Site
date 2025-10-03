@@ -1,0 +1,226 @@
+/* --- NOVIDADES --- */
+
+#news {
+  padding: 4rem 2rem;
+  font-family: "Montserrat", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- TÍTULO --- */
+#flex-title-news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+#categories-title h2 {
+  font-size: 3.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  white-space: nowrap;
+}
+
+.rectangle-title {
+  background: linear-gradient(to right, #ffffff, #544f51);
+  width: 8rem;
+  height: 0.125rem;
+}
+
+/* --- GRID RESPONSIVO --- */
+#news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 80rem;
+}
+
+/* --- CARD PADRÃO (.container-photos) --- */
+.container-photos {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  display: flex; /* Adicionado para controle interno */
+  flex-direction: column; /* Organiza foto e descrição verticalmente */
+}
+
+.container-photos:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.photo {
+  width: 100%;
+  height: 25rem;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.container-photos:hover .photo {
+  transform: scale(1.05);
+}
+
+.description-news {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1; /* Faz a descrição ocupar o espaço restante */
+}
+
+.description-news p:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.description-news p:nth-child(2) {
+  font-size: 1rem;
+  opacity: 0.7;
+  flex-grow: 1; /* Empurra o botão para a base do card */
+}
+
+/* --- CARD ESPECIAL (CATÁLOGO) --- */
+.go-catalog {
+  position: relative; /* Container para posicionamento absoluto */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha o conteúdo na base */
+  padding: 1.5rem;
+  background-color: #1a1a1a; /* Fundo escuro para o card */
+  overflow: hidden;
+}
+
+#top-rectangle {
+  position: relative; /* Posição relativa para o z-index funcionar */
+  z-index: 2; /* Garante que o painel fique sobre a imagem */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  bottom: 22rem;
+  width: 100%;
+
+  /* Estilo glassmorphism */
+  padding: 2rem;
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+#text-top-rectangle p {
+  font-size: 1.1rem;
+  max-width: 30ch;
+}
+
+#news-icon {
+  position: absolute;
+  bottom: -4rem; /* Posiciona a imagem para vazar para fora */
+  left: 55%;
+  transform: translateX(-50%);
+  width: 28rem;
+  height: auto;
+  z-index: 1;
+  opacity: 0.3; /* Deixa a imagem sutil */
+  transition: all 0.4s ease;
+}
+
+.container-photos:hover #news-icon {
+  opacity: 0.8;
+  bottom: -2rem; /* Move a imagem para cima no hover */
+}
+
+/* --- BOTÕES MODERNIZADOS --- */
+.button-news,
+.catalog-button {
+  width: 100%;
+  max-width: 15rem; /* Largura máxima para os botões */
+  height: 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to right, #2a2829, #000000);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.button-news:hover,
+.catalog-button:hover {
+  transform: scale(1.05);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Classes de imagem de fundo */
+.photo-one {
+  background-image: url(../fotos/shop_principal/Novidades4.jpg);
+}
+.photo-three {
+  background-image: url(../fotos/shop_principal/Novidades3.jpg);
+}
+.photo-four {
+  background-image: url(../fotos/shop_principal/Novidades.jpg);
+}
+.photo-five {
+  background-image: url(../fotos/shop_principal/ternoazul.jpg);
+}
+.photo-six {
+  background-image: url(../fotos/shop_principal/Novidades2.jpg);
+}
+
+/* --- NAVEGAÇÃO (CORREÇÃO DE GRID) --- */
+#container-description-news {
+  /* IMPORTANTE: Faz este container ocupar todas as colunas do grid */
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem; /* Margem ajustada */
+}
+
+.elements-navigation-news {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  width: auto; /* Largura automática */
+  height: 3.125rem;
+  padding: 0 1.5rem; /* Padding horizontal */
+
+  /* Efeito glassmorphism */
+  background: rgba(42, 40, 41, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3.125rem;
+}
+/* ... (estilos para .little-ball permanecem os mesmos) ... */
+.little-ball {
+  width: 1rem; /* Diminuído */
+  height: 1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.little-ball:hover,
+.little-ball.active {
+  background: white;
+}

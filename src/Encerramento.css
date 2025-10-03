@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 500px;
-  margin-top:200px;
+  height: 31.25rem;
+  margin-top: 12.5rem;
+  padding: 0 1.875rem;
+  box-sizing: border-box;
 }
 
 .retangulo-encerramento {
@@ -11,141 +13,261 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "retangulos-internos-encerramento texto-direita-botao icone-inferior-direita";
-  width: 1350px;
-  height: 500px;
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  border-radius: 15px;
+  width: 100%;
+  max-width: 84.375rem;
+  height: 31.25rem;
+  border-radius: 0.9375rem;
   justify-content: center;
   align-content: center;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  /* Estilo "Glassmorphism" */
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem; /* Cantos mais arredondados */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  position: relative;
+  overflow: hidden; /* Garante que o ícone não vaze */
 }
 
 .retangulos-internos-encerramento {
   display: flex;
   align-items: center;
   grid-area: retangulos-internos-encerramento;
-  gap:30px;
+  gap: 1.875rem; /* 30px / 16 */
 }
 
 .retangulo-esquerda {
-  width: 250px;
-  height: 370px;
-  border: 1px solid white;
-  border-radius: 15px;
+  width: 15.625rem; /* 250px / 16 */
+  height: 23.125rem; /* 370px / 16 */
+  border-radius: 0.9375rem; /* 15px / 16 */
   object-fit: cover;
-  margin-left:100px;
+  margin-left: 6.25rem; /* 100px / 16 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
 }
 
 .retangulo-centro {
-  width: 250px;
-  height: 170px;
-  border: 1px solid white;
-  border-radius: 15px;
+  width: 15.625rem; /* 250px / 16 */
+  height: 10.625rem; /* 170px / 16 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+  border-radius: 1rem;
 }
 
 .texto-direita-botao {
-  display:flex;
+  display: flex;
   grid-area: texto-direita-botao;
   flex-direction: column;
   justify-self: center;
   align-self: center;
   width: auto;
-  height: 250px;
-  margin-left:60px;
+  height: 15.625rem; /* 250px / 16 */
+  margin-left: 3.75rem; /* 60px / 16 */
 }
 
 .texto-direita-botao h2 {
   color: white;
-  font-size: 40px;
-  width: 500px;
+  font-size: 2.5rem; /* 40px / 16 */
+  width: 31.25rem; /* 500px / 16 */
   font-weight: 400;
 }
 
 .butao-encerramento {
-  margin-top: 10px;
-  width: 350px;
-  height: 60px;
-  border-radius: 15px;
-  text-decoration: none;
-  background: linear-gradient(to right, #2a2829, #000000);
-  font-size: 30px;
+  font-size: 1rem;
+  font-weight: 600;
   color: white;
-  border: 1px solid white;
-  transition: 0.5s ease;
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.butao-encerramento:hover{
-  transform: translateY(15px);
-  border:none;
+.butao-encerramento:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: scale(1.05);
 }
 
 .icone-inferior-direita {
-  width: 200px;
-  margin-right:45px;
+  width: 12.5rem; /* 200px / 16 */
+  margin-right: 2.8125rem; /* 45px / 16 */
   object-fit: cover;
   grid-area: icone-inferior-direita;
   align-self: flex-end;
-  justify-self: end; 
+  justify-self: end;
 }
 
-@media (min-width: 1366px) and (max-width: 1599px) {
+@media (max-width: 1366px) {
+  /* A escala base para esta tela é 90% (1rem = 14.4px) */
 
-#Encerramento{
-  margin-top: 100px;
+  .retangulo-encerramento {
+    /* Limita a largura para garantir que o padding do #Encerramento apareça */
+    max-width: 75rem;
+  }
+
+  .retangulos-internos-encerramento {
+    gap: 1rem;
+  }
+
+  /* Redução das imagens internas */
+  .retangulo-esquerda {
+    width: 14rem;
+    height: 20rem;
+    margin-left: 4rem;
+  }
+
+  .retangulo-centro {
+    width: 14rem;
+    height: 9rem;
+  }
+
+  .texto-direita-botao h2 {
+    font-size: 2rem;
+    width: 28rem;
+  }
+
+  .butao-encerramento {
+    width: 18rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .icone-inferior-direita {
+    width: 10rem;
+    margin-right: 1.5rem;
+  }
 }
 
-.retangulo-encerramento{
-  width:1100px;
-  height:450px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 2fr;
-  grid-template-areas: "retangulos-internos-encerramento texto-direita-botao "
-                          "retangulos-internos-encerramento icone-inferior-direita  ";
+@media (min-width: 1440px) {
+  /* A escala base para esta tela é 106.25% (1rem = 17px) */
+
+  .retangulo-encerramento {
+    max-width: 80rem;
+  }
+
+  /* Ajustes nas imagens */
+  .retangulo-esquerda {
+    margin-left: 10rem;
+  }
+
+  .texto-direita-botao h2 {
+    font-size: 2.25rem;
+    width: 30rem;
+  }
+
+  .icone-inferior-direita {
+    margin-right: 7rem;
+  }
 }
 
-.retangulo-esquerda{
-  width:230px;
-  height:350px;
-  margin-left:30px;
- 
+@media (min-width: 1920px) {
+  /* A escala base para esta tela é 112.5% (1rem = 18px) */
+
+  .retangulo-encerramento {
+    max-width: 90rem;
+  }
+
+  /* Aumenta o tamanho das imagens internas */
+  .retangulo-esquerda {
+    width: 16rem;
+    height: 25rem;
+    margin-left: 4rem;
+  }
+
+  .retangulo-centro {
+    width: 18rem;
+    height: 12rem;
+  }
+
+  .texto-direita-botao h2 {
+    font-size: 2.75rem;
+    width: 35rem;
+  }
+
+  .butao-encerramento {
+    width: 25rem;
+    height: 4rem;
+    font-size: 2rem;
+  }
 }
 
-.texto-direita-botao{
-  margin-top:130px;
-  gap:5px;
-  height:auto;
+@media (min-width: 2560px) {
+  /* A escala base para esta tela é 137.5% (1rem = 22px) */
 
+  .retangulo-encerramento {
+    max-width: 560rem;
+    height: 40rem;
+  }
+
+  /* Aumenta o tamanho das imagens internas */
+  .retangulo-esquerda {
+    width: 22rem;
+    height: 30rem;
+    margin-left: 1rem;
+  }
+
+  .retangulo-centro {
+    width: 22rem;
+    height: 15rem;
+  }
+
+  .texto-direita-botao h2 {
+    font-size: 3.5rem;
+    width: 40rem;
+  }
+
+  .butao-encerramento {
+    width: 30rem;
+    height: 5rem;
+    font-size: 2.5rem;
+  }
+
+  .icone-inferior-direita {
+    width: 15rem;
+    margin-right: 4rem;
+  }
 }
 
-.butao-encerramento{
-  margin:0;
-}
+@media (min-width: 3840px) {
+  /* A escala base para esta tela é 187.5% (1rem = 30px) */
 
-.retangulo-centro{
-  width:200px;
-  height:150px;
-}
+  .retangulo-encerramento {
+    max-width: 120rem;
+    height: 50rem;
+  }
 
-.texto-direita-botao h2{
-  font-size:35px;
-}
+  /* Aumenta o tamanho das imagens internas */
+  .retangulo-esquerda {
+    width: 30rem;
+    height: 40rem;
+    margin-left: 10rem;
+  }
 
-.butao-encerramento{
-  width: 300px;
-  height: 50px;
-}
+  .retangulo-centro {
+    width: 30rem;
+    height: 20rem;
+  }
 
-.icone-inferior-direita{
-  margin:0;
-  height:165px;
-}
+  .texto-direita-botao h2 {
+    font-size: 5rem;
+    width: 50rem;
+  }
 
+  .butao-encerramento {
+    width: 40rem;
+    height: 6rem;
+    font-size: 3rem;
+  }
 
-}
-
-@media (min-width:1600px){
-  .Encerramento{
-    margin:0;
+  .icone-inferior-direita {
+    width: 20rem;
+    margin-right: 5rem;
   }
 }

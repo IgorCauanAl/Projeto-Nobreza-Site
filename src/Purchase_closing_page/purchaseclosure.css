@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* REGRAS BASE E RESET */
 * {
   margin: 0;
   padding: 0;
@@ -9,103 +10,397 @@
   color: white;
 }
 
+h1,
+h2,
+h3 {
+  /* Define a fonte Montserrat como padrão para a maioria dos textos, exceto logo */
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ESTRUTURA GLOBAL E FUNDO */
+main {
+  min-height: 70.625rem; /* 1130px */
+  background: linear-gradient(to bottom, #2a2829, #000000);
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 3rem;
+}
+
+/* CONTÊINER PRINCIPAL (Flex Row) */
 #container {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 1.25rem; /* 20px */
 }
 
-h2 {
-  margin: 10px 0 10px 20px;
-}
-
-main {
-  background: linear-gradient(to bottom, #2a2829, #000000);
-  height: 1130px;
-}
+/* ------------------------------------- */
+/* COLUNA DA ESQUERDA: INFORMAÇÕES (480px) */
+/* ------------------------------------- */
 
 #rectangle-primary {
   display: flex;
   flex-direction: column;
-  width: 480px;
-  height: 950px;
-  border: 1px solid white;
-  margin-top: 120px;
+  width: 30rem; /* 480px */
+  height: auto;
+  border: 0.0625rem solid white; /* 1px */
+  margin-top: 7.5rem; /* 120px */
+  padding-bottom: 1.5rem;
 }
 
-#items-container {
-  margin-top: 100px;
+/* LOGO */
+.logo {
+  margin-top: -4.375rem; /* -70px */
+  padding-left: 1.875rem; /* 30px */
 }
 
+.logo h1 {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 2rem;
+}
+
+/* TÍTULO E AGRADECIMENTO NO TOPO */
 #title-top {
-  margin: 20px 0 0 30px;
-  gap: 5px;
+  margin: 0.7rem 0 0 1.875rem; /* 20px 0 0 30px */
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem; /* 5px */
 }
 
+/* GOOGLE MAP */
 #google-map {
-  width: 420px;
-  height: 230px;
+  width: 26.25rem; /* 420px */
+  height: 14.375rem; /* 230px */
   background: #d9d9d9;
-  margin: 10px 0 10px 30px;
+  margin: 0.625rem 0 0.625rem 1.875rem; /* 10px 0 10px 30px */
 }
 
+/* CONTÊINER DE TODAS AS INFORMAÇÕES DE COMPRA */
 #information-buy {
-  width: 420px;
-  height: 650px;
-  border: 1px solid white;
+  width: 26.25rem; /* 420px */
+  height: auto;
+  border: 0.0625rem solid white; /* 1px */
   background: linear-gradient(to bottom, #2a2829, #000000);
-  margin: 10px 0 10px 30px;
-  padding: 10px;
+  margin: 0.625rem 0 0.625rem 1.875rem; /* 10px 0 10px 30px */
+  padding: 0.625rem; /* 10px */
 }
 
-#contact {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 10px 0 0 20px;
+/* TÍTULO PRINCIPAL DENTRO DE #information-buy */
+#information-buy h2 {
+  font-size: 1.25rem; /* 20px */
+  margin: 0.625rem 0 0.625rem 1.25rem; /* 10px 0 10px 20px */
 }
 
-#delivery {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 10px 0 0 20px;
-}
-
-#freightt {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 10px 0 0 20px;
-}
-
-#payment {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 10px 0 0 20px;
-}
-
+/* ESTILOS REPETITIVOS PARA OS BLOCOS DE INFORMAÇÃO */
+#contact,
+#delivery,
+#freightt,
+#payment,
 #another-address {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin: 10px 0 0 20px;
+  gap: 0.3125rem; /* 5px */
+  margin: 0.625rem 0 1rem 1.25rem; /* 10px 0 16px 20px */
+  padding-bottom: 0.625rem; /* 10px */
+  border-bottom: 0.0625rem dashed #555; /* 1px */
 }
 
+/* Remove a linha da última seção */
+#another-address {
+  border-bottom: none;
+}
+
+/* Títulos secundários dentro das informações */
+#information-buy h3 {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  margin: 0;
+}
+
+#information-buy p {
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.3;
+  margin: 0;
+  color: #ccc;
+}
+
+/* LINK COMPLEMENTAR */
 #complementt {
-  margin: 10px 0 10px 30px;
+  display: block;
+  margin: 0.625rem 0 0.625rem 1.875rem; /* 10px 0 10px 30px */
+  color: #007bff;
+  transition: color 0.3s;
 }
 
-.logo {
-  margin-top: -70px;
+#complementt:hover {
+  color: #fff;
 }
 
+/* ------------------------------------- */
+/* COLUNA DA DIREITA: ITENS E TOTAL (420px) */
+/* ------------------------------------- */
+#items-container {
+  margin-top: 6.25rem; /* 100px */
+  width: 26.25rem; /* 420px */
+}
 
+/* CONTÊINER DOS ITENS (primary-rectangle na coluna direita) */
+#primary-rectangle-items {
+  /* Renomeei para evitar conflito com #rectangle-primary */
+  width: 100%;
+  min-height: 25rem;
+  border: 0.0625rem solid white;
+  background: #1a1a1a;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* No seu HTML, use o ID 'primary-rectangle' aqui, ou mude o ID no HTML para 'primary-rectangle-items' e use a regra acima. */
+/* Se você mantiver o ID '#primary-rectangle' no HTML da direita, use as regras abaixo: */
+#items-container #primary-rectangle {
+  width: 100%;
+  min-height: 25rem;
+  border: 0.0625rem solid white;
+  background: #1a1a1a;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.4em; /* Zera a margem top herdada de #rectangle-primary */
+}
 
-@media (min-width: 1600px) {
- 
-  main {
-    min-height: 1100px;
+/* ESTILO PARA CADA ITEM DO PEDIDO (A ser injetado pelo JS) */
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 0.0625rem solid #333; /* 1px */
+}
+
+/* IMAGEM DO PRODUTO */
+.order-item-img {
+  width: 5rem; /* 80px */
+  height: 6.25rem; /* 100px */
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #555;
+}
+
+/* DETALHES DO PRODUTO (NOME, QUANTIDADE) */
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: white;
+}
+
+.item-details p {
+  font-size: 0.875rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* PREÇO FINAL DO ITEM (ALINHAMENTO À DIREITA) */
+.item-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff7f; /* Destaque verde */
+}
+
+/* CONTÊINER GERAL DO RESUMO TOTAL */
+#total-container {
+  width: 100%;
+  margin: 1.7rem;
+  padding: 1rem;
+  border: 0.0625rem solid white;
+  background: #1a1a1a;
+}
+
+/* ESTILO PARA A ÁREA DE RESUMO */
+#total {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem; /* 10px */
+  font-size: 1.125rem;
+}
+
+/* Linha do valor total (destacada) */
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9375rem;
+}
+
+/* Linha do valor total (destacada) */
+.total-line.final {
+  border-top: 0.0625rem solid #555;
+  padding-top: 0.625rem;
+  margin-top: 0.625rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.total-line.final .value {
+  color: #00ff7f;
+}
+
+@media (min-width: 1440px) {
+  /* Fator de escala: 106.25% (1rem = 17px) */
+  html {
+    font-size: 106.25%;
+  }
+
+  #container {
+    max-width: 85rem;
+  }
+
+  /* Coluna Esquerda */
+  #rectangle-primary {
+    width: 35rem;
+  }
+  /* Coluna Direita */
+  #items-container {
+    width: 30rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Fator de escala: 112.5% (1rem = 18px) */
+  html {
+    font-size: 112.5%;
+  }
+
+  #container {
+    max-width: 100rem;
+    gap: 2rem;
+  }
+
+  /* Coluna Esquerda */
+  #rectangle-primary {
+    width: 40rem;
+  }
+  /* Coluna Direita */
+  #items-container {
+    width: 32rem;
+  }
+
+  /* Ajusta elementos internos da Coluna Esquerda (para a largura de 40rem) */
+  #google-map,
+  #information-buy {
+    width: 36rem;
+    margin-left: 2rem;
+  }
+
+  /* Aumenta a fonte dos títulos */
+  #information-buy h2 {
+    font-size: 1.4rem;
+  }
+
+  .order-item-img {
+    width: 6rem;
+    height: 7.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  /* Fator de escala: 137.5% (1rem = 22px) */
+  html {
+    font-size: 137.5%;
+  }
+
+  #container {
+    max-width: 120rem;
+    gap: 3rem;
+  }
+
+  /* Coluna Esquerda */
+  #rectangle-primary {
+    width: 50rem;
+  }
+  /* Coluna Direita */
+  #items-container {
+    width: 40rem;
+  }
+
+  /* Ajusta elementos internos da Coluna Esquerda (para a largura de 50rem) */
+  #google-map,
+  #information-buy {
+    width: 45rem;
+    margin-left: 2.5rem;
+  }
+
+  /* Aumenta a fonte dos títulos */
+  #information-buy h2 {
+    font-size: 1.8rem;
+  }
+
+  .item-details h4 {
+    font-size: 1.2rem;
+  }
+
+  .order-item-img {
+    width: 7rem;
+    height: 9rem;
+  }
+}
+
+@media (min-width: 3840px) {
+  /* Fator de escala: 187.5% (1rem = 30px) */
+  html {
+    font-size: 187.5%;
+  }
+
+  #container {
+    max-width: 160rem;
+    gap: 4rem;
+  }
+
+  /* Coluna Esquerda */
+  #rectangle-primary {
+    width: 65rem;
+    margin-top: 10rem;
+  }
+  /* Coluna Direita */
+  #items-container {
+    width: 50rem;
+    margin-top: 8rem;
+  }
+
+  /* Ajusta elementos internos da Coluna Esquerda (para a largura de 65rem) */
+  #google-map,
+  #information-buy {
+    width: 60rem;
+    margin-left: 3rem;
+  }
+
+  #google-map {
+    height: 20rem;
+  }
+
+  /* Aumenta a fonte dos títulos */
+  .logo h1 {
+    font-size: 3rem;
+  }
+
+  #information-buy h2 {
+    font-size: 2.5rem;
+  }
+
+  .total-line {
+    font-size: 1.25rem;
+  }
+
+  .total-line.final {
+    font-size: 1.5rem;
+  }
+
+  .order-item-img {
+    width: 8rem;
+    height: 10rem;
   }
 }

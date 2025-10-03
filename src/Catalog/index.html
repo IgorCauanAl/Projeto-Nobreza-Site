@@ -4,18 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catalogo</title>
-    <link rel="stylesheet" href="catalog.css" />
-    <link rel="stylesheet" href="insert-information.css" />
-    <link rel="stylesheet" href="../page-principal-ecommerce/footer.css" />
-    <link rel="stylesheet" href="filter.css" />
-    <link rel="stylesheet" href="sort.css" />
-    <link rel="stylesheet" href="../page-principal-ecommerce/alertcart.css">
     <link
       rel="stylesheet"
-      href="../page-principal-ecommerce/menuMainPage.CSS"
+      href="../page-principal-ecommerce/Insert-information.css"
     />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="minicart.css" />
+    <link
+      rel="stylesheet"
+      href="../page-principal-ecommerce/Page-Principal.CSS"
+    />
+    <link rel="stylesheet" href="../page-principal-ecommerce/Footer.css" />
+
+    <link rel="stylesheet" href="Catalog.css" />
   </head>
   <body>
     <!--Menu-->
@@ -81,7 +80,6 @@
               alt=""
             />
 
-            
             <div id="container-column">
               <div class="column one-products">
                 <h2>Ternos</h2>
@@ -106,14 +104,18 @@
 
               <div class="column four-products">
                 <h2>Relógios</h2>
-                <a href="../Catalog/index.html?categories=relogioClassico"><p>Classicos</p></a>
+                <a href="../Catalog/index.html?categories=relogioClassico"
+                  ><p>Classicos</p></a
+                >
                 <p>Esportivos</p>
                 <p>Automáticos</p>
               </div>
 
               <div class="column five-products">
                 <h2>Sapatos</h2>
-                <a href="../Catalog/index.html?categories=sapatosOxFord"><p>Oxford</p></a>
+                <a href="../Catalog/index.html?categories=sapatosOxFord"
+                  ><p>Oxford</p></a
+                >
                 <p>Derby</p>
                 <p>Loafers</p>
                 <p>BotasElegantes</p>
@@ -177,7 +179,7 @@
         </nav>
 
         <div id="text-title">
-          <h2></h2>
+          <h2>Roupas</h2>
         </div>
 
         <div id="bar-result-container">
@@ -195,95 +197,86 @@
       </section>
     </header>
 
-    <main>
-      <div id="catalog-container-grid">
-        <!--Images-->
+   <main>
+   
+    <div id="catalog-container-grid">
         <div id="catalog">
+          
           <div class="conjugate one">
-            <img />
-            <div class="elemento-sobreposto"></div>
-            <div class="text-elements"></div>
+            <img src="../fotos/shop_principal/Maisprocurados.jpg" alt="Descrição do Produto 1" />
+            <div class="product-info">
+                <h3>Nome do Produto 1</h3>
+                <p class="price">R$ 199,90</p>
+                <button class="buy-button">Comprar Agora</button>
+            </div>
           </div>
-
           <div class="conjugate two">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate three">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate four">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate five">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate six">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate seven">
-            <img />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  />
             <div class="text-elements"></div>
           </div>
 
           <div class="conjugate eight">
-            <img class="" src="" alt="" />
+            <img src=../fotos/shop_principal/Maisprocurados.jpg  alt="" />
             <div class="text-elements"></div>
           </div>
-          <!--Encerramento-->
-        </div>
+          </div>
       </div>
 
-      <!--Quantidade de roupas-->
       <div id="result-container">
         <div id="result">
-          <p>8 produtos de 100</p>
+          <p>8 produtos de 100</p> 
           <button class="button">Ver mais produtos</button>
         </div>
       </div>
-      <!--Encerramento-->
+      </main>
+     
 
       <!--Barra para colocar o email e o nome-->
-      <section id="information-closing">
-        <div id="insert-email">
-          <div id="container-information">
-            <div id="column1">
-              <h2>Nobreza</h2>
-              <p>Receba nossas novidades através do email!</p>
-            </div>
 
-            <div id="column2">
-              <input id="text-bar " type="name" placeholder="Nome" />
-              <div id="line-column"></div>
-            </div>
-
-            <div id="column 3">
-              <input type="email-bar" type="email" placeholder="E-mail" />
-              <div id="line-column"></div>
-            </div>
-
-            <button id="button-closing">Enviar</button>
+       <section id="insert-email">
+        <div class="newsletter-container">
+          <div class="newsletter-info">
+            <h2>Nobreza</h2>
+            <p>Receba nossas novidades através do email!</p>
           </div>
+
+          <form class="newsletter-form">
+            <input type="text" placeholder="Seu nome" aria-label="Seu nome" />
+            <input
+              type="email"
+              placeholder="Seu e-mail"
+              aria-label="Seu e-mail"
+            />
+            <button type="submit">Enviar</button>
+          </form>
         </div>
       </section>
       <!--Encerramento-->
-
-     <!--Mensagem de verificação se tem itens no carrinho-->
-     <div id="custom-alert" class="hidden">
-        <div class="alert-content">
-         <p id="alert-message"></p>
-          <button id="alert-ok">OK</button>
-        </div>
-      </div>
 
     </main>
 
@@ -419,11 +412,5 @@
     </div>
     <!--Encerramento-->
   </body>
-  <script src="Catalog.js"></script>
-  <script src="main.js"></script>
-  <script src="sort.js"></script>
-  <script src="menu.js"></script>
-  <script src="carmarket.js"></script>
-  <script src="filter.js"></script>
-  <script src="minicart.js"></script>
+  <script src="../page-principal-ecommerce/JS/page-principal.js"></script>
 </html>
