@@ -1,0 +1,303 @@
+/* --- ESTRUTURA GERAL DO RODAPÉ --- */
+#footer {
+  width: 100%;
+  height: 31.25rem; /* 500px / 16 */
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    to right,
+    #161616,
+    #000
+  ); /* cinza à esquerda, preto à direita */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* sombra suave */
+
+  /* 2. FONTE PRINCIPAL ALTERADA */
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 11.875rem 7.5rem 0 7.5rem; /* 190px 120px 0 120px */
+}
+
+.logo-footer {
+  margin-top: -3.125rem; /* -50px / 16 */
+  width: 9.375rem; /* 150px / 16 */
+  height: 3.125rem; /* 50px / 16 */
+  background: linear-gradient(to right, #ffffff 50%, #544f51);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Berkshire Swash", serif;
+}
+
+.logo-footer h2 {
+  font-size: 2.1875rem; /* 35px / 16 */
+}
+
+.footer-linha-um {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px / 16 */
+}
+
+/* --- 3. BOTÃO ALTERADO --- */
+.butao-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10.625rem; /* 170px / 16 */
+  height: 2.8rem;
+  color: white;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  /* Estilo Modernizado */
+  background: transparent;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.butao-footer:hover {
+  transform: scale(1.05);
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.WhatsApp,
+.Facebook,
+.Instagram {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.WhatsApp img,
+.Facebook img,
+.Instagram img {
+  width: 1.875rem; /* 30px / 16 */
+  height: 1.875rem; /* 30px / 16 */
+}
+
+.WhatsApp,
+.Facebook,
+.Instagram {
+  margin-top: 0.625rem; /* 10px / 16 */
+}
+
+.footer-linha-tres {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem; /* 10px / 16 */
+}
+
+.footer-linha-tres a {
+  color: white;
+}
+
+.textos-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem; /* 10px / 16 */
+}
+
+.texto-fale-com-nos {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.fale-com-nos img {
+  margin-right: 0.3125rem; /* 5px / 16 */
+}
+
+.Endereco {
+  margin-top: 1.25rem; /* 20px / 16 */
+}
+
+.texto-endereco {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.Endereco img {
+  margin-right: 0.3125rem; /* 5px / 16 */
+}
+
+.Formas-de-pagamento {
+  margin-top: 1.25rem; /* 20px / 16 */
+}
+
+.imagens-pagamentos {
+  display: flex;
+  width: 12.5rem; /* 200px / 16 */
+  flex-wrap: wrap;
+  gap: 0.625rem; /* 10px / 16 */
+}
+
+.imagens-pagamentos img {
+  width: 2.5rem; /* 40px / 16 */
+  height: 2.1875rem; /* 35px / 16 */
+  object-fit: contain;
+}
+
+.footer-bottom {
+  margin: auto 0 0.9375rem 0; /* 15px / 16 */
+  height: 3.125rem; /* 50px / 16 */
+}
+
+.linha-footer {
+  margin: 0 7.5rem 0 7.5rem; /* 120px / 16 */
+  width: 69.125rem; /* 1106px / 16 */
+  color: white;
+  border: 0.0625rem solid white; /* 1px / 16 */
+}
+
+.texto-footer-bottom {
+  display: flex;
+  margin: 0.625rem 7.5rem 0 7.5rem; /* 10px 120px 0 120px */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.texto-privacidade {
+  margin-right: 9.375rem; /* 150px / 16 */
+}
+.texto-footer-bottom a {
+  color: white;
+}
+
+.nome-desenvolvedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3125rem; /* 5px / 16 */
+}
+
+.nome-desenvolvedor img {
+  width: 1.875rem; /* 30px / 16 */
+  height: 1.875rem; /* 30px / 16 */
+}
+
+/* O restante do seu código de Media Queries permanece o mesmo */
+@media (max-width: 1366px) {
+  #footer {
+    height: 30rem;
+    padding: 0 1rem;
+  }
+  .footer-container {
+    margin-top: 8rem;
+    max-width: 70rem;
+  }
+  .logo-footer {
+    font-size: 1rem;
+  }
+  .butao-footer {
+    width: 9rem;
+    height: 2.2rem;
+    font-size: 0.8rem;
+  }
+  .texto-privacidade {
+    margin-right: 5rem;
+  }
+  .linha-footer,
+  .texto-footer-bottom {
+    max-width: 70rem;
+  }
+}
+@media (min-width: 1440px) {
+  #footer {
+    height: 35rem;
+  }
+  .footer-container {
+    margin-top: 10rem;
+    max-width: 75rem;
+  }
+  .logo-footer {
+    font-size: 1.375rem;
+  }
+  .butao-footer {
+    width: 12rem;
+    height: 2.75rem;
+    font-size: 1rem;
+  }
+  .linha-footer,
+  .texto-footer-bottom {
+    max-width: 75rem;
+  }
+}
+@media (min-width: 1920px) {
+  #footer {
+    height: 38rem;
+  }
+  .footer-container {
+    margin-top: 12rem;
+    max-width: 90rem;
+  }
+  .logo-footer {
+    font-size: 1.5rem;
+  }
+  .butao-footer {
+    width: 13rem;
+    height: 3rem;
+    font-size: 1.1rem;
+  }
+  .linha-footer,
+  .texto-footer-bottom {
+    max-width: 90rem;
+  }
+}
+@media (min-width: 2560px) {
+  #footer {
+    height: 45rem;
+  }
+  .footer-container {
+    margin-top: 15rem;
+    max-width: 110rem;
+  }
+  .logo-footer {
+    font-size: 1.8rem;
+  }
+  .butao-footer {
+    width: 16rem;
+    height: 4rem;
+    font-size: 1.4rem;
+  }
+  .linha-footer,
+  .texto-footer-bottom {
+    max-width: 110rem;
+  }
+}
+@media (min-width: 3840px) {
+  #footer {
+    height: 60rem;
+    padding: 0 4rem;
+  }
+  .footer-container {
+    margin-top: 20rem;
+    max-width: 140rem;
+  }
+  .logo-footer {
+    font-size: 2.5rem;
+  }
+  .butao-footer {
+    width: 20rem;
+    height: 5rem;
+    font-size: 1.8rem;
+  }
+  .linha-footer,
+  .texto-footer-bottom {
+    max-width: 140rem;
+  }
+  .texto-privacidade {
+    font-size: 1.25rem;
+  }
+}

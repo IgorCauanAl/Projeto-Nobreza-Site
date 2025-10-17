@@ -20,7 +20,7 @@ html {
   flex-direction: column;
   align-items: flex-end;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(42, 40, 41, 0.9)),
-    url(../fotos/login/login1620.webp);
+    url(../../Back-End/nobreza-loja/nobreza-loja/src/main/resources/static/img/login1620.webp);
   background-size: cover;
   width: 100%;
   min-height: 100vh;

@@ -1,0 +1,569 @@
+/* ESTRUTURA PRINCIPAL DA PÁGINA */
+#title {
+  width: 100%;
+  padding-top: 1.5rem; /* Espaço no topo para o breadcrumb */
+  background-color: #222; /* Fundo escuro */
+  color: white;
+  margin-top: 5em;
+}
+
+/* BREADCRUMB (Navegação hierárquica) */
+#breadcrumb {
+  width: 80%; /* Define uma largura para centralizar */
+  max-width: 75rem; /* 1200px */
+  margin: 0 auto; /* Centraliza */
+  display: flex;
+  justify-content: center;
+}
+
+#breadcrumb ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+#breadcrumb ol li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+#breadcrumb ol li a:hover {
+  color: white;
+}
+
+/* Adiciona o separador ">" entre os itens */
+#breadcrumb ol li:not(:last-child)::after {
+  content: " > ";
+  color: #666;
+  margin: 0 0.5rem;
+}
+
+/* TÍTULO PRINCIPAL */
+#text-title {
+  width: 80%;
+  max-width: 75rem;
+  margin: 1.25rem auto;
+  padding-bottom: 1.5rem; /* Adiciona espaço abaixo do título */
+  display: flex;
+  justify-content: center;
+}
+
+#text-title h2 {
+  /* Estilo do título da imagem (Roupas) */
+  font-family: "Roboto", serif;
+  font-size: 3.5rem; /* Tamanho grande */
+  font-weight: 700; /* Mais espesso */
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+/* BARRA DE RESULTADOS E FILTROS */
+#bar-result-container {
+  border-top: 0.0625rem solid #444;
+  width: 100%;
+  margin-top: 0; /* Encosta na seção de título */
+  background-color: #333;
+}
+
+#bar-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinha "Filtrar" e "Contagem" à esquerda */
+  width: 80%;
+  max-width: 75rem;
+  margin: 0 auto; /* Centraliza */
+  height: 3.75rem;
+  font-size: 1rem;
+}
+
+/* Estilo para os textos de "Filtrar" e "Ordenar por" */
+#bar-result p {
+  margin: 0;
+}
+
+#filter {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+#filter:hover {
+  background-color: #444;
+}
+
+/* Espaço entre "Filtrar" e "Contagem de Produtos" */
+#bar-result > p:nth-child(3) {
+  padding-left: 2rem;
+}
+
+#ordination {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+  margin-left: auto; /* Empurra para a extremidade direita */
+}
+
+#ordination:hover {
+  background-color: #444;
+}
+
+/* Opcional: Contêineres de dropdown (ocultos por padrão) */
+#filter-container,
+#ordination-container {
+  display: none;
+}
+
+/* ESTRUTURA DO CATÁLOGO (GRID) */
+#catalog-container-grid {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.5rem; /* Espaço entre a barra e o catálogo */
+}
+
+#catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; /* 24px de espaçamento entre os produtos */
+  max-width: 75rem;
+}
+
+.conjugate {
+  position: relative; /* CRUCIAL: Contexto para o .product-info ser absoluto */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.conjugate img {
+  width: 100%;
+  height: 100%;
+  min-height: 18.75rem; /* Altura mínima para o cartão */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.conjugate:hover img {
+  transform: scale(1.05); /* Efeito sutil de zoom */
+}
+
+/* Overlay sutil na imagem no hover */
+.conjugate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.conjugate:hover::after {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* INFORMAÇÕES DO PRODUTO (SOBRE A IMAGEM) */
+.product-info {
+  /* Posicionamento e Fundo */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem;
+
+  /* Overlay semi-transparente para legibilidade */
+  background-color: #444;
+
+  text-align: center;
+  color: white;
+
+  /* Esconde por padrão (slide-up effect) */
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.conjugate:hover .product-info {
+  transform: translateY(
+    0
+  ); /* Revela o container de informações ao passar o mouse */
+}
+
+.product-info h3 {
+  font-size: 1.125rem;
+  margin: 0 0 0.3rem 0;
+  font-weight: 500;
+}
+
+.product-info .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #00ff7f; /* Cor de destaque para o preço */
+  margin: 0 0 0.75rem 0;
+}
+
+.buy-button {
+  background: linear-gradient(to right, #2a2829, #000000);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  width: 90%;
+  margin-bottom: 0;
+}
+
+.buy-button:hover {
+  background: linear-gradient(to left, #2a2829, #000000);
+  transform: translateY(0.5em);
+}
+
+/* RESULT CONTAINER */
+#result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%; /* Ocupa a maior parte da largura */
+  max-width: 75rem; /* Respeita a largura máxima do conteúdo */
+  margin: 2rem auto; /* Centraliza e adiciona espaçamento */
+  padding: 3rem; /* Espaçamento interno generoso */
+
+  /* Estilo "Glassmorphism" sutil */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem; /* Cantos arredondados */
+
+  /* Tipografia */
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Texto de contagem */
+#result p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+/* Botão "Ver mais produtos" */
+#result .button {
+  /* Estilo Moderno Padrão do Site */
+  background: linear-gradient(to right, #2a2829, #000000);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.9rem 2rem; /* Aumenta o padding para mais destaque */
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+#result .button:hover {
+  transform: scale(1.05);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1366px) {
+  /* Fator de escala: 90% (1rem = 14.4px) */
+  html {
+    font-size: 90%;
+  }
+
+  /* Redução do Breadcrumb/Título */
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
+    width: 90%; /* Aumenta a fluidez */
+  }
+
+  #text-title h2 {
+    font-size: 3rem;
+  }
+
+  /* Grid */
+  #catalog {
+    max-width: 65rem;
+    gap: 1rem; /* Reduz o espaçamento entre itens */
+  }
+
+  .conjugate img {
+    min-height: 16rem;
+  }
+
+  /* Barra de Resultados */
+  #bar-result {
+    height: 3rem;
+    font-size: 0.9rem;
+  }
+
+  /* Info do Produto */
+  .product-info h3 {
+    font-size: 1rem;
+  }
+
+  .product-info .price {
+    font-size: 1.1rem;
+  }
+
+  .buy-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  /* Fator de escala: 90% (1rem = 14.4px) */
+  html {
+    font-size: 90%;
+  }
+
+  /* Redução do Breadcrumb/Título */
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
+    width: 90%; /* Aumenta a fluidez */
+  }
+
+  #text-title h2 {
+    font-size: 3rem;
+  }
+
+  /* Grid */
+  #catalog {
+    max-width: 65rem;
+    gap: 1rem; /* Reduz o espaçamento entre itens */
+  }
+
+  .conjugate img {
+    min-height: 16rem;
+  }
+
+  /* Barra de Resultados */
+  #bar-result {
+    height: 3rem;
+    font-size: 0.9rem;
+  }
+
+  /* Info do Produto */
+  .product-info h3 {
+    font-size: 1rem;
+  }
+
+  .product-info .price {
+    font-size: 1.1rem;
+  }
+
+  .buy-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  /* Fator de escala: 90% (1rem = 14.4px) */
+  html {
+    font-size: 90%;
+  }
+
+  /* Redução do Breadcrumb/Título */
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
+    width: 90%; /* Aumenta a fluidez */
+  }
+
+  #text-title h2 {
+    font-size: 3rem;
+  }
+
+  /* Grid */
+  #catalog {
+    max-width: 65rem;
+    gap: 1rem; /* Reduz o espaçamento entre itens */
+  }
+
+  .conjugate img {
+    min-height: 16rem;
+  }
+
+  /* Barra de Resultados */
+  #bar-result {
+    height: 3rem;
+    font-size: 0.9rem;
+  }
+
+  /* Info do Produto */
+  .product-info h3 {
+    font-size: 1rem;
+  }
+
+  .product-info .price {
+    font-size: 1.1rem;
+  }
+
+  .buy-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* Fator de escala: 106.25% (1rem = 17px) */
+  html {
+    font-size: 106.25%;
+  }
+
+  /* Aumenta a largura dos contêineres */
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 80rem;
+  }
+
+  #catalog {
+    max-width: 80rem;
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* Fator de escala: 112.5% (1rem = 18px) */
+  html {
+    font-size: 112.5%;
+  }
+
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 90rem;
+  }
+
+  #text-title h2 {
+    font-size: 4rem;
+  }
+
+  #bar-result {
+    height: 4.5rem;
+  }
+
+  #catalog {
+    max-width: 90rem;
+    gap: 2rem;
+  }
+
+  .conjugate img {
+    min-height: 22rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.25rem;
+  }
+
+  .product-info .price {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  /* Fator de escala: 137.5% (1rem = 22px) */
+  html {
+    font-size: 137.5%;
+  }
+
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 110rem;
+  }
+
+  #text-title h2 {
+    font-size: 5rem;
+  }
+
+  #bar-result {
+    height: 5.5rem;
+    font-size: 1.25rem;
+  }
+
+  #catalog {
+    max-width: 110rem;
+    gap: 2.5rem;
+  }
+
+  .conjugate img {
+    min-height: 28rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .product-info .price {
+    font-size: 1.75rem;
+  }
+
+  .buy-button {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+@media (min-width: 3840px) {
+  /* Fator de escala: 187.5% (1rem = 30px) */
+  html {
+    font-size: 187.5%;
+  }
+
+  #breadcrumb,
+  #text-title,
+  #bar-result {
+    max-width: 140rem;
+  }
+
+  #text-title h2 {
+    font-size: 7rem;
+  }
+
+  #bar-result {
+    height: 8rem;
+    font-size: 1.5rem;
+  }
+
+  #catalog {
+    max-width: 140rem;
+    gap: 3rem;
+  }
+
+  .conjugate img {
+    min-height: 40rem;
+  }
+
+  .product-info h3 {
+    font-size: 2rem;
+  }
+
+  .product-info .price {
+    font-size: 2.5rem;
+  }
+
+  .buy-button {
+    font-size: 1.4rem;
+    padding: 1rem 1.5rem;
+  }
+}

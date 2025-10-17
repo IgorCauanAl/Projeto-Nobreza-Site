@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Berkshire+Swash&display=swap");
+
+/* --- RESET BÁSICO E TEMA ESCURO GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif; /* Fonte principal do site */
+  background-color: #000000; /* Fundo preto */
+  color: #ffffff; /* Texto branco */
+  line-height: 1.6;
+}
+
+.dashboard-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 6rem auto;
+  min-height: 80vh; /* Altura mínima */
+
+  /* Estilo Glassmorphism principal */
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  overflow: hidden;
+}
+
+/* --- BARRA LATERAL --- */
+.sidebar {
+  flex: 0 0 260px;
+  background-color: rgba(255, 255, 255, 0.03); /* Fundo sutil para a barra */
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.user-profile h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav li a i {
+  width: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.sidebar-nav li a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  border-left-color: #ffffff;
+}
+
+.nav-link-logout {
+  color: #ff4d4d !important;
+}
+.nav-link-logout:hover {
+  background-color: rgba(255, 77, 77, 0.1) !important;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+}
+
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 1rem;
+}
+
+/* --- FORMULÁRIOS --- */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+.password-form {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 50px; /* Bordas arredondadas */
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+
+  /* Estilo Glassmorphism para inputs */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+  background: linear-gradient(to right, #2a2829, #000000);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.9rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.btn:hover {
+  transform: scale(1.05);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.address-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.edit-link {
+  font-weight: 600;
+  color: white;
+  opacity: 0.8;
+}
+.edit-link:hover {
+  opacity: 1;
+}
+
+.painel-icon-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 6rem;
+  border-radius: 15rem;
+  background: linear-gradient(
+    to right,
+    #161616,
+    #000
+  ); /* cinza à esquerda, preto à direita */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* sombra suave */
+}
+
+.painel-icon-container img {
+  width: 30rem;
+  height: 35rem;
+}

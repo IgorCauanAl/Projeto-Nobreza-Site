@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/Page-Principal.CSS}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/Categories.css}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/MostWanted.css}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/News.css}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/Coupon.css}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/Footer.css}" />
+    <link rel="stylesheet" th:href="@{../css/page_principal/Insert-information.css}" />
+    <title>Página Principal Nobreza</title>
+</head>
+<body>
+<header>
+    <section id="main-menu">
+        <div id="menu-container">
+            <div id="nav-bar">
+                <div id="logo">
+                    <h1>Nobreza</h1>
+                </div>
+                <ul>
+                    <li><a th:href="@{/page_principal.html}">Inicio</a></li>
+                    <li id="products"><a href="">Produtos</a></li>
+                    <li><a href="#Categories">Categorias</a></li>
+                    <li><a href="#most-wanted">Mais Procurados</a></li>
+                    <li><a href="#news">Novidades</a></li>
+                    <li><a href="#before-closing">Cupom</a></li>
+                </ul>
+                <div id="left-elements">
+                    <div id="search">
+                        <p>Buscar</p>
+                        <img id="button-search" th:src="@{/img/icones/shop_principal/lupa.svg}" alt=""/>
+                    </div>
+                    <div id="circle-cart">
+                        <img th:src="@{/img/icones/shop_principal/cart.svg}" alt=""/>
+                        <div id="number-purchases"><p>0</p></div>
+                    </div>
+
+                    <div class="admin-circle" >
+                        <a><img th:src="@{/img/icones/shop_principal/adm.png}" alt="Admin"/></a>
+                    </div>
+
+                    <div class="login-circle">
+                        <a th:href="@{/login.html}"><img th:src="@{/img/icones/shop_principal/profile.svg}" alt=""/></a>
+                    </div>
+                    <div id="mini-cart" class="hidden">
+                        <button id="mini-cart-close" class="close-button">&times;</button>
+                        <div id="mini-cart-items"></div>
+                        <div id="mini-cart-footer">
+                            <p id="mini-cart-total">Total: R$0,00</p>
+                            <button id="mini-cart-checkout">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-products-hidden">
+            <div id="container-menu-products">
+                <img id="img-products" th:src="@{/img/shop_principal/photo-products-hidden.jpg}" alt=""/>
+                <div id="container-column">
+
+                    <div class="column one-products">
+                        <h2>Ternos</h2>
+                        <a th:href="@{/api/catalog/page(category='slimFit')}"><p>Slim Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='regularFit')}"><p>Regular Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='casamento')}"><p>Para Casamento</p></a>
+                        <a th:href="@{/api/catalog/page(category='executivo')}"><p>Executivo</p></a>
+                    </div>
+
+                    <div class="column two-products">
+                        <h2>Blazers</h2>
+                        <a th:href="@{/api/catalog/page(category='esportivos')}"><p>Esportivos</p></a>
+                        <a th:href="@{/api/catalog/page(category='formais')}"><p>Formais</p></a>
+                    </div>
+
+                    <div class="column three-products">
+                        <h2>Calças</h2>
+                        <a th:href="@{/api/catalog/page(category='socialSlimFit')}"><p>Social Slim Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='socialRegularFit')}"><p>Social Regular Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='casualElegante')}"><p>Casual Elegante</p></a>
+                    </div>
+
+                    <div class="column four-products">
+                        <h2>Relógios</h2>
+                        <a th:href="@{/api/catalog/page(category='classicos')}"><p>Clássicos</p></a>
+                        <a th:href="@{/api/catalog/page(category='esportivos')}"><p>Esportivos</p></a>
+                        <a th:href="@{/api/catalog/page(category='automaticos')}"><p>Automáticos</p></a>
+                    </div>
+
+                    <div class="column five-products">
+                        <h2>Sapatos</h2>
+                        <a th:href="@{/api/catalog/page(category='oxford')}"><p>Oxford</p></a>
+                        <a th:href="@{/api/catalog/page(category='derby')}"><p>Derby</p></a>
+                        <a th:href="@{/api/catalog/page(category='loafers')}"><p>Loafers</p></a>
+                        <a th:href="@{/api/catalog/page(category='botasElegantes')}"><p>Botas Elegantes</p></a>
+                    </div>
+
+                    <div class="column six-products">
+                        <h2>Gravatas</h2>
+                        <a th:href="@{/api/catalog/page(category='slim')}"><p>Slim</p></a>
+                        <a th:href="@{/api/catalog/page(category='tradicional')}"><p>Tradicional</p></a>
+                        <a th:href="@{/api/catalog/page(category='borboleta')}"><p>Borboleta</p></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="sub-search-hidden">
+            <div id="sub-search">
+                <div id="container-search">
+                    <form class="formulary-search" th:action="@{/search-back-end}" method="get">
+                        <input type="text" name="search" class="search-box" placeholder="O que você está buscando?" required aria-label="Campo Pesquisa"/>
+                        <div id="land">
+                            <button type="submit" class="button-search">
+                                <img th:src="@{/img/icones/shop_principal/lupa.svg}" alt=""/>
+                            </button>
+                        </div>
+                        <div id="close">
+                            <button class="button-search">
+                                <img th:src="@{/img/icones/shop_principal/close icon.svg}" alt=""/>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="banner">
+            <div class="arrow left-arrow" onclick="prevSlide()">
+                <img th:src="@{/img/icones/shop_principal/arrowleft.svg}" alt="Anterior"/>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" th:attr="data-image=@{../img/shop_principal/bannerprincipalshop.jpg}">
+                    <div class="main-text">
+                        <div class="secundary-text">
+                            <h2>NOVA COLEÇÃO</h2>
+                            <h3>Blazer Moderno</h3>
+                        </div>
+                        <a th:href="@{/Catalog/index.html}"><button class="button-start">Comprar</button></a>
+                    </div>
+                </div>
+                <div class="carousel-item" th:attr="data-image=@{/img/shop_principal/webp/banner2.webp}">
+                    <div class="main-text">
+                        <div class="secundary-text">
+                            <h2>LIQUIDAÇÃO</h2>
+                            <h3>Vestido Elegante</h3>
+                        </div>
+                        <a th:href="@{/Catalog/index.html}"><button class="button-start">Ver Ofertas</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow right-arrow" onclick="nextSlide()">
+                <img th:src="@{/img/icones/shop_principal/arrowright.svg}" alt="Próximo"/>
+            </div>
+        </div>
+
+        <div class="barra-informacoes">
+            <div class="info-item">
+                <h3>Pague em até 6x</h3>
+                <img th:src="@{/img/icones/shop_principal/money.svg}" alt=""/>
+            </div>
+            <div class="info-item">
+                <h3>Entrega em todo o país</h3>
+                <img th:src="@{/img/icones/shop_principal/entrega.svg}" alt=""/>
+            </div>
+            <div class="info-item">
+                <h3>Economize no PIX: desconto exclusivo!</h3>
+                <img th:src="@{/img/icones/shop_principal/pix.svg}" alt=""/>
+            </div>
+            <div class="info-item">
+                <h3>Seus dados são criptografados</h3>
+                <img th:src="@{/img/icones/shop_principal/seguranca.svg}" alt=""/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section id="Categories">
+        <div id="main-title">
+            <div class="rectangle right"></div>
+            <h2>CATEGORIAS</h2>
+            <div class="rectangle left"></div>
+        </div>
+        <div id="flex-images">
+            <div class="carrousel-image">
+                <img id="img1" th:src="@{/img/shop_principal/webp/categorias1.webp}" alt=""/>
+            </div>
+            <div class="carrousel-image">
+                <img id="img2" th:src="@{/img/shop_principal/Categorias.webp}" alt=""/>
+                <div id="element-over-image">
+                    <p id="type-of-clothes">Ternos</p>
+                    <a th:href="@{/Catalog/index.html}"><button class="button-categories">Coleções</button></a>
+                </div>
+            </div>
+            <div class="carrousel-image">
+                <img id="img3" th:src="@{/img/shop_principal/Categorias2.webp}" alt=""/>
+            </div>
+        </div>
+        <div class="elements-navigation">
+            <div class="little-ball"></div>
+            <div class="little-ball"></div>
+            <div class="little-ball"></div>
+        </div>
+        <div id="information-bar">
+            <div id="hugoboss"><h2>HUGOBOSS</h2></div>
+            <div id="zegna"><h2>ZEGNA</h2></div>
+            <div id="armani"><h2>ARMANI</h2></div>
+            <div id="rolex"><h2>ROLEX</h2></div>
+            <div id="timberland"><h2>TIMBERLAND</h2></div>
+            <div id="louie"><h2>LOUIE</h2></div>
+        </div>
+    </section>
+
+    <!-- Mais procurados -->
+    <section id="most-wanted">
+        <div id="center-title-mostwanted">
+            <h2>MAIS PROCURADOS</h2>
+        </div>
+        <div id="container-product">
+            <div class="product-item">
+                <div class="product one"></div>
+                <div class="title-mostwanted">
+                    <h2>Paletó Clássico Armani</h2>
+                    <p>R$1200</p>
+                    <button class="button-mostwanted">Comprar</button>
+                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product two"></div>
+                <div class="title-mostwanted">
+                    <h2>Sapato Social Louie</h2>
+                    <p>R$1100</p>
+                    <button class="button-mostwanted">Comprar</button>
+                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product three"></div>
+                <div class="title-mostwanted">
+                    <h2>Blazer Verde Listado Zegna</h2>
+                    <p>R$5400</p>
+                    <button class="button-mostwanted">Comprar</button>
+                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product four"></div>
+                <div class="title-mostwanted">
+                    <h2>Relógio Clássico Seiko</h2>
+                    <p>R$1900</p>
+                    <button class="button-mostwanted">Comprar</button>
+                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--News-->
+    <section id="news">
+        <div id="flex-title-news">
+            <div class="rectangle-title left-news"></div>
+            <div id="categories-title"><h2>NOVIDADES</h2></div>
+            <div class="rectangle-title right-news"></div>
+        </div>
+
+        <div id="news-grid">
+            <!--Container Foto-->
+            <div class="container-photos">
+                <div class="photo photo-one"></div>
+                <div class="description-news">
+                    <p>Paletó Classico Bege Armani</p>
+                    <p>R$1200</p>
+                    <button class="button-news">Comprar</button>
+                    <a
+                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
+                            target="_blank"
+                            class="whatsapp-link"
+                    >
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Container Fotos-->
+            <div class="container-photos">
+                <div class="catalog go-catalog">
+                    <div id="top-rectangle">
+                        <div id="text-top-rectangle">
+                            <p>Novidades com peças exclusivas todo mês na loja</p>
+                            <a href="../Catalog/index.html"
+                            ><button class="catalog-button">Ir ao catalogo</button></a
+                            >
+                        </div>
+                    </div>
+                    <img id="news-icon" th:src="@{/img/icones/shop_principal/Sun_Nov_17_2024_14_33_23_GM_19-0_-removebg-preview.png}" alt="Imagem" />
+
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Container Foto-->
+            <div class="container-photos">
+                <div class="photo photo-three"></div>
+
+                <div class="description-news">
+                    <p>Paletó Classico Bege Armani</p>
+                    <p>R$1200</p>
+                    <button class="button-news">Comprar</button>
+                    <a
+                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
+                            target="_blank"
+                            class="whatsapp-link"
+                    >
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Container Fotos-->
+            <div class="container-photos">
+                <div class="photo photo-four"></div>
+
+                <div class="description-news">
+                    <p>Paletó Classico Bege Armani</p>
+                    <p>R$1200</p>
+                    <button class="button-news">Comprar</button>
+                    <a
+                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
+                            target="_blank"
+                            class="whatsapp-link"
+                    >
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Container Fotos-->
+            <div class="container-photos">
+                <div class="photo photo-five"></div>
+
+                <div class="description-news">
+                    <p>Paletó Classico Bege Armani</p>
+                    <p>R$1200</p>
+                    <button class="button-news">Comprar</button>
+                    <a
+                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
+                            target="_blank"
+                            class="whatsapp-link"
+                    >
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <!--Container Fotos-->
+            <div class="container-photos">
+                <div class="photo photo-six"></div>
+
+                <div class="description-news">
+                    <p>Paletó Classico Bege Armani</p>
+                    <p>R$1200</p>
+                    <button class="button-news">Comprar</button>
+                    <a
+                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
+                            target="_blank"
+                            class="whatsapp-link"
+                    >
+                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+            <!--Encerramento-->
+
+            <div id="container-description-news">
+                <div class="elements-navigation-news">
+                    <div class="little-ball"></div>
+                    <div class="little-ball"></div>
+                    <div class="little-ball"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cupom -->
+    <section id="before-closing">
+        <div id="container-image">
+            <div id="image">
+                <div id="information">
+                    <p>PRIMEIRA COMPRA</p>
+                    <p>COM 10 % OFF</p>
+                    <button id="closing-button">CUPOM:REALEZA</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="insert-email">
+        <div class="newsletter-container">
+            <div class="newsletter-info">
+                <h2>Nobreza</h2>
+                <p>Receba nossas novidades através do email!</p>
+            </div>
+
+            <form class="newsletter-form">
+                <input type="text" placeholder="Seu nome" aria-label="Seu nome" />
+                <input
+                        type="email"
+                        placeholder="Seu e-mail"
+                        aria-label="Seu e-mail"
+                />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-linha-um">
+                <div class="logo-footer">
+                    <h2>Nobreza</h2>
+                </div>
+
+                <div class="linha-horario">
+                    <h3>Horário de funcionamento</h3>
+                    <p>Segunda a Sexta de 8h ás 17h</p>
+                </div>
+
+                <div class="linha-email">
+                    <h3>E-mail</h3>
+                    <p>Nobreza@gmail.com</p>
+                </div>
+
+                <a href="#main-menu"
+                ><button class="butao-footer">
+                    Voltar ao topo
+                    <img th:src="@{/img/icones/shop_principal/footer/setaparacima.svg}" alt="" /></button
+                ></a>
+            </div>
+
+            <div class="footer-linha-dois">
+                <h3>Redes sociais</h3>
+
+                <div class="rede-social">
+                    <div class="WhatsApp">
+                        <img th:src="@{/img/icones/shop_principal/footer/whatsapp.svg}" alt="" />
+                        <p>WhatsApp</p>
+                    </div>
+
+                    <div class="Facebook">
+                        <img th:src="@{/img/icones/shop_principal/footer/facebook.svg}" alt="" />
+                        <p>Facebook</p>
+                    </div>
+
+                    <div class="Instagram">
+                        <img th:src="@{/img/icones/shop_principal/footer/instagram.svg}" alt="" />
+                        <p>Instagram</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-linha-tres">
+                <h3>Menu</h3>
+
+                <div class="textos-menu">
+                    <a href="#">Sobre Nós</a>
+                    <a href="#">Nossas Peças</a>
+                    <a href="#">Best Sellers</a>
+                    <a href="#">Depoimentos</a>
+                    <a href="#">Shop</a>
+                </div>
+            </div>
+
+            <div class="footer-linha-quatro">
+                <div class="fale-com-nos">
+                    <h3>Fale com nós</h3>
+
+                    <div class="texto-fale-com-nos">
+                        <img th:src="@{/img/icones/shop_principal/footer/telefone.svg}" alt="" />
+                        <p>(73) 99954-6752</p>
+                    </div>
+                </div>
+
+                <div class="Endereco">
+                    <h3>Endereço</h3>
+
+                    <div class="texto-endereco">
+                        <img th:src="@{/img/icones/shop_principal/footer/localizacao.svg}" alt="" />
+                        <p>Avenida Sete de Setembro 14,<br />451416-970-BA</p>
+                    </div>
+                </div>
+
+                <div class="Formas-de-pagamento">
+                    <h3>Formas de pagamento</h3>
+                    <div class="imagens-pagamentos">
+                        <img
+                                th:src="@{/img/icones/shop_principal/footer/pagamento/americanexpress.png}"
+                                alt=""
+                        />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/boleto.png}" alt="" />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/elo.png}" alt="" />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/hipercard.png}" alt="" />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/mastercard.svg}" alt="" />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/pix.png}" alt="" />
+
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/visa.png}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="linha-footer"></div>
+
+            <div class="texto-footer-bottom">
+                <p>Nobreza Moda Masculina | Todos os direitos reservados</p>
+
+                <a class="texto-privacidade" href="#">Política de Privacidade</a>
+
+                <div class="nome-desenvolvedor">
+                    <p>Desenvolvedor: Igor Cauan</p>
+                    <img th:src="@{/img/icones/shop_principal/footer/instagram.svg}" alt="" />
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/page_principal/page-principal.js}"></script>
+    <script th:src="@{/js/page_principal/News.js}"></script>
+    <script th:src="@{/js/page_principal/MostWanted.js}"></script>
+    <script th:src="@{/js/page_principal/Categories.js}"></script>
+</body>
+</html>

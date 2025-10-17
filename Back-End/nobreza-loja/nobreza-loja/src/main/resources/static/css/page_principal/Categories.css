@@ -1,0 +1,349 @@
+/* --- CATEGORIAS --- */
+
+#Categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* ALTERADO: Ocupa a largura toda */
+  min-height: 43.75rem; /* ALTERADO: Altura mínima para flexibilidade */
+  padding: 4rem 0; /* NOVO: Espaçamento vertical */
+  font-family: "Montserrat", serif;
+  margin-top: 5rem;
+}
+
+#Categories h2 {
+  font-size: 3.125rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+#main-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: row;
+  margin-bottom: 2.5rem; /* ALTERADO: Espaçamento inferior */
+}
+
+.rectangle {
+  position: absolute;
+  width: 5rem;
+  height: 0.125rem; /* ALTERADO: Linha mais fina */
+
+  /* ALTERADO: De borda para gradiente */
+  background: linear-gradient(to right, #ffffff, #544f51);
+  border: none;
+}
+
+.right {
+  right: calc(40% - 15rem);
+}
+
+.left {
+  left: calc(40% - 15rem);
+}
+
+#flex-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap; /* NOVO: Permite que as imagens quebrem a linha em telas menores */
+  gap: 1.875rem; /* Aumentado o espaçamento */
+}
+
+.carrousel-image {
+  position: relative;
+  overflow: hidden; /* NOVO: Garante que a imagem ampliada não saia das bordas */
+  border-radius: 1.25rem; /* NOVO: Movemos o radius para o container */
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4); /* NOVO: Sombra para profundidade */
+}
+
+.carrousel-image img {
+  width: 22.5rem;
+  height: 28.125rem;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  transition: transform 0.4s ease; /* NOVO: Transição para o zoom */
+
+  /* ALTERADO: Borda sutil no padrão glassmorphism */
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+}
+
+/* NOVO: Efeito de zoom na imagem ao passar o mouse no card */
+.carrousel-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ALTERADO: Posição e estilo do container sobre a imagem */
+#element-over-image {
+  position: absolute;
+  width: calc(100% - 2rem); /* Ocupa a largura do card com respiro */
+  bottom: 1rem; /* Posicionado na base */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.875rem;
+  gap: 0.625rem; /* Espaçamento aumentado */
+
+  /* NOVO: Efeito glassmorphism */
+  padding: 1.5rem 1rem;
+  background: rgba(42, 40, 41, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-categories {
+  background: linear-gradient(to right, #2a2829, #000000);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 13.75rem;
+  height: 2.8rem; /* Altura ajustada */
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ALTERADO: Efeito de hover moderno */
+.button-categories:hover {
+  transform: scale(1.05);
+  border-color: white;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* --- NAVEGAÇÃO DO CARROSSEL --- */
+#categories-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem; /* NOVO: Espaçamento para o controle */
+}
+
+.elements-navigation {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  width: auto; /* Largura automática */
+  height: 3.125rem;
+  margin-top: 1rem;
+  padding: 0 1.5rem; /* Padding horizontal */
+
+  /* Efeito glassmorphism */
+  background: rgba(42, 40, 41, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3.125rem;
+}
+
+.little-ball {
+  width: 1rem; /* Diminuído */
+  height: 1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.little-ball:hover,
+.little-ball.active {
+  background: white;
+}
+
+/* --- BARRA DE MARCAS --- */
+
+#information-bar {
+  display: flex;
+  width: 100%;
+  height: 5rem; /* Altura ajustada */
+  margin-top: 4rem; /* Espaçamento da seção de categorias */
+  flex-direction: row;
+  justify-content: space-around; /* Distribuição uniforme */
+  align-items: center;
+  position: relative;
+  top: 8rem;
+
+  /* NOVO: Efeito glassmorphism */
+  background: rgba(42, 40, 41, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
+}
+
+#information-bar h2 {
+  font-size: 1.25rem;
+  margin: 0; /* Removemos margens fixas */
+  opacity: 0.7; /* Opacidade para um visual mais suave */
+  transition: opacity 0.3s ease;
+}
+
+#information-bar h2:hover {
+  opacity: 1;
+}
+
+/* ... (Fontes das marcas permanecem as mesmas) ... */
+#hugoboss {
+  font-family: "Poppins", sans-serif;
+}
+#zegna {
+  font-family: "Playfair Display", serif;
+}
+#armani {
+  font-family: "Libre Baskerville", serif;
+}
+#rolex {
+  font-family: "Cormorant Garamond", serif;
+}
+#timberland {
+  font-family: "Roboto Slab", serif;
+}
+#louie {
+  font-family: "Raleway", sans-serif;
+}
+
+/* ... (Suas Media Queries serão aplicadas sobre esses novos estilos base) ... */
+@media (min-width: 1440px) {
+  html {
+    font-size: 106.25%;
+  }
+  #Categories {
+    min-height: 45rem;
+  }
+  .right {
+    right: calc(50% - 16rem);
+  }
+  .left {
+    left: calc(50% - 16rem);
+  }
+  .carrousel-image img {
+    width: 25rem;
+    height: 31.25rem;
+  }
+  #element-over-image {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+    font-size: 112.5%;
+  }
+  #Categories {
+    min-height: 50rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+  .right {
+    right: calc(50% - 18rem);
+  }
+  .left {
+    left: calc(50% - 18rem);
+  }
+  .carrousel-image img {
+    width: 28rem;
+    height: 35rem;
+  }
+  #element-over-image {
+    font-size: 2.25rem;
+  }
+  .button-categories {
+    width: 15rem;
+    height: 2.75rem;
+  }
+  #information-bar h2 {
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: 2560px) {
+  html {
+    font-size: 137.5%;
+  }
+  #Categories {
+    min-height: 60rem;
+  }
+  h2 {
+    font-size: 4rem;
+  }
+  .right {
+    right: calc(50% - 22rem);
+  }
+  .left {
+    left: calc(50% - 22rem);
+  }
+  .carrousel-image img {
+    width: 35rem;
+    height: 43.75rem;
+  }
+  #element-over-image {
+    font-size: 3rem;
+  }
+  .button-categories {
+    width: 18rem;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+  .elements-navigation {
+    width: 14rem;
+    height: 3.5rem;
+  }
+  #information-bar {
+    height: 6rem;
+  }
+  #information-bar h2 {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 3840px) {
+  html {
+    font-size: 187.5%;
+  }
+  #Categories {
+    min-height: 80rem;
+  }
+  h2 {
+    font-size: 5rem;
+  }
+  .right {
+    right: calc(50% - 30rem);
+    width: 7rem;
+  }
+  .left {
+    left: calc(50% - 30rem);
+    width: 7rem;
+  }
+  .carrousel-image img {
+    width: 48rem;
+    height: 60rem;
+  }
+  #element-over-image {
+    font-size: 4rem;
+  }
+  .button-categories {
+    width: 24rem;
+    height: 5rem;
+    font-size: 3rem;
+  }
+  .elements-navigation {
+    width: 18rem;
+    height: 5rem;
+  }
+  .little-ball {
+    width: 2rem;
+    height: 2rem;
+  }
+  #information-bar {
+    height: 8rem;
+  }
+  #information-bar h2 {
+    font-size: 2.5rem;
+  }
+}
