@@ -1,7 +1,6 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,5 +28,7 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private Set<Usuario> usuarios = new HashSet<>();
+
+
 
 }

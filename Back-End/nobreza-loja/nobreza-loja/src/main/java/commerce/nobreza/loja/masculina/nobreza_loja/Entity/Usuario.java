@@ -1,17 +1,12 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.envers.Audited;
-
+import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Audited
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "tb_usuario")
 public class Usuario {
     @Id
@@ -58,5 +53,12 @@ public class Usuario {
     //Token da Senha
     @OneToOne(mappedBy = "usuario" , cascade = CascadeType.ALL)
     private TokenSenha tokenSenha;
+
+    //Método para verificar se é adm ou user para o tymeleaft em PerfilADM
+    public boolean hasRole(String roleName) {
+        return roles.stream().anyMatch(role -> role.getName().equals(roleName));
+    }
+
+
 
 }

@@ -269,4 +269,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("=== 🏁 FIM DO DEBUG ===");
     });
 
+
+
  });
+
+

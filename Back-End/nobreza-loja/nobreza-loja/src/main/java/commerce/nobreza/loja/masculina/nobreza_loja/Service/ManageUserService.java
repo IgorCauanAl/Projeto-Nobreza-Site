@@ -1,0 +1,47 @@
+package commerce.nobreza.loja.masculina.nobreza_loja.Service;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Role;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.RoleRepository;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+public class ManageUserService {
+
+
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+
+
+
+    public List<Usuario> listUser(){
+        return userRepository.findAll();
+    }
+
+    public boolean promoteToAdmin(Long userId, String requestingAdminEmail) {
+        // Só permite promoção pelo ADM autorizado
+        if (!"igorcauawo@gmail.com".equals(requestingAdminEmail)) {
+            return false; // não autorizado
+        }
+
+        Usuario user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN")
+                .orElseThrow(() -> new RuntimeException("Role ADMIN não encontrada"));
+
+        user.getRoles().add(adminRole);
+        userRepository.save(user);
+
+        return true;
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+
+
+}
