@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // 1. VERIFICAR TODOS OS CAMPOS DO FORMULÁRIO ANTES DO FormData
+
         console.log("=== 1. VALORES DOS CAMPOS NO HTML ===");
         const campos = [
             { id: 'prod-nome', name: 'prodNome' },
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // 2. VERIFICAR O FormData
+
         const formData = new FormData(form);
 
         console.log("=== 2. FORM DATA CRIADO ===");
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("=== 5. ENVIANDO PARA O BACKEND... ===");
 
         try {
-            const response = await fetch("/api/products", {
+            const response = await fetch("/api/products/admin/produtos/adicionar", {
                 method: "POST",
                 body: formData,
             });
@@ -269,8 +269,146 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("=== 🏁 FIM DO DEBUG ===");
     });
 
+    // --- INÍCIO - Lógica do Modal de Confirmação ---
+
+    const modalOverlay = document.getElementById('confirmationModal');
+
+    // Se o modal não existir nesta página, não faz nada
+    if (modalOverlay) {
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+        const modalCancelBtn = document.getElementById('modalCancelBtn');
+
+        // Variável global para guardar o formulário que deve ser enviado
+        let formToSubmit = null;
+
+        // Função para mostrar o modal
+        function showModal(title, message, confirmClass) {
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            // Limpa classes de cor antigas e adiciona a nova
+            modalConfirmBtn.className = 'btn-confirm'; // Reseta para o padrão
+            if (confirmClass) {
+                modalConfirmBtn.classList.add(confirmClass);
+            }
+
+            modalOverlay.style.display = 'flex'; // Torna o overlay visível
+            // Força um pequeno atraso para a animação de opacidade funcionar
+            setTimeout(() => {
+                modalOverlay.classList.add('show');
+            }, 10);
+        }
+
+        // Função para esconder o modal
+        function hideModal() {
+            modalOverlay.classList.remove('show');
+
+            // Espera a transição de opacidade terminar para esconder o elemento
+            setTimeout(() => {
+                modalOverlay.style.display = 'none';
+                formToSubmit = null; // Limpa a referência do formulário
+            }, 300); // 300ms (deve ser igual ao 'transition' no CSS)
+        }
+
+        // 1. Interceptar cliques nos botões "Promover"
+        document.querySelectorAll('.btn-promote').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Impede o envio IMEDIATO do formulário
+                formToSubmit = button.closest('form'); // Pega o <form> pai do botão
+                showModal(
+                    'Promover Usuário',
+                    'Você tem certeza que deseja promover este usuário a Administrador?',
+                    'promote' // Classe CSS para o botão de confirmar azul
+                );
+            });
+        });
+
+        // 2. Interceptar cliques nos botões "Deletar"
+        document.querySelectorAll('.btn-delete').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Impede o envio IMEDIATO do formulário
+                formToSubmit = button.closest('form'); // Pega o <form> pai do botão
+                showModal(
+                    'Deletar Usuário',
+                    'Esta ação é irreversível. Você tem certeza que deseja deletar este usuário?',
+                    'delete' // Classe CSS (vermelha)
+                );
+            });
+        });
+
+        // 3. Adicionar ação ao botão "Confirmar" do modal
+        modalConfirmBtn.addEventListener('click', () => {
+            if (formToSubmit) {
+                formToSubmit.submit(); // Envia o formulário que foi guardado
+            }
+            hideModal();
+        });
+
+        // 4. Fechar o modal ao clicar em "Cancelar" ou no fundo escuro
+        modalCancelBtn.addEventListener('click', hideModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            // Fecha só se clicar no overlay (fundo), não no conteúdo
+            if (e.target === modalOverlay) {
+                hideModal();
+            }
+        });
+    }
+    // --- FIM - Lógica do Modal de Confirmação ---
 
 
  });
+
+
+//Sistema de Busca
+document.addEventListener( "DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const tableBody = document.getElementById("userTableBody");
+    const noUserRow = document.getElementById("noUserRow");
+
+    // Pega todas as linhas de usuário
+    const userRows = Array.from(tableBody.querySelectorAll("tr")).filter(
+        (row) => row.id !== "noUserRow"
+    );
+
+    // Só adiciona o listener se houver usuários para filtrar
+    if (userRows.length > 0) {
+        searchInput.addEventListener("input", () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+
+            userRows.forEach((row) => {
+                // Pega o texto do nome (célula 0) e e-mail (célula 1)
+                const name = row.cells[0].textContent.toLowerCase();
+                const email = row.cells[1].textContent.toLowerCase();
+
+                // Verifica se o nome OU o e-mail começam com o termo
+                const isMatch =
+                    name.startsWith(searchTerm) || email.startsWith(searchTerm);
+
+                // Mostra ou esconde a linha
+                if (isMatch) {
+                    row.style.display = ""; // Mostra
+                    visibleCount++;
+                } else {
+                    row.style.display = "none"; // Esconde
+                }
+            });
+
+            // Se nenhum usuário for visível após o filtro
+            noUserRow.style.display = visibleCount === 0 ? "" : "none";
+        });
+    }
+});
+
+
+// Busca em tempo real
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const tableBody = document.getElementById("userTableBody");
+    const noUserRow = document.getElementById("noUserRow");
+});
 
 

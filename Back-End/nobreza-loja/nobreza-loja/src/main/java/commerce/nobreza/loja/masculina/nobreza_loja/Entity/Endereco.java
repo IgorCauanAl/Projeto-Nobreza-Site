@@ -37,6 +37,18 @@ public class Endereco {
     @Size(max = 20)
     private String cep;
 
+    @NotBlank
+    @Size(max = 20)
+    private String complemento;
+
+    @NotBlank
+    @Size(max = 20)
+    private String numero;
+
+    @NotBlank
+    @Size(max = 20)
+    private String bairro;
+
     @Column(nullable = false)
     private boolean padrao; //endereço padrão de entrega
 

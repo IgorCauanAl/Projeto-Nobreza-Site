@@ -1,0 +1,95 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
+    <footer>
+        <div class="footer-container">
+            <div class="footer-linha-um">
+                <div class="logo-footer"><h2>Nobreza</h2></div>
+                <div class="linha-horario">
+                    <h3>Horário de funcionamento</h3>
+                    <p>Segunda a Sexta de 8h às 17h</p>
+                </div>
+                <div class="linha-email">
+                    <h3>E-mail</h3>
+                    <p>Nobreza@gmail.com</p>
+                </div>
+                <a href="#header">
+                    <button class="butao-footer">
+                        Voltar ao topo
+                        <img th:src="@{/img/icones/footer/setaparacima.svg}" alt="Topo" />
+                    </button>
+                </a>
+            </div>
+
+            <div class="footer-linha-dois">
+                <h3>Redes sociais</h3>
+                <div class="rede-social">
+                    <div class="WhatsApp">
+                        <img th:src="@{/img/icones/shop_principal/footer/whatsapp.svg}" alt="" />
+                        <p>WhatsApp</p>
+                    </div>
+                    <div class="Facebook">
+                        <img th:src="@{/img/icones/shop_principal/footer/facebook.svg}" alt="" />
+                        <p>Facebook</p>
+                    </div>
+                    <div class="Instagram">
+                        <img th:src="@{/img/icones/shop_principal/footer/instagram.svg}" alt="" />
+                        <p>Instagram</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-linha-tres">
+                <h3>Menu</h3>
+                <div class="textos-menu">
+                    <a href="#">Sobre Nós</a>
+                    <a href="#">Nossas Peças</a>
+                    <a href="#">Best Sellers</a>
+                    <a href="#">Depoimentos</a>
+                    <a href="#">Shop</a>
+                </div>
+            </div>
+
+            <div class="footer-linha-quatro">
+                <div class="fale-com-nos">
+                    <h3>Fale com nós</h3>
+                    <div class="texto-fale-com-nos">
+                        <img th:src="@{/img/icones/shop_principal/footer/telefone.svg}" alt="" />
+                        <p>(73) 99954-6752</p>
+                    </div>
+                </div>
+
+                <div class="Endereco">
+                    <h3>Endereço</h3>
+                    <div class="texto-endereco">
+                        <img th:src="@{/img/icones/shop_principal/footer/localizacao.svg}" alt="" />
+                        <p>Avenida Sete de Setembro 14,<br />451416-970-BA</p>
+                    </div>
+                </div>
+
+                <div class="Formas-de-pagamento">
+                    <h3>Formas de pagamento</h3>
+                    <div class="imagens-pagamentos">
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/americanexpress.png}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/boleto.png}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/elo.png}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/hipercard.png}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/mastercard.svg}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/pix.png}" alt="" />
+                        <img th:src="@{/img/icones/shop_principal/footer/pagamento/visa.png}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="linha-footer"></div>
+            <div class="texto-footer-bottom">
+                <p>Nobreza Moda Masculina | Todos os direitos reservados</p>
+                <a class="texto-privacidade" href="#">Política de Privacidade</a>
+                <div class="nome-desenvolvedor">
+                    <p>Desenvolvedor: Igor Cauan</p>
+                    <img th:src="@{/img/icones/shop_principal/footer/instagram.svg}" alt="" />
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

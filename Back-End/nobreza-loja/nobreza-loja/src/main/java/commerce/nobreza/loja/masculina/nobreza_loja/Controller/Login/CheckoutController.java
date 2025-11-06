@@ -1,0 +1,115 @@
+package commerce.nobreza.loja.masculina.nobreza_loja.Controller;
+
+import commerce.nobreza.loja.masculina.nobreza_loja.DTO.CarrinhoItensDTO;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Endereco;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.MetodoPagamento;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Pedido;
+import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.EnderecoRepository;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.MetodoPagamentoRepository;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.PedidoRepository;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
+import commerce.nobreza.loja.masculina.nobreza_loja.Service.CarrinhoService;
+import commerce.nobreza.loja.masculina.nobreza_loja.Service.PedidoService;
+import commerce.nobreza.loja.masculina.nobreza_loja.dto.CheckoutFormDto;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+@Controller
+@AllArgsConstructor
+public class CheckoutController {
+
+    private final CarrinhoService carrinhoService;
+    private final PedidoService pedidoService;
+    private final PedidoRepository pedidoRepository;
+    private final UserRepository usuarioRepository;
+    private final EnderecoRepository enderecoRepository;
+    private final MetodoPagamentoRepository metodoPagamentoRepository;
+
+    // PASSO 1: Exibe a página de Checkout
+    @GetMapping("/checkout")
+    public String showCheckoutPage(
+            @AuthenticationPrincipal UserDetails userDetails,
+            Model model
+    ) {
+        if (userDetails == null) {
+            return "redirect:/login";
+        }
+
+        Usuario usuario = usuarioRepository.findByEmail(userDetails.getUsername()).get();
+
+        // Carrega os itens do carrinho para o resumo
+        List<CarrinhoItensDTO> itemsParaCheckout = carrinhoService.getItensDoUsuario(userDetails.getUsername());
+        BigDecimal precoTotal = itemsParaCheckout.stream()
+                .map(item -> item.getPrecoProduto().multiply(new BigDecimal(item.getQuantidade())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        // Carrega os endereços e pagamentos do usuário
+        List<Endereco> enderecos = enderecoRepository.findByUsuario(usuario);
+        List<MetodoPagamento> metodosPagamento = metodoPagamentoRepository.findByUsuario(usuario);
+
+        model.addAttribute("checkoutItems", itemsParaCheckout);
+        model.addAttribute("totalPrice", precoTotal);
+        model.addAttribute("enderecos", enderecos);
+        model.addAttribute("metodosPagamento", metodosPagamento);
+        model.addAttribute("checkoutFormDto", new CheckoutFormDto()); // Objeto para o form
+
+        return "Checkout";
+    }
+
+    // PASSO 2: Processa o pedido
+    @PostMapping("/checkout/processar")
+    public String processarCheckout(
+            @ModelAttribute CheckoutFormDto form, // Recebe os IDs do form
+            @AuthenticationPrincipal UserDetails userDetails,
+            RedirectAttributes redirectAttributes
+    ) {
+        if (userDetails == null) {
+            return "redirect:/login";
+        }
+
+        try {
+            // (Aqui, o PedidoService só lida com o carrinho.
+            // Você precisará de lógica extra para o "Comprar Agora")
+            Pedido novoPedido = pedidoService.criarPedidoDoCarrinho(form, userDetails.getUsername());
+
+            // Redireciona para a página de confirmação
+            return "redirect:/pedido/confirmado/" + novoPedido.getId();
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao processar seu pedido: " + e.getMessage());
+            return "redirect:/checkout"; // Volta ao checkout se der erro
+        }
+    }
+
+    // PASSO 3: Exibe a página de confirmação (closing.html)
+    @GetMapping("/pedido/confirmado/{pedidoId}")
+    public String showPaginaConfirmacao(
+            @PathVariable Long pedidoId,
+            @AuthenticationPrincipal UserDetails userDetails,
+            Model model
+    ) {
+        Pedido pedido = pedidoRepository.findById(pedidoId)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        // Validação de segurança
+        if (!pedido.getUsuario().getEmail().equals(userDetails.getUsername())) {
+            return "redirect:/"; // Não é o pedido deste usuário
+        }
+
+        model.addAttribute("pedido", pedido);
+
+        return "closing";
+    }
+}

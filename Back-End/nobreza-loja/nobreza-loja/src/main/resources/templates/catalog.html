@@ -65,7 +65,6 @@
             <div id="container-menu-products">
                 <img id="img-products" th:src="@{/fotos/shop_principal/photo-products-hidden.jpg}" alt="" />
                 <div id="container-column">
-                    <!-- Exemplo de coluna -->
                     <div class="column one-products">
                         <h2>Ternos</h2>
                         <p>Slim Fit</p>
@@ -73,7 +72,6 @@
                         <p>Para Casamento</p>
                         <p>Executivo</p>
                     </div>
-                    <!-- Outras colunas... -->
                 </div>
             </div>
         </div>
@@ -108,7 +106,7 @@
             <ol>
                 <li><a href="">Inicio</a></li>
                 <li><a href="">Produtos</a></li>
-                <li><a href="">Blazers</a></li>
+                <li th:text="${groupTitle}"><a href="">Subcategoria</a></li>
             </ol>
         </nav>
 
@@ -119,26 +117,52 @@
 
                 <div id="filter-container"></div>
 
-                <p  th:text="${produtos.size()} + ' produtos encontrados'">0 produtos encontrados >0 produtos encontrados</p>
+                <p  th:text="${totalProdutosCount} + ' produtos encontrados'">0 produtos encontrados >0 produtos encontrados</p>
 
                 <p id="ordination">Ordenar por</p>
             </div>
             <div id="ordination-container"></div>
         </div>
+
+        <div id="text-title">
+            <h2 th:text="${pageTitle}"></h2>
+        </div>
+
     </section>
 
-    <!-- Catálogo de produtos -->
+
+
+
     <div id="catalog-container-grid">
         <div id="catalog">
-            <!-- Produtos dinâmicos -->
-            <div class="conjugate" th:each="produto : ${produtos}">
-                <img th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
-                     th:alt="${produto.name}" />
+            <div class="product-grid">
 
-                <div class="product-info">
-                    <h3 th:text="${produto.name}">Nome do Produto</h3>
-                    <p class="price" th:text="${#numbers.formatDecimal(produto.price,1,'COMMA',2,'POINT')}">R$ 0,00</p>
-                    <button class="buy-button" th:attr="data-id=${produto.id}">Comprar Agora</button>
+                <div class="conjugate" th:each="produto : ${produtosPage.content}" style="position: relative;">
+
+                    <button sec:authorize="hasRole('ADM')"
+                            class="btn-remove-product"
+                            th:onclick="deleteProduct(this, [[${produto.id}]])">
+                        &times; </button>
+
+
+                    <a th:href="@{/produto/{id}(id=${produto.id})}">
+                        <img th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
+                             th:alt="${produto.name}" />
+                    </a>
+                    <div class="product-info">
+                        <h3 th:text="${produto.name}">Nome do Produto</h3>
+                        <p class="price"
+                           th:text="${#numbers.formatDecimal(produto.price, 1, 'COMMA', 2, 'POINT')}">
+                            R$ 0,00
+                        </p>
+                        <a th:href="@{/produto/{id}(id=${produto.id})}" class="buy-button-link">
+                            <button class="buy-button">Ver Detalhes</button>
+                        </a>
+                        <button class="btn-add-to-cart"
+                                th:attr="data-product-id=${produto.id}">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,8 +170,48 @@
 
     <div id="result-container">
         <div id="result">
-            <p th:text="${produtos.size()} + ' produtos encontrados'">0 produtos encontrados</p>
-            <button class="button">Ver mais produtos</button>
+
+            <p th:text="${totalProdutosCount} + ' produtos encontrados'">0 produtos encontrados</p>
+
+            <nav class="pagination" th:if="${produtosPage.totalPages > 1}">
+                <ul>
+
+                    <li th:if="${!produtosPage.isFirst()}">
+                        <a th:href="@{/api/catalog/page(
+                        groupTitle=${groupTitle},
+                        pageTitle=${pageTitle},
+                        category=${category},
+                        page=${produtosPage.number}
+                      )}">
+                            Anterior
+                        </a>
+                    </li>
+
+                    <li th:each="pageNumber : ${#numbers.sequence(1, produtosPage.totalPages)}"
+                        th:class="${pageNumber == produtosPage.number + 1} ? 'active'">
+
+                        <a th:href="@{/api/catalog/page(
+                        groupTitle=${groupTitle},
+                        pageTitle=${pageTitle},
+                        category=${category},
+                        page=${pageNumber}
+                      )}"
+                           th:text="${pageNumber}"></a>
+                    </li>
+
+                    <li th:if="${!produtosPage.isLast()}">
+                        <a th:href="@{/api/catalog/page(
+                        groupTitle=${groupTitle},
+                        pageTitle=${pageTitle},
+                        category=${category},
+                        page=${produtosPage.number + 2}
+                      )}">
+                            Próxima
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     </div>
 
@@ -281,6 +345,8 @@
 </footer>
 
 
+<script th:src="@{/js/Carrinho.js}"></script>
+<script th:src="@{/js/Catalog/Catalog.js}"></script>
 <script th:src="@{/js/page_principal/page-principal.js}"></script>
 </body>
 </html>

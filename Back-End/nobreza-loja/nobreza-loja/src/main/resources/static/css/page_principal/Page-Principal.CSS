@@ -652,3 +652,152 @@ body {
     height: 8rem;
   }
 }
+
+/* === Novos Botões do Carrinho === */
+.btn-add-to-cart {
+    background: #fff;
+    color: #2a2829;
+    border: 1px solid #2a2829;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    width: 90%;
+    margin-top: 0.5rem; /* Espaço entre os botões */
+    font-size: 0.9rem;
+}
+.btn-add-to-cart:hover {
+    background: #2a2829;
+    color: #fff;
+}
+.btn-add-to-cart:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Em #most-wanted, o botão .button-whatsapp está sendo usado */
+.title-mostwanted .btn-add-to-cart {
+    width: 100%;
+    margin-top: 0.5rem;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+/* Link para o botão de detalhes */
+.title-mostwanted .button-link-mostwanted {
+    text-decoration: none;
+    display: block;
+}
+.title-mostwanted .button-mostwanted {
+    width: 100%;
+}
+
+/* Em #news */
+.description-news .btn-add-to-cart {
+    width: 100%;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+}
+.description-news .button-link-news {
+    text-decoration: none;
+    display: block;
+}
+.description-news .button-news {
+    width: 100%;
+}
+
+/* === Notificação de Carrinho (O "aviso") === */
+.cart-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    background-color: #4CAF50; /* Verde sucesso */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.cart-notification.error {
+    background-color: #f44336; /* Vermelho erro */
+}
+.cart-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* === Estilos do Mini-Carrinho (O "elemento que contém o carrinho") === */
+.mini-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.mini-cart-img {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+.mini-cart-info .mini-cart-nome {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+.mini-cart-info .mini-cart-preco {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+/* --- Estilo para o Mini-Carrinho --- */
+
+.mini-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    position: relative; /* Necessário para posicionar o botão 'x' */
+}
+
+/* (Estilos .mini-cart-img e .mini-cart-info que você já tem...) */
+
+/* --- NOVO CSS PARA O BOTÃO REMOVER --- */
+.mini-cart-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    background-color: #f44336; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Círculo */
+    width: 20px;
+    height: 20px;
+
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px; /* Centraliza o '×' */
+    text-align: center;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mini-cart-remove:hover {
+    background-color: #d32f2f; /* Vermelho mais escuro */
+}
+
+.mini-cart-remove:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${produto.name} + ' - Nobreza'">Detalhes do Produto</title>
+
+    <link rel="stylesheet" th:href="@{/css/page_principal/Page-Principal.CSS}" />
+    <link rel="stylesheet" th:href="@{/css/Clothes/Sale-section.css}" />
+    <link rel="stylesheet" th:href="@{/css/page_principal/Footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/page_principal/Insert-information.css}" />
+    <link rel="stylesheet" th:href="@{/css/Catalog/Catalog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Clothes/Mini-Catalog.css}" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header> <main>
+    <section class="clothes">
+        <div id="sale-section-grid">
+
+            <div id="left-rectangle-flex">
+                <div class="left-rectangle">
+                    <img th:each="img : ${produto.images}"
+                         th:src="@{${img.url_image}}"
+                         alt="Miniatura do produto"
+                    />
+                </div>
+            </div>
+
+            <div id="center-image">
+                <img
+                        th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
+                        th:alt="${produto.name}"
+                />
+            </div>
+
+            <div id="sale-information-flex">
+
+                <nav id="sale-information-breadcrumb">
+                    <ol>
+                        <li><a th:href="@{/}">Inicio</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li th:text="${produto.category.name}">Categoria</li>
+                        <li th:text="${produto.name}">Nome do Produto</li>
+                    </ol>
+                </nav>
+
+                <div id="title">
+                    <h2 th:text="${produto.name}">Nome do Produto</h2>
+                    <p th:text="'Ref:' + ${produto.referencia}">Ref:BLZ-35150</p>
+                </div>
+
+                <p th:if="${produto.promotion}"><del>R$ 2300,00</del></p> <div id="price" th:if="${produto.discountPix > 0}">
+                <p th:text="${#numbers.formatDecimal(produto.price * (1 - (produto.discountPix / 100)), 1, 'COMMA', 2, 'POINT')} + ' no PIX'">R$2185 no PIX</p>
+                <img th:src="@{/icones/catalogo/pix.svg}" alt="Ícone PIX" />
+            </div>
+
+                <p th:text="'6x de ' + ${#numbers.formatDecimal(produto.price / 6, 1, 'COMMA', 2, 'POINT')} + ' sem juros'">6x 383,33 sem juros</p>
+
+                <p>Cores Disponíveis</p>
+
+                <div id="colors-flex">
+                    <div class="color"
+                         th:each="cor : ${produto.colors}"
+                         th:style="'background-color:' + ${cor.codeHex}">
+                    </div>
+                </div>
+
+                <p>Escolha o Tamanho(P)</p>
+
+                <div id="choice-size">
+                    <div class="size"><p>P</p></div>
+                    <div class="size"><p>M</p></div>
+                    <div class="size"><p>G</p></div>
+                </div>
+
+                <div id="stock-info">
+                    <p>
+                        Apenas <span id="stock-quantity" th:text="${produto.amount}">15</span> unidades em estoque!
+                    </p>
+                </div>
+
+                <div id="section-buy">
+                    <div class="selector-number">
+                        <div class="selector" id="qty-minus">-</div>
+                        <div class="selector number" id="qty-display">1</div>
+                        <div class="selector" id="qty-plus">+</div>
+                    </div>
+
+                    <button class="button-buy" id="btn-buy-now"
+                            th:attr="data-product-id=${produto.id}">
+                        Comprar
+                    </button>
+                </div>
+
+                <a
+                        href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto..."
+                        target="_blank"
+                        class="whatsapp-link"
+                >
+                    <button class="button-buy btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp
+                    </button>
+                </a>
+
+                <div id="section-closure">
+                    <div class="accordion-item">
+                        <p class="accordion-header">Descrição do Produto</p>
+                        <div class="accordion-content">
+                            <p th:text="${produto.description}">
+                                Descrição...
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <p class="accordion-header">Composição</p>
+                        <div class="accordion-content">
+                            <p th:text="${produto.composition}">Composição...</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <p class="accordion-header">Prazo De Entrega</p>
+                        <div class="accordion-content">
+                            <p>
+                                Entrega padrão (3-7 dias úteis) ou Expressa (1-3 dias
+                                úteis). Frete grátis para compras acima de R$500.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer> </body>
+<script th:src="@{/js/clothes/clothe.js}"></script>
+<script th:src="@{/js/page_principal/page-principal.js}"></script>
+</html>

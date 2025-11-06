@@ -168,22 +168,6 @@
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
-/* Classes de imagem de fundo */
-.photo-one {
-  background-image: url(../../img/shop_principal/webp/News/Novidades.webp);
-}
-.photo-three {
-    background-image: url(../../img/shop_principal/webp/News/Novidades2.webp);
-}
-.photo-four {
-    background-image: url(../../img/shop_principal/webp/News/Novidades3.webp);
-}
-.photo-five {
-    background-image: url(../../img/shop_principal/webp/News/Novidades4.webp);
-}
-.photo-six {
-    background-image: url(../../img/shop_principal/webp/News/Novidades5.webp);
-}
 
 /* --- NAVEGAÇÃO (CORREÇÃO DE GRID) --- */
 #container-description-news {

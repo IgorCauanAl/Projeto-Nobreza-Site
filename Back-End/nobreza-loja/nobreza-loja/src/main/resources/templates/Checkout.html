@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" th:href="@{/css/Checkout/Checkout.css}" />
+    <link rel="stylesheet" th:href="@{/css/page_principal/Page-Principal.CSS}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<div class="checkout-container">
+
+    <form th:action="@{/checkout/processar}" method="post" class="checkout-form" th:object="${checkoutFormDto}">
+
+        <main class="checkout-flow">
+
+            <section id="identificacao" class="checkout-step active">
+                <div class="step-header">
+                    <h2>Identificação</h2>
+                    <p>
+                        Utilizaremos seu e-mail para identificar seu perfil, histórico de
+                        compra, notificação de pedidos e carrinho de compras.
+                    </p>
+                </div>
+
+                <div class="customer-type-tabs">
+                    <button type="button" class="tab-btn active" data-form="form-pf">
+                        Pessoa física
+                    </button>
+                    <button type="button" class="tab-btn" data-form="form-pj">
+                        Pessoa jurídica
+                    </button>
+                </div>
+
+                <div id="form-pf" class="customer-form active">
+                    <div class="form-group full-width">
+                        <label for="nome-completo">Nome completo</label>
+                        <input
+                                type="text"
+                                id="nome-completo"
+                                placeholder="ex.: Maria de Almeida Cruz"
+                                th:field="*{nomeCompleto}"
+                                required
+                        />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email-pf">E-mail (Para Envio do Código de Rastreio)</label>
+                        <input
+                                type="email"
+                                id="email-pf"
+                                placeholder="ex.: maria@gmail.com"
+                                th:field="*{email}"
+                                required
+                        />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="data-nascimento">Data de nascimento</label>
+                        <input
+                                type="text"
+                                id="data-nascimento"
+                                placeholder="DD/MM/AAAA"
+                                th:field="*{dataNascimento}"
+                                required
+                        />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="cpf">CPF</label>
+                        <input
+                                type="text"
+                                id="cpf"
+                                placeholder="000.000.000-00"
+                                th:field="*{cpf}"
+                                required
+                        />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="celular-pf">Celular / WhatsApp</label>
+                        <input
+                                type="text"
+                                id="celular-pf"
+                                placeholder="(00) 00000-0000"
+                                th:field="*{celularPf}"
+                                required
+                        />
+                    </div>
+                </div>
+
+                <div id="form-pj" class="customer-form">
+                    <div class="form-group full-width">
+                        <label for="razao-social">Razão Social</label>
+                        <input type="text" id="razao-social" th:field="*{razaoSocial}" placeholder="Ex: Nobreza LTDA" />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" id="cnpj" th:field="*{cnpj}" placeholder="00.000.000/0001-00" />
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="button" class="btn-primary btn-next-step">
+                        Continuar para o endereço
+                    </button>
+                </div>
+            </section>
+
+            <section id="endereco" class="checkout-step">
+                <div class="step-header">
+                    <h2>Endereço de Entrega</h2>
+                    <p>Preencha as informações para a entrega do seu pedido.</p>
+                </div>
+
+                <div class="step-form">
+
+                    <div class="form-group full-width">
+                        <label for="endereco-selecionado">Escolha um Endereço Salvo</label>
+                        <select th:field="*{enderecoId}" id="endereco-selecionado" class="form-control">
+                            <option value="">-- Adicionar novo endereço --</option>
+                            <th:block th:each="end : ${enderecos}">
+                                <option th:value="${end.id}"
+                                        th:text="${end.rua} + ', ' + ${end.numero} + ' - ' + ${end.bairro}">
+                                    Endereço...
+                                </option>
+                            </th:block>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" th:field="*{cep}" placeholder="00000-000" />
+                    </div>
+                    <div class="form-group">
+                        <label for="rua">Endereço</label>
+                        <input type="text" id="rua" th:field="*{rua}" placeholder="Av. Brasil" />
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" th:field="*{numero}" placeholder="123" />
+                    </div>
+                    <div class="form-group">
+                        <label for="complemento">Complemento (opcional)</label>
+                        <input type="text" id="complemento" th:field="*{complemento}" placeholder="Apto 45" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" th:field="*{bairro}" placeholder="Centro" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" th:field="*{cidade}" placeholder="São Paulo" />
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" th:field="*{estado}" placeholder="SP" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn-primary btn-next-step">
+                            Continuar para o pagamento
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pagamento" class="checkout-step">
+                <div class="step-header">
+                    <h2>Pagamento</h2>
+                    <p>Escolha a forma de pagamento para finalizar sua compra.</p>
+                </div>
+
+                <div class="payment-methods">
+                    <label class="payment-method-tab active">
+                        <input type="radio" th:field="*{paymentMethod}" value="credit-card" checked />
+                        <i class="fas fa-credit-card"></i>
+                        <span>Cartão de Crédito</span>
+                    </label>
+                    <label class="payment-method-tab">
+                        <input type="radio" th:field="*{paymentMethod}" value="pix" />
+                        <i class="fas fa-qrcode"></i>
+                        <span>Pix</span>
+                    </label>
+                    <label class="payment-method-tab">
+                        <input type="radio" th:field="*{paymentMethod}" value="boleto" />
+                        <i class="fas fa-barcode"></i>
+                        <span>Boleto</span>
+                    </label>
+                </div>
+
+                <div class="payment-content">
+                    <div id="credit-card-content" class="payment-panel active">
+                        <div class="step-form">
+
+                            <div class="form-group full-width">
+                                <label for="pagamento-selecionado">Escolha o Cartão Salvo</label>
+                                <select th:field="*{metodoPagamentoId}" id="pagamento-selecionado" class="form-control">
+                                    <option value="">-- Pagar com novo cartão --</option>
+                                    <th:block th:each="metodo : ${metodosPagamento}">
+                                        <option th:value="${metodo.id}"
+                                                th:text="'Cartão ' + ${metodo.bandeiraCartao} + ' final ' + ${metodo.ultimosQuatroDigitos}">
+                                            Cartão...
+                                        </option>
+                                    </th:block>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="card-number">Número do Cartão</label>
+                                <input type="text" id="card-number" th:field="*{novoCartaoNumero}" placeholder="0000 0000 0000 0000" />
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="card-name">Nome no Cartão</label>
+                                <input type="text" id="card-name" th:field="*{novoCartaoNome}" placeholder="Como está impresso no cartão" />
+                            </div>
+                            <div class="form-group">
+                                <label for="card-expiry">Validade</label>
+                                <input type="text" id="card-expiry" th:field="*{novoCartaoValidade}" placeholder="MM/AA" />
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" th:field="*{novoCartaoCVV}" placeholder="123" />
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="card-installments">Parcelamento</label>
+                                <select id="card-installments" th:field="*{parcelamento}" required>
+                                    <option value="1">1x (Valor Total)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pix-content" class="payment-panel">
+                    </div>
+
+                    <div id="boleto-content" class="payment-panel">
+                    </div>
+                </div>
+
+                <div class="form-group full-width" style="margin-top: 2rem">
+                    <button type="submit" class="btn-primary">
+                        Finalizar Compra
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </form>
+    <aside class="order-summary">
+        <h3>RESUMO</h3>
+
+        <div class="summary-section">
+            <label for="cupom">Tem um cupom?</label>
+            <div class="coupon-group">
+                <input type="text" id="cupom" placeholder="Código do cupom" />
+                <button type="button" class="btn-secondary">Adicionar</button>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <label for="observacao">Observação da compra (opcional)</label>
+            <textarea
+                    id="observacao"
+                    placeholder="Deixe uma observação sobre sua compra."
+                    maxlength="300"
+            ></textarea>
+            <span>0/300 caracteres</span>
+        </div>
+
+        <div class="summary-section totals">
+            <div class="total-row">
+                <span>Produtos</span>
+                <span th:text="'R$ ' + ${#numbers.formatDecimal(totalPrice, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</span>
+            </div>
+            <div class="total-row grand-total">
+                <span>Total</span>
+                <span>
+                    <strong th:text="'R$ ' + ${#numbers.formatDecimal(totalPrice, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</strong>
+                    <small>em até 10x no cartão</small>
+                </span>
+            </div>
+        </div>
+
+        <div class="cart-items">
+            <article class="cart-item" th:each="item : ${checkoutItems}">
+                <img th:src="@{${item.imagemUrl}}" alt="Imagem do Produto" />
+                <div class="item-details">
+                    <h4 th:text="${item.nomeProduto}">Nome do Produto</h4>
+                    <strong th:text="'R$ ' + ${#numbers.formatDecimal(item.precoProduto, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</strong>
+                </div>
+                <div class="item-quantity">
+                    <input type="text" th:value="${item.quantidade}" readonly />
+                </div>
+            </article>
+        </div>
+    </aside>
+
+</div>
+</body>
+<script th:src="@{/js/Checkout/Checkout.js}"></script>
+<script th:src="@{/js/page_principal/page-principal.js}"></script>
+<script th:src="@{/js/carrinho.js}"></script>
+</html>

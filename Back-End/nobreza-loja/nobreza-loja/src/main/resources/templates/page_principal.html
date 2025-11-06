@@ -22,7 +22,7 @@
                     <h1>Nobreza</h1>
                 </div>
                 <ul>
-                    <li><a th:href="@{/page_principal.html}">Inicio</a></li>
+                    <li><a th:href="@{/page_principal}">Inicio</a></li>
                     <li id="products"><a href="">Produtos</a></li>
                     <li><a href="#Categories">Categorias</a></li>
                     <li><a href="#most-wanted">Mais Procurados</a></li>
@@ -65,45 +65,45 @@
 
                     <div class="column one-products">
                         <h2>Ternos</h2>
-                        <a th:href="@{/api/catalog/page(category='slimFit')}"><p>Slim Fit</p></a>
-                        <a th:href="@{/api/catalog/page(category='regularFit')}"><p>Regular Fit</p></a>
-                        <a th:href="@{/api/catalog/page(category='casamento')}"><p>Para Casamento</p></a>
-                        <a th:href="@{/api/catalog/page(category='executivo')}"><p>Executivo</p></a>
+                        <a th:href="@{/api/catalog/page(category='slimFit', groupTitle='Ternos', pageTitle='Slim Fit')}"><p>Slim Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='regularFit', groupTitle='Ternos', pageTitle='Regular Fit')}"><p>Regular Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='casamento', groupTitle='Ternos', pageTitle='Para Casamento')}"><p>Para Casamento</p></a>
+                        <a th:href="@{/api/catalog/page(category='executivo', groupTitle='Ternos', pageTitle='Executivo')}"><p>Executivo</p></a>
                     </div>
 
                     <div class="column two-products">
                         <h2>Blazers</h2>
-                        <a th:href="@{/api/catalog/page(category='esportivos')}"><p>Esportivos</p></a>
-                        <a th:href="@{/api/catalog/page(category='formais')}"><p>Formais</p></a>
+                        <a th:href="@{/api/catalog/page(category='esportivos', groupTitle='Blazers', pageTitle='Esportivos')}"><p>Esportivos</p></a>
+                        <a th:href="@{/api/catalog/page(category='formais', groupTitle='Blazers', pageTitle='Formais')}"><p>Formais</p></a>
                     </div>
 
                     <div class="column three-products">
                         <h2>Calças</h2>
-                        <a th:href="@{/api/catalog/page(category='socialSlimFit')}"><p>Social Slim Fit</p></a>
-                        <a th:href="@{/api/catalog/page(category='socialRegularFit')}"><p>Social Regular Fit</p></a>
-                        <a th:href="@{/api/catalog/page(category='casualElegante')}"><p>Casual Elegante</p></a>
+                        <a th:href="@{/api/catalog/page(category='socialSlimFit', groupTitle='Calças', pageTitle='Social Slim Fit')}"><p>Social Slim Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='socialRegularFit', groupTitle='Calças', pageTitle='Social Regular Fit')}"><p>Social Regular Fit</p></a>
+                        <a th:href="@{/api/catalog/page(category='casualElegante', groupTitle='Calças', pageTitle='Casual Elegante')}"><p>Casual Elegante</p></a>
                     </div>
 
                     <div class="column four-products">
                         <h2>Relógios</h2>
-                        <a th:href="@{/api/catalog/page(category='classicos')}"><p>Clássicos</p></a>
-                        <a th:href="@{/api/catalog/page(category='esportivos')}"><p>Esportivos</p></a>
-                        <a th:href="@{/api/catalog/page(category='automaticos')}"><p>Automáticos</p></a>
+                        <a th:href="@{/api/catalog/page(category='classicos', groupTitle='Relógios', pageTitle='Clássicos')}"><p>Clássicos</p></a>
+                        <a th:href="@{/api/catalog/page(category='esportivosRelogio', groupTitle='Relógios', pageTitle='Esportivos')}"><p>Esportivos</p></a>
+                        <a th:href="@{/api/catalog/page(category='automaticos', groupTitle='Relógios', pageTitle='Automáticos')}"><p>Automáticos</p></a>
                     </div>
 
                     <div class="column five-products">
                         <h2>Sapatos</h2>
-                        <a th:href="@{/api/catalog/page(category='oxford')}"><p>Oxford</p></a>
-                        <a th:href="@{/api/catalog/page(category='derby')}"><p>Derby</p></a>
-                        <a th:href="@{/api/catalog/page(category='loafers')}"><p>Loafers</p></a>
-                        <a th:href="@{/api/catalog/page(category='botasElegantes')}"><p>Botas Elegantes</p></a>
+                        <a th:href="@{/api/catalog/page(category='oxford', groupTitle='Sapatos', pageTitle='Oxford')}"><p>Oxford</p></a>
+                        <a th:href="@{/api/catalog/page(category='derby', groupTitle='Sapatos', pageTitle='Derby')}"><p>Derby</p></a>
+                        <a th:href="@{/api/catalog/page(category='loafers', groupTitle='Sapatos', pageTitle='Loafers')}"><p>Loafers</p></a>
+                        <a th:href="@{/api/catalog/page(category='botasElegantes', groupTitle='Sapatos', pageTitle='Botas Elegantes')}"><p>Botas Elegantes</p></a>
                     </div>
 
                     <div class="column six-products">
                         <h2>Gravatas</h2>
-                        <a th:href="@{/api/catalog/page(category='slim')}"><p>Slim</p></a>
-                        <a th:href="@{/api/catalog/page(category='tradicional')}"><p>Tradicional</p></a>
-                        <a th:href="@{/api/catalog/page(category='borboleta')}"><p>Borboleta</p></a>
+                        <a th:href="@{/api/catalog/page(category='slim', groupTitle='Gravatas', pageTitle='Slim')}"><p>Slim</p></a>
+                        <a th:href="@{/api/catalog/page(category='tradicional', groupTitle='Gravatas', pageTitle='Tradicional')}"><p>Tradicional</p></a>
+                        <a th:href="@{/api/catalog/page(category='borboleta', groupTitle='Gravatas', pageTitle='Borboleta')}"><p>Borboleta</p></a>
                     </div>
 
                 </div>
@@ -223,182 +223,123 @@
             <h2>MAIS PROCURADOS</h2>
         </div>
         <div id="container-product">
-            <div class="product-item">
-                <div class="product one"></div>
-                <div class="title-mostwanted">
-                    <h2>Paletó Clássico Armani</h2>
-                    <p>R$1200</p>
-                    <button class="button-mostwanted">Comprar</button>
-                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
+
+            <div class="product-item" th:each="produto : ${mostWantedProducts.content}">
+                <div class="product img-mostwanted">
+                    <a th:href="@{/produto/{id}(id=${produto.id})}">
+                        <img th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
+                             th:alt="${produto.name}"/>
                     </a>
                 </div>
-            </div>
-            <div class="product-item">
-                <div class="product two"></div>
                 <div class="title-mostwanted">
-                    <h2>Sapato Social Louie</h2>
-                    <p>R$1100</p>
-                    <button class="button-mostwanted">Comprar</button>
-                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
+                    <h3 th:text="${produto.name}">Nome do Produto</h3>
+                    <p class="price" th:text="'R$' + ${#numbers.formatDecimal(produto.price, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</p>
+
+                    <a th:href="@{/produto/{id}(id=${produto.id})}" class="buy-button-link">
+                        <button class="buy-button">Ver Detalhes</button>
                     </a>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product three"></div>
-                <div class="title-mostwanted">
-                    <h2>Blazer Verde Listado Zegna</h2>
-                    <p>R$5400</p>
-                    <button class="button-mostwanted">Comprar</button>
-                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product four"></div>
-                <div class="title-mostwanted">
-                    <h2>Relógio Clássico Seiko</h2>
-                    <p>R$1900</p>
-                    <button class="button-mostwanted">Comprar</button>
-                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani" target="_blank" class="whatsapp-link">
+
+                    <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto" target="_blank" class="whatsapp-link">
                         <button class="button-whatsapp">Compre no WhatsApp</button>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="elements-navigation-mostwanted">
+
+        <div class="elements-navigation-mostwanted" th:if="${mostWantedProducts.totalPages > 1}">
+
+            <th:block th:each="i : ${#numbers.sequence(0, 2)}">
+
+                <a th:if="${i < mostWantedProducts.totalPages}"
+
+                   th:href="@{/page_principal(mw_page=${i}, n_page=${mostWantedProducts.number})}"
+
+                   class="little-ball"
+
+                   th:classappend="${i == mostWantedProducts.number} ? 'active' : ''">
+                </a>
+
+            </th:block>
+
+        </div>
+    </div>
 
     <!--News-->
     <section id="news">
         <div id="flex-title-news">
-            <div class="rectangle-title left-news"></div>
-            <div id="categories-title"><h2>NOVIDADES</h2></div>
-            <div class="rectangle-title right-news"></div>
         </div>
 
         <div id="news-grid">
-            <!--Container Foto-->
-            <div class="container-photos">
-                <div class="photo photo-one"></div>
-                <div class="description-news">
-                    <p>Paletó Classico Bege Armani</p>
-                    <p>R$1200</p>
-                    <button class="button-news">Comprar</button>
-                    <a
-                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
-                            target="_blank"
-                            class="whatsapp-link"
-                    >
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <!--Encerramento-->
 
-            <!--Container Fotos-->
-            <div class="container-photos">
-                <div class="catalog go-catalog">
-                    <div id="top-rectangle">
-                        <div id="text-top-rectangle">
-                            <p>Novidades com peças exclusivas todo mês na loja</p>
-                            <a href="../Catalog/index.html"
-                            ><button class="catalog-button">Ir ao catalogo</button></a
-                            >
+            <th:block th:each="produto, iterStat : ${newsProducts.content}">
+
+                <div class="container-photos">
+                    <div class="photo">
+                        <a th:href="@{/produto/{id}(id=${produto.id})}">
+                            <img th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
+                                 th:alt="${produto.name}" style="width: 100%; height: 100%; object-fit: cover;"/>
+                        </a>
+                    </div>
+                    <div class="description-news">
+                        <p th:text="${produto.name}">Nome do Produto</p>
+                        <p th:text="'R$' + ${#numbers.formatDecimal(produto.price, 1, 'COMMA', 2, 'POINT')}">R$0</p>
+
+                        <a th:href="@{/produto/{id}(id=${produto.id})}" class="buy-button-link">
+                            <button class="button-news">Comprar</button>
+                        </a>
+                        <a
+                                href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto"
+                                target="_blank"
+                                class="whatsapp-link"
+                        >
+                            <button class="button-whatsapp">Compre no WhatsApp</button>
+                        </a>
+                    </div>
+                </div>
+
+                <th:block th:if="${iterStat.count == 1}">
+                    <div class="container-photos">
+                        <div class="catalog go-catalog">
+                            <div id="top-rectangle">
+                                <div id="text-top-rectangle">
+                                    <p>Novidades com peças exclusivas todo mês na loja</p>
+                                    <a href="#">
+                                        <button class="catalog-button">Ir ao catalogo</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <img id="news-icon" th:src="@{/img/icones/shop_principal/Sun_Nov_17_2024_14_33_23_GM_19-0_-removebg-preview.png}" alt="Imagem" />
                         </div>
                     </div>
-                    <img id="news-icon" th:src="@{/img/icones/shop_principal/Sun_Nov_17_2024_14_33_23_GM_19-0_-removebg-preview.png}" alt="Imagem" />
+                </th:block>
 
-                </div>
-            </div>
-            <!--Encerramento-->
-
-            <!--Container Foto-->
-            <div class="container-photos">
-                <div class="photo photo-three"></div>
-
-                <div class="description-news">
-                    <p>Paletó Classico Bege Armani</p>
-                    <p>R$1200</p>
-                    <button class="button-news">Comprar</button>
-                    <a
-                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
-                            target="_blank"
-                            class="whatsapp-link"
-                    >
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <!--Encerramento-->
-
-            <!--Container Fotos-->
-            <div class="container-photos">
-                <div class="photo photo-four"></div>
-
-                <div class="description-news">
-                    <p>Paletó Classico Bege Armani</p>
-                    <p>R$1200</p>
-                    <button class="button-news">Comprar</button>
-                    <a
-                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
-                            target="_blank"
-                            class="whatsapp-link"
-                    >
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <!--Encerramento-->
-
-            <!--Container Fotos-->
-            <div class="container-photos">
-                <div class="photo photo-five"></div>
-
-                <div class="description-news">
-                    <p>Paletó Classico Bege Armani</p>
-                    <p>R$1200</p>
-                    <button class="button-news">Comprar</button>
-                    <a
-                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
-                            target="_blank"
-                            class="whatsapp-link"
-                    >
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <!--Encerramento-->
-
-            <!--Container Fotos-->
-            <div class="container-photos">
-                <div class="photo photo-six"></div>
-
-                <div class="description-news">
-                    <p>Paletó Classico Bege Armani</p>
-                    <p>R$1200</p>
-                    <button class="button-news">Comprar</button>
-                    <a
-                            href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto%20Paletó%20Clássico%20Armani"
-                            target="_blank"
-                            class="whatsapp-link"
-                    >
-                        <button class="button-whatsapp">Compre no WhatsApp</button>
-                    </a>
-                </div>
-            </div>
-            <!--Encerramento-->
-
-            <div id="container-description-news">
-                <div class="elements-navigation-news">
-                    <div class="little-ball"></div>
-                    <div class="little-ball"></div>
-                    <div class="little-ball"></div>
-                </div>
-            </div>
-        </div>
+            </th:block> </div>
     </section>
+
+    <!-- Elementos de navegação  !-->
+    <div id="container-description-news">
+
+        <div class="elements-navigation-news" th:if="${newsProducts.totalPages > 1}">
+
+            <th:block th:each="i : ${#numbers.sequence(0, 2)}">
+
+                <a th:if="${i < newsProducts.totalPages}"
+
+                   th:href="@{/page_principal(mw_page=${newsProducts.number}, nw_page=${i})}"
+
+                   class="little-ball"
+
+                   th:classappend="${i == newsProducts.number} ? 'active' : ''">
+                </a>
+
+            </th:block>
+
+        </div>
+    </div>
+
     <!-- Cupom -->
     <section id="before-closing">
         <div id="container-image">
@@ -551,5 +492,6 @@
     <script th:src="@{/js/page_principal/News.js}"></script>
     <script th:src="@{/js/page_principal/MostWanted.js}"></script>
     <script th:src="@{/js/page_principal/Categories.js}"></script>
+    <script th:src="@{/js/Carrinho.js}"></script>
 </body>
 </html>

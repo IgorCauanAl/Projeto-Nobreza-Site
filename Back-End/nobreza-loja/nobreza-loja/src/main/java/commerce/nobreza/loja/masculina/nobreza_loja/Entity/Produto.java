@@ -1,5 +1,6 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Entity;
 
+import commerce.nobreza.loja.masculina.nobreza_loja.Enum.ProductSection;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,8 +43,10 @@ public class Produto {
     @Column(name = "amount")
     private int amount;
 
-    //Um produto só tem uma única categoria
-    @OneToOne
+    @Enumerated(EnumType.STRING)
+    private ProductSection section;
+
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -61,7 +64,7 @@ public class Produto {
     )
     private Set<Cor> colors = new HashSet<>();
 
-    //Para cada produto muitas imagens
+
     @OneToMany(
             mappedBy = "product",
             cascade = CascadeType.ALL,
@@ -69,14 +72,6 @@ public class Produto {
             fetch = FetchType.EAGER
     )
     private List<ImageProduct> images = new ArrayList<>();
-
-
-
-
-
-
-
-
 
 
 }

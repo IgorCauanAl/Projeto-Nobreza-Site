@@ -1,0 +1,115 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+<div id="menu-container">
+    <div id="nav-bar">
+        <div id="logo">
+            <h1>Nobreza</h1>
+        </div>
+        <ul>
+            <li><a th:href="@{/page_principal.html}">Inicio</a></li>
+            <li id="products"><a href="">Produtos</a></li>
+            <li><a href="#Categories">Categorias</a></li>
+            <li><a href="#most-wanted">Mais Procurados</a></li>
+            <li><a href="#news">Novidades</a></li>
+            <li><a href="#before-closing">Cupom</a></li>
+        </ul>
+        <div id="left-elements">
+            <div id="search">
+                <p>Buscar</p>
+                <img id="button-search" th:src="@{/img/icones/shop_principal/lupa.svg}" alt=""/>
+            </div>
+            <div id="circle-cart">
+                <img th:src="@{/img/icones/shop_principal/cart.svg}" alt=""/>
+                <div id="number-purchases"><p>0</p></div>
+            </div>
+
+            <div class="admin-circle" >
+                <a th:href ="@{/manageruser}"><img th:src="@{/img/icones/shop_principal/adm.png}" alt="Admin"/></a>
+            </div>
+
+            <div class="login-circle">
+                <a th:href="@{/login.html}"><img th:src="@{/img/icones/shop_principal/profile.svg}" alt=""/></a>
+            </div>
+            <div id="mini-cart" class="hidden">
+                <button id="mini-cart-close" class="close-button">&times;</button>
+                <div id="mini-cart-items"></div>
+                <div id="mini-cart-footer">
+                    <p id="mini-cart-total">Total: R$0,00</p>
+                    <button id="mini-cart-checkout">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="menu-products-hidden">
+    <div id="container-menu-products">
+        <img id="img-products" th:src="@{/img/shop_principal/photo-products-hidden.jpg}" alt=""/>
+        <div id="container-column">
+
+            <div class="column one-products">
+                <h2>Ternos</h2>
+                <a th:href="@{/api/catalog/page(category='slimFit', groupTitle='Ternos', pageTitle='Slim Fit')}"><p>Slim Fit</p></a>
+                <a th:href="@{/api/catalog/page(category='regularFit', groupTitle='Ternos', pageTitle='Regular Fit')}"><p>Regular Fit</p></a>
+                <a th:href="@{/api/catalog/page(category='casamento', groupTitle='Ternos', pageTitle='Para Casamento')}"><p>Para Casamento</p></a>
+                <a th:href="@{/api/catalog/page(category='executivo', groupTitle='Ternos', pageTitle='Executivo')}"><p>Executivo</p></a>
+            </div>
+
+            <div class="column two-products">
+                <h2>Blazers</h2>
+                <a th:href="@{/api/catalog/page(category='esportivos', groupTitle='Blazers', pageTitle='Esportivos')}"><p>Esportivos</p></a>
+                <a th:href="@{/api/catalog/page(category='formais', groupTitle='Blazers', pageTitle='Formais')}"><p>Formais</p></a>
+            </div>
+
+            <div class="column three-products">
+                <h2>Calças</h2>
+                <a th:href="@{/api/catalog/page(category='socialSlimFit', groupTitle='Calças', pageTitle='Social Slim Fit')}"><p>Social Slim Fit</p></a>
+                <a th:href="@{/api/catalog/page(category='socialRegularFit', groupTitle='Calças', pageTitle='Social Regular Fit')}"><p>Social Regular Fit</p></a>
+                <a th:href="@{/api/catalog/page(category='casualElegante', groupTitle='Calças', pageTitle='Casual Elegante')}"><p>Casual Elegante</p></a>
+            </div>
+
+            <div class="column four-products">
+                <h2>Relógios</h2>
+                <a th:href="@{/api/catalog/page(category='classicos', groupTitle='Relógios', pageTitle='Clássicos')}"><p>Clássicos</p></a>
+                <a th:href="@{/api/catalog/page(category='esportivosRelogio', groupTitle='Relógios', pageTitle='Esportivos')}"><p>Esportivos</p></a>
+                <a th:href="@{/api/catalog/page(category='automaticos', groupTitle='Relógios', pageTitle='Automáticos')}"><p>Automáticos</p></a>
+            </div>
+
+            <div class="column five-products">
+                <h2>Sapatos</h2>
+                <a th:href="@{/api/catalog/page(category='oxford', groupTitle='Sapatos', pageTitle='Oxford')}"><p>Oxford</p></a>
+                <a th:href="@{/api/catalog/page(category='derby', groupTitle='Sapatos', pageTitle='Derby')}"><p>Derby</p></a>
+                <a th:href="@{/api/catalog/page(category='loafers', groupTitle='Sapatos', pageTitle='Loafers')}"><p>Loafers</p></a>
+                <a th:href="@{/api/catalog/page(category='botasElegantes', groupTitle='Sapatos', pageTitle='Botas Elegantes')}"><p>Botas Elegantes</p></a>
+            </div>
+
+            <div class="column six-products">
+                <h2>Gravatas</h2>
+                <a th:href="@{/api/catalog/page(category='slim', groupTitle='Gravatas', pageTitle='Slim')}"><p>Slim</p></a>
+                <a th:href="@{/api/catalog/page(category='tradicional', groupTitle='Gravatas', pageTitle='Tradicional')}"><p>Tradicional</p></a>
+                <a th:href="@{/api/catalog/page(category='borboleta', groupTitle='Gravatas', pageTitle='Borboleta')}"><p>Borboleta</p></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="sub-search-hidden">
+    <div id="sub-search">
+        <div id="container-search">
+            <form class="formulary-search" th:action="@{/search-back-end}" method="get">
+                <input type="text" name="search" class="search-box" placeholder="O que você está buscando?" required aria-label="Campo Pesquisa"/>
+                <div id="land">
+                    <button type="submit" class="button-search">
+                        <img th:src="@{/img/icones/shop_principal/lupa.svg}" alt=""/>
+                    </button>
+                </div>
+                <div id="close">
+                    <button class="button-search">
+                        <img th:src="@{/img/icones/shop_principal/close icon.svg}" alt=""/>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

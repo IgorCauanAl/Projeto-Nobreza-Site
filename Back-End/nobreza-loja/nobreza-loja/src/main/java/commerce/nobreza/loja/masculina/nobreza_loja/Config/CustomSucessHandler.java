@@ -20,9 +20,9 @@ public class CustomSucessHandler implements AuthenticationSuccessHandler {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
         if(roles.contains("ROLE_ADMIN")){
-            response.sendRedirect("/api/page_principal");
+            response.sendRedirect("/page_principal");
         }else if (roles.contains("ROLE_USER")){
-            response.sendRedirect("/api/page_principal");
+            response.sendRedirect("/page_principal");
         }else{
             response.sendRedirect("/html/login.html?erro=sem_permissao");
         }

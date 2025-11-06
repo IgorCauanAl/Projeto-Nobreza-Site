@@ -1,215 +1,258 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel do Administrador</title>
-      <link rel="stylesheet" th:href="@{/css/Perfil/ADM/PerfilADM.css}" />
+    <link rel="stylesheet" th:href="@{/css/Perfil/ADM/PerfilADM.css}" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-  </head>
-  <body>
-    <div class="dashboard-container">
-      <aside class="sidebar">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar">
         <div class="user-profile">
-          <p>Administrador</p>
-          <h3>Nome do Admin</h3>
+            <p>Administrador</p>
+            <h3>Nome do Admin</h3>
         </div>
         <nav class="sidebar-nav">
-          <ul>
-            <li>
-              <a href="#" class="nav-link active" data-target="usuarios"
-                ><i class="fas fa-users-cog"></i> Gerenciar Usuários</a
-              >
-            </li>
-            <li>
-              <a href="#" class="nav-link" data-target="produtos"
-                ><i class="fas fa-plus-circle"></i> Adicionar Produto</a
-              >
-            </li>
-            <li>
-              <a href="URL_PARA_LOGOUT" class="nav-link-logout"
-                ><i class="fas fa-sign-out-alt"></i> Sair</a
-              >
-            </li>
-          </ul>
+            <ul>
+                <li>
+                    <a href="#" class="nav-link active" data-target="usuarios"
+                    ><i class="fas fa-users-cog"></i> Gerenciar Usuários</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-target="produtos"
+                    ><i class="fas fa-plus-circle"></i> Adicionar Produto</a
+                    >
+                </li>
+                <li>
+                    <a href="URL_PARA_LOGOUT" class="nav-link-logout"
+                    ><i class="fas fa-sign-out-alt"></i> Sair</a
+                    >
+                </li>
+            </ul>
         </nav>
-      </aside>
+    </aside>
 
-      <main class="main-content">
-          <section id="usuarios" class="content-section active">
-              <h2>Gerenciar Usuários</h2>
+    <main class="main-content">
+        <section id="usuarios" class="content-section active">
+            <h2>Gerenciar Usuários</h2>
 
-              <!-- Barra de busca -->
-              <div class="search-bar">
-                  <i class="fas fa-search"></i>
-                  <input
-                          type="search"
-                          placeholder="Buscar usuário por nome ou e-mail..."
-                          th:value="${param.search}"
-                          name="search"
-                          form="searchForm"
-                  />
-              </div>
-
-              <!-- Formulário para busca -->
-              <form id="searchForm" th:action="@{/admin/usuarios}" method="get"></form>
-
-              <!-- Tabela de usuários -->
-              <div class="user-table-container">
-                  <table class="user-table">
-                      <thead>
-                      <tr>
-                          <th>Nome</th>
-                          <th>E-mail</th>
-                          <th>Função</th>
-                          <th>Ações</th>
-                      </tr>
-                      </thead>
-
-                      <tbody>
-                      <!-- Loop dos usuários -->
-                      <tr th:each="usuario : ${usuarios}">
-                          <td th:text="${usuario.nome}">Nome do Usuário</td>
-                          <td th:text="${usuario.email}">email@exemplo.com</td>
-
-                          <td>
-                        <span th:text="${usuario.hasRole('ROLE_ADMIN') ? 'Adm' : 'User'}"
-                              th:classappend="${usuario.hasRole('ROLE_ADMIN')} ? 'roles role-admin' : 'roles role-user'">
-                        </span>
-
-                          </td>
-
-                          <td class="actions-cell">
-                              <!-- Botão promover -->
-
-
-                                  <form th:action="@{/admin/usuarios/promover/{id}(id=${usuario.id})}" method="post">
-                                      <button class="btn-promote" aria-label="Promover usuário">
-                                          <i class="fas fa-user-shield"></i>
-                                      </button>
-                                  </form>
-
-
-
-                              <!-- Botão deletar -->
-                              <form
-                                      th:action="@{/admin/usuarios/deletar/{id}(id=${usuario.id})}"
-                                      method="post"
-                              >
-                                  <button class="btn-delete" aria-label="Apagar usuário">
-                                      <i class="fas fa-trash-alt"></i>
-                                  </button>
-                              </form>
-                          </td>
-                      </tr>
-
-                      <!-- Caso não haja usuários -->
-                      <tr th:if="${#lists.isEmpty(usuarios)}">
-                          <td colspan="4" style="text-align:center;">Nenhum usuário encontrado</td>
-                      </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </section>
-
-
-          <section id="produtos" class="content-section">
-          <h2>Adicionar Novo Produto</h2>
-          <form class="product-form">
-            <div class="form-group full-width">
-              <label for="prod-nome">Nome do Produto</label>
-              <input type="text" id="prod-nome" required />
-            </div>
-            <div class="form-group">
-              <label for="prod-preco">Preço (R$)</label>
-              <input
-                type="number"
-                id="prod-preco"
-                step="0.01"
-                placeholder="Ex: 199.90"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="prod-tipo">Tipo da Mercadoria</label>
-              <select id="prod-tipo" required>
-                <option value="">Selecione um tipo</option>
-                <option value="relogio">Relógio</option>
-                <option value="terno">Terno</option>
-                <option value="blazer">Blazer</option>
-                <option value="blazer-classico-moderno">
-                  Blazer Clássico Moderno
-                </option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="prod-ref">Referência (SKU)</label>
-              <input
-                type="text"
-                id="prod-ref"
-                placeholder="Ex: BLZ-001-PT"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="prod-quantidade">Quantidade em Estoque</label>
-              <input
-                type="number"
-                id="prod-quantidade"
-                placeholder="Ex: 50"
-                required
-              />
-            </div>
-
-            <div class="form-group full-width">
-              <label for="prod-descricao">Descrição do Produto</label>
-              <textarea id="prod-descricao" rows="4" required></textarea>
-            </div>
-            <div class="form-group full-width">
-              <label for="prod-composicao">Composição</label>
-              <textarea id="prod-composicao" rows="3" required></textarea>
-            </div>
-            <div class="form-group full-width">
-              <label for="prod-foto">Foto Principal do Produto</label>
-              <input type="file" id="prod-foto" required />
-            </div>
-
-            <div class="form-group full-width">
-              <label>Cores Disponíveis</label>
-              <div class="color-picker-group">
-                <input type="color" id="color-picker-input" value="#000000" />
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
                 <input
-                  type="text"
-                  id="color-hex-input"
-                  placeholder="Ou digite o HEX (ex: #FFFFFF)"
-                />
-                <button type="button" id="add-color-btn">Adicionar Cor</button>
-              </div>
-              <div class="selected-colors" id="selected-colors-container"></div>
-              <input type="hidden" name="prod-cores" id="prod-cores-hidden" />
+                        type="search"
+                        placeholder="Buscar usuário por nome ou e-mail..."
+                        th:value="${param.search}"
+                        name="search"
+                        form="searchForm"
+                        id="searchInput" />
             </div>
 
-            <div class="form-group">
-              <label for="prod-pix-desconto">Desconto no PIX (%)</label>
-              <input type="number" id="prod-pix-desconto" placeholder="Ex: 5" />
+            <form
+                    id="searchForm"
+                    th:action="@{/admin/usuarios}"
+                    method="get"
+            ></form>
+
+            <div class="user-table-container">
+                <table class="user-table">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Função</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="userTableBody"> <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.nome}">Nome do Usuário</td>
+                        <td th:text="${usuario.email}">email@exemplo.com</td>
+
+                        <td>
+                    <span
+                            th:text="${usuario.hasRole('ROLE_ADMIN') ? 'Adm' : 'User'}"
+                            th:classappend="${usuario.hasRole('ROLE_ADMIN')} ? 'roles role-admin' : 'roles role-user'"
+                    >
+                    </span>
+                        </td>
+
+                        <td class="actions-cell">
+                            <form
+                                    th:action="@{/admin/usuarios/promover/{id}(id=${usuario.id})}"
+                                    method="post"
+                            >
+                                <button class="btn-promote" aria-label="Promover usuário">
+                                    <i class="fas fa-user-shield"></i>
+                                </button>
+                            </form>
+
+                            <form
+                                    th:action="@{/admin/usuarios/deletar/{id}(id=${usuario.id})}"
+                                    method="post"
+                            >
+                                <button class="btn-delete" aria-label="Apagar usuário">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <tr
+                            id="noUserRow"
+                            th:style="${#lists.isEmpty(usuarios)} ? '' : 'display:none;'"
+                    >
+                        <td colspan="4" style="text-align: center">
+                            Nenhum usuário encontrado
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-group-inline full-width">
-              <input type="checkbox" id="prod-promocao" />
-              <label for="prod-promocao">Marcar como promoção</label>
-            </div>
-            <div class="form-group full-width">
-              <button type="submit" class="btn">Adicionar Produto</button>
-            </div>
-          </form>
         </section>
-      </main>
-    </div>
 
-    <script th:src="@{/js/Perfil/ADM/PerfilADM.js}"></script>
-  </body>
+        <section id="produtos" class="content-section">
+            <h2>Adicionar Novo Produto</h2>
+            <form class="product-form"
+                  th:action="@{/api/products/admin/produtos/adicionar}"
+                  method="post"
+                  enctype="multipart/form-data">
+                <div class="form-group full-width">
+                    <label for="prod-nome">Nome do Produto</label>
+                    <input type="text" id="prod-nome" name="prodNome" required />
+                </div>
+                <div class="form-group">
+                    <label for="prod-preco">Preço (R$)</label>
+                    <input
+                            type="number"
+                            id="prod-preco"
+                            name="prodPreco"
+                            step="0.01"
+                            placeholder="Ex: 199.90"
+                            required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="prod-tipo">Tipo da Mercadoria</label>
+                    <select id="prod-tipo" name="prodTipo" required>
+                        <option value="">Selecione um tipo</option>
+                        <option value="slimFit">Terno - Slim Fit</option>
+                        <option value="regularFit">Terno - Regular Fit</option>
+                        <option value="casamento">Terno - Casamento</option>
+                        <option value="executivo">Terno - Executivo</option>
+                        <option value="esportivos">Blazer - Esportivos</option>
+                        <option value="formais">Blazer - Formais</option>
+                        <option value="socialSlimFit">Calça - Social Slim Fit</option>
+                        <option value="socialRegularFit">Calça - Social Regular Fit</option>
+                        <option value="casualElegante">Calça - Casual Elegante</option>
+                        <option value="classicos">Relógio - Clássicos</option>
+                        <option value="esportivosRelogio">Relógio - Esportivos</option>
+                        <option value="automaticos">Relógio - Automáticos</option>
+                        <option value="oxford">Sapato - Oxford</option>
+                        <option value="derby">Sapato - Derby</option>
+                        <option value="loafers">Sapato - Loafers</option>
+                        <option value="botasElegantes">Sapato - Botas Elegantes</option>
+                        <option value="slim">Gravata - Slim</option>
+                        <option value="tradicional">Gravata - Tradicional</option>
+                        <option value="borboleta">Gravata - Borboleta</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="prod-ref">Referência (SKU)</label>
+                    <input
+                            type="text"
+                            id="prod-ref"
+                            name="prodRef"
+                            placeholder="Ex: BLZ-001-PT"
+                            required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="prod-quantidade">Quantidade em Estoque</label>
+                    <input
+                            type="number"
+                            id="prod-quantidade"
+                            name="prodQuantidade"
+                            placeholder="Ex: 50"
+                            required
+                    />
+                </div>
+
+
+                <div class="form-group">
+                    <select id="prod-section" name="prodSection" required>
+                        <option value="">Seção a ser selecionada</option>
+                        <option value="CATEGORY">Categorias (Padrão)</option>
+                        <option value="MOST_WANTED">Mais Procurados</option>
+                        <option value="NEWS">Novidades</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="prod-descricao">Descrição do Produto</label>
+                    <textarea id="prod-descricao" name="prodDescricao" rows="4" required></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="prod-composicao">Composição</label>
+                    <textarea id="prod-composicao" name="prodComposicao" rows="3" required></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="prod-foto">Foto Principal do Produto</label>
+                    <input type="file" id="prod-foto" name="prodFoto" required />
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Cores Disponíveis</label>
+                    <div class="color-picker-group">
+                        <input type="color" id="color-picker-input" value="#000000" />
+                        <input
+                                type="text"
+                                id="color-hex-input"
+                                placeholder="Ou digite o HEX (ex: #FFFFFF)"
+                        />
+                        <button type="button" id="add-color-btn">Adicionar Cor</button>
+                    </div>
+                    <div class="selected-colors" id="selected-colors-container"></div>
+                    <input type="hidden" name="prodCores" id="prod-cores-hidden" />
+                </div>
+
+                <div class="form-group">
+                    <label for="prod-pix-desconto">Desconto no PIX (%)</label>
+                    <input type="number" id="prod-pix-desconto" name="prodPixDesconto" placeholder="Ex: 5" />
+                </div>
+                <div class="form-group-inline full-width">
+                    <input type="checkbox" id="prod-promocao" name="prodPromocao" value="true" />
+                    <label for="prod-promocao">Marcar como promoção</label>
+                </div>
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Adicionar Produto</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="confirmationModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle">Confirmar Ação</h2>
+            <p id="modalMessage">Você tem certeza?</p>
+            <div class="modal-actions">
+                <button type="button" id="modalCancelBtn" class="btn-cancel">Cancelar</button>
+
+                <button type="button" id="modalConfirmBtn" class="btn-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/js/Perfil/ADM/PerfilADM.js}"></script>
+</body>
 </html>

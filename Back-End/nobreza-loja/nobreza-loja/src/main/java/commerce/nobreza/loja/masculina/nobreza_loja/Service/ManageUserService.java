@@ -5,6 +5,8 @@ import commerce.nobreza.loja.masculina.nobreza_loja.Repository.RoleRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -21,9 +23,10 @@ public class ManageUserService {
         return userRepository.findAll();
     }
 
+    @Transactional
     public boolean promoteToAdmin(Long userId, String requestingAdminEmail) {
         // Só permite promoção pelo ADM autorizado
-        if (!"igorcauawo@gmail.com".equals(requestingAdminEmail)) {
+        if (!"nobrezaADM@teste.com".equals(requestingAdminEmail)) {
             return false; // não autorizado
         }
 

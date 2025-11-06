@@ -1,23 +1,25 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Controller.Login.ADM;
-import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
 import commerce.nobreza.loja.masculina.nobreza_loja.Service.ManageUserService;
+import commerce.nobreza.loja.masculina.nobreza_loja.Service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class ADMController {
     private final ManageUserService managerUserService;
-
+    private final ProductService productService;
 
     @GetMapping("/manageruser")
     public String viewUser (Model model) {
