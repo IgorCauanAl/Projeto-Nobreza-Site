@@ -21,35 +21,35 @@ public class CatalogController {
 
     @GetMapping("/page")
     public String getCatalogPage(
-
-            @RequestParam(name = "category", required = false) String category,
+            // Parâmetros de contexto
             @RequestParam("groupTitle") String groupTitle,
             @RequestParam("pageTitle") String pageTitle,
-            @RequestParam(name = "page", defaultValue = "1") int page,
 
+            // Parâmetros de Filtro e Paginação
+            @RequestParam(name = "category", required = false) String category, // Recebe a String
+            @RequestParam(name = "page", defaultValue = "1") int page,
+            @RequestParam(defaultValue = "newest") String sort,
+            @RequestParam(name = "min", required = false) Double min,
+            @RequestParam(name = "max", required = false) Double max,
             Model model
     ) {
 
+        // 1. CHAMA O NOVO MÉTODO ÚNICO
+        // O if/else foi removido. O Service agora cuida de tudo.
+        Page<Produto> produtosPage = productService.findProdutos(category, page, sort, min, max);
 
+        // 2. Adiciona os resultados ao Model
+        model.addAttribute("produtosPage", produtosPage);
+        model.addAttribute("totalProdutosCount", produtosPage.getTotalElements());
+
+        // 3. Adiciona TODOS os parâmetros de volta ao Model
+        // (Necessário para a paginação)
         model.addAttribute("groupTitle", groupTitle);
         model.addAttribute("pageTitle", pageTitle);
-
-        Page<Produto> produtosPage;
-
-        if (category != null && !category.isEmpty()) {
-
-            produtosPage = productService.findProdutosByCategory(category, page);
-
-            model.addAttribute("category", category);
-
-        } else {
-
-            produtosPage = productService.findAllPaginated(page);
-        }
-
-        model.addAttribute("produtosPage", produtosPage);
-
-        model.addAttribute("totalProdutosCount", produtosPage.getTotalElements());
+        model.addAttribute("category", category);
+        model.addAttribute("sort", sort);
+        model.addAttribute("min", min);
+        model.addAttribute("max", max);
 
         return "catalog";
     }

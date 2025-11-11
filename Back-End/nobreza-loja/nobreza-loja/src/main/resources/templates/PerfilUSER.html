@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Conta</title>
+
+    <link
+            rel="stylesheet"
+            th:href="@{/css/page_principal/Page-Principal.CSS}"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/Perfil/USER/Perfil.css}" />
+</head>
+<body>
+<header>
+    <section id="header">
+        <div id="menu-container">
+            <div id="nav-bar">
+                <div id="logo">
+                    <a th:href="@{/}"><h1>Nobreza</h1></a>
+                </div>
+
+                <ul>
+                    <li>
+                        <a th:href="@{/}">Inicio</a>
+                    </li>
+                    <li id="products"><a th:href="@{/catalogo}">Produtos</a></li>
+                    <li><a href="#Categories">Categorias</a></li>
+                    <li><a href="#most-wanted">Mais Procurados</a></li>
+                    <li><a href="#news">Novidades</a></li>
+                    <li><a href="#before-closing">Cupom</a></li>
+                </ul>
+
+                <div id="left-elements">
+                    <div id="search">
+                        <p>Buscar</p>
+                        <img
+                                id="button-search"
+                                th:src="@{/img/icones/shop_principal/lupa.svg}"
+                                alt="Ícone de busca"
+                        />
+                    </div>
+
+                    <div id="circle-cart">
+                        <img
+                                th:src="@{/img/icones/shop_principal/cart.svg}"
+                                alt="Carrinho de compras"
+                        />
+                        <div id="number-purchases">
+                            <p>0</p> </div>
+                    </div>
+
+                    <div id="mini-cart" class="hidden">
+                        <div id="mini-cart-items"></div>
+                        <div id="mini-cart-footer">
+                            <p id="mini-cart-total">Total: R$0,00</p>
+                            <button id="mini-cart-checkout">Finalizar Compra</button>
+                        </div>
+                    </div>
+
+                    <div class="login-circle">
+                        <a th:href="@{/perfil}">
+                            <img
+                                    th:src="@{/img/icones/shop_principal/profile.svg}"
+                                    alt="Perfil do usuário"
+                            /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="user-profile">
+            <p>Olá</p>
+            <h3 th:text="${user.nome}"></h3>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#" class="nav-link active" data-target="painel"
+                    ><i class="fas fa-tachometer-alt"></i> Painel</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-target="pedidos"
+                    ><i class="fas fa-box"></i> Pedidos</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-target="enderecos"
+                    ><i class="fas fa-map-marker-alt"></i> Endereços</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-target="detalhes"
+                    ><i class="fas fa-user-cog"></i> Detalhes da Conta</a
+                    >
+                </li>
+                <li>
+                    <a th:href="@{/logout}" class="nav-link-logout"
+                    ><i class="fas fa-sign-out-alt"></i> Sair</a
+                    >
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section id="painel" class="content-section active">
+            <h2>Painel</h2>
+            <p>
+                Olá, <strong th:text="${user.nome}"></strong>! A partir do painel de sua conta,
+                você pode ver suas compras recentes, gerenciar seus endereços de
+                entrega, e editar sua senha e detalhes da conta.
+            </p>
+
+            <div class="painel-icon-container">
+                <img
+                        th:src="@{/img/Perfil/FotoSemFundo.png}"
+                        alt="Foto homem de terno dando legal e sorrindo"
+                />
+            </div>
+        </section>
+
+        <section id="pedidos" class="content-section">
+            <h2>Meus Pedidos</h2>
+
+            <div th:if="${#lists.isEmpty(pedidos)}" class="empty-state">
+                <i class="fas fa-receipt"></i>
+                <p>Nenhum pedido foi feito ainda.</p>
+                <a th:href="@{/catalogo}" class="btn">VER PRODUTOS</a>
+            </div>
+
+            <div th:unless="${#lists.isEmpty(pedidos)}" class="pedidos-lista">
+                <div class="pedido-card" th:each="pedido : ${pedidos}">
+                    <div class="pedido-header">
+                        <span class="pedido-id">Pedido #<span th:text="${pedido.id}">1001</span></span>
+                        <span class="pedido-data" th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy HH:mm')}">25/08/2025 14:30</span>
+                    </div>
+
+                    <div class="pedido-status" th:classappend="${#strings.toLowerCase(pedido.status)}">
+                        <span th:text="${pedido.status.displayValue}">PENDENTE</span>
+                    </div>
+
+                    <div class="pedido-detalhes">
+                        <p class="valor-total">
+                            Total: <span th:text="'R$ ' + ${#numbers.formatDecimal(pedido.valorTotal, 1, 'COMMA', 2, 'POINT')}">R$ 159,90</span>
+                        </p>
+                        <p class="itens-count">
+                            Itens: <span th:text="${#lists.size(pedido.itens)}">3</span>
+                        </p>
+                    </div>
+
+                    <a th:href="@{/user/pedido/{id}(id=${pedido.id})}" class="btn-detalhes">Ver Detalhes</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="enderecos" class="content-section">
+            <h2>Endereços</h2>
+            <p>
+                Os endereços a seguir serão usados na página de finalização de
+                compra por padrão.
+            </p>
+
+
+            <h3>Adicionar Novo Endereço</h3>
+            <form class="address-form" th:action="@{/account/salvar}" method="post">
+                <div class="form-group full-width">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" required />
+                </div>
+                <div class="form-group full-width">
+                    <label for="rua">Rua / Avenida</label>
+                    <input type="text" id="rua" name="rua" required />
+                </div>
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero" required />
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento (opcional)</label>
+                    <input type="text" id="complemento" name="complemento" />
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required />
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required />
+                </div>
+                <div class="form-group full-width">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="estado" required />
+                </div>
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Salvar Endereço</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="detalhes" class="content-section">
+            <h2>Detalhes da Conta</h2>
+            <form class="account-form" th:action="@{/account/details}" method="post">
+                <h3>Alterar Informações</h3>
+
+                <div class="form-group full-width">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="name" value="Coloque seu novo nome aqui!"/>
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Salvar Alterações</button>
+                </div>
+            </form>
+
+            <form class="account-form password-form" th:action="@{/account/password}" method="post">
+                <h3>Alterar Senha</h3>
+                <div class="form-group full-width">
+                    <label for="senha-atual">Senha Atual</label>
+                    <input type="password" id="senha-atual" name="current-password" required />
+                </div>
+                <div class="form-group">
+                    <label for="nova-senha">Nova Senha</label>
+                    <input type="password" id="nova-senha" name="new-password" required/>
+                </div>
+                <div class="form-group">
+                    <label for="confirma-senha">Confirmar Nova Senha</label>
+                    <input
+                            type="password"
+                            id="confirma-senha"
+                            name="confirm-password"
+                    required/>
+                </div>
+                <div class="form-group full-width">
+                    <button type="submit" class="btn">Alterar Senha</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</div>
+
+<script th:src="@{/js/Perfil/USER/Perfil.js}"></script>
+<script th:src="@{/js/page_principal/page-principal.js}"></script>
+</body>
+</html>

@@ -10,7 +10,5 @@ import java.util.List;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-    // Método essencial para uma futura página "Meus Pedidos"
-    // Encontra todos os pedidos de um usuário, ordenados pelo mais recente
-    List<Pedido> findByUsuarioOrderByDataPedidoDesc(Usuario usuario);
+    List<Pedido> findByUsuario(Usuario usuario);
 }

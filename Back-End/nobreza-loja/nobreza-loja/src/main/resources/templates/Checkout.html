@@ -172,11 +172,6 @@
                 </div>
 
                 <div class="payment-methods">
-                    <label class="payment-method-tab active">
-                        <input type="radio" th:field="*{paymentMethod}" value="credit-card" checked />
-                        <i class="fas fa-credit-card"></i>
-                        <span>Cartão de Crédito</span>
-                    </label>
                     <label class="payment-method-tab">
                         <input type="radio" th:field="*{paymentMethod}" value="pix" />
                         <i class="fas fa-qrcode"></i>
@@ -190,52 +185,40 @@
                 </div>
 
                 <div class="payment-content">
-                    <div id="credit-card-content" class="payment-panel active">
-                        <div class="step-form">
 
-                            <div class="form-group full-width">
-                                <label for="pagamento-selecionado">Escolha o Cartão Salvo</label>
-                                <select th:field="*{metodoPagamentoId}" id="pagamento-selecionado" class="form-control">
-                                    <option value="">-- Pagar com novo cartão --</option>
-                                    <th:block th:each="metodo : ${metodosPagamento}">
-                                        <option th:value="${metodo.id}"
-                                                th:text="'Cartão ' + ${metodo.bandeiraCartao} + ' final ' + ${metodo.ultimosQuatroDigitos}">
-                                            Cartão...
-                                        </option>
-                                    </th:block>
-                                </select>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="card-number">Número do Cartão</label>
-                                <input type="text" id="card-number" th:field="*{novoCartaoNumero}" placeholder="0000 0000 0000 0000" />
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="card-name">Nome no Cartão</label>
-                                <input type="text" id="card-name" th:field="*{novoCartaoNome}" placeholder="Como está impresso no cartão" />
-                            </div>
-                            <div class="form-group">
-                                <label for="card-expiry">Validade</label>
-                                <input type="text" id="card-expiry" th:field="*{novoCartaoValidade}" placeholder="MM/AA" />
-                            </div>
-                            <div class="form-group">
-                                <label for="card-cvv">CVV</label>
-                                <input type="text" id="card-cvv" th:field="*{novoCartaoCVV}" placeholder="123" />
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="card-installments">Parcelamento</label>
-                                <select id="card-installments" th:field="*{parcelamento}" required>
-                                    <option value="1">1x (Valor Total)</option>
-                                </select>
-                            </div>
+                    <div id="pix-content" class="payment-panel">
+                        <div class="pix-info-container">
+                            <i class="fas fa-qrcode pix-icon-large"></i>
+                            <h3>Pague com Pix</h3>
+                            <p>
+                                Ao finalizar a compra, o QR Code será exibido na próxima página.
+                            </p>
+                            <p>
+                                Você também poderá copiar o código "Copia e Cola" para pagar em seu aplicativo de banco.
+                            </p>
+                            <p class="pix-confirm-text">
+                                A confirmação do pagamento é instantânea!
+                            </p>
                         </div>
                     </div>
 
-                    <div id="pix-content" class="payment-panel">
+                    <div id="boleto-content" class="payment-panel">
+                        <div class="boleto-info-container">
+                            <i class="fas fa-barcode boleto-icon-large"></i>
+                            <h3>Pague com Boleto</h3>
+                            <p>
+                                Ao finalizar a compra, o boleto bancário será gerado na próxima página.
+                            </p>
+                            <p>
+                                Você poderá imprimir ou copiar o código de barras para pagar em seu aplicativo de banco ou casa lotérica.
+                            </p>
+                            <p class="boleto-confirm-text">
+                                A confirmação pode levar até 3 dias úteis.
+                            </p>
+                        </div>
                     </div>
 
-                    <div id="boleto-content" class="payment-panel">
-                    </div>
+
                 </div>
 
                 <div class="form-group full-width" style="margin-top: 2rem">
@@ -277,8 +260,7 @@
                 <span>Total</span>
                 <span>
                     <strong th:text="'R$ ' + ${#numbers.formatDecimal(totalPrice, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</strong>
-                    <small>em até 10x no cartão</small>
-                </span>
+                    </span>
             </div>
         </div>
 
@@ -297,6 +279,38 @@
     </aside>
 
 </div>
+
+<div id="pix-modal-overlay" class="pix-modal-hidden">
+    <div id="pix-modal-content">
+
+        <div id="pix-loading-state">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Gerando seu pedido...</p>
+        </div>
+
+        <div id="pix-payment-state" class="pix-modal-hidden">
+            <button id="pix-modal-close" type="button">&times;</button>
+            <h2>Pague com Pix para Concluir</h2>
+            <p>Abra o app do seu banco e escaneie o código abaixo:</p>
+
+            <img id="pix-qr-code-image" src="" alt="QR Code Pix" />
+
+            <p>Ou use o "Copia e Cola":</p>
+            <div class="pix-copia-cola-group">
+                <input type="text" id="pix-copia-cola-text" readonly />
+                <button type="button" id="pix-copia-cola-btn">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+
+            <div class="pix-waiting-payment">
+                <i class="fas fa-clock"></i>
+                <span>Aguardando confirmação do pagamento...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script th:src="@{/js/Checkout/Checkout.js}"></script>
 <script th:src="@{/js/page_principal/page-principal.js}"></script>

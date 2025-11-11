@@ -7,7 +7,7 @@ error:
 
 spring:
   datasource:
-      url: jdbc:sqlserver://localhost:1433;databaseName=nobreza_db;encrypt=false
+      url: jdbc:sqlserver://localhost:1433;databaseName=nobreza_db;encrypt=false;
       username: sa
       password: Ig150301@@
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver

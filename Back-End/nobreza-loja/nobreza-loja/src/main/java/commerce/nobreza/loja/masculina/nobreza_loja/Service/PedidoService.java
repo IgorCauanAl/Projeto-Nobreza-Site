@@ -54,41 +54,16 @@ public class PedidoService {
             enderecoEntrega.setBairro(form.getBairro());
             enderecoEntrega.setCidade(form.getCidade());
             enderecoEntrega.setEstado(form.getEstado());
-            // (Você pode adicionar um 'isPrincipal' ou 'nome' ao Endereco)
+
             enderecoEntrega = enderecoRepository.save(enderecoEntrega);
         }
 
         MetodoPagamento metodoUsado;
 
-        if ("credit-card".equals(form.getPaymentMethod())) {
-            if (form.getMetodoPagamentoId() != null) {
-                // Usar cartão salvo
-                metodoUsado = metodoPagamentoRepository.findById(form.getMetodoPagamentoId())
-                        .orElseThrow(() -> new RuntimeException("Cartão salvo não encontrado"));
-                if (!metodoUsado.getUsuario().getId().equals(usuario.getId())) {
-                    throw new SecurityException("Acesso negado ao cartão");
-                }
-            } else {
-                // Salvar o novo cartão (Simplificado - NÃO armazene o número completo!)
-                // Um gateway de pagamento real retornaria um 'token'
-                metodoUsado = new MetodoPagamento();
-                metodoUsado.setUsuario(usuario);
-                metodoUsado.setBandeiraCartao("VISA"); // Simulação
-                String num = form.getNovoCartaoNumero();
-                metodoUsado.setUltimosQuatroDigitos(num.substring(num.length() - 4));
-                metodoUsado.setTokenCartao("TOKEN_SIMULADO_" + num.substring(num.length() - 4));
-                metodoUsado = metodoPagamentoRepository.save(metodoUsado);
-            }
-            // ... aqui você chamaria o gateway de pagamento com 'metodoUsado'
-        }
-        // ... Lógica para PIX ou Boleto ...
 
-
-        // --- 3. Atualizar Informações do Usuário (Opcional) ---
-        // (Opcional: Se o formulário de identificação for para atualizar o perfil)
+        // --- 3. Atualizar Informações do Usuário
         if (StringUtils.hasText(form.getNomeCompleto()) && !form.getNomeCompleto().equals(usuario.getNome())) {
             usuario.setNome(form.getNomeCompleto());
-            // (Salve o 'usuario' se alterar)
         }
 
         // --- 4. Criar o Pedido ---

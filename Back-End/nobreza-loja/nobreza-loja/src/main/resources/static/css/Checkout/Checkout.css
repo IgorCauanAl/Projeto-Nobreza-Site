@@ -361,3 +361,223 @@ body {
 .customer-form.active {
   display: grid; /* Mostra apenas o formulário ativo */
 }
+
+
+/* --- Estilos para o Painel Pix --- */
+
+.pix-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: #f8f8f8; /* Um fundo claro para destacar o painel */
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 1rem;
+}
+
+.pix-info-container .pix-icon-large {
+    font-size: 3.5rem; /* Ícone do QR Code grande */
+    color: #32bcad;   /* Cor similar ao ícone do Pix */
+    margin-bottom: 1rem;
+}
+
+.pix-info-container h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333; /* Cor escura para o título */
+    margin-bottom: 0.75rem;
+}
+
+.pix-info-container p {
+    font-size: 0.9rem;
+    color: #555; /* Cor cinza para o texto */
+    line-height: 1.5;
+    max-width: 450px; /* Limita a largura do texto */
+}
+
+.pix-info-container .pix-confirm-text {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- Estilos do Modal PIX --- */
+
+/* O Fundo Escuro */
+#pix-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* A Janela Branca */
+#pix-modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    color: #333; /* Cor do texto dentro do modal */
+}
+
+/* Classe para esconder/mostrar */
+.pix-modal-hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* --- Estados do Modal --- */
+
+/* 1. Carregando */
+#pix-loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+#pix-loading-state .fa-spinner {
+    font-size: 3rem;
+    color: #161616;
+}
+#pix-loading-state p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* 2. Conteúdo do Pagamento */
+#pix-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #aaa;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+#pix-modal-close:hover {
+    color: #333;
+}
+
+#pix-payment-state h2 {
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+#pix-payment-state p {
+    color: #555;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+#pix-qr-code-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.pix-copia-cola-group {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+#pix-copia-cola-text {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-right: none;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    background: #f4f4f4;
+    color: #555;
+    border-radius: 8px 0 0 8px;
+}
+#pix-copia-cola-btn {
+    border: 1px solid #ccc;
+    background: #f4f4f4;
+    padding: 0 1rem;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    transition: background 0.2s;
+}
+#pix-copia-cola-btn:hover {
+    background: #e0e0e0;
+}
+#pix-copia-cola-btn .fa-copy {
+    color: #555;
+}
+
+.pix-waiting-payment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #fffbef;
+    border: 1px solid #ffe58f;
+    color: #7a5a00;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.boleto-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: #f8f8f8; /* Fundo claro para destacar */
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 1rem;
+}
+
+.boleto-info-container .boleto-icon-large {
+    font-size: 3.5rem; /* Ícone do código de barras grande */
+    color: #333; /* Cor escura para o ícone */
+    margin-bottom: 1rem;
+}
+
+.boleto-info-container h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333; /* Cor escura para o título */
+    margin-bottom: 0.75rem;
+}
+
+.boleto-info-container p {
+    font-size: 0.9rem;
+    color: #555; /* Cor cinza para o texto */
+    line-height: 1.5;
+    max-width: 450px; /* Limita a largura do texto */
+}
+
+/* Destaque para o prazo de compensação */
+.boleto-info-container .boleto-confirm-text {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #b33a30;
+}

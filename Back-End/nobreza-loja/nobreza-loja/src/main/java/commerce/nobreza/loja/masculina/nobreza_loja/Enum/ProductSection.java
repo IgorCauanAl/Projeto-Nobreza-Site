@@ -4,5 +4,5 @@ public enum ProductSection {
 
         CATEGORY,
         MOST_WANTED,
-        NEWS
+        NEWS,
 }

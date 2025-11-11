@@ -17,7 +17,6 @@
 }
 
 .category-title {
-    /* 'grid-column: 1 / -1;' REMOVIDO DAQUI */
     color: white;
     font-family: "Roboto", serif;
     font-size: 2.5rem;
@@ -46,7 +45,6 @@
     color: white;
 }
 
-/* Adiciona o separador ">" entre os itens */
 #breadcrumb ol li:not(:last-child)::after {
     content: " > ";
     color: #666;
@@ -58,16 +56,15 @@
     width: 80%;
     max-width: 75rem;
     margin: 1.25rem auto;
-    padding-bottom: 1.5rem; /* Adiciona espaço abaixo do título */
+    padding-bottom: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
 #text-title h2 {
-    /* Estilo do título da imagem (Roupas) */
     font-family: "Roboto", serif;
-    font-size: 3.5rem; /* Tamanho grande */
-    font-weight: 700; /* Mais espesso */
+    font-size: 3.5rem;
+    font-weight: 700;
     margin: 0;
     padding: 0;
     color: white;
@@ -77,86 +74,43 @@
 #bar-result-container {
     border-top: 0.0625rem solid #444;
     width: 100%;
-    margin-top: 0; /* Encosta na seção de título */
+    margin-top: 0;
     background-color: #333;
 }
 
 #bar-result {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Alinha "Filtrar" e "Contagem" à esquerda */
+    justify-content: space-between;
     width: 80%;
     max-width: 75rem;
-    margin: 0 auto; /* Centraliza */
+    margin: 0 auto;
     height: 3.75rem;
     font-size: 1rem;
+    color: white; /* Adicionado para garantir legibilidade */
 }
 
-/* Estilo para os textos de "Filtrar" e "Ordenar por" */
 #bar-result p {
     margin: 0;
 }
 
-#filter {
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
-}
-
-#filter:hover {
-    background-color: #444;
-}
-
-/* Espaço entre "Filtrar" e "Contagem de Produtos" */
-#bar-result > p:nth-child(3) {
-    padding-left: 2rem;
-}
-
-#ordination {
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
-    margin-left: auto; /* Empurra para a extremidade direita */
-}
-
-#ordination:hover {
-    background-color: #444;
-}
-
-/* Opcional: Contêineres de dropdown (ocultos por padrão) */
-#filter-container,
-#ordination-container {
-    display: none;
-}
-
-/* === MUDANÇA (REVERSÃO): ESTRUTURA DO CATÁLOGO === */
+/* === ESTRUTURA DO CATÁLOGO === */
 #catalog-container-grid {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 1.5rem; /* Espaço entre a barra e o catálogo */
+    margin-top: 1.5rem;
 }
 
-/* #catalog não é um grid, só um container de largura máxima */
 #catalog {
     max-width: 75rem;
     width: 100%;
 }
 
-/* O .product-grid (presente no HTML) agora é o grid container */
 .product-grid {
-    display: grid; /* VOLTOU A SER GRID */
-    grid-template-columns: repeat(
-    4,
-    1fr
-  ); /* 4 colunas que quebram a linha */
-    gap: 1.5rem; /* Espaçamento original */
-
-    /* Propriedades de flex/scroll REMOVIDAS */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
 }
 
 .conjugate {
@@ -164,26 +118,21 @@
     overflow: hidden;
     border-radius: 0.5rem;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
-
-    /* 'width' fixa e 'flex-shrink' REMOVIDOS */
-    /* O grid cuidará do tamanho */
 }
-/* === FIM DA MUDANÇA (REVERSÃO) === */
 
 .conjugate img {
     width: 100%;
     height: 100%;
-    min-height: 18.75rem; /* Altura mínima para o cartão */
+    min-height: 18.75rem;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
 }
 
 .conjugate:hover img {
-    transform: scale(1.05); /* Efeito sutil de zoom */
+    transform: scale(1.05);
 }
 
-/* Overlay sutil na imagem no hover */
 .conjugate::after {
     content: "";
     position: absolute;
@@ -202,28 +151,20 @@
 
 /* INFORMAÇÕES DO PRODUTO (SOBRE A IMAGEM) */
 .product-info {
-    /* Posicionamento e Fundo */
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: 0.75rem;
-
-    /* Overlay semi-transparente para legibilidade */
     background-color: #444;
-
     text-align: center;
     color: white;
-
-    /* Esconde por padrão (slide-up effect) */
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
 }
 
 .conjugate:hover .product-info {
-    transform: translateY(
-            0
-    ); /* Revela o container de informações ao passar o mouse */
+    transform: translateY(0);
 }
 
 .product-info h3 {
@@ -235,7 +176,7 @@
 .product-info .price {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #00ff7f; /* Cor de destaque para o preço */
+    color: #00ff7f;
     margin: 0 0 0.75rem 0;
 }
 
@@ -263,35 +204,28 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 50%; /* Ocupa a maior parte da largura */
-    max-width: 75rem; /* Respeita a largura máxima do conteúdo */
-    margin: 2rem auto; /* Centraliza e adiciona espaçamento */
-    padding: 3rem; /* Espaçamento interno generoso */
-
-    /* Estilo "Glassmorphism" sutil */
+    width: 50%;
+    max-width: 75rem;
+    margin: 2rem auto;
+    padding: 3rem;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1rem; /* Cantos arredondados */
-
-    /* Tipografia */
+    border-radius: 1rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.2rem;
     font-weight: 500;
 }
 
-/* Texto de contagem */
 #result p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 1rem;
 }
 
-/* Botão "Ver mais produtos" */
 #result .button {
-    /* Estilo Moderno Padrão do Site */
     background: linear-gradient(to right, #2a2829, #000000);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.9rem 2rem; /* Aumenta o padding para mais destaque */
+    padding: 0.9rem 2rem;
     border-radius: 50px;
     cursor: pointer;
     font-size: 1rem;
@@ -306,43 +240,39 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* === Media Query Unificada (Corrigida) === */
 @media (max-width: 1366px) {
-    /* Fator de escala: 90% (1rem = 14.4px) */
     html {
         font-size: 90%;
     }
 
-    /* Redução do Breadcrumb/Título */
     #breadcrumb,
     #text-title,
     #bar-result {
-        max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
-        width: 90%; /* Aumenta a fluidez */
+        max-width: 65rem;
+        width: 90%;
     }
 
     #text-title h2 {
         font-size: 3rem;
     }
 
-    /* Grid */
     #catalog {
         max-width: 65rem;
     }
     .product-grid {
-        gap: 1rem; /* Reduz o espaçamento entre itens */
+        gap: 1rem;
     }
 
     .conjugate img {
         min-height: 16rem;
     }
 
-    /* Barra de Resultados */
     #bar-result {
         height: 3rem;
         font-size: 0.9rem;
     }
 
-    /* Info do Produto */
     .product-info h3 {
         font-size: 1rem;
     }
@@ -356,116 +286,12 @@
     }
 }
 
-@media (max-width: 1366px) {
-    /* Fator de escala: 90% (1rem = 14.4px) */
-    html {
-        font-size: 90%;
-    }
-
-    /* Redução do Breadcrumb/Título */
-    #breadcrumb,
-    #text-title,
-    #bar-result {
-        max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
-        width: 90%; /* Aumenta a fluidez */
-    }
-
-    #text-title h2 {
-        font-size: 3rem;
-    }
-
-    /* Grid */
-    #catalog {
-        max-width: 65rem;
-    }
-    .product-grid {
-        gap: 1rem; /* Reduz o espaçamento entre itens */
-    }
-
-    .conjugate img {
-        min-height: 16rem;
-    }
-
-    /* Barra de Resultados */
-    #bar-result {
-        height: 3rem;
-        font-size: 0.9rem;
-    }
-
-    /* Info do Produto */
-    .product-info h3 {
-        font-size: 1rem;
-    }
-
-    .product-info .price {
-        font-size: 1.1rem;
-    }
-
-    .buy-button {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 1366px) {
-    /* Fator de escala: 90% (1rem = 14.4px) */
-    html {
-        font-size: 90%;
-    }
-
-    /* Redução do Breadcrumb/Título */
-    #breadcrumb,
-    #text-title,
-    #bar-result {
-        max-width: 65rem; /* Reduz a largura do conteúdo para telas HD */
-        width: 90%; /* Aumenta a fluidez */
-    }
-
-    #text-title h2 {
-        font-size: 3rem;
-    }
-
-    /* Grid */
-    #catalog {
-        max-width: 65rem;
-    }
-    .product-grid {
-        gap: 1rem; /* Reduz o espaçamento entre itens */
-    }
-
-    .conjugate img {
-        min-height: 16rem;
-    }
-
-    /* Barra de Resultados */
-    #bar-result {
-        height: 3rem;
-        font-size: 0.9rem;
-    }
-
-    /* Info do Produto */
-    .product-info h3 {
-        font-size: 1rem;
-    }
-
-    .product-info .price {
-        font-size: 1.1rem;
-    }
-
-    .buy-button {
-        font-size: 0.8rem;
-    }
-}
-
-/* === Media Queries para Telas Maiores (1440px+) === */
-/* (Estes mantêm a proporção do grid e do layout) */
-
+/* === Media Queries para Telas Maiores === */
 @media (min-width: 1440px) {
-    /* Fator de escala: 106.25% (1rem = 17px) */
     html {
         font-size: 106.25%;
     }
 
-    /* Aumenta a largura dos contêineres */
     #breadcrumb,
     #text-title,
     #bar-result {
@@ -481,7 +307,6 @@
 }
 
 @media (min-width: 1920px) {
-    /* Fator de escala: 112.5% (1rem = 18px) */
     html {
         font-size: 112.5%;
     }
@@ -521,7 +346,6 @@
 }
 
 @media (min-width: 2560px) {
-    /* Fator de escala: 137.5% (1rem = 22px) */
     html {
         font-size: 137.5%;
     }
@@ -567,7 +391,6 @@
 }
 
 @media (min-width: 3840px) {
-    /* Fator de escala: 187.5% (1rem = 30px) */
     html {
         font-size: 187.5%;
     }
@@ -623,7 +446,7 @@
     font-weight: bold;
     transition: 0.3s ease-in-out;
     width: 90%;
-    margin-top: 0.5rem; /* Espaço entre os botões */
+    margin-top: 0.5rem;
     font-size: 0.9rem;
 }
 .btn-add-to-cart:hover {
@@ -637,13 +460,11 @@
     cursor: not-allowed;
 }
 
-/* Em #most-wanted, o botão .button-whatsapp está sendo usado */
 .title-mostwanted .btn-add-to-cart {
     width: 100%;
     margin-top: 0.5rem;
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    box-sizing: border-box;
 }
-/* Link para o botão de detalhes */
 .title-mostwanted .button-link-mostwanted {
     text-decoration: none;
     display: block;
@@ -652,7 +473,6 @@
     width: 100%;
 }
 
-/* Em #news */
 .description-news .btn-add-to-cart {
     width: 100%;
     margin-top: 0.5rem;
@@ -666,13 +486,13 @@
     width: 100%;
 }
 
-/* === Notificação de Carrinho (O "aviso") === */
+/* === Notificação de Carrinho === */
 .cart-notification {
     position: fixed;
     top: 20px;
     right: 20px;
     padding: 1rem 1.5rem;
-    background-color: #4CAF50; /* Verde sucesso */
+    background-color: #4CAF50;
     color: white;
     font-weight: bold;
     border-radius: 5px;
@@ -683,48 +503,35 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .cart-notification.error {
-    background-color: #f44336; /* Vermelho erro */
+    background-color: #f44336;
 }
 .cart-notification.show {
     opacity: 1;
     transform: translateX(0);
 }
 
-/* === MUDANÇA (MANTIDA): Estilos do Mini-Carrinho (Horizontal) === */
-
-/* Container do dropdown */
+/* === Estilos do Mini-Carrinho (Horizontal) === */
 #mini-cart {
     max-width: 500px;
     overflow: hidden;
 }
 
-/* Container dos ITENS */
 #mini-cart-items {
     display: flex;
-    flex-direction: row; /* Alinha horizontalmente */
-    overflow-x: auto; /* Scroll horizontal */
-    overflow-y: hidden; /* Esconde scroll vertical */
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 1rem;
     margin: 0;
 }
 
-/* Item individual do carrinho */
 .mini-cart-item {
     display: flex;
     align-items: center;
     position: relative;
-
-    /* Largura fixa para cada card */
     width: 280px;
-    /* Impede que o item "encolha" */
     flex-shrink: 0;
-
-    /* Troca margem vertical por horizontal */
-    margin-bottom: 0;
-    margin-right: 15px; /* Espaço ENTRE os itens */
-
-    /* Troca borda inferior por borda completa */
-    border-bottom: none;
+    margin-right: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
@@ -749,7 +556,6 @@
     font-weight: bold;
     margin: 0;
     color: #333;
-    /* Evita quebra de layout com nomes longos */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -761,7 +567,6 @@
     margin: 0;
 }
 
-/* Botão de remover */
 .mini-cart-remove {
     position: absolute;
     top: 10px;
@@ -790,7 +595,6 @@
 }
 
 /* === ESTILOS PARA A NOVA PAGINAÇÃO === */
-
 .pagination {
     width: 100%;
     margin-top: 2rem;
@@ -824,40 +628,185 @@
     background-color: #555;
 }
 
-/* Estilo para a página ativa */
 .pagination li.active a {
-    background-color: #00ff7f; /* Cor verde de destaque */
+    background-color: #00ff7f;
     color: #222;
     font-weight: bold;
     border-color: #00ff7f;
 }
-
 
 /* Botão de Remover Produto (para ADM) */
 .btn-remove-product {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 10; /* Fica acima da imagem */
-
-    background-color: #f44336; /* Vermelho */
+    z-index: 10;
+    background-color: #f44336;
     color: white;
     border: none;
-    border-radius: 50%; /* Círculo */
-
+    border-radius: 50%;
     width: 30px;
     height: 30px;
-
     font-size: 1.2rem;
     font-weight: bold;
-    line-height: 30px; /* Centraliza o 'X' */
+    line-height: 30px;
     text-align: center;
-
     cursor: pointer;
     transition: background-color 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .btn-remove-product:hover {
-    background-color: #d32f2f; /* Vermelho mais escuro */
+    background-color: #d32f2f;
+}
+
+
+
+/* CSS para Dropdowns de Filtro e Ordenação  */
+
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Estilo Genérico para Dropdowns --- */
+.dropdown-container {
+    position: relative;
+    z-index: 50;
+}
+
+/* Botão que abre o dropdown */
+.dropdown-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500; /* Ajustado para bater com o layout */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 0.75rem; /* Adicionado padding para área de clique */
+    color: white; /* Corrigido para branco */
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+.dropdown-toggle:hover {
+    background-color: #444;
+}
+
+.dropdown-toggle .toggle-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-container.open .dropdown-toggle .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Painel de conteúdo do dropdown */
+.dropdown-content {
+    position: absolute;
+    top: 140%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 240px;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* --- Dropdown de Ordenação --- */
+#ordination-dropdown-container {
+    text-align: right;
+}
+#ordination-toggle #selected-sort {
+    font-weight: 600;
+}
+#ordination-options {
+    right: 0;
+    width: 220px;
+    list-style: none;
+}
+#ordination-options li {
+    border-bottom: 1px solid #f0f0f0;
+}
+#ordination-options li:last-child {
+    border-bottom: none;
+}
+#ordination-options li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+}
+#ordination-options li.selected a,
+#ordination-options li:hover a {
+    background-color: #f5f5f5;
+    font-weight: 500;
+}
+
+/* --- Dropdown de Filtro (Preço) --- */
+#filter-options {
+    left: 0;
+    padding: 20px;
+}
+
+.price-range-inputs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.price-input {
+    width: 100%;
+}
+.price-input label {
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+.price-input div {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+.price-input span {
+    font-size: 1rem;
+    color: #555;
+    margin-right: 5px;
+    font-weight: 600;
+}
+.price-input input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0;
+    background: none;
+    -moz-appearance: textfield;
+}
+.price-input input::-webkit-outer-spin-button,
+.price-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#apply-price-filter {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+#apply-price-filter:hover {
+    opacity: 0.8;
 }

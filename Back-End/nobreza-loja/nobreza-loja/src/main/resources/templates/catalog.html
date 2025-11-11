@@ -110,18 +110,52 @@
             </ol>
         </nav>
 
-
         <div id="bar-result-container">
             <div id="bar-result">
-                <p id="filter">Filtrar</p>
 
-                <div id="filter-container"></div>
+                <div class="dropdown-container" id="filter-dropdown-container">
+                    <button class="dropdown-toggle" id="filter-toggle">
+                        Filtrar por Preço
+                        <span class="toggle-icon">&#9662;</span>
+                    </button>
 
-                <p  th:text="${totalProdutosCount} + ' produtos encontrados'">0 produtos encontrados >0 produtos encontrados</p>
+                    <div class="dropdown-content hidden" id="filter-options">
+                        <div class="price-range-inputs">
+                            <div class="price-input">
+                                <label for="min-price">Min</label>
+                                <div>
+                                    <span>R$</span>
+                                    <input type="text" id="min-price" placeholder="0,00">
+                                </div>
+                            </div>
+                            <div class="price-input">
+                                <label for="max-price">Máx</label>
+                                <div>
+                                    <span>R$</span>
+                                    <input type="text" id="max-price" placeholder="1.000,00">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="apply-price-filter">Aplicar</button>
+                    </div>
+                </div>
 
-                <p id="ordination">Ordenar por</p>
+                <p th:text="${totalProdutosCount} + ' produtos encontrados'">0 produtos encontrados</p>
+
+                <div class="dropdown-container" id="ordination-dropdown-container">
+                    <button class="dropdown-toggle" id="ordination-toggle">
+                        Ordenar por: <span id="selected-sort"></span>
+                        <span class="toggle-icon">&#9662;</span>
+                    </button>
+
+                    <ul class="dropdown-content hidden" id="ordination-options">
+                        <li><a href="#" data-sort="price-desc">Maior Preço</a></li>
+                        <li><a href="#" data-sort="price-asc">Menor Preço</a></li>
+                        <li><a href="#" data-sort="name-asc">De A a Z</a></li>
+                        <li><a href="#" data-sort="name-desc">De Z a A</a></li>
+                    </ul>
+                </div>
             </div>
-            <div id="ordination-container"></div>
         </div>
 
         <div id="text-title">
@@ -175,37 +209,35 @@
 
             <nav class="pagination" th:if="${produtosPage.totalPages > 1}">
                 <ul>
-
                     <li th:if="${!produtosPage.isFirst()}">
                         <a th:href="@{/api/catalog/page(
                         groupTitle=${groupTitle},
                         pageTitle=${pageTitle},
                         category=${category},
-                        page=${produtosPage.number}
-                      )}">
+                        page=${produtosPage.number},
+                        sort=${sort}  )}">
                             Anterior
                         </a>
                     </li>
 
                     <li th:each="pageNumber : ${#numbers.sequence(1, produtosPage.totalPages)}"
                         th:class="${pageNumber == produtosPage.number + 1} ? 'active'">
-
                         <a th:href="@{/api/catalog/page(
-                        groupTitle=${groupTitle},
-                        pageTitle=${pageTitle},
-                        category=${category},
-                        page=${pageNumber}
-                      )}"
+                            groupTitle=${groupTitle},
+                            pageTitle=${pageTitle},
+                            category=${category},
+                            page=${pageNumber},
+                            sort=${sort}  )}"
                            th:text="${pageNumber}"></a>
                     </li>
 
                     <li th:if="${!produtosPage.isLast()}">
                         <a th:href="@{/api/catalog/page(
-                        groupTitle=${groupTitle},
-                        pageTitle=${pageTitle},
-                        category=${category},
-                        page=${produtosPage.number + 2}
-                      )}">
+                            groupTitle=${groupTitle},
+                            pageTitle=${pageTitle},
+                            category=${category},
+                            page=${produtosPage.number + 2},
+                            sort=${sort}  )}">
                             Próxima
                         </a>
                     </li>

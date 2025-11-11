@@ -251,3 +251,136 @@ input:focus {
   width: 30rem;
   height: 35rem;
 }
+
+
+/* --- Estilos para a seção de Pedidos --- */
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pedido-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.pedido-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.pedido-id {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.pedido-data {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 4px;
+}
+
+.pedido-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 120px; /* Garante que o status tenha espaço */
+}
+
+/* Cores do status (usando o Enum StatusPedido) */
+.pedido-status.pendente {
+    background-color: #fff3cd; /* Amarelo claro */
+    color: #856404; /* Amarelo escuro */
+}
+
+.pedido-status.processando {
+    background-color: #d1ecf1; /* Azul claro */
+    color: #0c5460; /* Azul escuro */
+}
+
+.pedido-status.enviado {
+    background-color: #cce5ff; /* Azul royal claro */
+    color: #004085;
+}
+
+.pedido-status.entregue {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+}
+
+.pedido-status.cancelado {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+}
+
+.pedido-detalhes {
+    margin: 0 20px;
+    text-align: right;
+}
+
+.valor-total {
+    font-weight: bold;
+    color: #212529;
+}
+
+.itens-count {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.btn-detalhes {
+    background-color: #343a40; /* Cor escura para combinar com o estilo Nobreza */
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-detalhes:hover {
+    background-color: #495057;
+}
+
+/* Ajuste do empty-state existente */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.empty-state i {
+    font-size: 3em;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}

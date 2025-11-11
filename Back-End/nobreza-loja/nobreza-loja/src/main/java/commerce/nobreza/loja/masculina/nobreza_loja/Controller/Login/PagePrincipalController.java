@@ -37,4 +37,34 @@ public class PagePrincipalController {
     }
 
 
+    @GetMapping("/api/fragments/most-wanted")
+    public String getMostWantedFragment(
+            @RequestParam(name = "mw_page", defaultValue = "0") int mw_page,
+            @RequestParam(name ="n_page", defaultValue = "0") int n_page,
+            Model model) {
+
+        Page<Produto> mostWanted = productService.getMostWantedProducts(mw_page, MOST_WANTED_PAGE_SIZE);
+        model.addAttribute("mostWantedProducts", mostWanted);
+        // Adiciona a outra página para os links das bolinhas funcionarem
+        model.addAttribute("newsProducts", productService.getNewsProducts(n_page, NEWS_PAGE_SIZE));
+
+        // Retorna "template :: fragment"
+        return "page_principal :: mostWantedFragment";
+    }
+
+    @GetMapping("/api/fragments/news")
+    public String getNewsFragment(
+            @RequestParam(name = "mw_page", defaultValue = "0") int mw_page,
+            @RequestParam(name ="n_page", defaultValue = "0") int n_page,
+            Model model) {
+
+        Page<Produto> news = productService.getNewsProducts(n_page, NEWS_PAGE_SIZE);
+        model.addAttribute("newsProducts", news);
+        // Adiciona a outra página para os links das bolinhas funcionarem
+        model.addAttribute("mostWantedPage", productService.getMostWantedProducts(mw_page, MOST_WANTED_PAGE_SIZE));
+
+        // Retorna "template :: fragment"
+        return "page_principal :: newsFragment";
+    }
+
 }

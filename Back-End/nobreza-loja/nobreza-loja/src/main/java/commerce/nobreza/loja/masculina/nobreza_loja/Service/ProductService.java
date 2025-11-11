@@ -12,10 +12,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -23,7 +23,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @Service
 @AllArgsConstructor
@@ -102,27 +102,35 @@ public class ProductService {
     }
 
 
-    public Page<Produto> findAllPaginated(int page){
+    public Page<Produto> findAllPaginated(int page, String sortType){
+
+        Sort sort = buildSort(sortType);
+
         int pageIndex = (page < 1) ? 0 : page - 1;
 
-        Pageable pageable = PageRequest.of(pageIndex, 8);
+        Pageable pageable = PageRequest.of(pageIndex, 8,sort);
 
         return productRepository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)
-    public Page<Produto> findProdutosByCategory(String categoryName, int page) {
+    public Page<Produto> findProdutos(String categoryName, int page, String sortType, Double min, Double max) {
 
-        Category category = categoryRepository.findByName(categoryName)
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada: " +categoryName));
+        Sort sort = buildSort(sortType);
 
         int pageIndex = (page < 1) ? 0 : page - 1;
+        Pageable pageable = PageRequest.of(pageIndex, 8, sort);
 
-        Pageable pageable = PageRequest.of(pageIndex, 8);
+        Category categoryObject = null;
 
-        return productRepository.findByCategory(category, pageable);
+        if (categoryName != null && !categoryName.isEmpty()) {
+
+            categoryObject = categoryRepository.findByName(categoryName)
+                    .orElseThrow(() -> new RuntimeException("Categoria não encontrada: " + categoryName));
+        }
+
+        return productRepository.findProdutosByFilters(categoryObject, min, max, pageable);
     }
-
 
     private String saveImage(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
@@ -163,6 +171,24 @@ public class ProductService {
     public Page<Produto> getNewsProducts(int page, int pageSize){
         Pageable pageable = PageRequest.of(page, pageSize);
         return productRepository.findBySection(ProductSection.NEWS, pageable);
+    }
+
+
+    private Sort buildSort(String sortType){
+
+        switch(sortType){
+            case "price-desc":
+                return Sort.by("price").descending();
+            case"price-asc":
+                return Sort.by("price").ascending();
+            case "name-asc":
+                return Sort.by("name").ascending();
+            case "name-desc":
+                return Sort.by("name").descending();
+            case "newest":
+            default:
+                return Sort.by("id").descending();
+        }
     }
 
 

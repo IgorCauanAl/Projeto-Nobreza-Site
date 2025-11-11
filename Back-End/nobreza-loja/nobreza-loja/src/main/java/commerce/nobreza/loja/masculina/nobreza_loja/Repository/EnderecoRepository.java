@@ -10,7 +10,5 @@ import java.util.List;
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
-    // Método essencial para o GET /checkout
-    // Busca todos os endereços salvos de um usuário
     List<Endereco> findByUsuario(Usuario usuario);
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class ManageUserService {
+public class ADMUserService {
 
 
     private final UserRepository userRepository;
