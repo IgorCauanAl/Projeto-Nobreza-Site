@@ -71,7 +71,7 @@ public class CheckoutController {
     // PASSO 2: Processa o pedido
     @PostMapping("/checkout/processar")
     public String processarCheckout(
-            @ModelAttribute CheckoutFormDto form, // Recebe os IDs do form
+            @ModelAttribute CheckoutFormDto form,
             @AuthenticationPrincipal UserDetails userDetails,
             RedirectAttributes redirectAttributes
     ) {
@@ -80,20 +80,16 @@ public class CheckoutController {
         }
 
         try {
-            // (Aqui, o PedidoService só lida com o carrinho.
-            // Você precisará de lógica extra para o "Comprar Agora")
             Pedido novoPedido = pedidoService.criarPedidoDoCarrinho(form, userDetails.getUsername());
 
-            // Redireciona para a página de confirmação
             return "redirect:/pedido/confirmado/" + novoPedido.getId();
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao processar seu pedido: " + e.getMessage());
-            return "redirect:/checkout"; // Volta ao checkout se der erro
+            return "redirect:/checkout";
         }
     }
 
-    // PASSO 3: Exibe a página de confirmação (closing.html)
     @GetMapping("/pedido/confirmado/{pedidoId}")
     public String showPaginaConfirmacao(
             @PathVariable Long pedidoId,
@@ -103,9 +99,9 @@ public class CheckoutController {
         Pedido pedido = pedidoRepository.findById(pedidoId)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
-        // Validação de segurança
+
         if (!pedido.getUsuario().getEmail().equals(userDetails.getUsername())) {
-            return "redirect:/"; // Não é o pedido deste usuário
+            return "redirect:/";
         }
 
         model.addAttribute("pedido", pedido);

@@ -16,64 +16,7 @@
     <link rel="stylesheet" th:href="@{/css/Perfil/USER/Perfil.css}" />
 </head>
 <body>
-<header>
-    <section id="header">
-        <div id="menu-container">
-            <div id="nav-bar">
-                <div id="logo">
-                    <a th:href="@{/}"><h1>Nobreza</h1></a>
-                </div>
-
-                <ul>
-                    <li>
-                        <a th:href="@{/}">Inicio</a>
-                    </li>
-                    <li id="products"><a th:href="@{/catalogo}">Produtos</a></li>
-                    <li><a href="#Categories">Categorias</a></li>
-                    <li><a href="#most-wanted">Mais Procurados</a></li>
-                    <li><a href="#news">Novidades</a></li>
-                    <li><a href="#before-closing">Cupom</a></li>
-                </ul>
-
-                <div id="left-elements">
-                    <div id="search">
-                        <p>Buscar</p>
-                        <img
-                                id="button-search"
-                                th:src="@{/img/icones/shop_principal/lupa.svg}"
-                                alt="Ícone de busca"
-                        />
-                    </div>
-
-                    <div id="circle-cart">
-                        <img
-                                th:src="@{/img/icones/shop_principal/cart.svg}"
-                                alt="Carrinho de compras"
-                        />
-                        <div id="number-purchases">
-                            <p>0</p> </div>
-                    </div>
-
-                    <div id="mini-cart" class="hidden">
-                        <div id="mini-cart-items"></div>
-                        <div id="mini-cart-footer">
-                            <p id="mini-cart-total">Total: R$0,00</p>
-                            <button id="mini-cart-checkout">Finalizar Compra</button>
-                        </div>
-                    </div>
-
-                    <div class="login-circle">
-                        <a th:href="@{/perfil}">
-                            <img
-                                    th:src="@{/img/icones/shop_principal/profile.svg}"
-                                    alt="Perfil do usuário"
-                            /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</header>
+<div th:replace="~{fragments/header :: header}"></div>
 
 <div class="dashboard-container">
     <aside class="sidebar">

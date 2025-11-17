@@ -2,10 +2,10 @@
     <div id="menu-container">
         <div id="nav-bar">
             <div id="logo">
-                <h1>Nobreza</h1>
+                <a th:href="@{/page_principal}"><h1>Nobreza</h1></a>
             </div>
             <ul>
-                <li><a th:href="@{/page_principal.html}">Inicio</a></li>
+                <li><a th:href="@{/page_principal}">Inicio</a></li>
                 <li id="products"><a href="">Produtos</a></li>
                 <li><a href="#Categories">Categorias</a></li>
                 <li><a href="#most-wanted">Mais Procurados</a></li>
@@ -22,7 +22,7 @@
                     <div id="number-purchases"><p>0</p></div>
                 </div>
 
-                <div class="admin-circle" >
+                <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="admin-circle" >
                     <a th:href ="@{/manageruser}"><img th:src="@{/img/icones/shop_principal/adm.png}" alt="Admin"/></a>
                 </div>
 
@@ -48,7 +48,7 @@
 
                 <div class="column one-products">
                     <h2>Ternos</h2>
-                    <a th:href="@{/api/catalog/page(category='slimFit', groupTitle='Ternos', pageTitle='Slim Fit')}"><p>Slim Fit</p></a>
+                    <a th:href="@{/api/catalog/page(category='ternofit', groupTitle='Ternos', pageTitle='Slim Fit')}"><p>Slim Fit</p></a>
                     <a th:href="@{/api/catalog/page(category='regularFit', groupTitle='Ternos', pageTitle='Regular Fit')}"><p>Regular Fit</p></a>
                     <a th:href="@{/api/catalog/page(category='casamento', groupTitle='Ternos', pageTitle='Para Casamento')}"><p>Para Casamento</p></a>
                     <a th:href="@{/api/catalog/page(category='executivo', groupTitle='Ternos', pageTitle='Executivo')}"><p>Executivo</p></a>

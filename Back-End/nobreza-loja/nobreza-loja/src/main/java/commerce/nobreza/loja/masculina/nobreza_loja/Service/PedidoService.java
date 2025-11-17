@@ -24,6 +24,7 @@ public class PedidoService {
     private final UserRepository usuarioRepository;
     private final EnderecoRepository enderecoRepository;
     private final MetodoPagamentoRepository metodoPagamentoRepository;
+    private final ProductRepository productRepository;
 
     @Transactional
     public Pedido criarPedidoDoCarrinho(CheckoutFormDto form, String userEmail) {
@@ -31,20 +32,17 @@ public class PedidoService {
         Usuario usuario = usuarioRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        // --- 1. Lógica do Endereço ---
-        // O usuário selecionou um endereço salvo OU preencheu um novo?
+
         Endereco enderecoEntrega;
 
         if (form.getEnderecoId() != null) {
-            // Usar endereço salvo
             enderecoEntrega = enderecoRepository.findById(form.getEnderecoId())
                     .orElseThrow(() -> new RuntimeException("Endereço salvo não encontrado"));
-            // Validação de segurança
             if (!enderecoEntrega.getUsuario().getId().equals(usuario.getId())) {
                 throw new SecurityException("Acesso negado ao endereço");
             }
         } else {
-            // Criar e salvar um novo endereço
+
             enderecoEntrega = new Endereco();
             enderecoEntrega.setUsuario(usuario);
             enderecoEntrega.setCep(form.getCep());
@@ -58,22 +56,21 @@ public class PedidoService {
             enderecoEntrega = enderecoRepository.save(enderecoEntrega);
         }
 
-        MetodoPagamento metodoUsado;
 
 
-        // --- 3. Atualizar Informações do Usuário
+
         if (StringUtils.hasText(form.getNomeCompleto()) && !form.getNomeCompleto().equals(usuario.getNome())) {
             usuario.setNome(form.getNomeCompleto());
         }
 
-        // --- 4. Criar o Pedido ---
+
         Pedido pedido = new Pedido();
         pedido.setUsuario(usuario);
         pedido.setEnderecoEntrega(enderecoEntrega);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.PENDENTE);
 
-        // --- 5. Processar Itens e Calcular Total ---
+
         List<CarrinhoItens> itensCarrinho = carrinhoItensRepository.findByUsuario(usuario);
         if (itensCarrinho.isEmpty()) {
             throw new RuntimeException("Seu carrinho está vazio.");
@@ -84,6 +81,18 @@ public class PedidoService {
 
         for (CarrinhoItens cartItem : itensCarrinho) {
             Produto produto = cartItem.getProduto();
+
+            int quantidadeComprada = cartItem.getQuantidade();
+
+
+            if (produto.getAmount() < quantidadeComprada) {
+
+                throw new RuntimeException("Estoque insuficiente para o produto: " + produto.getName());
+            }
+
+            produto.setAmount(produto.getAmount() - quantidadeComprada);
+
+            productRepository.save(produto);
 
             ItemPedido itemPedido = new ItemPedido();
             itemPedido.setPedido(pedido);
@@ -100,11 +109,9 @@ public class PedidoService {
         pedido.setItens(itensDePedido);
         pedido.setValorTotal(valorTotal);
 
-        // --- 6. Simular Pagamento ---
-        // (Após chamada real ao gateway)
-        pedido.setStatus(StatusPedido.PAGO); // Simulação de pagamento aprovado
 
-        // --- 7. Salvar e Limpar Carrinho ---
+        pedido.setStatus(StatusPedido.PAGO);
+
         Pedido pedidoSalvo = pedidoRepository.save(pedido);
         carrinhoItensRepository.deleteAll(itensCarrinho);
 

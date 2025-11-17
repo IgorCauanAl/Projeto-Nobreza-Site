@@ -21,7 +21,7 @@ public class LoginController {
         SecurityContextHolder.clearContext();
         //Limpas as credencias na sessão http
         request.getSession().invalidate();
-        return "redirect:/login.html"; //Página de logout(CORRIGIR)
+        return "redirect:/login.html";
     }
 
 }

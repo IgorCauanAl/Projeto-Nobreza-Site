@@ -1,13 +1,9 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Controller.Login.ADM;
 
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Endereco;
-import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
-import commerce.nobreza.loja.masculina.nobreza_loja.Repository.EnderecoRepository;
-import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.security.Principal;

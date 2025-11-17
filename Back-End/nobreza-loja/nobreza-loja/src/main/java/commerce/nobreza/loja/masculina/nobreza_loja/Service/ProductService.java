@@ -81,7 +81,6 @@ public class ProductService {
         productRepository.save(produto);
     }
 
-    // Método auxiliar para Categoria
     private Category findOrCreateCategory(String categoryName) {
 
         return categoryRepository.findByName(categoryName)
@@ -91,7 +90,6 @@ public class ProductService {
                 });
     }
 
-    // Método auxiliar para Cor
     private Cor findOrCreateCor(String hexCode) {
 
         return colorRepository.findByCodeHex(hexCode)
@@ -101,17 +99,6 @@ public class ProductService {
                 });
     }
 
-
-    public Page<Produto> findAllPaginated(int page, String sortType){
-
-        Sort sort = buildSort(sortType);
-
-        int pageIndex = (page < 1) ? 0 : page - 1;
-
-        Pageable pageable = PageRequest.of(pageIndex, 8,sort);
-
-        return productRepository.findAll(pageable);
-    }
 
     @Transactional(readOnly = true)
     public Page<Produto> findProdutos(String categoryName, int page, String sortType, Double min, Double max) {

@@ -17,15 +17,6 @@
     <section class="clothes">
         <div id="sale-section-grid">
 
-            <div id="left-rectangle-flex">
-                <div class="left-rectangle">
-                    <img th:each="img : ${produto.images}"
-                         th:src="@{${img.url_image}}"
-                         alt="Miniatura do produto"
-                    />
-                </div>
-            </div>
-
             <div id="center-image">
                 <img
                         th:src="@{${#lists.isEmpty(produto.images) ? '/img/default-product.png' : produto.images[0].url_image}}"
@@ -49,12 +40,13 @@
                     <p th:text="'Ref:' + ${produto.referencia}">Ref:BLZ-35150</p>
                 </div>
 
-                <p th:if="${produto.promotion}"><del>R$ 2300,00</del></p> <div id="price" th:if="${produto.discountPix > 0}">
-                <p th:text="${#numbers.formatDecimal(produto.price * (1 - (produto.discountPix / 100)), 1, 'COMMA', 2, 'POINT')} + ' no PIX'">R$2185 no PIX</p>
-                <img th:src="@{/icones/catalogo/pix.svg}" alt="Ícone PIX" />
-            </div>
-
-                <p th:text="'6x de ' + ${#numbers.formatDecimal(produto.price / 6, 1, 'COMMA', 2, 'POINT')} + ' sem juros'">6x 383,33 sem juros</p>
+              <div id="price" th:if="${produto.discountPix > 0}">
+                  <h2 th:text="${#numbers.formatCurrency(produto.price)}"></h2>
+                <div id ="pix-price">
+                    <p th:text="${#numbers.formatDecimal(produto.price * (1 - (produto.discountPix / 100)), 1, 'COMMA', 2, 'POINT')} + ' no PIX'"></p>
+                    <img th:src="@{/img/icones/shop_principal/pix.svg}" alt="Ícone PIX" />
+                </div>
+              </div>
 
                 <p>Cores Disponíveis</p>
 
@@ -132,6 +124,25 @@
             </div>
         </div>
     </section>
+
+    <div class="barra-informacoes">
+        <div class="info-item">
+            <h3>Pague em até 6x</h3>
+            <img th:src="@{/img/icones/shop_principal/money.svg}" alt=""/>
+        </div>
+        <div class="info-item">
+            <h3>Entrega em todo o país</h3>
+            <img th:src="@{/img/icones/shop_principal/entrega.svg}" alt=""/>
+        </div>
+        <div class="info-item">
+            <h3>Economize no PIX: desconto exclusivo!</h3>
+            <img th:src="@{/img/icones/shop_principal/pix.svg}" alt=""/>
+        </div>
+        <div class="info-item">
+            <h3>Seus dados são criptografados</h3>
+            <img th:src="@{/img/icones/shop_principal/seguranca.svg}" alt=""/>
+        </div>
+    </div>
 
 </main>
 

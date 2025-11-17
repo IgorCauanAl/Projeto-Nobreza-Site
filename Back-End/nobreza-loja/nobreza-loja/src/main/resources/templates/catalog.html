@@ -12,92 +12,7 @@
 </head>
 <body>
 <!--Menu-->
-<header>
-    <section id="main-menu">
-        <div id="menu-container">
-            <div id="nav-bar">
-                <div id="logo">
-                    <h1>Nobreza</h1>
-                </div>
-
-                <ul>
-                    <li><a th:href="@{/}">Inicio</a></li>
-                    <li id="products"><a href="#">Produtos</a></li>
-                    <li><a href="#news">Novidades</a></li>
-                    <li><a href="#">Mais Procurados</a></li>
-                    <li><a href="#">Promoções</a></li>
-                    <li><a href="#">Coleções</a></li>
-                </ul>
-
-                <div id="left-elements">
-                    <div id="search">
-                        <p>Buscar</p>
-                        <img id="button-search" th:src="@{/img/icones/shop_principal/lupa.svg}" alt="Buscar" />
-                    </div>
-
-                    <div id="circle-cart">
-                        <img th:src="@{/img/icones/shop_principal/cart.svg}" alt="Carrinho" />
-                        <div id="number-purchases">
-                            <p>0</p>
-                        </div>
-                    </div>
-
-                    <!-- Mini carrinho dropdown -->
-                    <div id="mini-cart" class="hidden">
-                        <div id="mini-cart-items"></div>
-                        <div id="mini-cart-footer">
-                            <p id="mini-cart-total">Total: R$0,00</p>
-                            <button id="mini-cart-checkout">Finalizar Compra</button>
-                        </div>
-                    </div>
-
-                    <div class="login-circle">
-                        <a th:href="@{/html/Perfil/ADM/PerfilADM.html}">
-                            <img th:src="@{/img/icones/shop_principal/profile.svg}" alt="Login" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Menu produtos -->
-        <div id="menu-products-hidden">
-            <div id="container-menu-products">
-                <img id="img-products" th:src="@{/fotos/shop_principal/photo-products-hidden.jpg}" alt="" />
-                <div id="container-column">
-                    <div class="column one-products">
-                        <h2>Ternos</h2>
-                        <p>Slim Fit</p>
-                        <p>Regular Fit</p>
-                        <p>Para Casamento</p>
-                        <p>Executivo</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sub-Search -->
-        <div id="sub-search-hidden">
-            <div id="sub-search">
-                <div id="container-search">
-                    <form class="formulary-search" th:action="@{/search}" method="get">
-                        <input type="text" name="search" class="search-box" placeholder="O que você está buscando?" required />
-                        <div id="land">
-                            <button type="submit" class="button-search">
-                                <img th:src="@{/img/icones/shop_principal/lupa.svg}" alt="Buscar" />
-                            </button>
-                        </div>
-                        <div id="close">
-                            <button class="button-search">
-                                <img th:src="@{/img/icones/shop_principal/close icon.svg}" alt="Fechar" />
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</header>
+<div th:replace="~{fragments/header :: header}"></div>
 
 <main>
 
@@ -173,7 +88,7 @@
 
                 <div class="conjugate" th:each="produto : ${produtosPage.content}" style="position: relative;">
 
-                    <button sec:authorize="hasRole('ADM')"
+                    <button th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
                             class="btn-remove-product"
                             th:onclick="deleteProduct(this, [[${produto.id}]])">
                         &times; </button>
@@ -359,6 +274,9 @@
         </div>
     </div>
 
+
+
+
     <div class="footer-bottom">
         <div class="linha-footer"></div>
 
@@ -380,5 +298,6 @@
 <script th:src="@{/js/Carrinho.js}"></script>
 <script th:src="@{/js/Catalog/Catalog.js}"></script>
 <script th:src="@{/js/page_principal/page-principal.js}"></script>
+<script th:src="@{/js/page_principal/Search.js}"></script>
 </body>
 </html>

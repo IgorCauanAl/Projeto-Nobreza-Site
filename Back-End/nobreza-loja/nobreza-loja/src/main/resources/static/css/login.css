@@ -1,307 +1,266 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* --- RESET & BASE --- */
+/* --- RESET GLOBAL --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: white;
 }
+
+/* --- CONFIGURAÇÕES BÁSICAS DA PÁGINA --- */
 body,
 html {
-  height: 100%;
-  background-color: #000;
+    height: 100%;
+    background-color: #000;
 }
 
-/* --- CONTAINER --- */
+/* --- CONTAINER PRINCIPAL (Background) --- */
 #login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(42, 40, 41, 0.9)),
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(42, 40, 41, 0.9)),
     url(../img/login1620.webp);
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
 }
 
-/* --- TÍTULO --- */
+/* --- TÍTULO "Nobreza" --- */
 #titulo {
-  margin: 3rem 12rem 0 0;
+    margin: 3rem 12rem 0 0;
 }
 #titulo h1 {
-  font-family: "Berkshire Swash", serif;
-  font-size: 3rem;
-  background: linear-gradient(to right, #fff 50%, #544f51);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-right: 7rem;
+    font-family: "Berkshire Swash", serif;
+    font-size: 3rem;
+    background: linear-gradient(to right, #fff 50%, #544f51);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 7rem;
 }
 
-/* --- RETÂNGULO PRINCIPAL --- */
+/* --- CAIXA DE LOGIN (Glassmorphism) --- */
 #retangulo-login {
-  margin-top: 2rem;
-  margin-right: 12rem;
-  width: 23.75rem; /* 380px */
-  /* min-height foi removido para permitir que a altura se ajuste ao conteúdo */
-  background: rgba(42, 40, 41, 0.85);
-  backdrop-filter: blur(0.5rem); /* 8px */
-  -webkit-backdrop-filter: blur(0.5rem); /* 8px */
-  border-radius: 1.25rem; /* 20px */
-  border: 0.0625rem solid rgba(255, 255, 255, 0.08); /* 1px */
-  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.6); /* 0 8px 32px 0 */
-  padding: 2rem;
-  transition: all 0.4s ease-in-out;
-  position: relative;
+    margin-top: 2rem;
+    margin-right: 12rem;
+    width: 23.75rem; /* 380px */
+    background: rgba(42, 40, 41, 0.85);
+    backdrop-filter: blur(0.5rem); /* 8px */
+    -webkit-backdrop-filter: blur(0.5rem); /* 8px */
+    border-radius: 1.25rem; /* 20px */
+    border: 0.0625rem solid rgba(255, 255, 255, 0.08); /* 1px */
+    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.6); /* 0 8px 32px 0 */
+    padding: 2rem;
+    /* transition: all 0.4s ease-in-out; <--- LINHA REMOVIDA (Conflito com anime.js) */
+    position: relative;
 }
 
+/* --- LAYOUT INTERNO DO FORMULÁRIO --- */
 #retangulo-login form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9375rem; /* 15px */
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem; /* 15px */
 }
 #form-titulo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 0.3125rem; /* 5px */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3125rem; /* 5px */
 }
 
-/* --- INPUTS --- */
+/* --- ESTILO DOS INPUTS --- */
 input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 0.0625rem solid rgba(255, 255, 255, 0.15); /* 1px */
-  border-radius: 0.5rem; /* 8px */
-  padding: 0.625rem 0.9375rem; /* 10px 15px */
-  color: white;
-  transition: border-color 0.3s, background-color 0.3s;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.15); /* 1px */
+    border-radius: 0.5rem; /* 8px */
+    padding: 0.625rem 0.9375rem; /* 10px 15px */
+    color: white;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 input:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #2a2829;
-  outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #2a2829;
+    outline: none;
 }
 input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.45);
 }
 
+/* --- ESTILO DAS LABELS --- */
 label {
-  font-size: 0.9rem;
-  font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-/* --- FIELDS --- */
+/* --- SEÇÕES DE LOGIN E CADASTRO (Ocultas) --- */
 .login-fields,
 .cadastro-fields {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem; /* 12px */
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem; /* 12px */
 }
+
+/* --- Link "Esqueceu sua senha?" --- */
 .login-fields a {
-  font-size: 0.8rem;
-  text-align: right;
-  margin-top: -0.3125rem; /* -5px */
-  opacity: 0.7;
-  transition: opacity 0.3s;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-top: -0.3125rem; /* -5px */
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    text-decoration: none; /* REMOVE SUBLINHADO */
 }
 .login-fields a:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
-/* Classes de visualização */
+/* --- CLASSES DE VISIBILIDADE (Controladas por JS) --- */
 #retangulo-login.login-view .login-fields {
-  display: flex;
+    display: flex;
 }
 #retangulo-login.register-view .cadastro-fields {
-  display: flex;
+    display: flex;
 }
 
-/* --- RECUPERAÇÃO DE SENHA --- */
+/* --- SEÇÃO DE RECUPERAÇÃO DE SENHA --- */
 #recovery-fields {
-  gap: 0.9375rem; /* 15px */
-  align-items: center;
-  display: none;
+    gap: 0.9375rem; /* 15px */
+    align-items: center;
+    display: none;
 }
 .recovery-step {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem; /* 12px */
-  width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem; /* 12px */
+    width: 100%;
 }
 .recovery-step p {
-  text-align: center;
-  font-size: 0.9rem;
+    text-align: center;
+    font-size: 0.9rem;
 }
 .recovery-step.current-step {
-  display: flex;
+    display: flex;
 }
 
-/* --- BOTÕES (DARK) --- */
-#button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.9375rem; /* 15px */
-}
-#button-action,
-#verify-code,
-#reset-password {
-  width: 100%;
-  max-width: 15.625rem; /* 250px */
-  height: 2.8125rem; /* 45px */
-  border-radius: 0.625rem; /* 10px */
-  cursor: pointer;
-  background: linear-gradient(to right, #2a2829, #000000);
-  color: #ffffff;
-  font-weight: 700;
-  border: none;
-  transition: all 0.3s ease-in-out;
-}
-#button-action:hover,
-#verify-code:hover,
-#reset-password:hover {
-  background: linear-gradient(to right, #000000, #2a2829);
-  box-shadow: 0 0.25rem 0.9375rem rgba(255, 255, 255, 0.1); /* 0 4px 15px */
-  transform: translateY(-0.125rem); /* -2px */
-}
-
-/* Ajuste específico */
-#email-step button,
-#code-step button,
-#new-password-step button {
-  margin: 0;
-  align-self: center;
-}
-
+/* --- LINK PARA ALTERNAR LOGIN/CADASTRO --- */
 #account-Recovery {
-  font-size: 0.875rem; /* 14px */
-  text-align: center;
-  margin-top: 0.9375rem; /* 15px */
+    font-size: 0.875rem; /* 14px */
+    text-align: center;
+    margin-top: 0.9375rem; /* 15px */
 }
 
+/* --- Estilo do link "Clique aqui..." --- */
 #toggle-link {
-  font-weight: 700;
-  color: #aaa;
-  transition: color 0.3s;
+    font-weight: 700;
+    color: #aaa;
+    transition: color 0.3s;
+    text-decoration: none; /* REMOVE SUBLINHADO */
 }
 #toggle-link:hover {
-  color: #fff;
+    color: #fff;
 }
 
+/* --- Link "Política de Privacidade" --- */
 #privacy-Policy a {
-  color: #aaa;
-  text-decoration: none;
-  transition: color 0.3s;
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 #privacy-Policy a:hover {
-  color: #fff;
+    color: #fff;
 }
+
+/* --- ESTILO DO CHECKBOX --- */
 #checkbox label {
-  font-size: 0.75rem;
-  font-weight: 400;
+    font-size: 0.75rem;
+    font-weight: 400;
 }
 #checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.3125rem; /* 5px */
-  margin-top: 0.625rem; /* 10px */
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3125rem; /* 5px */
+    margin-top: 0.625rem; /* 10px */
 }
 #checkbox input[type="checkbox"] {
-  width: auto;
-  margin-top: 0.25rem; /* 4px */
+    width: auto;
+    margin-top: 0.25rem; /* 4px */
 }
 
+/* --- MENSAGEM DE ERRO/SUCESSO --- */
 .message {
-  font-size: 0.9rem;
-  text-align: center;
-  margin-bottom: 0.625rem; /* 10px */
-  font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 0.625rem; /* 10px */
+    font-weight: 500;
 }
 
-/* Oculta botão principal se estiver em recovery */
-.recovery-view #button-action {
-  display: none;
-}
-
-/* Botão para voltar*/
+/* --- BOTÃO "Voltar" --- */
 .btn-back {
-  margin-top: 0.625rem; /* 10px */
-  width: 6.25rem; /* 100px */
-  height: 2.375rem; /* 38px */
-  border-radius: 3.125rem;
-  cursor: pointer;
-  background: linear-gradient(to right, #000000, #2a2829);
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  font-size: 0.85rem;
+    margin-top: 0.625rem; /* 10px */
+    width: 6.25rem; /* 100px */
+    height: 2.375rem; /* 38px */
+    border-radius: 3.125rem;
+    cursor: pointer;
+    background: linear-gradient(to right, #000000, #2a2829);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.85rem;
 }
 .btn-back:hover {
-  background: linear-gradient(to right, #2a2829, #000000);
-  box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-  transform: translateY(-0.125rem); /* -2px */
+    background: linear-gradient(to right, #2a2829, #000000);
+    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
+    transform: translateY(-0.125rem); /* -2px */
 }
 
-/* botões do login*/
-#login-button {
-  width: 6.25rem; /* 100px */
-  height: 2.375rem; /* 38px */
-  border-radius: 3.125rem;
-  background: linear-gradient(to bottom, #000000, #2a2829);
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  font-size: 0.85rem;
-  cursor: pointer;
-  margin-left: 7rem;
+/* --- [UNIFICADO] ESTILO BASE DOS BOTÕES DE AÇÃO --- */
+#login-button,
+#register-button,
+#send-code,
+#verify-code,
+#reset-password {
+    height: 2.375rem; /* 38px */
+    border-radius: 3.125rem;
+    background: linear-gradient(to bottom, #000000, #2a2829);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.85rem;
+    cursor: pointer;
 }
 
-#login-button:hover {
-  background: linear-gradient(to top, #2a2829, #000000);
-  box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-  transform: translateY(-0.125rem); /* -2px */
+/* --- [UNIFICADO] ESTILO HOVER DOS BOTÕES DE AÇÃO --- */
+#login-button:hover,
+#register-button:hover,
+#send-code:hover,
+#verify-code:hover,
+#reset-password:hover {
+    background: linear-gradient(to top, #2a2829, #000000);
+    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
+    transform: translateY(-0.125rem); /* -2px */
 }
 
+/* --- [ESPECÍFICO] Layout Botões (Login/Cadastro) --- */
+#login-button,
 #register-button {
-  width: 6.25rem; /* 100px */
-  height: 2.375rem; /* 38px */
-  border-radius: 3.125rem;
-  background: linear-gradient(to bottom, #000000, #2a2829);
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  font-size: 0.85rem;
-  cursor: pointer;
-  margin-left: 7rem;
+    width: 6.25rem; /* 100px */
+    margin-left: 7rem;
 }
 
-#register-button:hover {
-  background: linear-gradient(to top, #2a2829, #000000);
-  box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-  transform: translateY(-0.125rem); /* -2px */
-}
-
+/* --- [ESPECÍFICO] Layout Botões (Recuperação) --- */
 #send-code {
-  width: 8.25rem; /* 100px */
-  height: 2.375rem; /* 38px */
-  border-radius: 3.125rem;
-  background: linear-gradient(to bottom, #000000, #2a2829);
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  font-size: 0.85rem;
-  cursor: pointer;
-  margin-left: 7rem;
+    width: 8.25rem; /* 132px */
+    margin-left: 7rem;
 }
 
-#send-code:hover {
-  background: linear-gradient(to top, #2a2829, #000000);
-  box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-  transform: translateY(-0.125rem); /* -2px */
+#verify-code,
+#reset-password {
+    width: 100%;
+    max-width: 15.625rem; /* 250px */
+    align-self: center; /* Centraliza na flex-column */
 }
 
 /* ====================================================== */
@@ -310,56 +269,56 @@ label {
 
 /* 1440px */
 @media (min-width: 1440px) and (max-width: 1919px) {
-  #titulo {
-    margin: 3rem 14rem 0 0;
-  }
-  #titulo h1 {
-    font-size: 3.2rem;
-  }
-  #retangulo-login {
-    margin-right: 14rem;
-    width: 25rem; /* 400px */
-  }
+    #titulo {
+        margin: 3rem 14rem 0 0;
+    }
+    #titulo h1 {
+        font-size: 3.2rem;
+    }
+    #retangulo-login {
+        margin-right: 14rem;
+        width: 25rem; /* 400px */
+    }
 }
 
 /* Full HD 1920px */
 @media (min-width: 1920px) and (max-width: 2559px) {
-  #titulo {
-    margin: 3rem 16rem 0 0;
-  }
-  #titulo h1 {
-    font-size: 3.5rem;
-  }
-  #retangulo-login {
-    margin-right: 16rem;
-    width: 27rem; /* 432px */
-  }
+    #titulo {
+        margin: 3rem 16rem 0 0;
+    }
+    #titulo h1 {
+        font-size: 3.5rem;
+    }
+    #retangulo-login {
+        margin-right: 16rem;
+        width: 27rem; /* 432px */
+    }
 }
 
 /* 2K 2560px */
 @media (min-width: 2560px) and (max-width: 3839px) {
-  #titulo {
-    margin: 4rem 20rem 0 0;
-  }
-  #titulo h1 {
-    font-size: 4rem;
-  }
-  #retangulo-login {
-    margin-right: 20rem;
-    width: 30rem; /* 480px */
-  }
+    #titulo {
+        margin: 4rem 20rem 0 0;
+    }
+    #titulo h1 {
+        font-size: 4rem;
+    }
+    #retangulo-login {
+        margin-right: 20rem;
+        width: 30rem; /* 480px */
+    }
 }
 
 /* 4K 3840px */
 @media (min-width: 3840px) {
-  #titulo {
-    margin: 5rem 25rem 0 0;
-  }
-  #titulo h1 {
-    font-size: 5rem;
-  }
-  #retangulo-login {
-    margin-right: 25rem;
-    width: 35rem; /* 560px */
-  }
+    #titulo {
+        margin: 5rem 25rem 0 0;
+    }
+    #titulo h1 {
+        font-size: 5rem;
+    }
+    #retangulo-login {
+        margin-right: 25rem;
+        width: 35rem; /* 560px */
+    }
 }

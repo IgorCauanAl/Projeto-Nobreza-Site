@@ -15,7 +15,6 @@ import java.security.Principal;
 @AllArgsConstructor
 public class ADMController {
     private final ADMUserService managerUserService;
-    private final ProductService productService;
 
     @GetMapping("/manageruser")
     public String viewUser (Model model) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" class="sticky-header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,12 @@
     <title>Página Principal Nobreza</title>
 </head>
 <body>
+
+<div id="preloader">
+    <div class="loader"></div>
+    <p>Carregando Nobreza...</p>
+</div>
+
 <div th:replace="~{fragments/header :: header}"></div>
 <header>
     <section id="main-menu">
@@ -32,11 +38,11 @@
                         <a th:href="@{/Catalog/index.html}"><button class="button-start">Comprar</button></a>
                     </div>
                 </div>
-                <div class="carousel-item" th:attr="data-image=@{/img/shop_principal/webp/banner2.webp}">
+                <div class="carousel-item" id="image2" th:attr="data-image=@{/img/shop_principal/webp/categorias1.webp}">
                     <div class="main-text">
                         <div class="secundary-text">
                             <h2>LIQUIDAÇÃO</h2>
-                            <h3>Vestido Elegante</h3>
+                            <h3>Terno Britânico</h3>
                         </div>
                         <a th:href="@{/Catalog/index.html}"><button class="button-start">Ver Ofertas</button></a>
                     </div>
@@ -82,7 +88,6 @@
                 <img id="img2" th:src="@{/img/shop_principal/Categorias.webp}" alt=""/>
                 <div id="element-over-image">
                     <p id="type-of-clothes">Ternos</p>
-                    <a th:href="@{/Catalog/index.html}"><button class="button-categories">Coleções</button></a>
                 </div>
             </div>
             <div class="carrousel-image">
@@ -120,16 +125,18 @@
                                  th:alt="${produto.name}"/>
                         </a>
                     </div>
+
                     <div class="title-mostwanted">
-                        <h3 th:text="${produto.name}">Nome do Produto</h3>
+                        <h3 class ="title-product" th:text="${produto.name}">Nome do Produto</h3>
                         <p class="price" th:text="'R$' + ${#numbers.formatDecimal(produto.price, 1, 'COMMA', 2, 'POINT')}">R$ 0,00</p>
                         <a th:href="@{/produto/{id}(id=${produto.id})}" class="buy-button-link">
-                            <button class="buy-button">Ver Detalhes</button>
+                            <button class="button-news">Ver Detalhes</button>
                         </a>
                         <a href="https://wa.me/5573999546752?text=Olá!%20Tenho%20interesse%20no%20produto" target="_blank" class="whatsapp-link">
                             <button class="button-whatsapp">Compre no WhatsApp</button>
                         </a>
                     </div>
+
                 </div>
             </div>
 
@@ -152,7 +159,7 @@
     <!--News-->
     <section id="news">
         <div id="flex-title-news">
-            <h2>NOVIDADES</h2>
+            <h2 id="title-news">NOVIDADES</h2>
         </div>
 
         <div id="news-wrapper" th:fragment="newsFragment">

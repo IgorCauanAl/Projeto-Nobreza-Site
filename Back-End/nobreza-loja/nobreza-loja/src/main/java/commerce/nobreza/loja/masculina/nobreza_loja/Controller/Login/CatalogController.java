@@ -21,12 +21,9 @@ public class CatalogController {
 
     @GetMapping("/page")
     public String getCatalogPage(
-            // Parâmetros de contexto
             @RequestParam("groupTitle") String groupTitle,
             @RequestParam("pageTitle") String pageTitle,
-
-            // Parâmetros de Filtro e Paginação
-            @RequestParam(name = "category", required = false) String category, // Recebe a String
+            @RequestParam(name = "category", required = false) String category,
             @RequestParam(name = "page", defaultValue = "1") int page,
             @RequestParam(defaultValue = "newest") String sort,
             @RequestParam(name = "min", required = false) Double min,
@@ -34,16 +31,12 @@ public class CatalogController {
             Model model
     ) {
 
-        // 1. CHAMA O NOVO MÉTODO ÚNICO
-        // O if/else foi removido. O Service agora cuida de tudo.
+
         Page<Produto> produtosPage = productService.findProdutos(category, page, sort, min, max);
 
-        // 2. Adiciona os resultados ao Model
         model.addAttribute("produtosPage", produtosPage);
         model.addAttribute("totalProdutosCount", produtosPage.getTotalElements());
 
-        // 3. Adiciona TODOS os parâmetros de volta ao Model
-        // (Necessário para a paginação)
         model.addAttribute("groupTitle", groupTitle);
         model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("category", category);

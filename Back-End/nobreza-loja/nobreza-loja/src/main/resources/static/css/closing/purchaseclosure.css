@@ -210,10 +210,11 @@ main {
 /* CONTÊINER GERAL DO RESUMO TOTAL */
 #total-container {
   width: 100%;
-  margin: 1.7rem;
+  margin: 1.7rem -0.15em;
   padding: 1rem;
   border: 0.0625rem solid white;
   background: #1a1a1a;
+
 }
 
 /* ESTILO PARA A ÁREA DE RESUMO */
@@ -229,6 +230,7 @@ main {
   display: flex;
   justify-content: space-between;
   font-size: 0.9375rem;
+
 }
 
 /* Linha do valor total (destacada) */

@@ -50,18 +50,25 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomSucessHandler successHandler, CustomFailureHandler failureHandler) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().permitAll()
+                .authorizeHttpRequests((auth) -> auth
+
+                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+
+                        .requestMatchers("/api/page_principal", "/api/catalog/page", "/user/manager").permitAll()
+
+                        .requestMatchers("/manageruser","/admin/usuarios/deletar/**","/admin/usuarios/promover/{id}","/delete/**").hasRole("ADMIN")
+
+                        .anyRequest().authenticated()
+
                 )
 
 
                 .formLogin(form -> form
-                        .loginPage("/html/login.html")     // página de login personalizada
-                        .loginProcessingUrl("/login") // endpoint do POST do login
+                        .loginPage("/html/login.html")
+                        .loginProcessingUrl("/login")
                         .usernameParameter("email-login")
                         .passwordParameter("password-login")
-                        .successHandler(successHandler) // redirecionador
+                        .successHandler(successHandler)
                         .failureHandler(failureHandler)
                         .permitAll()
                 )

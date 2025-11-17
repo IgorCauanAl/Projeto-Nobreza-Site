@@ -40,6 +40,7 @@ public class UseController {
         return "PerfilUSER";
     }
 
+
     @GetMapping("/pedido/{id}")
     public String viewDetailsRequest(@PathVariable("id") Long id, Model model, Principal principal) {
 

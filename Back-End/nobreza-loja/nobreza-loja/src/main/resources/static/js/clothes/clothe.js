@@ -1,70 +1,59 @@
-// Arquivo: /js/clothes/clothe.js
+/* =======================================================
+   SEU NOVO ARQUIVO (js/clothes/clothe.js)
+   ======================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Elementos da página de detalhes
+    const buyButton = document.getElementById('btn-buy-now');
     const qtyDisplay = document.getElementById('qty-display');
-    const qtyPlus = document.getElementById('qty-plus');
     const qtyMinus = document.getElementById('qty-minus');
+    const qtyPlus = document.getElementById('qty-plus');
+    const stockQuantityEl = document.getElementById('stock-quantity');
 
-    if (qtyDisplay && qtyPlus && qtyMinus) {
+    // Pega o estoque máximo do HTML
+    const maxStock = stockQuantityEl ? parseInt(stockQuantityEl.textContent, 10) : 100;
+
+    // --- 1. Lógica do Seletor de Quantidade ---
+
+    let currentQuantity = 1;
+
+    if (qtyPlus) {
         qtyPlus.addEventListener('click', () => {
-            let currentQty = parseInt(qtyDisplay.textContent, 10);
-            qtyDisplay.textContent = currentQty + 1;
+            // Só aumenta se for menor que o estoque
+            if (currentQuantity < maxStock) {
+                currentQuantity++;
+                qtyDisplay.textContent = currentQuantity;
+            }
         });
+    }
 
+    if (qtyMinus) {
         qtyMinus.addEventListener('click', () => {
-            let currentQty = parseInt(qtyDisplay.textContent, 10);
-            if (currentQty > 1) {
-                qtyDisplay.textContent = currentQty - 1;
+            // Só diminui se for maior que 1
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                qtyDisplay.textContent = currentQuantity;
             }
         });
     }
 
-    const buyNowButton = document.getElementById('btn-buy-now');
+    // --- 2. Lógica do Botão Comprar ---
 
-    if (buyNowButton) {
-        buyNowButton.addEventListener('click', () => {
-            const productId = buyNowButton.dataset.productId;
-            const quantity = parseInt(qtyDisplay.textContent, 10) || 1;
+    if (buyButton) {
+        buyButton.addEventListener('click', async (event) => {
+            event.preventDefault();
 
-            // Redireciona para o controller de Checkout com os parâmetros
-            window.location.href = `/checkout?productId=${productId}&qty=${quantity}`;
+            const productId = buyButton.dataset.productId;
+            const quantity = parseInt(qtyDisplay.textContent, 10);
+
+            buyButton.disabled = true;
+            buyButton.textContent = 'Adicionando...';
+
+            await adicionarProdutoAoCarrinho(productId, quantity, buyButton);
         });
     }
 
 
-    const accordionHeaders = document.querySelectorAll(".accordion-header");
-
-    accordionHeaders.forEach((header) => {
-        header.addEventListener("click", () => {
-            // Encontra o elemento de conteúdo irmão (o painel a ser expandido)
-            const content = header.nextElementSibling;
-
-            // Verifica se o conteúdo está ativo/aberto
-            const isContentActive = content.classList.contains("active");
-
-            // --- Fechar todos os outros painéis ---
-            // Percorre todos os cabeçalhos novamente
-            accordionHeaders.forEach((otherHeader) => {
-                const otherContent = otherHeader.nextElementSibling;
-                // Remove a classe 'active' de todos os outros conteúdos e cabeçalhos
-                if (otherContent !== content) {
-                    otherContent.classList.remove("active");
-                    otherHeader.classList.remove("active");
-                }
-            });
-
-            // --- Abrir ou Fechar o painel clicado ---
-            if (isContentActive) {
-                // Se estava aberto, fecha
-                content.classList.remove("active");
-                header.classList.remove("active");
-            } else {
-                // Se estava fechado, abre
-                content.classList.add("active");
-                header.classList.add("active");
-            }
-        });
-    });
 
 });

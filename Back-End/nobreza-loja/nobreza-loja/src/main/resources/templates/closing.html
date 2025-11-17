@@ -10,14 +10,13 @@
     <div id="container">
         <div id="rectangle-primary">
             <div class="logo">
-                <a th:href="@{/}"> <h1>Nobreza</h1> </a> </div>
+                <a th:href="@{/page_principal}"> <h1>Nobreza</h1> </a> </div>
 
             <div id="title-top">
                 <p th:text="'Compra: #' + ${pedido.id}">Compra: #00000</p>
                 <p th:text="'Obrigado pela compra ' + ${pedido.usuario.nome} + ', volte sempre!'">Obrigado pela compra!</p>
             </div>
 
-            <div id="google-map"></div>
 
             <div id="information-buy">
                 <h2>Informações do pedido</h2>

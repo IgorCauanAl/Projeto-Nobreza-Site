@@ -33,6 +33,10 @@ const confirmNewPassword = document.getElementById("confirm-new-password");
 // BOTÕES VOLTAR
 const backButtons = document.querySelectorAll(".btn-back");
 
+// Variáveis de estado para recuperação de senha
+let savedEmail = "";
+let savedCode = "";
+
 // ==================== FUNÇÕES ====================
 
 // Limpar campos e remover required de inputs invisíveis
@@ -45,15 +49,16 @@ function resetFields() {
 
     allInputs.forEach(input => {
         input.value = "";
-        input.required = input.offsetParent !== null; // required apenas se visível
+        // Atualiza 'required' baseado na visibilidade real do campo
+        const isVisible = input.offsetParent !== null;
+        input.required = isVisible;
     });
 }
 
-// TROCA DE SEÇÃO
+// TROCA DE SEÇÃO (Lógica interna)
 function showSection(section) {
     container.classList.remove("login-view", "register-view", "recovery-view");
     message.innerText = "";
-    resetFields();
 
     if (section === "login") {
         container.classList.add("login-view");
@@ -67,11 +72,14 @@ function showSection(section) {
         container.classList.add("recovery-view");
         recoveryFields.style.display = "flex";
         document.getElementById("form-titulo").innerText = "Recuperar Senha";
-        showRecoveryStep("email-step");
+        showRecoveryStep("email-step"); // Define o passo inicial
     }
+
+    // Reseta os campos DEPOIS que a seção é definida
+    resetFields();
 }
 
-// PASSOS DE RECUPERAÇÃO
+// PASSOS DE RECUPERAÇÃO (Lógica interna)
 function showRecoveryStep(stepId) {
     const steps = document.querySelectorAll(".recovery-step");
     steps.forEach((step) => step.classList.remove("current-step"));
@@ -79,34 +87,77 @@ function showRecoveryStep(stepId) {
     resetFields();
 }
 
-// ==================== EVENTOS ====================
+// ==================== NOVA FUNÇÃO DE ANIMAÇÃO ====================
+/**
+ * Função 'wrapper' que executa uma animação de fade/scale no container,
+ * troca o conteúdo no meio da animação (quando invisível) e
+ * depois anima a entrada do novo conteúdo.
+ * * @param {function} changeContentCallback - A função que troca o conteúdo.
+ */
+async function animateTransition(changeContentCallback) {
+    // 1. Animação de Saída
+    await anime({
+        targets: container,
+        opacity: [1, 0],
+        scale: [1, 0.98],
+        duration: 250,
+        easing: 'easeInQuad'
+    }).finished;
+
+    // 2. Troca o conteúdo (executa a função original)
+    changeContentCallback();
+
+    // 3. Animação de Entrada
+    await anime({
+        targets: container,
+        opacity: [0, 1],
+        scale: [0.98, 1],
+        duration: 350,
+        easing: 'easeOutQuad'
+    }).finished;
+}
+
+// ==================== EVENTOS (MODIFICADOS) ====================
 
 // TOGGLE LOGIN / CADASTRO
 toggleLink.addEventListener("click", (e) => {
     e.preventDefault();
     if (container.classList.contains("login-view")) {
-        showSection("register");
-        toggleText.innerText = "Já tem uma conta?";
-        toggleLink.innerText = "Clique aqui para entrar";
+        // Envolve a lógica de troca em nossa função de animação
+        animateTransition(() => {
+            showSection("register");
+            toggleText.innerText = "Já tem uma conta?";
+            toggleLink.innerText = "Clique aqui para entrar";
+        });
     } else {
-        showSection("login");
-        toggleText.innerText = "Não tem uma conta?";
-        toggleLink.innerText = "Clique aqui para cadastrar";
+        // Envolve a lógica de troca em nossa função de animação
+        animateTransition(() => {
+            showSection("login");
+            toggleText.innerText = "Não tem uma conta?";
+            toggleLink.innerText = "Clique aqui para cadastrar";
+        });
     }
 });
 
 // ESQUECEU SENHA
 forgotLink.addEventListener("click", (e) => {
     e.preventDefault();
-    showSection("recovery");
+    // Envolve a lógica de troca em nossa função de animação
+    animateTransition(() => {
+        showSection("recovery");
+    });
 });
 
 // BOTÕES VOLTAR
 backButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         const target = btn.getAttribute("data-target");
-        if (target === "login") showSection("login");
-        else showRecoveryStep(target);
+
+        // Envolve a lógica de troca em nossa função de animação
+        animateTransition(() => {
+            if (target === "login") showSection("login");
+            else showRecoveryStep(target);
+        });
     });
 });
 
@@ -144,9 +195,12 @@ registerButton.addEventListener("click", async () => {
             return;
         }
 
-        message.innerText = "Cadastro realizado com sucesso!";
-        resetFields();
-        showSection("login");
+        // Transição animada para o login após sucesso
+        animateTransition(() => {
+            showSection("login");
+            message.innerText = "Cadastro realizado com sucesso!";
+        });
+
     } catch (err) {
         message.innerText = "Erro de conexão com o servidor.";
         console.error(err);
@@ -203,8 +257,12 @@ sendCodeButton.addEventListener("click", async () => {
         }
 
         savedEmail = recoverEmail.value.trim().toLowerCase();
-        message.innerText = "Código enviado para seu email!";
-        showRecoveryStep("code-step");
+
+        // Transição animada para o próximo passo
+        animateTransition(() => {
+            showRecoveryStep("code-step");
+            message.innerText = "Código enviado para seu email!";
+        });
 
     } catch (err) {
         message.innerText = "Erro de conexão com o servidor.";
@@ -220,7 +278,7 @@ verifyCodeButton.addEventListener("click", async () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 code: recoveryCode.value,
-                email:savedEmail,
+                email: savedEmail,
             }),
         });
 
@@ -231,16 +289,19 @@ verifyCodeButton.addEventListener("click", async () => {
         }
 
         savedCode = recoveryCode.value;
-        message.innerText = "Código verificado!";
-        showRecoveryStep("new-password-step");
+
+        // Transição animada para o próximo passo
+        animateTransition(() => {
+            showRecoveryStep("new-password-step");
+            message.innerText = "Código verificado!";
+        });
+
     } catch (err) {
         message.innerText = "Erro de conexão com o servidor.";
         console.error(err);
     }
 
 });
-
-
 
 resetPasswordButton.addEventListener("click", async () => {
 
@@ -266,8 +327,12 @@ resetPasswordButton.addEventListener("click", async () => {
             return;
         }
 
-        message.innerText = "Senha alterada com sucesso!";
-        showSection("login");
+        // Transição animada de volta para o login
+        animateTransition(() => {
+            showSection("login");
+            message.innerText = "Senha alterada com sucesso!";
+        });
+
     } catch (err) {
         message.innerText = "Erro de conexão com o servidor.";
         console.error(err);
