@@ -19,7 +19,7 @@ FROM eclipse-temurin:17-jre
 EXPOSE 8081
 
 
-ARG APP_JAR=target/SiteNobrezaLojaDeTernosMasculinaApplication-SNAPSHOT.jar
+ARG APP_JAR=target/nobreza-loja-0.0.1-SNAPSHOT.jar
 
 
 COPY --from=build ${APP_JAR} app.jar
