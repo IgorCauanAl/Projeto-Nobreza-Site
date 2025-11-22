@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY pom.xml .
 
-COPY src /app/src
+COPY src ./src
 
 
 RUN mvn clean package -DskipTests
