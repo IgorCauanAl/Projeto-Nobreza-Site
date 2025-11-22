@@ -22,6 +22,6 @@ EXPOSE 8081
 ARG APP_JAR=target/nobreza-loja-0.0.1-SNAPSHOT.jar
 
 
-COPY --from=build ${APP_JAR} app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 ENTRYPOINT ["java", "-Xmx512m", "-jar", "/app.jar"]
