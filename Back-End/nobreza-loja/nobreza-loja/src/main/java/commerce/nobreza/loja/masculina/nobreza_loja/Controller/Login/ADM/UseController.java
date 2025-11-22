@@ -4,12 +4,15 @@ import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Pedido;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.PedidoRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -59,4 +62,15 @@ public class UseController {
         return "closing";
     }
 
+    @PostMapping("/account/delete")
+    public String deleteAccount(@AuthenticationPrincipal Usuario usuario, HttpServletRequest request) {
+
+        if(usuario != null){
+            userRepository.delete(usuario);
+        }
+
+        request.getSession().invalidate();
+
+        return "redirect:/login.html";
+    }
 }

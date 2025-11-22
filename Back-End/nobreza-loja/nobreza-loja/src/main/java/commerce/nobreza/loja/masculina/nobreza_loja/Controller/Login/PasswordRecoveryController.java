@@ -53,8 +53,10 @@ public class PasswordRecoveryController {
 
     @PostMapping("/changepassword")
     public ResponseEntity<Map<String, String>> changePassword(@RequestBody NewPasswordDTO dto) {
+
+        System.out.println("teste: " + dto.getNewPassword());
+
         try {
-            System.out.println("code: " + dto.getCode());
             passwordRecoveryService.changePassword(dto);
             return ResponseEntity.ok(Map.of("message", "Senha trocada com sucesso"));
         } catch (TokenInvalideException e) {

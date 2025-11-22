@@ -1,369 +1,377 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
-/* --- ESTRUTURA GERAL E TEMA ESCURO --- */
+/* ESTRUTURA GERAL E TEMA ESCURO */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #000000;
-  color: #ffffff;
-  line-height: 1.6;
+    font-family: "Montserrat", sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
 .checkout-container {
-  display: grid;
-  grid-template-columns: 1fr 400px; /* Coluna principal flexível e resumo com largura fixa */
-  gap: 2rem;
-  max-width: 1300px;
-  margin: 2rem auto;
-  padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 2rem auto;
+    padding: 2rem;
 }
 
-/* --- FLUXO DE CHECKOUT (ESQUERDA) --- */
+/* FLUXO DE CHECKOUT (ESQUERDA) */
 .checkout-step {
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 
-  /* Estilo Glassmorphism para cada etapa */
-  background: rgba(42, 40, 41, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+    /* Estilo Glassmorphism para cada etapa */
+    background: rgba(42, 40, 41, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
 }
 
-/* Estilo para etapas inativas */
 .checkout-step:not(.active) {
-  opacity: 0.4;
-  pointer-events: none;
-  transform: scale(0.98);
+    opacity: 0.4;
+    pointer-events: none;
+    transform: scale(0.98);
 }
 
 .step-header h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .step-header p {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
 }
 
 .customer-type-tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .tab-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 .tab-btn.active {
-  background-color: white;
-  color: black;
-  border-color: white;
-  font-weight: 600;
+    background-color: white;
+    color: black;
+    border-color: white;
+    font-weight: 600;
 }
 
 /* Formulários */
 .step-form {
-  display: grid;
-  /* Cria colunas responsivas: elas terão no mínimo 250px e
-     dividirão o espaço. Se não couber, vira uma coluna só. */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .form-group {
-  grid-column: span 2; /* Padrão: ocupa a largura toda */
-  display: flex;
-  flex-direction: column;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Para campos que ocupam meia largura (CPF e Data de Nasc.) */
+/* Para campos que ocupam meia largura */
 @media (min-width: 768px) {
-  .form-group:not(.full-width) {
-    grid-column: span 1;
-  }
+    .form-group:not(.full-width) {
+        grid-column: span 1;
+    }
 }
 
 .form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px; /* Cantos mais suaves para formulário */
-  font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
-  color: white;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  outline: none;
-  transition: all 0.3s ease;
+.form-group textarea,
+.form-group select{
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    transition: all 0.3s ease;
 }
+
+.form-group select option {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: white;
+    border-color: white;
 }
 
 /* Botões */
 .btn-primary {
-  background: linear-gradient(to right, #2a2829, #000000);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.9rem 1.5rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  width: 100%;
+    background: linear-gradient(to right, #2a2829, #000000);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    width: 100%;
 }
 .btn-primary:hover {
-  transform: scale(1.02);
-  border-color: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    border-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* --- RESUMO DO PEDIDO (DIREITA) --- */
+.btn-next-step {
+    margin-top: 2rem;
+}
+
+/* RESUMO DO PEDIDO (DIREITA) */
 .order-summary {
-  padding: 2.5rem;
-  background: rgba(42, 40, 41, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  align-self: flex-start; /* Impede que estique verticalmente */
+    padding: 2.5rem;
+    background: rgba(42, 40, 41, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    align-self: flex-start;
 }
 
 .order-summary h3 {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.5rem;
 }
 
 .summary-section {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .summary-section:last-of-type {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .coupon-group {
-  display: flex;
+    display: flex;
 }
 .coupon-group input {
-  flex-grow: 1;
-  border-radius: 8px 0 0 8px;
+    flex-grow: 1;
+    border-radius: 8px 0 0 8px;
 }
 .btn-secondary {
-  background: #333;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 0.8rem;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
+    background: #333;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
 }
 .btn-secondary:hover {
-  background: #444;
+    background: #444;
 }
 
 .totals .total-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 .totals .total-row span:first-child {
-  color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 .totals .grand-total span {
-  font-size: 1.5rem;
-  font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 .totals .grand-total small {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .cart-item {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 .cart-item img {
-  width: 60px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 8px;
+    width: 60px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 .item-details h4 {
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
 }
 .item-details p,
 .item-details strong {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 .item-details strong {
-  color: white;
-  display: block;
-  margin-top: 0.5rem;
+    color: white;
+    display: block;
+    margin-top: 0.5rem;
 }
 .item-quantity {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
 }
 .item-quantity button {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 25px;
-  height: 25px;
-  color: white;
-  cursor: pointer;
-  border-radius: 50%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 25px;
+    height: 25px;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
 }
 .item-quantity input {
-  background: none;
-  border: none;
-  width: 30px;
-  text-align: center;
-  color: white;
+    background: none;
+    border: none;
+    width: 30px;
+    text-align: center;
+    color: white;
 }
 
-/* --- ESTILOS PARA A SEÇÃO DE PAGAMENTO --- */
+/* ESTILOS PARA A SEÇÃO DE PAGAMENTO */
 
 .payment-methods {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .payment-method-tab {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .payment-method-tab:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Esconde o radio button real */
 .payment-method-tab input[type="radio"] {
-  display: none;
+    display: none;
 }
 
 /* Estilo para a aba ativa */
 .payment-method-tab.active {
-  background-color: white;
-  color: black;
-  border-color: white;
-  font-weight: 600;
+    background-color: white;
+    color: black;
+    border-color: white;
+    font-weight: 600;
 }
 
 .payment-panel {
-  display: none; /* Escondido por padrão */
-  animation: fadeIn 0.5s;
+    display: none;
+    animation: fadeIn 0.5s;
 }
 
 .payment-panel.active {
-  display: block; /* Visível quando ativo */
+    display: block;
 }
 
 /* Estilos para PIX e Boleto */
 .pix-info,
 .boleto-info {
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 .qr-code-placeholder {
-  width: 180px;
-  height: 180px;
-  margin: 1.5rem auto;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+    width: 180px;
+    height: 180px;
+    margin: 1.5rem auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
 }
 .qr-code-placeholder i {
-  font-size: 8rem;
-  color: #333;
+    font-size: 8rem;
+    color: #333;
 }
 
 .pix-code-group {
-  display: flex;
+    display: flex;
 }
 .pix-code-group input {
-  text-align: center;
-  border-radius: 8px 0 0 8px;
-  font-size: 0.8rem;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    font-size: 0.8rem;
 }
 .pix-code-group button {
-  border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
 }
 
 .boleto-info i {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* --- CSS para alternar entre formulários PF e PJ --- */
+/* CSS para alternar entre formulários PF e PJ */
 .customer-form {
-  display: none; /* Esconde os formulários por padrão */
-  /* Herda os estilos de grid do .step-form */
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
 
 .customer-form.active {
-  display: grid; /* Mostra apenas o formulário ativo */
+    display: grid;
 }
 
 
-/* --- Estilos para o Painel Pix --- */
+/* Estilos para o Painel Pix */
 
 .pix-info-container {
     display: flex;
@@ -371,30 +379,30 @@ body {
     align-items: center;
     text-align: center;
     padding: 2rem 1.5rem;
-    background-color: #f8f8f8; /* Um fundo claro para destacar o painel */
+    background-color: #f8f8f8;
     border-radius: 8px;
     border: 1px solid #eee;
     margin-top: 1rem;
 }
 
 .pix-info-container .pix-icon-large {
-    font-size: 3.5rem; /* Ícone do QR Code grande */
-    color: #32bcad;   /* Cor similar ao ícone do Pix */
+    font-size: 3.5rem;
+    color: #32bcad;
     margin-bottom: 1rem;
 }
 
 .pix-info-container h3 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #333; /* Cor escura para o título */
+    color: #333;
     margin-bottom: 0.75rem;
 }
 
 .pix-info-container p {
     font-size: 0.9rem;
-    color: #555; /* Cor cinza para o texto */
+    color: #555;
     line-height: 1.5;
-    max-width: 450px; /* Limita a largura do texto */
+    max-width: 450px;
 }
 
 .pix-info-container .pix-confirm-text {
@@ -403,7 +411,7 @@ body {
     color: #333;
 }
 
-/* --- Estilos do Modal PIX --- */
+/* Estilos do Modal PIX */
 
 /* O Fundo Escuro */
 #pix-modal-overlay {
@@ -433,7 +441,7 @@ body {
     width: 90%;
     text-align: center;
     position: relative;
-    color: #333; /* Cor do texto dentro do modal */
+    color: #333;
 }
 
 /* Classe para esconder/mostrar */
@@ -443,7 +451,7 @@ body {
     visibility: hidden !important;
 }
 
-/* --- Estados do Modal --- */
+/* Estados do Modal */
 
 /* 1. Carregando */
 #pix-loading-state {
@@ -549,33 +557,33 @@ body {
     align-items: center;
     text-align: center;
     padding: 2rem 1.5rem;
-    background-color: #f8f8f8; /* Fundo claro para destacar */
+    background-color: #f8f8f8;
     border-radius: 8px;
     border: 1px solid #eee;
     margin-top: 1rem;
 }
 
 .boleto-info-container .boleto-icon-large {
-    font-size: 3.5rem; /* Ícone do código de barras grande */
-    color: #333; /* Cor escura para o ícone */
+    font-size: 3.5rem;
+    color: #333;
     margin-bottom: 1rem;
 }
 
 .boleto-info-container h3 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #333; /* Cor escura para o título */
+    color: #333;
     margin-bottom: 0.75rem;
 }
 
 .boleto-info-container p {
     font-size: 0.9rem;
-    color: #555; /* Cor cinza para o texto */
+    color: #555;
     line-height: 1.5;
-    max-width: 450px; /* Limita a largura do texto */
+    max-width: 450px;
 }
 
-/* Destaque para o prazo de compensação */
+
 .boleto-info-container .boleto-confirm-text {
     margin-top: 1rem;
     font-weight: 600;

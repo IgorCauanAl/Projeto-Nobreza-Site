@@ -1,9 +1,9 @@
 
-//Variável para selecionar os elementos DOOM de news
+
 const imageNews = document.querySelectorAll(".photo");
 const titleNews = document.querySelectorAll(".description-news");
 
-//Variável de Controle
+
 let indexNews = 0;
 
 function updateNews() {

@@ -39,6 +39,10 @@ public class Pedido {
     @Column(nullable = false, length = 20)
     private StatusPedido status;
 
+    @NotNull
+    @Column(name = "numero")
+    private String numeroTelefone;
+
     // Um pedido tem muitos itens
     @OneToMany(
             mappedBy = "pedido",

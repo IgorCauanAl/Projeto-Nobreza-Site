@@ -1,4 +1,4 @@
-//Carrossel em categorias
+
 const slidesCategories = [
   {
     image: [

@@ -1,6 +1,7 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Service;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Role;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Usuario;
+import commerce.nobreza.loja.masculina.nobreza_loja.Repository.PedidoRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.RoleRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ public class ADMUserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final PedidoRepository pedidoRepository;
 
 
 
@@ -25,9 +27,8 @@ public class ADMUserService {
 
     @Transactional
     public boolean promoteToAdmin(Long userId, String requestingAdminEmail) {
-        // Só permite promoção pelo ADM autorizado
         if (!"nobrezaADM@teste.com".equals(requestingAdminEmail)) {
-            return false; // não autorizado
+            return false;
         }
 
         Usuario user = userRepository.findById(userId)
@@ -43,7 +44,15 @@ public class ADMUserService {
     }
 
     public void deleteUser(Long id){
+
+        Usuario user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+
+        pedidoRepository.deleteAll(user.getPedidos());
+
         userRepository.deleteById(id);
+
+
     }
 
 

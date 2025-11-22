@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSuggestions(query) {
         try {
-            // 1. CHAMA O BACKEND
+
             const response = await fetch(`/api/search/suggest?query=${encodeURIComponent(query)}`);
             if (!response.ok) {
                 throw new Error('Erro ao buscar sugestões');
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
 
-            // RENDERIZA OS RESULTADOS
             renderSuggestions(data);
 
         } catch (error) {
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         queryList.innerHTML = '';
         productList.innerHTML = '';
 
-        // Se não houver resultados, esconde
+
         if (data.textSuggestions.length === 0 && data.productSuggestions.length === 0) {
             suggestionsPopup.classList.add('search-suggestions-hidden');
             return;

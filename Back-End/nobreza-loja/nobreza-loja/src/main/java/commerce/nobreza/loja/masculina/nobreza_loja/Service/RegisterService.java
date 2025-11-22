@@ -27,7 +27,6 @@ public class RegisterService {
 
     public ReturnRegisterDTO register(RegisterUserDTO dto) {
 
-        //Verificar se o email existe
         Optional<Usuario> usuario = userRepository.findByEmail(dto.getEmail());
 
         if (usuario.isPresent()) {

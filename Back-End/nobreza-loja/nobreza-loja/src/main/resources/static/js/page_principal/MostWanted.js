@@ -1,4 +1,4 @@
-//Carrossel para os mais procurados
+
 const slideMostWanted = [
   [
     {
@@ -78,11 +78,11 @@ const slideMostWanted = [
   ],
 ];
 
-//Selecionando os elementos DOOM de mais procurados
+
 const productsMostWanted = document.querySelectorAll(".product");
 const titleMosWanted = document.querySelectorAll(".title-mostwanted");
 
-//Variável de controle
+
 let indexMostWanted = 0;
 
 //Função para mudar as imagens dos mais procurados

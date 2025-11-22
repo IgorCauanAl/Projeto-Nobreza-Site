@@ -23,7 +23,6 @@ public class PedidoService {
     private final CarrinhoItensRepository carrinhoItensRepository;
     private final UserRepository usuarioRepository;
     private final EnderecoRepository enderecoRepository;
-    private final MetodoPagamentoRepository metodoPagamentoRepository;
     private final ProductRepository productRepository;
 
     @Transactional
@@ -69,6 +68,7 @@ public class PedidoService {
         pedido.setEnderecoEntrega(enderecoEntrega);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.PENDENTE);
+        pedido.setNumeroTelefone(form.getNumeroCelular());
 
 
         List<CarrinhoItens> itensCarrinho = carrinhoItensRepository.findByUsuario(usuario);

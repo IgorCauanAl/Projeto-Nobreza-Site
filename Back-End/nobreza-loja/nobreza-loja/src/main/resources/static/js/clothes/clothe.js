@@ -1,7 +1,3 @@
-/* =======================================================
-   SEU NOVO ARQUIVO (js/clothes/clothe.js)
-   ======================================================= */
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // Elementos da página de detalhes
@@ -13,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pega o estoque máximo do HTML
     const maxStock = stockQuantityEl ? parseInt(stockQuantityEl.textContent, 10) : 100;
-
-    // --- 1. Lógica do Seletor de Quantidade ---
 
     let currentQuantity = 1;
 
@@ -38,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Lógica do Botão Comprar ---
-
     if (buyButton) {
         buyButton.addEventListener('click', async (event) => {
             event.preventDefault();
@@ -53,7 +45,5 @@ document.addEventListener('DOMContentLoaded', () => {
             await adicionarProdutoAoCarrinho(productId, quantity, buyButton);
         });
     }
-
-
 
 });

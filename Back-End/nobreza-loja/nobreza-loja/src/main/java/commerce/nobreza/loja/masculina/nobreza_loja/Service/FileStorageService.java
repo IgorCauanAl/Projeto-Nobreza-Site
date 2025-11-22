@@ -13,7 +13,7 @@ public class FileStorageService {
 
     public String save(MultipartFile file, String folderName) {
         try {
-            // Cria a pasta se não existir
+
             Path dir = rootLocation.resolve(folderName);
             Files.createDirectories(dir);
 
@@ -21,10 +21,10 @@ public class FileStorageService {
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             Path destinationFile = dir.resolve(fileName);
 
-            // Salva o arquivo
+
             Files.copy(file.getInputStream(), destinationFile, StandardCopyOption.REPLACE_EXISTING);
 
-            // Retorna a URL de acesso (exemplo usando /uploads/)
+
             return "/uploads/" + folderName + "/" + fileName;
         } catch (IOException e) {
             throw new RuntimeException("Erro ao salvar o arquivo: " + e.getMessage());

@@ -24,7 +24,6 @@
                     <p>
                         Utilizaremos seu e-mail para identificar seu perfil, histórico de
                         compra, notificação de pedidos e carrinho de compras.
-                    </p>
                 </div>
 
                 <div class="customer-type-tabs">
@@ -78,12 +77,12 @@
                         />
                     </div>
                     <div class="form-group full-width">
-                        <label for="celular-pf">Celular / WhatsApp</label>
+                        <label for="numeroCelular">Celular / WhatsApp</label>
                         <input
                                 type="text"
-                                id="celular-pf"
+                                id="numeroCelular"
                                 placeholder="(00) 00000-0000"
-                                th:field="*{celularPf}"
+                                th:field="*{numeroCelular}"
                                 required
                         />
                     </div>
@@ -118,9 +117,17 @@
                     <div class="form-group full-width">
                         <label for="endereco-selecionado">Escolha um Endereço Salvo</label>
                         <select th:field="*{enderecoId}" id="endereco-selecionado" class="form-control">
-                            <option value="">-- Adicionar novo endereço --</option>
+                            <option value="">Adicionar novo endereço</option>
+
                             <th:block th:each="end : ${enderecos}">
                                 <option th:value="${end.id}"
+                                        th:data-cep="${end.cep}"
+                                        th:data-rua="${end.rua}"
+                                        th:data-numero="${end.numero}"
+                                        th:data-complemento="${end.complemento}"
+                                        th:data-bairro="${end.bairro}"
+                                        th:data-cidade="${end.cidade}"
+                                        th:data-estado="${end.estado}"
                                         th:text="${end.rua} + ', ' + ${end.numero} + ' - ' + ${end.bairro}">
                                     Endereço...
                                 </option>
@@ -173,12 +180,12 @@
 
                 <div class="payment-methods">
                     <label class="payment-method-tab">
-                        <input type="radio" th:field="*{paymentMethod}" value="pix" />
+                        <input type="radio" th:field="*{paymentMethod}" value="pix" required/>
                         <i class="fas fa-qrcode"></i>
                         <span>Pix</span>
                     </label>
                     <label class="payment-method-tab">
-                        <input type="radio" th:field="*{paymentMethod}" value="boleto" />
+                        <input type="radio" th:field="*{paymentMethod}" value="boleto" required/>
                         <i class="fas fa-barcode"></i>
                         <span>Boleto</span>
                     </label>
@@ -239,16 +246,6 @@
                 <input type="text" id="cupom" placeholder="Código do cupom" />
                 <button type="button" class="btn-secondary">Adicionar</button>
             </div>
-        </div>
-
-        <div class="summary-section">
-            <label for="observacao">Observação da compra (opcional)</label>
-            <textarea
-                    id="observacao"
-                    placeholder="Deixe uma observação sobre sua compra."
-                    maxlength="300"
-            ></textarea>
-            <span>0/300 caracteres</span>
         </div>
 
         <div class="summary-section totals">

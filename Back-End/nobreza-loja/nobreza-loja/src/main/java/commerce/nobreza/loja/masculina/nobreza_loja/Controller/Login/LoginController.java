@@ -17,9 +17,8 @@ public class LoginController {
 
     @GetMapping("/logout")
     public String logout (HttpServletRequest request){
-        //Limpa as credencias de autenticação do usuario
         SecurityContextHolder.clearContext();
-        //Limpas as credencias na sessão http
+
         request.getSession().invalidate();
         return "redirect:/login.html";
     }

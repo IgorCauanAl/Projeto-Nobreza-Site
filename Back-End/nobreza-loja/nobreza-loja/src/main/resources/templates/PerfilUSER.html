@@ -88,8 +88,10 @@
                         <span class="pedido-data" th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy HH:mm')}">25/08/2025 14:30</span>
                     </div>
 
-                    <div class="pedido-status" th:classappend="${#strings.toLowerCase(pedido.status)}">
-                        <span th:text="${pedido.status.displayValue}">PENDENTE</span>
+                    <div class="status-container">
+                        <div class="pedido-status" th:classappend="${#strings.toLowerCase(pedido.status)}">
+                            <span th:text="${pedido.status.displayValue}">PAGO</span>
+                        </div>
                     </div>
 
                     <div class="pedido-detalhes">
@@ -187,6 +189,24 @@
                     <button type="submit" class="btn">Alterar Senha</button>
                 </div>
             </form>
+
+
+            <div class="danger-zone">
+                <h3>Excluir Conta</h3>
+                <p class="danger-text">
+                    Atenção: Esta ação é permanente e não pode ser desfeita. Todos os seus dados e histórico de pedidos serão apagados.
+                </p>
+
+                <form class="account-form" th:action="@{/account/delete}" method="post">
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-delete" onclick="return confirm('Tem certeza absoluta que deseja excluir sua conta? Esta ação é irreversível.');">
+                            <i class="fas fa-trash-alt"></i> Excluir minha conta permanentemente
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
         </section>
     </main>
 </div>

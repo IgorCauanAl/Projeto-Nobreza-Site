@@ -1,10 +1,4 @@
-/* =======================================================
-   ARQUIVO: js/page-principal.js (VERSÃO CORRIGIDA)
-   ======================================================= */
 
-// --- 1. FUNÇÕES GLOBAIS ---
-
-// --- MUDANÇA: Criamos uma variável global para rastrear os itens ---
 let globalCartItemCount = 0;
 
 async function adicionarProdutoAoCarrinho(productId, quantidade, button) {
@@ -104,14 +98,11 @@ async function atualizarMiniCarrinho() {
             precoTotal += item.precoProduto * item.quantidade;
         });
 
-        // --- MUDANÇA: Atualiza a variável global ---
         globalCartItemCount = totalItens;
 
-        // Atualiza contadores visuais
         cartCountEl.textContent = totalItens;
         miniCartTotalEl.textContent = `Total: R$ ${precoTotal.toFixed(2)}`;
 
-        // --- MUDANÇA: Apenas muda a *aparência* do botão (com CSS) ---
         if (checkoutButton) {
             if (totalItens === 0) {
                 checkoutButton.classList.add('disabled-checkout');
@@ -135,10 +126,8 @@ function limparMiniCarrinhoVisual() {
     cartCountEl.textContent = '0';
     miniCartTotalEl.textContent = 'Total: R$ 0,00';
 
-    // --- MUDANÇA: Atualiza a variável global ---
     globalCartItemCount = 0;
 
-    // --- MUDANÇA: Apenas muda a *aparência* do botão (com CSS) ---
     if (checkoutButton) {
         checkoutButton.classList.add('disabled-checkout');
     }
@@ -160,11 +149,10 @@ function mostrarNotificacao(mensagem, tipo = 'success') {
     }, 3000);
 }
 
-// --- 2. LÓGICA DA PÁGINA (DOMContentLoaded) ---
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. LÓGICA PARA ABRIR/FECHAR O MINI-CARRINHO ---
+    // LÓGICA PARA ABRIR/FECHAR O MINI-CARRINHO
     const cartToggleButton = document.getElementById('circle-cart');
     const miniCart = document.getElementById('mini-cart');
     const miniCartCloseButton = document.getElementById('mini-cart-close');
@@ -189,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. LISTENERS GLOBAIS DE ADICIONAR E REMOVER ---
+    // LISTENERS GLOBAIS DE ADICIONAR E REMOVER
     document.body.addEventListener('click', async function(event) {
         if (event.target.classList.contains('btn-add-to-cart')) {
             event.preventDefault();
@@ -209,24 +197,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. LÓGICA DO BOTÃO "FINALIZAR COMPRA" (COM A MODIFICAÇÃO) ---
+    // LÓGICA DO BOTÃO "FINALIZAR COMPRA"
     const checkoutButton = document.getElementById('mini-cart-checkout');
     if (checkoutButton) {
         checkoutButton.addEventListener('click', (event) => {
 
-            // --- MUDANÇA: Verifica a variável global ---
             if (globalCartItemCount === 0) {
-                event.preventDefault(); // Impede o redirecionamento
+                event.preventDefault();
                 mostrarNotificacao('Seu carrinho está vazio!', 'error');
                 return;
             }
 
-            // Se chegou aqui, o carrinho tem itens. Permite o redirecionamento.
             window.location.href = '/checkout';
         });
     }
 
-    // --- 4. CARREGAR CARRINHO AO INICIAR A PÁGINA ---
+    // CARREGAR CARRINHO AO INICIAR A PÁGINA
     atualizarMiniCarrinho();
 
 });

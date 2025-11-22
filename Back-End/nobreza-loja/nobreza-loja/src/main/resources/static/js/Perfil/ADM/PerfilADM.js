@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Navegação entre seções
     const navLinks = document.querySelectorAll(".nav-link");
     const contentSections = document.querySelectorAll(".content-section");
 
@@ -16,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-
-
-// Gerenciamento de cores
     const colorInput = document.getElementById("color-picker-input");
     const hexInput = document.getElementById("color-hex-input");
     const addColorBtn = document.getElementById("add-color-btn");
@@ -78,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addColor(color) {
-        // Validar formato HEX
         const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
         if (!hexRegex.test(color)) {
             alert("Formato de cor inválido. Use formato HEX (ex: #FFFFFF)");
@@ -103,19 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Adicionar # se não tiver
         if (!color.startsWith('#') && color.length === 6) {
             color = '#' + color;
         }
 
         addColor(color);
 
-        // Resetar inputs
         hexInput.value = "";
         colorInput.value = "#000000";
     });
 
-// Permitir Enter no input HEX
     hexInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -123,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-// Sincronizar color picker com input HEX
     colorInput.addEventListener("input", () => {
         hexInput.value = colorInput.value.toUpperCase();
     });
@@ -135,12 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-// Inicializar renderização
     renderColors();
 
-
-
-// Evento para enviar o formulário
     const form = document.querySelector(".product-form");
 
     form.addEventListener("submit", async (e) => {
@@ -148,12 +135,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("=== 🚀 INÍCIO DO DEBUG ===");
 
-        // Validar se há pelo menos uma cor selecionada
         if (colors.length === 0) {
             alert("Por favor, adicione pelo menos uma cor!");
             return;
         }
-
 
         console.log("=== 1. VALORES DOS CAMPOS NO HTML ===");
         const campos = [
@@ -206,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("✅ FORM DATA CONTÉM DADOS");
         }
 
-        // 3. VERIFICAR SE TODOS OS CAMPOS ESPERADOS ESTÃO NO FormData
         console.log("=== 3. VERIFICAÇÃO DE CAMPOS NO FormData ===");
         const camposEsperados = [
             'prodNome', 'prodPreco', 'prodTipo', 'prodRef',
@@ -225,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // 4. VERIFICAR TAMANHO TOTAL DO FORM DATA
+        console.log("=== 4. TAMANHO TOTAL: ... bytes ===");
         let tamanhoTotal = 0;
         for (let [key, value] of formData.entries()) {
             if (value instanceof File) {
@@ -269,146 +253,109 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("=== 🏁 FIM DO DEBUG ===");
     });
 
-    // --- INÍCIO - Lógica do Modal de Confirmação ---
-
     const modalOverlay = document.getElementById('confirmationModal');
 
-    // Se o modal não existir nesta página, não faz nada
     if (modalOverlay) {
         const modalTitle = document.getElementById('modalTitle');
         const modalMessage = document.getElementById('modalMessage');
         const modalConfirmBtn = document.getElementById('modalConfirmBtn');
         const modalCancelBtn = document.getElementById('modalCancelBtn');
 
-        // Variável global para guardar o formulário que deve ser enviado
         let formToSubmit = null;
 
-        // Função para mostrar o modal
         function showModal(title, message, confirmClass) {
             modalTitle.textContent = title;
             modalMessage.textContent = message;
 
-            // Limpa classes de cor antigas e adiciona a nova
-            modalConfirmBtn.className = 'btn-confirm'; // Reseta para o padrão
+            modalConfirmBtn.className = 'btn-confirm';
             if (confirmClass) {
                 modalConfirmBtn.classList.add(confirmClass);
             }
 
-            modalOverlay.style.display = 'flex'; // Torna o overlay visível
-            // Força um pequeno atraso para a animação de opacidade funcionar
+            modalOverlay.style.display = 'flex';
             setTimeout(() => {
                 modalOverlay.classList.add('show');
             }, 10);
         }
 
-        // Função para esconder o modal
         function hideModal() {
             modalOverlay.classList.remove('show');
 
-            // Espera a transição de opacidade terminar para esconder o elemento
             setTimeout(() => {
                 modalOverlay.style.display = 'none';
-                formToSubmit = null; // Limpa a referência do formulário
-            }, 300); // 300ms (deve ser igual ao 'transition' no CSS)
+                formToSubmit = null;
+            }, 300);
         }
 
-        // 1. Interceptar cliques nos botões "Promover"
         document.querySelectorAll('.btn-promote').forEach(button => {
             button.addEventListener('click', (e) => {
-                e.preventDefault(); // Impede o envio IMEDIATO do formulário
-                formToSubmit = button.closest('form'); // Pega o <form> pai do botão
+                e.preventDefault();
+                formToSubmit = button.closest('form');
                 showModal(
                     'Promover Usuário',
                     'Você tem certeza que deseja promover este usuário a Administrador?',
-                    'promote' // Classe CSS para o botão de confirmar azul
+                    'promote'
                 );
             });
         });
 
-        // 2. Interceptar cliques nos botões "Deletar"
         document.querySelectorAll('.btn-delete').forEach(button => {
             button.addEventListener('click', (e) => {
-                e.preventDefault(); // Impede o envio IMEDIATO do formulário
-                formToSubmit = button.closest('form'); // Pega o <form> pai do botão
+                e.preventDefault();
+                formToSubmit = button.closest('form');
                 showModal(
                     'Deletar Usuário',
                     'Esta ação é irreversível. Você tem certeza que deseja deletar este usuário?',
-                    'delete' // Classe CSS (vermelha)
+                    'delete'
                 );
             });
         });
 
-        // 3. Adicionar ação ao botão "Confirmar" do modal
         modalConfirmBtn.addEventListener('click', () => {
             if (formToSubmit) {
-                formToSubmit.submit(); // Envia o formulário que foi guardado
+                formToSubmit.submit();
             }
             hideModal();
         });
 
-        // 4. Fechar o modal ao clicar em "Cancelar" ou no fundo escuro
         modalCancelBtn.addEventListener('click', hideModal);
 
         modalOverlay.addEventListener('click', (e) => {
-            // Fecha só se clicar no overlay (fundo), não no conteúdo
             if (e.target === modalOverlay) {
                 hideModal();
             }
         });
     }
-    // --- FIM - Lógica do Modal de Confirmação ---
 
-
- });
-
-
-//Sistema de Busca
-document.addEventListener( "DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
     const tableBody = document.getElementById("userTableBody");
     const noUserRow = document.getElementById("noUserRow");
 
-    // Pega todas as linhas de usuário
     const userRows = Array.from(tableBody.querySelectorAll("tr")).filter(
         (row) => row.id !== "noUserRow"
     );
 
-    // Só adiciona o listener se houver usuários para filtrar
     if (userRows.length > 0) {
         searchInput.addEventListener("input", () => {
             const searchTerm = searchInput.value.toLowerCase();
             let visibleCount = 0;
 
             userRows.forEach((row) => {
-                // Pega o texto do nome (célula 0) e e-mail (célula 1)
                 const name = row.cells[0].textContent.toLowerCase();
                 const email = row.cells[1].textContent.toLowerCase();
 
-                // Verifica se o nome OU o e-mail começam com o termo
                 const isMatch =
                     name.startsWith(searchTerm) || email.startsWith(searchTerm);
 
-                // Mostra ou esconde a linha
                 if (isMatch) {
-                    row.style.display = ""; // Mostra
+                    row.style.display = "";
                     visibleCount++;
                 } else {
-                    row.style.display = "none"; // Esconde
+                    row.style.display = "none";
                 }
             });
 
-            // Se nenhum usuário for visível após o filtro
             noUserRow.style.display = visibleCount === 0 ? "" : "none";
         });
     }
 });
-
-
-// Busca em tempo real
-document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("searchInput");
-    const tableBody = document.getElementById("userTableBody");
-    const noUserRow = document.getElementById("noUserRow");
-});
-
-

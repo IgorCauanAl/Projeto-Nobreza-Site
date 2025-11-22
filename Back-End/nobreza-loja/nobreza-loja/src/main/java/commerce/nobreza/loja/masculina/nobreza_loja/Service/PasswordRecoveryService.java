@@ -28,14 +28,14 @@ public class PasswordRecoveryService {
     private final PasswordEncoder passwordEncoder;
 
 
-    //Gerar um codigo
+
     private String codeSafe() {
         SecureRandom random = new SecureRandom();
         int codigo = 100000 + random.nextInt(900000);
         return String.valueOf(codigo);
     }
 
-    //Gerar um token em hash
+
     private String hashToken(String token) {
         return DigestUtils.sha256Hex(token); // converte em hash hexadecimal
     }
@@ -43,23 +43,22 @@ public class PasswordRecoveryService {
 
     public void enviarCodigo(RecoveryEmailDTO dto){
         TokenSenha tokenParaSalvar;
-        //Gerar o token e transformar em hash
+
         String tokenGerado = codeSafe();
         String hashToken = hashToken(tokenGerado);
 
-        //Verificar se o email existe
+
         Usuario u = userRepository.findByEmail(dto.getEmail())
                 .orElseThrow(() -> new EmailNotFoundException("Email informado não está cadastrado"));
 
         //Associar token ao usuario
         Optional<TokenSenha> tokenExistenteOpt = tokenSenhaRepository.findByUsuario(u);
 
-        //Se o token existe atualizar o codigo hash e coloque 15 minutos de expiração
         if(tokenExistenteOpt.isPresent()){
             tokenParaSalvar = tokenExistenteOpt.get();
             tokenParaSalvar.setCode(hashToken);
             tokenParaSalvar.setExpiration(LocalDateTime.now().plusMinutes(15));
-        //Senão crie um novo token associe ao usuario e faça o mesmo procedimento
+
         }else{
             tokenParaSalvar = new TokenSenha();
             tokenParaSalvar.setUsuario(u);
@@ -110,6 +109,4 @@ public class PasswordRecoveryService {
     }
 
 
-    }
-
-
+}

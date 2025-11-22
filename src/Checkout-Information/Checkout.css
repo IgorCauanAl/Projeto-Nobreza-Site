@@ -106,18 +106,21 @@ body {
 }
 
 .form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px; /* Cantos mais suaves para formulário */
-  font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
-  color: white;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  outline: none;
-  transition: all 0.3s ease;
+.form-group textarea
+.form-group select{
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    transition: all 0.3s ease;
 }
+
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);

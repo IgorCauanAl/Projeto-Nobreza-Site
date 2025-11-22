@@ -39,7 +39,7 @@ public class ProductService {
     public void createProduct(
             String nome, BigDecimal preco, String tipo, String ref, Integer quantidade,
             String descricao, String composicao, MultipartFile foto, String cores,
-            Double pixDesconto, boolean promocao, String secao
+            Double pixDesconto, String secao
     ) throws IOException {
 
         String savedImageUrl = saveImage(foto);
@@ -62,7 +62,6 @@ public class ProductService {
         produto.setDescription(descricao);
         produto.setComposition(composicao);
         produto.setDiscountPix(pixDesconto != null ? pixDesconto : 0.0);
-        produto.setPromotion(promocao);
         produto.setCreatedIn(LocalDateTime.now());
 
         produto.setCategory(category);

@@ -50,6 +50,6 @@ public class Endereco {
     private String bairro;
 
     @Column(nullable = false)
-    private boolean padrao; //endereço padrão de entrega
+    private boolean padrao;
 
 }

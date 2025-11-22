@@ -1,14 +1,11 @@
-// --- 1. VARIÁVEIS E FUNÇÕES GLOBAIS (CARRINHO E CARROSSEL) ---
-
+// VARIÁVEIS E FUNÇÕES GLOBAIS
 let globalCartItemCount = 0;
 
-// Variáveis do Carrossel (Acessíveis globalmente)
+// Variáveis do Carrossel
 let slides;
 let totalSlides;
 let banner;
 let currentSlideIndex = 0;
-
-// --- FUNÇÕES DE CARRINHO (Adicionar, Remover, Atualizar) ---
 
 async function adicionarProdutoAoCarrinho(productId, quantidade, button) {
     try {
@@ -74,7 +71,6 @@ async function atualizarMiniCarrinho() {
     const checkoutButton = document.getElementById('mini-cart-checkout');
 
     if (!miniCartItemsContainer || !miniCartTotalEl || !cartCountEl) return;
-
 
     try {
         const response = await fetch('/api/cart/items');
@@ -162,8 +158,7 @@ function mostrarNotificacao(mensagem, tipo = 'success') {
 }
 
 
-// --- FUNÇÕES DO CARROSSEL (Acessíveis Globalmente pelo onclick) ---
-
+// FUNÇÕES DO CARROSSEL
 function showSlide(index, direction = "next") {
     // Garantir que as variáveis foram inicializadas no DOMContentLoaded
     if (!slides || slides.length === 0 || !banner) {
@@ -189,10 +184,10 @@ function showSlide(index, direction = "next") {
 
     const newSlide = slides[currentSlideIndex];
 
-    // Limpa classes de slides anteriores do banner (para o background-position)
+    // Limpa classes de slides anteriores do banner
     banner.className = banner.className.replace(/active-slide-\w+/g, '').trim();
 
-    // Aplica o ID do slide como classe ao banner (para CSS específico, ex: image2)
+    // Aplica o ID do slide como classe ao banner
     if (newSlide.id) {
         banner.classList.add(`active-slide-${newSlide.id}`);
     }
@@ -219,11 +214,10 @@ function nextSlide() { showSlide(currentSlideIndex + 1, "next"); }
 function prevSlide() { showSlide(currentSlideIndex - 1, "prev"); }
 
 
-// --- 2. LÓGICA DA PÁGINA (Executada após o carregamento do DOM)
-
+// LÓGICA DA PÁGINA (Executada após o carregamento do DOM)
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- INICIALIZAÇÃO DO CARROSSEL (Apenas atribuição de variáveis globais) ---
+    // INICIALIZAÇÃO DO CARROSSEL
     slides = document.querySelectorAll(".carousel-item");
     totalSlides = slides.length;
     banner = document.getElementById("banner");
@@ -231,9 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slides.length > 0) {
         showSlide(0);
     }
-    // FIM DA LÓGICA DO CARROSSEL
 
-    // --- LÓGICA DO SUB-SEARCH (BARRA DE BUSCA) ---
+    // LÓGICA DO SUB-SEARCH (BARRA DE BUSCA)
     const searchTrigger = document.getElementById("search");
     const subSearchHidden = document.getElementById("sub-search-hidden");
     const searchInput = subSearchHidden ? subSearchHidden.querySelector(".search-box") : null;
@@ -267,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA DO MENU DE PRODUTOS ---
+    // LÓGICA DO MENU DE PRODUTOS
     const productsMenuItem = document.getElementById("products");
     const menuProductsHidden = document.getElementById("menu-products-hidden");
     const productsLink = productsMenuItem ? productsMenuItem.querySelector("a") : null;
@@ -294,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA ABRIR/FECHAR O MINI-CARRINHO ---
+    // LÓGICA PARA ABRIR/FECHAR O MINI-CARRINHO
     const cartToggleButton = document.getElementById('circle-cart');
     const miniCart = document.getElementById('mini-cart');
     const miniCartCloseButton = document.getElementById('mini-cart-close');
@@ -322,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- LISTENERS GLOBAIS DE ADICIONAR E REMOVER ---
+    // LISTENERS GLOBAIS DE ADICIONAR E REMOVER
     document.body.addEventListener('click', async function(event) {
         if (event.target.classList.contains('btn-add-to-cart')) {
             event.preventDefault();
@@ -342,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- LÓGICA DO BOTÃO "FINALIZAR COMPRA" ---
+    // LÓGICA DO BOTÃO "FINALIZAR COMPRA"
     const checkoutButton = document.getElementById('mini-cart-checkout');
     if (checkoutButton) {
         checkoutButton.addEventListener('click', (event) => {
@@ -355,8 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- CARREGAR CARRINHO AO INICIAR A PÁGINA ---
+    // CARREGAR CARRINHO AO INICIAR A PÁGINA
     atualizarMiniCarrinho();
 
 });
-

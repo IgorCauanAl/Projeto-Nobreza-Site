@@ -37,7 +37,6 @@ public class CheckoutController {
     private final EnderecoRepository enderecoRepository;
     private final MetodoPagamentoRepository metodoPagamentoRepository;
 
-    // PASSO 1: Exibe a página de Checkout
     @GetMapping("/checkout")
     public String showCheckoutPage(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -49,13 +48,13 @@ public class CheckoutController {
 
         Usuario usuario = usuarioRepository.findByEmail(userDetails.getUsername()).get();
 
-        // Carrega os itens do carrinho para o resumo
+
         List<CarrinhoItensDTO> itemsParaCheckout = carrinhoService.getItensDoUsuario(userDetails.getUsername());
         BigDecimal precoTotal = itemsParaCheckout.stream()
                 .map(item -> item.getPrecoProduto().multiply(new BigDecimal(item.getQuantidade())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        // Carrega os endereços e pagamentos do usuário
+
         List<Endereco> enderecos = enderecoRepository.findByUsuario(usuario);
         List<MetodoPagamento> metodosPagamento = metodoPagamentoRepository.findByUsuario(usuario);
 
@@ -68,7 +67,6 @@ public class CheckoutController {
         return "Checkout";
     }
 
-    // PASSO 2: Processa o pedido
     @PostMapping("/checkout/processar")
     public String processarCheckout(
             @ModelAttribute CheckoutFormDto form,

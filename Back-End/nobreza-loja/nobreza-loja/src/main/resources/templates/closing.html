@@ -33,7 +33,7 @@
                     <p th:text="${pedido.enderecoEntrega.cep} + '-' + ${pedido.enderecoEntrega.cidade}">00000-000 - Cidade Exemplo</p>
                     <p th:text="${pedido.enderecoEntrega.estado}">UF</p>
                     <p>Brasil</p>
-                    <p>(00) 00000-0000</p>
+                    <p th:text="${pedido.numeroTelefone}"></p>
                 </div>
 
                 <div id="freightt">
@@ -46,11 +46,6 @@
                     <p th:text="'Pagamento ' + ${pedido.status}">Status do Pagamento</p>
                 </div>
 
-                <div id="another-address">
-                    <h3>Endereço de faturamento</h3>
-                    <p th:text="${pedido.enderecoEntrega.rua} + ', ' + ${pedido.enderecoEntrega.numero}">Rua Exemplo, 123</p>
-                    <p th:text="${pedido.enderecoEntrega.cep} + '-' + ${pedido.enderecoEntrega.cidade}">00000-000 - Cidade Exemplo</p>
-                </div>
             </div>
 
             <a id="complementt" href="#">Precisa de ajuda? Fale conosco!</a> </div>

@@ -25,7 +25,7 @@ public class CarrinhoController {
             @AuthenticationPrincipal UserDetails userDetails
     ) {
         if (userDetails == null) {
-            // Se não estiver logado, não pode adicionar
+
             return ResponseEntity.status(401).body(Map.of("message", "Usuário não autenticado"));
         }
 
@@ -63,10 +63,10 @@ public class CarrinhoController {
             carrinhoService.removerItem(itemId, userDetails.getUsername());
             return ResponseEntity.ok(Map.of("message", "Item removido do carrinho."));
         } catch (SecurityException e) {
-            // O usuário tentou remover um item que não é dele
+
             return ResponseEntity.status(403).body(Map.of("message", e.getMessage()));
         } catch (Exception e) {
-            // Item não encontrado ou outro erro
+
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
 

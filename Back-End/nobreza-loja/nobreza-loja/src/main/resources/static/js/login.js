@@ -1,4 +1,4 @@
-// ==================== ELEMENTOS PRINCIPAIS ====================
+
 const container = document.getElementById("retangulo-login");
 const toggleLink = document.getElementById("toggle-link");
 const toggleText = document.getElementById("toggle-text");
@@ -37,9 +37,9 @@ const backButtons = document.querySelectorAll(".btn-back");
 let savedEmail = "";
 let savedCode = "";
 
-// ==================== FUNÇÕES ====================
+// FUNÇÕES
 
-// Limpar campos e remover required de inputs invisíveis
+
 function resetFields() {
     const allInputs = [
         emailLogin, passwordLogin,
@@ -55,7 +55,7 @@ function resetFields() {
     });
 }
 
-// TROCA DE SEÇÃO (Lógica interna)
+// TROCA DE SEÇÃO
 function showSection(section) {
     container.classList.remove("login-view", "register-view", "recovery-view");
     message.innerText = "";
@@ -79,7 +79,7 @@ function showSection(section) {
     resetFields();
 }
 
-// PASSOS DE RECUPERAÇÃO (Lógica interna)
+// PASSOS DE RECUPERAÇÃO
 function showRecoveryStep(stepId) {
     const steps = document.querySelectorAll(".recovery-step");
     steps.forEach((step) => step.classList.remove("current-step"));
@@ -87,15 +87,10 @@ function showRecoveryStep(stepId) {
     resetFields();
 }
 
-// ==================== NOVA FUNÇÃO DE ANIMAÇÃO ====================
-/**
- * Função 'wrapper' que executa uma animação de fade/scale no container,
- * troca o conteúdo no meio da animação (quando invisível) e
- * depois anima a entrada do novo conteúdo.
- * * @param {function} changeContentCallback - A função que troca o conteúdo.
- */
+// NOVA FUNÇÃO DE ANIMAÇÃO
+
 async function animateTransition(changeContentCallback) {
-    // 1. Animação de Saída
+    //Animação de Saída
     await anime({
         targets: container,
         opacity: [1, 0],
@@ -104,10 +99,10 @@ async function animateTransition(changeContentCallback) {
         easing: 'easeInQuad'
     }).finished;
 
-    // 2. Troca o conteúdo (executa a função original)
+    //  Troca o conteúdo
     changeContentCallback();
 
-    // 3. Animação de Entrada
+    // Animação de Entrada
     await anime({
         targets: container,
         opacity: [0, 1],
@@ -117,7 +112,6 @@ async function animateTransition(changeContentCallback) {
     }).finished;
 }
 
-// ==================== EVENTOS (MODIFICADOS) ====================
 
 // TOGGLE LOGIN / CADASTRO
 toggleLink.addEventListener("click", (e) => {
@@ -161,7 +155,7 @@ backButtons.forEach((btn) => {
     });
 });
 
-// ==================== CADASTRO ====================
+// CADASTRO
 registerButton.addEventListener("click", async () => {
     if (
         !username.value ||
@@ -195,7 +189,7 @@ registerButton.addEventListener("click", async () => {
             return;
         }
 
-        // Transição animada para o login após sucesso
+
         animateTransition(() => {
             showSection("login");
             message.innerText = "Cadastro realizado com sucesso!";
@@ -207,7 +201,7 @@ registerButton.addEventListener("click", async () => {
     }
 });
 
-// ==================== LOGIN ====================
+//LOGIN
 loginButton.addEventListener("click", async () => {
     message.innerText = ""; // limpa mensagens
 
@@ -240,7 +234,7 @@ loginButton.addEventListener("click", async () => {
     }
 });
 
-// ==================== RECUPERAÇÃO DE SENHA ====================
+//RECUPERAÇÃO DE SENHA
 sendCodeButton.addEventListener("click", async () => {
     try {
         const response = await fetch("/apirecovery/send-code", {
@@ -258,7 +252,7 @@ sendCodeButton.addEventListener("click", async () => {
 
         savedEmail = recoverEmail.value.trim().toLowerCase();
 
-        // Transição animada para o próximo passo
+
         animateTransition(() => {
             showRecoveryStep("code-step");
             message.innerText = "Código enviado para seu email!";
@@ -290,7 +284,7 @@ verifyCodeButton.addEventListener("click", async () => {
 
         savedCode = recoveryCode.value;
 
-        // Transição animada para o próximo passo
+
         animateTransition(() => {
             showRecoveryStep("new-password-step");
             message.innerText = "Código verificado!";
@@ -327,7 +321,7 @@ resetPasswordButton.addEventListener("click", async () => {
             return;
         }
 
-        // Transição animada de volta para o login
+
         animateTransition(() => {
             showSection("login");
             message.innerText = "Senha alterada com sucesso!";

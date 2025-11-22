@@ -680,13 +680,13 @@
     background: none;
     border: none;
     font-size: 1rem;
-    font-weight: 500; /* Ajustado para bater com o layout */
+    font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0.5rem 0.75rem; /* Adicionado padding para área de clique */
-    color: white; /* Corrigido para branco */
+    padding: 0.5rem 0.75rem;
+    color: white;
     border-radius: 0.25rem;
     transition: background-color 0.3s ease;
 }

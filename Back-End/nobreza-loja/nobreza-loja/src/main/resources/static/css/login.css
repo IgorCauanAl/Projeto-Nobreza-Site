@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* --- RESET GLOBAL --- */
+/* RESET GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -9,14 +9,14 @@
     color: white;
 }
 
-/* --- CONFIGURAÇÕES BÁSICAS DA PÁGINA --- */
+/* CONFIGURAÇÕES BÁSICAS DA PÁGINA */
 body,
 html {
     height: 100%;
     background-color: #000;
 }
 
-/* --- CONTAINER PRINCIPAL (Background) --- */
+/* CONTAINER PRINCIPAL (Background) */
 #login-container {
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ html {
     min-height: 100vh;
 }
 
-/* --- TÍTULO "Nobreza" --- */
+/* TÍTULO "Nobreza" */
 #titulo {
     margin: 3rem 12rem 0 0;
 }
@@ -41,41 +41,40 @@ html {
     margin-right: 7rem;
 }
 
-/* --- CAIXA DE LOGIN (Glassmorphism) --- */
+/* CAIXA DE LOGIN (Glassmorphism) */
 #retangulo-login {
     margin-top: 2rem;
     margin-right: 12rem;
-    width: 23.75rem; /* 380px */
+    width: 23.75rem;
     background: rgba(42, 40, 41, 0.85);
-    backdrop-filter: blur(0.5rem); /* 8px */
-    -webkit-backdrop-filter: blur(0.5rem); /* 8px */
-    border-radius: 1.25rem; /* 20px */
-    border: 0.0625rem solid rgba(255, 255, 255, 0.08); /* 1px */
-    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.6); /* 0 8px 32px 0 */
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
+    border-radius: 1.25rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.6);
     padding: 2rem;
-    /* transition: all 0.4s ease-in-out; <--- LINHA REMOVIDA (Conflito com anime.js) */
     position: relative;
 }
 
-/* --- LAYOUT INTERNO DO FORMULÁRIO --- */
+/* LAYOUT INTERNO DO FORMULÁRIO */
 #retangulo-login form {
     display: flex;
     flex-direction: column;
-    gap: 0.9375rem; /* 15px */
+    gap: 0.9375rem;
 }
 #form-titulo {
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 0.3125rem; /* 5px */
+    margin-bottom: 0.3125rem;
 }
 
-/* --- ESTILO DOS INPUTS --- */
+/* ESTILO DOS INPUTS */
 input {
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
-    border: 0.0625rem solid rgba(255, 255, 255, 0.15); /* 1px */
-    border-radius: 0.5rem; /* 8px */
-    padding: 0.625rem 0.9375rem; /* 10px 15px */
+    border: 0.0625rem solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.9375rem;
     color: white;
     transition: border-color 0.3s, background-color 0.3s;
 }
@@ -88,34 +87,34 @@ input::placeholder {
     color: rgba(255, 255, 255, 0.45);
 }
 
-/* --- ESTILO DAS LABELS --- */
+/* ESTILO DAS LABELS */
 label {
     font-size: 0.9rem;
     font-weight: 600;
 }
 
-/* --- SEÇÕES DE LOGIN E CADASTRO (Ocultas) --- */
+/* SEÇÕES DE LOGIN E CADASTRO (Ocultas) */
 .login-fields,
 .cadastro-fields {
     display: none;
     flex-direction: column;
-    gap: 0.75rem; /* 12px */
+    gap: 0.75rem;
 }
 
-/* --- Link "Esqueceu sua senha?" --- */
+/* Link "Esqueceu sua senha?" */
 .login-fields a {
     font-size: 0.8rem;
     text-align: right;
-    margin-top: -0.3125rem; /* -5px */
+    margin-top: -0.3125rem;
     opacity: 0.7;
     transition: opacity 0.3s;
-    text-decoration: none; /* REMOVE SUBLINHADO */
+    text-decoration: none;
 }
 .login-fields a:hover {
     opacity: 1;
 }
 
-/* --- CLASSES DE VISIBILIDADE (Controladas por JS) --- */
+/* CLASSES DE VISIBILIDADE (Controladas por JS) */
 #retangulo-login.login-view .login-fields {
     display: flex;
 }
@@ -123,16 +122,16 @@ label {
     display: flex;
 }
 
-/* --- SEÇÃO DE RECUPERAÇÃO DE SENHA --- */
+/* SEÇÃO DE RECUPERAÇÃO DE SENHA */
 #recovery-fields {
-    gap: 0.9375rem; /* 15px */
+    gap: 0.9375rem;
     align-items: center;
     display: none;
 }
 .recovery-step {
     display: none;
     flex-direction: column;
-    gap: 0.75rem; /* 12px */
+    gap: 0.75rem;
     width: 100%;
 }
 .recovery-step p {
@@ -143,25 +142,25 @@ label {
     display: flex;
 }
 
-/* --- LINK PARA ALTERNAR LOGIN/CADASTRO --- */
+/* LINK PARA ALTERNAR LOGIN/CADASTRO */
 #account-Recovery {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
     text-align: center;
-    margin-top: 0.9375rem; /* 15px */
+    margin-top: 0.9375rem;
 }
 
-/* --- Estilo do link "Clique aqui..." --- */
+/* Estilo do link "Clique aqui..." */
 #toggle-link {
     font-weight: 700;
     color: #aaa;
     transition: color 0.3s;
-    text-decoration: none; /* REMOVE SUBLINHADO */
+    text-decoration: none;
 }
 #toggle-link:hover {
     color: #fff;
 }
 
-/* --- Link "Política de Privacidade" --- */
+/* Link "Política de Privacidade" */
 #privacy-Policy a {
     color: #aaa;
     text-decoration: none;
@@ -171,7 +170,7 @@ label {
     color: #fff;
 }
 
-/* --- ESTILO DO CHECKBOX --- */
+/* ESTILO DO CHECKBOX */
 #checkbox label {
     font-size: 0.75rem;
     font-weight: 400;
@@ -179,27 +178,27 @@ label {
 #checkbox {
     display: flex;
     align-items: flex-start;
-    gap: 0.3125rem; /* 5px */
-    margin-top: 0.625rem; /* 10px */
+    gap: 0.3125rem;
+    margin-top: 0.625rem;
 }
 #checkbox input[type="checkbox"] {
     width: auto;
-    margin-top: 0.25rem; /* 4px */
+    margin-top: 0.25rem;
 }
 
-/* --- MENSAGEM DE ERRO/SUCESSO --- */
+/* MENSAGEM DE ERRO/SUCESSO */
 .message {
     font-size: 0.9rem;
     text-align: center;
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem;
     font-weight: 500;
 }
 
-/* --- BOTÃO "Voltar" --- */
+/* BOTÃO "Voltar" */
 .btn-back {
-    margin-top: 0.625rem; /* 10px */
-    width: 6.25rem; /* 100px */
-    height: 2.375rem; /* 38px */
+    margin-top: 0.625rem;
+    width: 6.25rem;
+    height: 2.375rem;
     border-radius: 3.125rem;
     cursor: pointer;
     background: linear-gradient(to right, #000000, #2a2829);
@@ -211,17 +210,17 @@ label {
 }
 .btn-back:hover {
     background: linear-gradient(to right, #2a2829, #000000);
-    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-    transform: translateY(-0.125rem); /* -2px */
+    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1);
+    transform: translateY(-0.125rem);
 }
 
-/* --- [UNIFICADO] ESTILO BASE DOS BOTÕES DE AÇÃO --- */
+/* ESTILO BASE DOS BOTÕES DE AÇÃO */
 #login-button,
 #register-button,
 #send-code,
 #verify-code,
 #reset-password {
-    height: 2.375rem; /* 38px */
+    height: 2.375rem;
     border-radius: 3.125rem;
     background: linear-gradient(to bottom, #000000, #2a2829);
     color: #ffffff;
@@ -232,40 +231,37 @@ label {
     cursor: pointer;
 }
 
-/* --- [UNIFICADO] ESTILO HOVER DOS BOTÕES DE AÇÃO --- */
+/* ESTILO HOVER DOS BOTÕES DE AÇÃO */
 #login-button:hover,
 #register-button:hover,
 #send-code:hover,
 #verify-code:hover,
 #reset-password:hover {
     background: linear-gradient(to top, #2a2829, #000000);
-    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1); /* 0 4px 12px */
-    transform: translateY(-0.125rem); /* -2px */
+    box-shadow: 0 0.25rem 0.75rem rgba(255, 255, 255, 0.1);
+    transform: translateY(-0.125rem);
 }
 
-/* --- [ESPECÍFICO] Layout Botões (Login/Cadastro) --- */
+
 #login-button,
 #register-button {
-    width: 6.25rem; /* 100px */
+    width: 6.25rem;
     margin-left: 7rem;
 }
 
-/* --- [ESPECÍFICO] Layout Botões (Recuperação) --- */
 #send-code {
-    width: 8.25rem; /* 132px */
+    width: 8.25rem;
     margin-left: 7rem;
 }
 
 #verify-code,
 #reset-password {
     width: 100%;
-    max-width: 15.625rem; /* 250px */
-    align-self: center; /* Centraliza na flex-column */
+    max-width: 15.625rem;
+    align-self: center;
 }
 
-/* ====================================================== */
-/* ================ MEDIA QUERIES ===================== */
-/* ====================================================== */
+/* MEDIA QUERIES */
 
 /* 1440px */
 @media (min-width: 1440px) and (max-width: 1919px) {
@@ -277,7 +273,7 @@ label {
     }
     #retangulo-login {
         margin-right: 14rem;
-        width: 25rem; /* 400px */
+        width: 25rem;
     }
 }
 
@@ -291,7 +287,7 @@ label {
     }
     #retangulo-login {
         margin-right: 16rem;
-        width: 27rem; /* 432px */
+        width: 27rem;
     }
 }
 
@@ -305,7 +301,7 @@ label {
     }
     #retangulo-login {
         margin-right: 20rem;
-        width: 30rem; /* 480px */
+        width: 30rem;
     }
 }
 
@@ -319,6 +315,6 @@ label {
     }
     #retangulo-login {
         margin-right: 25rem;
-        width: 35rem; /* 560px */
+        width: 35rem;
     }
 }

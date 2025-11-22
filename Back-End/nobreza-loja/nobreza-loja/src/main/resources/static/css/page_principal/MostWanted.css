@@ -1,4 +1,4 @@
-/* --- MAIS PROCURADOS --- */
+/* SEÇÃO MAIS PROCURADOS */
 
 #most-wanted {
     position: relative;
@@ -41,59 +41,40 @@
 .product-item {
     position: relative;
     overflow: hidden;
-    height: 40.875rem; /* Defina a altura desejada para os cards aqui */
-    border-radius: 0.5rem; /* Borda suave no container */
+    height: 40.875rem;
+    border-radius: 0.5rem;
 }
 
-/* * AJUSTE #1:
- * A div '.product' agora serve como um 'container'
- * que esconde o excesso da imagem (overflow: hidden).
- * Os filtros e transições foram movidos para a tag 'img'.
-*/
+/* Ajuste do container de imagem */
 .product {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Esconde o 'scale' do hover */
+    overflow: hidden;
 }
 
-/* * AJUSTE #2:
- * Adicionamos estilo para a tag '<a>' para garantir
- * que ela preencha a div '.product'.
-*/
 .product a {
     display: block;
     width: 100%;
     height: 100%;
 }
 
-/* * AJUSTE #3:
- * O alvo principal. Estilizando a tag <img> diretamente.
-*/
+/* Estilizando a tag <img> diretamente */
 .product img {
     width: 100%;
     height: 100%;
-    /* Esta é a correção principal:
-       'object-fit' faz o mesmo que 'background-size' */
     object-fit: cover;
 
-    /* Efeitos iniciais e transição suave (movidos para cá) */
     filter: saturate(20%) brightness(0.9);
     transition: all 0.5s ease;
 }
 
-/* * AJUSTE #4:
- * O hover agora afeta a 'img' diretamente, não a div '.product'.
-*/
+/* Efeito de hover na imagem */
 .product-item:hover .product img {
     filter: saturate(100%) brightness(1);
-    transform: scale(1.05); /* Efeito de zoom sutil */
+    transform: scale(1.05);
 }
 
-/* * AJUSTE #5:
- * A classe '.img-mostwanted' estava na div pai.
- * Usamos ela para aplicar o 'object-position'
- * (equivalente ao 'background-position') na 'img' interna.
-*/
+/* Aplica o object-position na imagem */
 .product.img-mostwanted img {
     object-position: 50% 23%;
 }
@@ -108,7 +89,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem; /* Espaçamento entre os textos e botão */
+    gap: 0.25rem;
     padding: 1.5rem;
     background: rgba(20, 20, 20, 0.7);
     backdrop-filter: blur(8px);
@@ -136,14 +117,14 @@
 .title-mostwanted p {
     font-size: 1.1rem;
     margin: 0;
-    opacity: 0.8; /* Preço um pouco mais sutil */
+    opacity: 0.8;
 }
 
 .button-mostwanted {
     background: linear-gradient(to right, #2a2829, #000000);
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    max-width: 15rem; /* Tamanho ajustado */
+    max-width: 15rem;
     height: 2.8rem;
     font-size: 1.1rem;
     font-weight: 600;
@@ -168,7 +149,7 @@
     width: 8rem;
     height: 3.125rem;
     padding: 0 1.5rem;
-    margin: 2.5rem auto 0; /* Centraliza abaixo do grid */
+    margin: 2.5rem auto 0;
     background: rgba(42, 40, 41, 0.7);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -191,33 +172,33 @@
 }
 
 .button-whatsapp {
-    /* --- Estrutura e Alinhamento --- */
+    /* Estrutura e Alinhamento */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem; /* Adiciona um espaço entre o ícone e o texto */
+    gap: 0.5rem;
 
-    /* --- Tamanho e Formato --- */
-    padding: 0.7rem 1.2rem; /* Padding para dar espaço interno, tornando-o retangular */
-    border-radius: 50px; /* Cantos arredondados para um visual de "pílula" */
+    /* Tamanho e Formato */
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
     border: 1px solid #25d366;
-    width: 10rem; /* Tamanho ajustado */
+    width: 10rem;
     height: 2.5rem;
 
-    /* --- Cores e Estilo do Texto --- */
-    background-color: #25d366; /* Verde do WhatsApp */
-    color: white; /* Cor do texto */
+    /* Cores e Estilo do Texto */
+    background-color: #25d366;
+    color: white;
     font-weight: 600;
     font-size: 0.9rem;
 
-    /* --- Comportamento --- */
+    /* Comportamento */
     cursor: pointer;
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
 
 .button-whatsapp:hover {
-    background-color: #128c7e; /* Verde mais escuro ao passar o mouse */
+    background-color: #128c7e;
     border-color: #128c7e;
-    transform: scale(1.05); /* Efeito de zoom sutil */
+    transform: scale(1.05);
 }

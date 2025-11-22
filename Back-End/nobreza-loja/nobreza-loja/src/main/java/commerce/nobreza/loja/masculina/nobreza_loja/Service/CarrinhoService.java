@@ -1,4 +1,5 @@
 package commerce.nobreza.loja.masculina.nobreza_loja.Service;
+
 import commerce.nobreza.loja.masculina.nobreza_loja.DTO.CarrinhoItensDTO;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.CarrinhoItens;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Produto;
@@ -30,17 +31,17 @@ public class CarrinhoService {
         Produto produto = productRepository.findById(produtoId)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        // Verifica se o item já existe no carrinho desse usuário
+
         Optional<CarrinhoItens> itemExistenteOpt = carrinhoItensRepository
                 .findByUsuarioAndProduto(usuario, produto);
 
         if (itemExistenteOpt.isPresent()) {
-            // Se existe, apenas atualiza a quantidade
+
             CarrinhoItens itemExistente = itemExistenteOpt.get();
             itemExistente.setQuantidade(itemExistente.getQuantidade() + quantidade);
             carrinhoItensRepository.save(itemExistente);
         } else {
-            // Se não existe, cria um novo item
+
             CarrinhoItens novoItem = new CarrinhoItens();
             novoItem.setUsuario(usuario);
             novoItem.setProduto(produto);
@@ -57,7 +58,7 @@ public class CarrinhoService {
 
         return carrinhoItensRepository.findByUsuario(usuario)
                 .stream()
-                .map(CarrinhoItensDTO::new) // Converte para DTO
+                .map(CarrinhoItensDTO::new)
                 .collect(Collectors.toList());
     }
 
@@ -71,13 +72,13 @@ public class CarrinhoService {
         CarrinhoItens item = carrinhoItensRepository.findById(itemId)
                 .orElseThrow(() -> new RuntimeException("Item do carrinho não encontrado"));
 
-        // O item pertence a este usuário?
+
         if (!item.getUsuario().getId().equals(usuario.getId())) {
-            // Se não, lançamos uma exceção. Um usuário não pode remover itens de outro.
+
             throw new SecurityException("Acesso negado: Este item não pertence a você.");
         }
 
-        // Se a verificação passar, delete o item.
+
         carrinhoItensRepository.delete(item);
     }
 

@@ -1,4 +1,4 @@
-/* --- ESTRUTURA GERAL E GRID RESPONSIVO --- */
+/* ESTRUTURA GERAL E GRID RESPONSIVO */
 #sale-section-grid {
     display: grid;
     gap: 2rem;
@@ -9,7 +9,7 @@
     grid-template-areas: "main-image sale-info";
 }
 
-/* --- ÁREAS DO GRID (Thumbnails, Imagem Principal, Informações) --- */
+/* ÁREAS DO GRID (Imagem Principal, Informações) */
 
 #center-image {
     grid-area: main-image;
@@ -37,26 +37,26 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* --- ESTILOS DE COMPONENTES (Botões, Swatches, Accordion) --- */
+/* ESTILOS DE COMPONENTES */
 #sale-information-breadcrumb ol {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.7;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 #sale-information-breadcrumb li + li::before {
-  content: ">";
-  margin: 0 0.5rem;
+    content: ">";
+    margin: 0 0.5rem;
 }
 #sale-information-breadcrumb a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 #title {
-   background:none !important;
+    background:none !important;
 }
 
 #pix-price{
@@ -75,8 +75,8 @@
     margin: 0;
 }
 #title p {
-  font-size: 0.9rem;
-  margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0 0;
 }
 #price h2 {
     font-size: 2.2rem;
@@ -86,161 +86,161 @@
 
 #colors-flex,
 #choice-size {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
 }
 .color,
 .size {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 .color:hover,
 .size:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 .color.active,
 .size.active {
-  border-color: white;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 .size {
-  background: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .um {
-  background: blue;
+    background: blue;
 }
 .dois {
-  background: red;
+    background: red;
 }
 .tres {
-  background: yellow;
+    background: yellow;
 }
 #section-buy {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 .selector-number {
-  display: flex;
+    display: flex;
 }
 .selector {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  user-select: none;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    user-select: none;
 }
 .selector.number {
-  background: rgba(0, 0, 0, 0.2);
-  cursor: default;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: default;
 }
 .selector:first-child {
-  border-radius: 50px 0 0 50px;
+    border-radius: 50px 0 0 50px;
 }
 .selector:last-child {
-  border-radius: 0 50px 50px 0;
+    border-radius: 0 50px 50px 0;
 }
 .button-buy {
-  height: 3rem;
-  width: 15rem;
-  flex-grow: 1;
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(to right, #2a2829, #000000);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+    height: 3rem;
+    width: 15rem;
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, #2a2829, #000000);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 .button-buy:hover {
-  transform: scale(1.05);
-  border-color: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    border-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 #section-closure {
-  margin-top: auto;
+    margin-top: auto;
 }
 .accordion-header {
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  position: relative;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
 }
 .accordion-header::after {
-  content: "+";
-  position: absolute;
-  right: 0.5rem;
-  transition: transform 0.3s ease;
+    content: "+";
+    position: absolute;
+    right: 0.5rem;
+    transition: transform 0.3s ease;
 }
 .accordion-header.active::after {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 .accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease-out;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 .accordion-content.active {
-  max-height: 15rem;
-  padding: 1rem 0;
+    max-height: 15rem;
+    padding: 1rem 0;
 }
 .accordion-content ul {
-  padding-left: 1.5rem;
+    padding-left: 1.5rem;
 }
 
-/* --- ESTILO PARA O BOTÃO WHATSAPP --- */
+/* ESTILO PARA O BOTÃO WHATSAPP */
 
 .whatsapp-link {
-  display: block; /* Garante que o link ocupe a largura toda */
-  text-decoration: none;
-  margin-top: 1rem; /* Espaçamento acima do botão */
+    display: block;
+    text-decoration: none;
+    margin-top: 1rem;
 }
 
 .btn-whatsapp {
-  width: 15rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem; /* Espaço entre o ícone e o texto */
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
 
-  /* Cores do WhatsApp */
-  background: #25d366;
-  border-color: #25d366;
+    /* Cores do WhatsApp */
+    background: #25d366;
+    border-color: #25d366;
 }
 
 .btn-whatsapp:hover {
-  background: #128c7e; /* Cor mais escura no hover */
-  border-color: #128c7e;
-  transform: scale(1.05); /* Mantém o efeito de escala */
+    background: #128c7e;
+    border-color: #128c7e;
+    transform: scale(1.05);
 }
 
-/* --- ESTILO PARA INFORMAÇÃO DE ESTOQUE --- */
+/* ESTILO PARA INFORMAÇÃO DE ESTOQUE */
 #stock-info {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0.5rem 0; /* Espaçamento vertical */
-  padding: 0.5rem 1rem;
-  background-color: rgba(255, 193, 7, 0.1); /* Fundo sutil para destaque */
-  border-left: 3px solid #ffc107; /* Borda de destaque amarela */
-  border-radius: 4px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 3px solid #ffc107;
+    border-radius: 4px;
 }
 
 #stock-quantity {
-  font-weight: 700;
-  color: #ffc107; /* Cor amarela para o número */
+    font-weight: 700;
+    color: #ffc107;
 }

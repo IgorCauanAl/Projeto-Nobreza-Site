@@ -22,9 +22,6 @@ public class Usuario {
     @Column(name = "senha_usuario")
     private String senha;
 
-    @Column(name = "criado_em")
-    private LocalDateTime criado_em;
-
     //Muitas permissões para muitos usuarios
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -53,6 +50,21 @@ public class Usuario {
     //Token da Senha
     @OneToOne(mappedBy = "usuario" , cascade = CascadeType.ALL)
     private TokenSenha tokenSenha;
+
+    @OneToMany(
+            mappedBy = "usuario",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Endereco> enderecos = new HashSet<>();
+
+
+    @OneToMany(
+            mappedBy = "usuario",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Pedido> pedidos = new HashSet<>();
 
     //Método para verificar se é adm ou user para o tymeleaft em PerfilADM
     public boolean hasRole(String roleName) {

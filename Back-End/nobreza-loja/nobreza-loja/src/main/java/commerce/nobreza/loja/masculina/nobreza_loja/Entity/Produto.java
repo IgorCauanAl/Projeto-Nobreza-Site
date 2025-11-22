@@ -37,9 +37,6 @@ public class Produto {
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "promotion")
-    private boolean promotion;
-
     @Column(name = "amount")
     private int amount;
 

@@ -11,13 +11,13 @@
     />
 </head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+
 
 <div class="dashboard-container">
     <aside class="sidebar">
         <div class="user-profile">
             <p>Administrador</p>
-            <h3 th:text="${user.nome}"></h3>
+            <h3>Área do Administrador</h3>
         </div>
         <nav class="sidebar-nav">
             <ul>
@@ -32,7 +32,7 @@
                     >
                 </li>
                 <li>
-                    <a href="URL_PARA_LOGOUT" class="nav-link-logout"
+                    <a th:href="@{/logout}" class="nav-link-logout"
                     ><i class="fas fa-sign-out-alt"></i> Sair</a
                     >
                 </li>
@@ -230,10 +230,7 @@
                     <label for="prod-pix-desconto">Desconto no PIX (%)</label>
                     <input type="number" id="prod-pix-desconto" name="prodPixDesconto" placeholder="Ex: 5" />
                 </div>
-                <div class="form-group-inline full-width">
-                    <input type="checkbox" id="prod-promocao" name="prodPromocao" value="true" />
-                    <label for="prod-promocao">Marcar como promoção</label>
-                </div>
+
                 <div class="form-group full-width">
                     <button type="submit" class="btn">Adicionar Produto</button>
                 </div>

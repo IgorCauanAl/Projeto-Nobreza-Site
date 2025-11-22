@@ -32,13 +32,12 @@ public class ProductController {
             @RequestParam("prodFoto") MultipartFile foto,
             @RequestParam(name = "prodCores", required = false) String cores,
             @RequestParam(name = "prodPixDesconto", required = false) Double pixDesconto,
-            @RequestParam(name = "prodPromocao", defaultValue = "false") boolean promocao,
             RedirectAttributes redirectAttributes
     ) {
         try {
             productService.createProduct(
                     nome, preco, tipo, ref, quantidade, descricao, composicao,
-                    foto, cores, pixDesconto, promocao, secao
+                    foto, cores, pixDesconto,secao
             );
             redirectAttributes.addFlashAttribute("success", "Produto adicionado com sucesso!");
         } catch (IOException e) {
