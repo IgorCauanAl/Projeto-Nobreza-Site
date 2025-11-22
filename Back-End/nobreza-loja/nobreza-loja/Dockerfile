@@ -12,7 +12,7 @@ COPY src /app/src
 RUN mvn clean package -DskipTests
 
 
-FROM openjdk:17-jre-slim
+FROM openjdk:21-jre-bullseye
 
 
 EXPOSE 8081
