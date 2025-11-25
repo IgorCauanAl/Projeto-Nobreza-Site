@@ -54,7 +54,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
 
-                        .requestMatchers("/api/page_principal", "/api/catalog/page", "/user/manager", "/api/register", "/login","/apirecovery/**").permitAll()
+                        .requestMatchers("/api/page_principal", "/api/catalog/page", "/user/manager", "/api/register", "/login","/apirecovery/**", "/api/fragments/**", "/page_principal","/api/cart/remove/**").permitAll()
 
                         .requestMatchers("/manageruser","/admin/usuarios/deletar/**","/admin/usuarios/promover/{id}","/delete/**", "/api/products/**").hasRole("ADMIN")
 

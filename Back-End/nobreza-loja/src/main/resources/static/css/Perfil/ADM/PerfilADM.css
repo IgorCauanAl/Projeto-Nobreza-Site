@@ -585,3 +585,84 @@ select option {
 ::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
+
+
+/* --- NOTIFICAÇÕES TOAST (Adicionar ao final do CSS) --- */
+
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+    background: rgba(42, 40, 41, 0.95); /* Fundo escuro quase opaco para leitura */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+/* Tipos de Notificação */
+.toast.success {
+    border-left: 4px solid #2ecc71;
+}
+.toast.success i {
+    color: #2ecc71;
+}
+
+.toast.error {
+    border-left: 4px solid #e74c3c;
+}
+.toast.error i {
+    color: #e74c3c;
+}
+
+.toast.warning {
+    border-left: 4px solid #f1c40f;
+}
+.toast.warning i {
+    color: #f1c40f;
+}
+
+/* Barra de progresso do tempo */
+.toast::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    animation: toast-progress 4s linear forwards;
+}
+
+@keyframes toast-progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}

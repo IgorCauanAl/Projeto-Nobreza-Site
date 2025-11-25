@@ -15,12 +15,8 @@
 </head>
 <body>
 
-<div id="preloader">
-    <div class="loader"></div>
-    <p>Carregando Nobreza...</p>
-</div>
-
 <div th:replace="~{fragments/header :: header}"></div>
+
 <header>
     <section id="main-menu">
 
@@ -187,7 +183,7 @@
                         </div>
                     </div>
 
-                    <th:block th:if="${iterStat.count == 1 AND newsProducts.number == 0}">
+                    <th:block th:if="${iterStat.count == 1 and newsProducts.number == 0}">
                         <div class="container-photos">
                             <div class="catalog go-catalog">
                                 <div id="top-rectangle">

@@ -1,4 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    // 1. SISTEMA DE NOTIFICAÇÕES
+    function showNotification(message, type = 'success') {
+        let container = document.getElementById('notification-container');
+
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'notification-container';
+            container.style.cssText = "position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;";
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.classList.add('toast', type);
+
+
+        let iconClass = 'fa-info-circle';
+        if (type === 'success') iconClass = 'fa-check-circle';
+        if (type === 'error') iconClass = 'fa-exclamation-circle';
+        if (type === 'warning') iconClass = 'fa-exclamation-triangle';
+
+        toast.innerHTML = `
+            <i class="fas ${iconClass}"></i>
+            <span>${message}</span>
+        `;
+
+        container.appendChild(toast);
+
+
+        void toast.offsetWidth;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                if (container.contains(toast)) {
+                    container.removeChild(toast);
+                }
+            }, 300);
+        }, 4000);
+    }
+
+    //  NAVEGAÇÃO DE ABAS
     const navLinks = document.querySelectorAll(".nav-link");
     const contentSections = document.querySelectorAll(".content-section");
 
@@ -11,9 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
             contentSections.forEach((section) => section.classList.remove("active"));
 
             this.classList.add("active");
-            document.getElementById(targetId).classList.add("active");
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add("active");
+            }
         });
     });
+
+
+    // GERENCIADOR DE CORES
 
     const colorInput = document.getElementById("color-picker-input");
     const hexInput = document.getElementById("color-hex-input");
@@ -25,49 +74,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateHiddenInput() {
         hiddenColorsInput.value = colors.join(",");
-        console.log("Cores selecionadas:", hiddenColorsInput.value);
     }
 
     function renderColors() {
         selectedColorsContainer.innerHTML = "";
 
         if (colors.length === 0) {
-            selectedColorsContainer.innerHTML = '<div style="color:#666; font-style:italic;">Nenhuma cor selecionada</div>';
+            selectedColorsContainer.innerHTML = '<div style="color: rgba(255,255,255,0.5); font-style:italic; font-size: 0.9rem;">Nenhuma cor selecionada</div>';
             return;
         }
 
         colors.forEach((color, index) => {
             const colorWrapper = document.createElement("div");
-            colorWrapper.style.display = "flex";
-            colorWrapper.style.alignItems = "center";
-            colorWrapper.style.gap = "5px";
-            colorWrapper.style.marginBottom = "5px";
-
-            const colorDiv = document.createElement("div");
-            colorDiv.style.backgroundColor = color;
-            colorDiv.style.width = "30px";
-            colorDiv.style.height = "30px";
-            colorDiv.style.border = "1px solid #ccc";
-            colorDiv.style.borderRadius = "4px";
-            colorDiv.title = color;
+            colorWrapper.className = "color-swatch";
+            colorWrapper.style.backgroundColor = color;
+            colorWrapper.title = color;
 
             const removeBtn = document.createElement("button");
+            removeBtn.className = "remove-color";
             removeBtn.innerHTML = "×";
             removeBtn.type = "button";
-            removeBtn.style.background = "#ff4444";
-            removeBtn.style.color = "white";
-            removeBtn.style.border = "none";
-            removeBtn.style.borderRadius = "50%";
-            removeBtn.style.width = "20px";
-            removeBtn.style.height = "20px";
-            removeBtn.style.cursor = "pointer";
+
             removeBtn.addEventListener("click", () => {
                 colors.splice(index, 1);
                 renderColors();
                 updateHiddenInput();
             });
 
-            colorWrapper.appendChild(colorDiv);
             colorWrapper.appendChild(removeBtn);
             selectedColorsContainer.appendChild(colorWrapper);
         });
@@ -75,8 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addColor(color) {
         const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
         if (!hexRegex.test(color)) {
-            alert("Formato de cor inválido. Use formato HEX (ex: #FFFFFF)");
+            showNotification("Formato de cor inválido. Use HEX (ex: #FFFFFF)", "error");
             return false;
         }
 
@@ -86,173 +120,106 @@ document.addEventListener("DOMContentLoaded", function () {
             updateHiddenInput();
             return true;
         } else {
-            alert("Esta cor já foi adicionada!");
+            showNotification("Esta cor já foi adicionada!", "warning");
             return false;
         }
     }
 
-    addColorBtn.addEventListener("click", () => {
-        let color = hexInput.value.trim() || colorInput.value;
-        if (!color) {
-            alert("Por favor, selecione ou digite uma cor!");
-            return;
-        }
+    if (addColorBtn) {
+        addColorBtn.addEventListener("click", () => {
+            let color = hexInput.value.trim() || colorInput.value;
 
-        if (!color.startsWith('#') && color.length === 6) {
-            color = '#' + color;
-        }
+            if (!color) {
+                showNotification("Por favor, selecione ou digite uma cor!", "warning");
+                return;
+            }
 
-        addColor(color);
+            if (!color.startsWith('#') && (color.length === 6 || color.length === 3)) {
+                color = '#' + color;
+            }
 
-        hexInput.value = "";
-        colorInput.value = "#000000";
-    });
+            if(addColor(color)) {
+                hexInput.value = "";
+            }
+        });
+    }
 
-    hexInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            addColorBtn.click();
-        }
-    });
+    if (hexInput) {
+        hexInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                addColorBtn.click();
+            }
+        });
 
-    colorInput.addEventListener("input", () => {
-        hexInput.value = colorInput.value.toUpperCase();
-    });
+        hexInput.addEventListener("input", () => {
+            const value = hexInput.value.trim();
+            if (value.startsWith('#') && value.length === 7) {
+                colorInput.value = value;
+            }
+        });
+    }
 
-    hexInput.addEventListener("input", () => {
-        const value = hexInput.value.trim();
-        if (value.startsWith('#') && value.length === 7) {
-            colorInput.value = value;
-        }
-    });
+    if (colorInput) {
+        colorInput.addEventListener("input", () => {
+            hexInput.value = colorInput.value.toUpperCase();
+        });
+    }
 
     renderColors();
 
+
+    // SUBMISSÃO DO FORMULÁRIO DE PRODUTO
     const form = document.querySelector(".product-form");
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        console.log("=== 🚀 INÍCIO DO DEBUG ===");
 
-        if (colors.length === 0) {
-            alert("Por favor, adicione pelo menos uma cor!");
-            return;
-        }
+            if (colors.length === 0) {
+                showNotification("Adicione pelo menos uma cor ao produto!", "warning");
+                return;
+            }
 
-        console.log("=== 1. VALORES DOS CAMPOS NO HTML ===");
-        const campos = [
-            { id: 'prod-nome', name: 'prodNome' },
-            { id: 'prod-preco', name: 'prodPreco' },
-            { id: 'prodTipo', name: 'prodTipo' },
-            { id: 'prodRef', name: 'prodRef' },
-            { id: 'prodQuantidade', name: 'prodQuantidade' },
-            { id: 'prodDescricao', name: 'prodDescricao' },
-            { id: 'prodComposicao', name: 'prodComposicao' },
-            { id: 'prodPixDesconto', name: 'prodPixDesconto' },
-            { id: 'prodPromocao', name: 'prodPromocao' },
-            { id: 'prodFoto', name: 'prodFoto' },
-            { id: 'prod-cores-hidden', name: 'prod-cores' }
-        ];
 
-        campos.forEach(campo => {
-            const element = document.getElementById(campo.id);
-            if (element) {
-                let valor = element.value;
-                if (element.type === 'checkbox') {
-                    valor = element.checked;
+            updateHiddenInput();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("/api/products/admin/produtos/adicionar", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    const successMessage = await response.text();
+                    showNotification("Produto adicionado com sucesso!", "success");
+
+
+                    form.reset();
+                    colors = [];
+                    renderColors();
+                    updateHiddenInput();
+
+
+                    if(colorInput) colorInput.value = "#000000";
+                    if(hexInput) hexInput.value = "";
+
+                } else {
+                    const errorText = await response.text();
+                    console.error("Erro backend:", errorText);
+                    showNotification("Erro: " + errorText, "error");
                 }
-                if (element.type === 'file') {
-                    valor = element.files[0] ? element.files[0].name : 'NENHUM ARQUIVO';
-                }
-                console.log(`✅ ${campo.name}: ${valor}`);
-            } else {
-                console.log(`❌ ${campo.name}: ELEMENTO NÃO ENCONTRADO NO DOM`);
+            } catch (err) {
+                console.error("Erro na requisição:", err);
+                showNotification("Erro ao conectar ao servidor.", "error");
             }
         });
+    }
 
-
-        const formData = new FormData(form);
-
-        console.log("=== 2. FORM DATA CRIADO ===");
-        let formDataVazio = true;
-        for (let [key, value] of formData.entries()) {
-            formDataVazio = false;
-            if (value instanceof File) {
-                console.log(`📁 ${key}: ARQUIVO - ${value.name} (${value.size} bytes)`);
-            } else {
-                console.log(`📝 ${key}: ${value}`);
-            }
-        }
-
-        if (formDataVazio) {
-            console.log("❌ FORM DATA ESTÁ VAZIO!");
-        } else {
-            console.log("✅ FORM DATA CONTÉM DADOS");
-        }
-
-        console.log("=== 3. VERIFICAÇÃO DE CAMPOS NO FormData ===");
-        const camposEsperados = [
-            'prodNome', 'prodPreco', 'prodTipo', 'prodRef',
-            'prodQuantidade', 'prodDescricao', 'prodComposicao',
-            'prodPixDesconto', 'prodPromocao', 'prodFoto', 'prod-cores'
-        ];
-
-        const camposPresentes = Array.from(formData.keys());
-        console.log("Campos presentes no FormData:", camposPresentes);
-
-        camposEsperados.forEach(campo => {
-            if (formData.has(campo)) {
-                console.log(`✅ ${campo}: PRESENTE no FormData`);
-            } else {
-                console.log(`❌ ${campo}: AUSENTE no FormData`);
-            }
-        });
-
-        console.log("=== 4. TAMANHO TOTAL: ... bytes ===");
-        let tamanhoTotal = 0;
-        for (let [key, value] of formData.entries()) {
-            if (value instanceof File) {
-                tamanhoTotal += value.size;
-            } else {
-                tamanhoTotal += new Blob([value]).size;
-            }
-        }
-        console.log(`=== 4. TAMANHO TOTAL: ${tamanhoTotal} bytes ===`);
-
-        console.log("=== 5. ENVIANDO PARA O BACKEND... ===");
-
-        try {
-            const response = await fetch("/api/products/admin/produtos/adicionar", {
-                method: "POST",
-                body: formData,
-            });
-
-            console.log("=== 6. RESPOSTA DO BACKEND ===");
-            console.log("Status:", response.status, response.statusText);
-            console.log("OK?", response.ok);
-
-            if (response.ok) {
-                const successMessage = await response.text();
-                console.log("✅ Mensagem de sucesso:", successMessage);
-                alert("✅ Produto adicionado com sucesso!");
-                form.reset();
-                colors = [];
-                renderColors();
-                updateHiddenInput();
-            } else {
-                const errorText = await response.text();
-                console.log("❌ Erro do backend:", errorText);
-                alert("❌ Erro: " + errorText);
-            }
-        } catch (err) {
-            console.error("=== ❌ ERRO NA REQUISIÇÃO ===", err);
-            alert("⚠️ Erro ao conectar ao servidor.");
-        }
-
-        console.log("=== 🏁 FIM DO DEBUG ===");
-    });
-
+    // MODAL DE CONFIRMAÇÃO
     const modalOverlay = document.getElementById('confirmationModal');
 
     if (modalOverlay) {
@@ -267,12 +234,14 @@ document.addEventListener("DOMContentLoaded", function () {
             modalTitle.textContent = title;
             modalMessage.textContent = message;
 
+
             modalConfirmBtn.className = 'btn-confirm';
             if (confirmClass) {
                 modalConfirmBtn.classList.add(confirmClass);
             }
 
             modalOverlay.style.display = 'flex';
+
             setTimeout(() => {
                 modalOverlay.classList.add('show');
             }, 10);
@@ -280,12 +249,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function hideModal() {
             modalOverlay.classList.remove('show');
-
             setTimeout(() => {
                 modalOverlay.style.display = 'none';
                 formToSubmit = null;
             }, 300);
         }
+
 
         document.querySelectorAll('.btn-promote').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -293,8 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 formToSubmit = button.closest('form');
                 showModal(
                     'Promover Usuário',
-                    'Você tem certeza que deseja promover este usuário a Administrador?',
-                    'promote'
+                    'Deseja promover este usuário a Administrador?',
+                    'promote' // Classe CSS específica se houver
                 );
             });
         });
@@ -305,8 +274,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 formToSubmit = button.closest('form');
                 showModal(
                     'Deletar Usuário',
-                    'Esta ação é irreversível. Você tem certeza que deseja deletar este usuário?',
-                    'delete'
+                    'Esta ação é irreversível. Deseja realmente deletar?',
+                    '' // Usa estilo padrão (vermelho)
                 );
             });
         });
@@ -327,35 +296,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
+    // FILTRO DA TABELA DE USUÁRIOS
     const searchInput = document.getElementById("searchInput");
     const tableBody = document.getElementById("userTableBody");
     const noUserRow = document.getElementById("noUserRow");
 
-    const userRows = Array.from(tableBody.querySelectorAll("tr")).filter(
-        (row) => row.id !== "noUserRow"
-    );
+    if (tableBody) {
+        const userRows = Array.from(tableBody.querySelectorAll("tr")).filter(
+            (row) => row.id !== "noUserRow"
+        );
 
-    if (userRows.length > 0) {
-        searchInput.addEventListener("input", () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            let visibleCount = 0;
+        if (searchInput && userRows.length > 0) {
+            searchInput.addEventListener("input", () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
 
-            userRows.forEach((row) => {
-                const name = row.cells[0].textContent.toLowerCase();
-                const email = row.cells[1].textContent.toLowerCase();
+                userRows.forEach((row) => {
 
-                const isMatch =
-                    name.startsWith(searchTerm) || email.startsWith(searchTerm);
+                    const name = row.cells[0].textContent.toLowerCase();
+                    const email = row.cells[1].textContent.toLowerCase();
 
-                if (isMatch) {
-                    row.style.display = "";
-                    visibleCount++;
-                } else {
-                    row.style.display = "none";
+                    const isMatch = name.includes(searchTerm) || email.includes(searchTerm);
+
+                    if (isMatch) {
+                        row.style.display = "";
+                        visibleCount++;
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+
+                if (noUserRow) {
+                    noUserRow.style.display = visibleCount === 0 ? "" : "none";
                 }
             });
-
-            noUserRow.style.display = visibleCount === 0 ? "" : "none";
-        });
+        }
     }
 });

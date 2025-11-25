@@ -1,17 +1,16 @@
 /* ESTRUTURA GERAL DO RODAPÉ */
 #footer {
     width: 100%;
-    height: 31.25rem;
+    min-height: 31.25rem;
     display: flex;
     flex-direction: column;
-
+    align-items: center;
     background: linear-gradient(
             to right,
             #161616,
             #000
     );
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-
     font-family: "Montserrat", sans-serif;
     color: white;
 }
@@ -19,7 +18,11 @@
 .footer-container {
     display: flex;
     justify-content: space-between;
-    margin: 11.875rem 7.5rem 0 7.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 11.875rem auto 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 .logo-footer {
@@ -147,26 +150,36 @@
 }
 
 .footer-bottom {
+    width: 100%;
     margin: auto 0 0.9375rem 0;
-    height: 3.125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .linha-footer {
-    margin: 0 7.5rem 0 7.5rem;
-    width: 69.125rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     color: white;
     border: 0.0625rem solid white;
+    box-sizing: border-box;
 }
 
 .texto-footer-bottom {
     display: flex;
-    margin: 0.625rem 7.5rem 0 7.5rem;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0.625rem auto 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
+
 .texto-privacidade {
-    margin-right: 9.375rem;
+    margin-right: 0;
 }
 .texto-footer-bottom a {
     color: white;

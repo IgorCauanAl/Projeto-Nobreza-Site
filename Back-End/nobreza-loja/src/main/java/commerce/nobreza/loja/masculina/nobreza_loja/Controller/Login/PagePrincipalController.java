@@ -61,7 +61,7 @@ public class PagePrincipalController {
         Page<Produto> news = productService.getNewsProducts(n_page, NEWS_PAGE_SIZE);
         model.addAttribute("newsProducts", news);
 
-        model.addAttribute("mostWantedPage", productService.getMostWantedProducts(mw_page, MOST_WANTED_PAGE_SIZE));
+        model.addAttribute("mostWantedProducts", productService.getMostWantedProducts(mw_page, MOST_WANTED_PAGE_SIZE));
 
 
         return "page_principal :: newsFragment";
