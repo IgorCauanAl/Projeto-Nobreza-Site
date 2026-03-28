@@ -53,6 +53,9 @@ public class Produto {
     @Column(name = "created_in")
     private LocalDateTime createdIn;
 
+    @Column(name = "access_count")
+    private Long accessCount = 0L;
+
     @ManyToMany
     @JoinTable(
             name= "product_colors",

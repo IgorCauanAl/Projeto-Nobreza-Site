@@ -11,6 +11,9 @@
     <link rel="stylesheet" th:href="@{../css/page_principal/Coupon.css}" />
     <link rel="stylesheet" th:href="@{../css/page_principal/Footer.css}" />
     <link rel="stylesheet" th:href="@{../css/page_principal/Insert-information.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" th:href="@{/css/chatbot/chatbot.css}" />
     <title>Página Principal Nobreza</title>
 </head>
 <body>
@@ -366,6 +369,27 @@
         </div>
     </footer>
 
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Chatbot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Olá 👋<br>Como posso ajudar você hoje?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Digite uma mensagem..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+
     <script th:src="@{/js/page_principal/page-principal.js}"></script>
     <script th:src="@{/js/page_principal/News.js}"></script>
     <script th:src="@{/js/page_principal/MostWanted.js}"></script>
@@ -373,5 +397,6 @@
     <script th:src="@{/js/page_principal/Pagination.js}"></script>
     <script th:src="@{/js/Carrinho.js}"></script>
     <script th:src="@{/js/page_principal/Search.js}"></script>
+    <script th:src="@{/js/chatbot/chatbot.js}"></script>
 </body>
 </html>

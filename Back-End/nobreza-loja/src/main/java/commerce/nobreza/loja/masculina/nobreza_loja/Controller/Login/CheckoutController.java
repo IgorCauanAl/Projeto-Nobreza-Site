@@ -1,6 +1,7 @@
-package commerce.nobreza.loja.masculina.nobreza_loja.Controller;
+package commerce.nobreza.loja.masculina.nobreza_loja.Controller.Login;
 
 import commerce.nobreza.loja.masculina.nobreza_loja.DTO.CarrinhoItensDTO;
+import commerce.nobreza.loja.masculina.nobreza_loja.DTO.CheckoutFormDto;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Endereco;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.MetodoPagamento;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.Pedido;
@@ -11,7 +12,6 @@ import commerce.nobreza.loja.masculina.nobreza_loja.Repository.PedidoRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.UserRepository;
 import commerce.nobreza.loja.masculina.nobreza_loja.Service.CarrinhoService;
 import commerce.nobreza.loja.masculina.nobreza_loja.Service.PedidoService;
-import commerce.nobreza.loja.masculina.nobreza_loja.dto.CheckoutFormDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -62,7 +62,7 @@ public class CheckoutController {
         model.addAttribute("totalPrice", precoTotal);
         model.addAttribute("enderecos", enderecos);
         model.addAttribute("metodosPagamento", metodosPagamento);
-        model.addAttribute("checkoutFormDto", new CheckoutFormDto()); // Objeto para o form
+        model.addAttribute("checkoutFormDto", new CheckoutFormDto());
 
         return "Checkout";
     }

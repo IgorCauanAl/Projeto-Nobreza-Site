@@ -3,7 +3,7 @@ package commerce.nobreza.loja.masculina.nobreza_loja.Service;
 import commerce.nobreza.loja.masculina.nobreza_loja.Entity.*;
 import commerce.nobreza.loja.masculina.nobreza_loja.Enum.StatusPedido;
 import commerce.nobreza.loja.masculina.nobreza_loja.Repository.*;
-import commerce.nobreza.loja.masculina.nobreza_loja.dto.CheckoutFormDto;
+import commerce.nobreza.loja.masculina.nobreza_loja.DTO.CheckoutFormDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
