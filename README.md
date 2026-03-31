@@ -4,7 +4,7 @@ Este é um projeto de e-commerce focado na venda de ternos e artigos de moda mas
 
 ## Sobre o Projeto
 
-A plataforma "Nobreza Ternos" oferece uma experiência de compra online, permitindo que os usuários naveguem pelo catálogo de produtos, visualizem detalhes, adicionem itens ao carrinho e finalizem a compra. O sistema conta com funcionalidades de cadastro de clientes, autenticação e gerenciamento de produtos.
+A plataforma "Nobreza Ternos" é uma loja de ternos, sendo um ambiente de estudo para mim , para aplicar as técnicas de desenvolvimento e segurança da informação.
 
 ## Recurso de Inteligência Artificial: Assistente de Estilo
 
