@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./Back-End/nobreza-loja
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - ollama
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://db:1433;databaseName=NobrezaTernos;encrypt=true;trustServerCertificate=true
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_AI_OLLAMA_BASE_URL=http://ollama:11434
+    networks:
+      - nobreza-network
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1234
+    volumes:
+      - db_data:/var/opt/mssql
+    networks:
+      - nobreza-network
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - nobreza-network
+
+volumes:
+  db_data:
+  ollama_data:
+
+networks:
+  nobreza-network:
+    driver: bridge

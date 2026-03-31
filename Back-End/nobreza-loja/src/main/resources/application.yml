@@ -1,33 +1,12 @@
 server:
   port: 8081
 
-error:
-  whitelabel:
-    enabled: false
-
+spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
+    url:  ${DB_URL:jdbc:sqlserver://192.168.2.100:1433;databaseName=NobrezaDB;encrypt=true;trustServerCertificate=true}
     username: sa
-    password:
-    h2:
-      console:
-        enabled: true
-        path: /h2-console
-    jpa:
-      database-platform: org.hibernate.dialect.H2Dialect
-      hibernate:
-        ddl-auto: update
-
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 5MB
-      max-request-size: 20MB
-      file-size-threshold: 1MB
-      location: ${java.io.tmpdir:/tmp}
-
-
+    password: 1234567
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       ddl-auto: update
@@ -35,15 +14,17 @@ error:
       hibernate:
         dialect: org.hibernate.dialect.SQLServerDialect
         format_sql: true
-        envers:
-          audit_table_suffix: _AUD
-          store_data_at_delete: true
     show-sql: true
-
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 20MB
+      file-size-threshold: 1MB
+      location: ${java.io.tmpdir:/tmp}
   devtools:
     restart:
       enabled: false
-
   mail:
     host: smtp.gmail.com
     port: 587
@@ -56,7 +37,6 @@ error:
           auth: true
           starttls:
             enable: true
-
   ai:
     ollama:
       base-url: http://localhost:11434

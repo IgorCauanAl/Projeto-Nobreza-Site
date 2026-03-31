@@ -74,7 +74,7 @@ public class AiService {
                     {productsContext}
                     
                     {purchaseHistoryContext}
-                    
+                    6
                     REGRAS RÍGIDAS:
                     1. Analise a pergunta do usuário e procure na lista acima por produtos relevantes.
                     2. Se encontrar produtos que atendam ao pedido, recomende-os citando o nome, o preço e a descrição.

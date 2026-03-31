@@ -73,5 +73,10 @@ public class Produto {
     )
     private List<ImageProduct> images = new ArrayList<>();
 
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarrinhoItens> carrinhoItens = new ArrayList<>();
+
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemPedido> itemPedidos = new ArrayList<>();
 
 }

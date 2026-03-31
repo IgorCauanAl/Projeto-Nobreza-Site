@@ -96,12 +96,15 @@ public class ProductService {
         int pageIndex = (page < 1) ? 0 : page - 1;
         Pageable pageable = PageRequest.of(pageIndex, 8, sort);
 
-        Category categoryObject = null;
+        Long categoryId = null;
         if (categoryName != null && !categoryName.isEmpty()) {
-            categoryObject = categoryRepository.findByName(categoryName).orElse(null);
+            Optional<Category> categoryOptional = categoryRepository.findByName(categoryName);
+            if (categoryOptional.isPresent()) {
+                categoryId = categoryOptional.get().getId();
+            }
         }
 
-        return productRepository.findProdutosByFilters(categoryObject, min, max, pageable);
+        return productRepository.findProdutosByFilters(categoryId, min, max, pageable);
     }
 
     private String saveImage(MultipartFile file) throws IOException {
