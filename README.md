@@ -12,7 +12,7 @@ Para aprimorar a experiência do usuário, o projeto incorpora um **Assistente d
 
 ### Como a IA é Aplicada?
 
-O recurso de IA foi implementado utilizando o **Spring AI** integrado ao **Ollama**, um serviço que permite executar modelos de linguagem grandes (LLMs) localmente.
+O recurso de IA foi implementado utilizando o **Spring AI** integrado ao **Ollama**, um serviço que permite executar modelos de linguagem grandes (LLMs) localmente. Apesar do meu computador não rodar legal as IA de forma local, eu optei em usar o llama3.2 com 3 bilhões de parâmetros, logo a IA não é tão inteligente igual as LLM da internet, por isso eu criei uma instrução especifica para ela seguir e não fugir da sua lógica.
 
 1.  **Interação com o Usuário:** O cliente pode fazer perguntas abertas ao assistente, como "Qual a melhor combinação de camisa e gravata para um terno azul?" ou "Que tipo de sapato devo usar em um casamento diurno?".
 2.  **Processamento da Pergunta:** O back-end da aplicação recebe a pergunta do usuário e a envia para o modelo de linguagem que está sendo executado pelo Ollama.
