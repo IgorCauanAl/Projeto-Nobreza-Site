@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url:  ${DB_URL:jdbc:sqlserver://192.168.2.100:1433;databaseName=NobrezaDB;encrypt=true;trustServerCertificate=true}
+    url:  ${DB_URL}
     username: sa
     password: 1234567
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
