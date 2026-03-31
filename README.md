@@ -19,7 +19,6 @@ O recurso de IA foi implementado utilizando o **Spring AI** integrado ao **Ollam
 3.  **Geração da Resposta:** O modelo de IA processa a pergunta em seu contexto de moda e gera uma resposta em linguagem natural, oferecendo conselhos, sugestões de produtos do catálogo e dicas de estilo.
 4.  **Exibição para o Usuário:** A resposta gerada pela IA é então exibida na interface do site, proporcionando ao cliente um atendimento personalizado e interativo, como se estivesse conversando com um estilista virtual.
 
-Essa funcionalidade não apenas auxilia o cliente em sua jornada de compra, mas também agrega um diferencial inovador e tecnológico à plataforma.
 
 ---
 
