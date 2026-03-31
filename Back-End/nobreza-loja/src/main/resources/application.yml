@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url:  ${DB_URL}
+    url: ${DB_URL}
     username: sa
     password: 1234567
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
